@@ -85,7 +85,7 @@ const config = {
               },
               {
                 label: "Contribute",
-                href: "https://github.com/replugged-org/replugged",
+                href: "https://github.com/replugged-org/guide",
               },
             ],
           },
