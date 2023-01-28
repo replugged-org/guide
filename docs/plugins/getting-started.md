@@ -1,5 +1,6 @@
 ---
-position: 1
+sidebar_position: 1
+title: Getting Started
 description: Get started with developing a plugin
 ---
 
