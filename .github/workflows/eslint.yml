@@ -1,4 +1,4 @@
-name: CSpell
+name: ESLint
 
 on:
   push:
@@ -9,8 +9,8 @@ on:
       - "*"
 
 jobs:
-  run-cspell:
-    name: Run CSpell
+  run-eslint:
+    name: Run ESLint
     runs-on: ubuntu-latest
 
     steps:
@@ -43,5 +43,5 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Run CSpell
-        run: pnpm run cspell:check
+      - name: Run ESLint
+        run: pnpm run eslint:check
