@@ -7,6 +7,7 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: "Replugged Developer Guide",
+  tagline: "A guide to developing plugins and themes for Replugged",
   favicon: "img/favicon.ico",
 
   // Set the production url of your site here
