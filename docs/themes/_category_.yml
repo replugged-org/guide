@@ -1,4 +1,6 @@
 position: 2
 label: "Themes"
 link:
+  title: "Theme Guide"
+  description: "Learn how to create themes for Replugged"
   type: generated-index

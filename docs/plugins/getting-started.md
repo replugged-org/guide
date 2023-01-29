@@ -1,7 +1,8 @@
 ---
 sidebar_position: 1
-title: Getting Started
-description: Get started with developing a plugin
+title: Getting Started with Plugins
+sidebar_label: Getting Started
+description: How to get started developing a plugin for Replugged
 ---
 
 # Getting Started

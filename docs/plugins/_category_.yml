@@ -1,4 +1,6 @@
 position: 1
 label: "Plugins"
 link:
+  title: "Plugin Guide"
+  description: "Learn how to create plugins for Replugged"
   type: generated-index
