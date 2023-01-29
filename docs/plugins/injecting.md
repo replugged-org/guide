@@ -56,7 +56,7 @@ injector.instead(mod, "method", (props, fn) => {
 
   // any value returned from this function will be returned to the original caller
   // if you want to run the original method, you can call fn with the original props (or modified props)
-  return fn(props);
+  return fn(...props);
 });
 ```
 
