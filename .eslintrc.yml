@@ -1,5 +1,6 @@
 root: true
 extends:
+  - plugin:markdown/recommended
   - eslint-config-dmitmel/presets/node
 env:
   browser: true
@@ -7,6 +8,7 @@ parser: "@typescript-eslint/parser"
 parserOptions:
   sourceType: module
 plugins:
+  - "markdown"
   - "@typescript-eslint"
 rules:
   func-names: off
@@ -34,12 +36,10 @@ rules:
   no-undefined: off
   no-unused-vars: off
   new-cap: off
-  "@typescript-eslint/no-unused-vars":
-    - error
-    - argsIgnorePattern: "^_"
 
 overrides:
-  - files: "**/*.{ts,tsx}"
+  - files:
+      - "**/*.{ts,tsx}"
     extends: eslint-config-dmitmel/presets/typescript-addon
     rules:
       node/no-missing-import: off
@@ -49,8 +49,21 @@ overrides:
       no-void: off
       consistent-return: off
 
-  - files: "**/src/**/*.{ts,tsx}"
-    extends: eslint-config-dmitmel/rules/typescript/with-type-checking
+  - files: "**/*.md"
+    processor: markdown/markdown
+
+  - files:
+      - "**/*.md/*.ts"
+    extends: eslint-config-dmitmel/presets/typescript-addon
+    rules:
+      node/no-missing-import: off
+      eqeqeq: off
+      \@typescript-eslint/no-dynamic-delete: off
+      no-return-assign: off
+      no-void: off
+      consistent-return: off
+      "@typescript-eslint/no-unused-vars": off
+      "@typescript-eslint/explicit-function-return-type": off
 
   - files: "**/*.d.ts"
     rules:

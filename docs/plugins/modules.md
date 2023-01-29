@@ -54,9 +54,8 @@ import { webpack } from "replugged";
 const { getModule } = webpack;
 
 export function start() {
-  const typingModule = getModule((m) => /* your code here */);
+  const typingModule = getModule((m) => /* your code here */ someFn(m));
 }
-
 ```
 
 Replugged also comes with a `filters` object with a few common filters. These are described below.
@@ -186,7 +185,7 @@ dynamically finding the ID.
 import { webpack } from "replugged";
 const { getById } = webpack;
 
-export async function start() {
+export function start() {
   const typingModule = getById(123456);
 }
 ```
