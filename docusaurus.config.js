@@ -50,6 +50,9 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      colorMode: {
+        defaultMode: "dark",
+      },
       tableOfContents: {
         minHeadingLevel: 2,
         maxHeadingLevel: 5,
