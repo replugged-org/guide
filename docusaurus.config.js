@@ -63,10 +63,21 @@ const config = {
         },
         items: [
           {
-            type: "doc",
-            docId: "intro",
             position: "left",
             label: "Docs",
+            to: "/docs/intro",
+          },
+          {
+            position: "left",
+            label: "Plugin Guide",
+            to: "/docs/category/plugins",
+            activeBaseRegex: "/docs/(category/)?plugins",
+          },
+          {
+            position: "left",
+            label: "Theme Guide",
+            to: "/docs/category/themes",
+            activeBaseRegex: "/docs/(category/)?themes",
           },
         ],
       },
@@ -77,8 +88,12 @@ const config = {
             title: "Docs",
             items: [
               {
-                label: "Tutorial",
-                to: "/docs/intro",
+                label: "Plugin Guide",
+                to: "/docs/category/plugins",
+              },
+              {
+                label: "Theme Guide",
+                to: "/docs/category/themes",
               },
               {
                 label: "API Docs",
