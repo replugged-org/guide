@@ -78,6 +78,14 @@ injector.after(mod, "method", (props, res) => {
 });
 ```
 
+### Comparison
+
+| Injection | Starts at              | Ends at                | Input                                      | Output                | Can modify props | Can modify return value | Calls original method            |
+| --------- | ---------------------- | ---------------------- | ------------------------------------------ | --------------------- | ---------------- | ----------------------- | -------------------------------- |
+| `before`  | Start of function call | Start of function call | Function props                             | Function props        | Yes              | No                      | Yes                              |
+| `instead` | Start of function call | End of function call   | Function props                             | Function return value | Yes              | Yes                     | No (unless you call it yourself) |
+| `after`   | End of function call   | End of function call   | Function return value (includes props too) | Function return value | No               | Yes                     | Yes                              |
+
 ## Removing an Injection
 
 Each injection returns a function which can be called to remove the injection.
