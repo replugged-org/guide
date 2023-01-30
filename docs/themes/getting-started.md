@@ -47,10 +47,9 @@ The theme ID should be in
 example, if your website is `example.com` and your theme is called `my-theme`, the theme ID should
 be `com.example.MyTheme`. If you don't have a website, you can make one up.
 
-The version and updater info is used by Replugged to check for updates. You should reset the version
-number to `1.0.0`. The `updater.id` key should be changed to the username and repository of your
-theme. For example, the theme template is hosted at https://github.com/replugged-org/replugged, so
-the `updater.id` is `replugged-org/replugged`.
+The version and updater info is used by Replugged to check for updates. The `updater.id` key should
+be changed to the username and repository of your theme. For example, the theme template is hosted
+at https://github.com/replugged-org/replugged, so the `updater.id` is `replugged-org/replugged`.
 
 :::caution
 
