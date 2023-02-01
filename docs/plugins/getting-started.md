@@ -80,10 +80,17 @@ ID (the one you set in `manifest.json`).
 
 :::
 
-## Distributing
+## Building, updating, and releasing
 
 1. Update the version number in `manifest.json`. The version number doesn't need to follow any
    specific format, but does need to be changed in order for Replugged to detect an update.
+
+:::note
+
+If this is your first release, you can leave it as `1.0.0`.
+
+:::
+
 2. Commit your changes and push them to GitHub.
 3. Create a new tag with `git tag v1.0.0` (replace `1.0.0` with your version number).
 
