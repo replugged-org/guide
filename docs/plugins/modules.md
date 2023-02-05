@@ -119,29 +119,7 @@ export function start() {
 }
 ```
 
-#### Get export for props {#getExportForProps}
-
-When using `filters.byProps`, the actual properties you need may be nested under a random key. To
-get the actual export, you can use `getExportForProps`.
-
-```ts
-import { webpack } from "replugged";
-const { filters, getExportForProps, waitForModule } = webpack;
-
-export async function start() {
-  const typingModuleRaw = await waitForModule(filters.byProps("getChannelId", "addChangeListener"));
-  const typingModule = getExportForProps(typingModuleRaw, ["getChannelId", "addChangeListener"]);
-}
-```
-
-:::note
-
-This function is not needed when using [`getByProps`](#getByProps) or
-[`waitForProps`](#waitForProps) because they already do this for you.
-
-:::
-
-### Get by source
+### Get by source {#getBySource}
 
 For modules that do not have human-readable properties (such as components), you can use
 `getBySource` to find a module by its source code. To use this, you will need to find the source
@@ -203,6 +181,66 @@ const { getById } = webpack;
 
 export function start() {
   const typingModule = getById(123456);
+}
+```
+
+## Processing modules
+
+### Get export for props {#getExportForProps}
+
+When using `filters.byProps`, the actual properties you need may be nested under a random key. To
+get the actual export, you can use `getExportForProps`.
+
+```ts
+import { webpack } from "replugged";
+const { filters, getExportForProps, waitForModule } = webpack;
+
+export async function start() {
+  const typingModuleRaw = await waitForModule(filters.byProps("getChannelId", "addChangeListener"));
+  const typingModule = getExportForProps(typingModuleRaw, ["getChannelId", "addChangeListener"]);
+}
+```
+
+:::note
+
+This function is not needed when using [`getByProps`](#getByProps) or
+[`waitForProps`](#waitForProps) because they already do this for you.
+
+:::
+
+### Get function by source {#getFunctionBySource}
+
+This function will find a function in an object that matches the given source code (string or
+regex).
+
+```ts
+import { webpack } from "replugged";
+const { getBySource, getFunctionBySource } = webpack;
+
+export function start() {
+  const module = getBySource("YOUR QUERY HERE");
+  const functionInModule = getFunctionBySource("YOUR QUERY HERE", module);
+}
+```
+
+### Get function key by source {#getFunctionKeyBySource}
+
+Works like [`getFunctionBySource`](#getFunctionBySource), but returns the key of the function
+instead of the function itself. Useful for getting the property name to use for
+[injecting](injecting).
+
+```ts
+import { Injector, webpack } from "replugged";
+const { getBySource, getFunctionKeyBySource } = webpack;
+const injector = new Injector();
+
+export function start() {
+  const module = getBySource("YOUR QUERY HERE");
+  const keyInModule = getFunctionKeyBySource("YOUR QUERY HERE", module);
+
+  injector.after(module, keyInModule, (args, res) => {
+    console.log("Function was called!", { args, res });
+  });
 }
 ```
 
