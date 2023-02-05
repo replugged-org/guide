@@ -120,12 +120,6 @@ your plugin. Once approved, you can post your plugin in the
 
 ### Installing from a link
 
-:::caution
-
-This feature is not yet released
-
-:::
-
 You can create a link to install your plugin:
 <https://replugged.dev/install?identifier=replugged-org/plugin-template&source=github>. Query
 params:
@@ -134,3 +128,17 @@ params:
 - `source` - same as `updater.source` in the manifest (currently, only `github` is supported)
 - `id` - (optional) same as `id` in the manifest. This is only needed if your release contains
   multiple plugins. Otherwise, Replugged will automatically detect the plugin ID.
+
+#### Button for GitHub readme
+
+You can use your own markdown if you want, but we recommend using the following button:
+
+```md
+[![Install in Replugged](https://img.shields.io/badge/-Install%20in%20Replugged-blue?style=for-the-badge&logo=none)](https://replugged.dev/install?identifier=YOUR_ADDON_INFO_HERE&source=github)
+```
+
+:::note
+
+Make sure to update the link with your plugin's information.
+
+:::
