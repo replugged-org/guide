@@ -43,7 +43,7 @@ Better documentation for common modules is coming soon.
 
 :::
 
-### Custom function
+### Get module {#getModule}
 
 You can write a function that will be used to find the module. This functions similar to the
 [Array.find](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find)
@@ -60,7 +60,7 @@ export function start() {
 
 Replugged also comes with a `filters` object with a few common filters. These are described below.
 
-### Wait for module
+### Wait for module {#waitForModule}
 
 When Discord is starting, a module may not be available yet. For example, Replugged provides a
 `waitForModule` function that will wait for a module to be available before continuing. This works
@@ -72,13 +72,15 @@ import { webpack } from "replugged";
 const { filters, waitForModule } = webpack;
 
 export async function start() {
-  const typingMod = await waitForModule(filters.byProps("getChannelId", "addChangeListener"));
+  const typingMod = await waitForModule(filters.bySource("HORIZONTAL_REVERSE:"));
 }
 ```
 
-Note that for prop filters, this may not have the same output as `getByProps` because the module
-could be nested and is not automatically resolved. See [below](#getExportForProps) for more
-information on how to resolve nested modules.
+:::note
+
+For props filters, use [`waitForProps`](#waitForProps) instead.
+
+:::
 
 :::caution
 
@@ -87,7 +89,7 @@ By default, `waitForModule` will wait indefinitely. You can set a timeout using 
 
 :::
 
-### Get by props
+### Get by props {#getByProps}
 
 Most util/method modules can be found by using `getByProps`. This function takes an array of strings
 and finds a module that has all of the properties in the array.
@@ -96,14 +98,28 @@ and finds a module that has all of the properties in the array.
 import { webpack } from "replugged";
 const { filters, getByProps, waitForModule } = webpack;
 
-export async function start() {
+export function start() {
   const typingModule = getByProps("getChannelId", "addChangeListener");
   // or:
-  const typingModule = await waitForModule(filters.byProps("getChannelId", "addChangeListener"));
+  const typingModule = getModule(filters.byProps("getChannelId", "addChangeListener"));
 }
 ```
 
-#### getExportForProps {#getExportForProps}
+#### Wait for props {#waitForProps}
+
+Works like [`getByProps`](#getByProps), but waits for the module to be available like with
+[`waitForModule`](#waitForModule).
+
+```ts
+import { webpack } from "replugged";
+const { waitForProps } = webpack;
+
+export function start() {
+  const typingModule = await waitForProps("getChannelId", "addChangeListener");
+}
+```
+
+#### Get export for props {#getExportForProps}
 
 When using `filters.byProps`, the actual properties you need may be nested under a random key. To
 get the actual export, you can use `getExportForProps`.
@@ -120,8 +136,8 @@ export async function start() {
 
 :::note
 
-This function is not needed when using `getByProps` because it automatically resolves the nested
-module.
+This function is not needed when using [`getByProps`](#getByProps) or
+[`waitForProps`](#waitForProps) because they already do this for you.
 
 :::
 
@@ -137,10 +153,10 @@ the module.
 import { webpack } from "replugged";
 const { filters, getBySource, waitForModule } = webpack;
 
-export async function start() {
+export function start() {
   const flexMod = getBySource("HORIZONTAL_REVERSE:");
   // or:
-  const flexMod = await waitForModule(filters.bySource("HORIZONTAL_REVERSE:"));
+  const flexMod = getModule(filters.bySource("HORIZONTAL_REVERSE:"));
 }
 ```
 
@@ -151,7 +167,7 @@ between Discord updates and should not be considered stable. This means that you
 if Discord updates. If the string you are using contains one of these variables, you should use a
 regular expression to make it more stable.
 
-Note that `getBySource` looks at the minified source code, so your query will need to match the
+Note that this function looks at the minified source code, so your query will need to match the
 minified code.
 
 :::
@@ -196,7 +212,7 @@ All functions that find modules take an options object as the last parameter.
 
 :::note
 
-For `getByProps`, you will need to put the props in an array to specify the options:
+For [`getByProps`](#getByProps), you will need to put the props in an array to specify the options:
 
 ```ts
 getByProps(["getChannelId", "addChangeListener"], { all: true });
@@ -208,7 +224,7 @@ getByProps(["getChannelId", "addChangeListener"], { all: true });
 
 :::note
 
-Not available for `waitForModule`.
+Not available for [`waitForModule`](#waitForModule) or [`waitForProps`](#waitForProps).
 
 :::
 
@@ -234,11 +250,11 @@ getByProps(["getChannelId", "addChangeListener"], { raw: true });
 
 :::note
 
-Only available for `waitForModule`.
+Only available for [`waitForModule`](#waitForModule) and [`waitForProps`](#waitForProps).
 
 :::
 
-By default, `waitForModule` will wait forever for a module to be available. If you set a timeout, it
+By default, these functions will wait forever for a module to be available. If you set a timeout, it
 will reject the promise after the specified time (milliseconds).
 
 ```ts
