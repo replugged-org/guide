@@ -323,11 +323,11 @@ export function Settings(): React.ReactElement {
       {...util.useSetting(cfg, "foo", "bar")}
       options={[
         {
-          name: "Option 1",
+          label: "Option 1",
           value: "option1",
         },
         {
-          name: "Option 2",
+          label: "Option 2",
           value: "option2",
         },
       ]}>
