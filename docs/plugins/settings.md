@@ -144,10 +144,10 @@ settings manager when the value changes.
 
 :::caution
 
-If you use this hook, you cannot use the `value` or `onChange` properties on a component. If you
-need to use those, you will need to get/set the values from the settings manager manually.
+If you use this hook, you cannot use the `value` or `onChange` properties on a component since they
+will override the properties set by the hook.
 
-One way to do that is get `value`/`onChange` from the hook outside of the component and then use
+One way around this is to get `value`/`onChange` from the hook outside of the component and then use
 that in your custom props.
 
 ```tsx
