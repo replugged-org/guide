@@ -62,7 +62,7 @@ const cfg = await settings.init<Settings, keyof typeof defaultSettings>(
 );
 ```
 
-## Interacting with settings manager
+## Interacting with the settings manager
 
 The settings manager functions similar to a JavaScript `Map`, but has some extra functionality.
 
