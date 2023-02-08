@@ -147,6 +147,31 @@ settings manager when the value changes.
 If you use this hook, you cannot use the `value` or `onChange` properties on a component. If you
 need to use those, you will need to get/set the values from the settings manager manually.
 
+One way to do that is get `value`/`onChange` from the hook outside of the component and then use
+that in your custom props.
+
+```tsx
+import { settings, util } from "replugged";
+
+const cfg = await settings.init("YOUR_PLUGIN_ID");
+
+export function Settings(): React.ReactElement {
+  const { value, onChange } = util.useSetting(cfg, "foo", "bar");
+  return (
+    <Input
+      value={value}
+      onChange={(value) => {
+        console.log(value);
+        onChange(value);
+      }}
+    />
+  );
+}
+```
+
+You can also use the regular `useState` hook and use [get](#get) and [set](#set) on the settings
+manager yourself.
+
 :::
 
 ### Input components
