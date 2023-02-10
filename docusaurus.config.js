@@ -133,6 +133,16 @@ const config = {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
       },
+      algolia: {
+        appId: "VPX2W4QZO1",
+
+        // Public API key: it is safe to commit it
+        apiKey: "b7bb8af20ae0a71cd7a3b5857d509b69",
+        indexName: "guide",
+        contextualSearch: true,
+        searchParameters: {},
+        searchPagePath: "search",
+      },
     }),
 };
 
