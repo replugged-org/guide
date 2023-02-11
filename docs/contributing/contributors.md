@@ -8,6 +8,7 @@ description: Thanks to all the contributors who have helped make Replugged possi
 
 Thanks to all the contributors who have helped make Replugged possible!
 
+<!-- cSpell:disable -->
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
@@ -23,3 +24,4 @@ Thanks to all the contributors who have helped make Replugged possible!
 <!-- prettier-ignore-end -->
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
+<!-- cSpell:enable -->
