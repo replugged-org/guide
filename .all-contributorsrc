@@ -1,7 +1,7 @@
 {
   "files": [
-    "README.md"
-  ],
+    "docs/contributing/contributors.md"
+  ]
   "imageSize": 100,
   "commit": false,
   "commitConvention": "angular",
@@ -31,6 +31,6 @@
   "skipCi": true,
   "repoType": "github",
   "repoHost": "https://github.com",
-  "projectName": "guide",
+  "projectName": "replugged",
   "projectOwner": "replugged-org"
 }
