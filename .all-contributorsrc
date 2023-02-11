@@ -1,0 +1,36 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "commitConvention": "angular",
+  "contributors": [
+    {
+      "login": "asportnoy",
+      "name": "Albert Portnoy",
+      "avatar_url": "https://avatars.githubusercontent.com/u/14863373?v=4",
+      "profile": "http://albertp.dev",
+      "contributions": [
+        "bug",
+        "code",
+        "doc",
+        "design",
+        "ideas",
+        "infra",
+        "maintenance",
+        "projectManagement",
+        "promotion",
+        "question",
+        "review",
+        "translation"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "skipCi": true,
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "projectName": "guide",
+  "projectOwner": "replugged-org"
+}
