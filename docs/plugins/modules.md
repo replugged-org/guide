@@ -219,7 +219,7 @@ const { getBySource, getFunctionBySource } = webpack;
 
 export function start() {
   const module = getBySource("YOUR QUERY HERE");
-  const functionInModule = getFunctionBySource("YOUR QUERY HERE", module);
+  const functionInModule = getFunctionBySource(module, "YOUR QUERY HERE");
 }
 ```
 
@@ -236,7 +236,7 @@ const injector = new Injector();
 
 export function start() {
   const module = getBySource("YOUR QUERY HERE");
-  const keyInModule = getFunctionKeyBySource("YOUR QUERY HERE", module);
+  const keyInModule = getFunctionKeyBySource(module, "YOUR QUERY HERE");
 
   injector.after(module, keyInModule, (args, res) => {
     console.log("Function was called!", { args, res });
