@@ -49,7 +49,8 @@ be `com.example.MyTheme`. If you don't have a website, you can make one up.
 
 The version and updater info is used by Replugged to check for updates. The `updater.id` key should
 be changed to the username and repository of your theme. For example, the theme template is hosted
-at https://github.com/replugged-org/replugged, so the `updater.id` is `replugged-org/replugged`.
+at https://github.com/replugged-org/theme-template, so the `updater.id` is
+`replugged-org/theme-template`.
 
 :::caution
 
