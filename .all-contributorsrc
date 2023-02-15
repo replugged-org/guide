@@ -25,12 +25,21 @@
         "review",
         "translation"
       ]
+    },
+    {
+      "login": "FedeIlLeone",
+      "name": "Fede",
+      "avatar_url": "https://avatars.githubusercontent.com/u/38290480?v=4",
+      "profile": "https://fedeilleone.github.io/",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
   "skipCi": false,
   "repoType": "github",
   "repoHost": "https://github.com",
-  "projectName": "replugged",
+  "projectName": "guide",
   "projectOwner": "replugged-org"
 }
