@@ -3,7 +3,18 @@
   "ignorePaths": [],
   "dictionaryDefinitions": [],
   "dictionaries": [],
-  "words": ["asar", "clsx", "Infima", "keyof", "popout", "replugged", "typeof", "uninject"],
+  "words": [
+    "asar",
+    "autosize",
+    "clsx",
+    "Infima",
+    "keyof",
+    "popout",
+    "replugged",
+    "resizeable",
+    "typeof",
+    "uninject"
+  ],
   "ignoreWords": [],
   "import": []
 }
