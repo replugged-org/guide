@@ -212,23 +212,27 @@ interface FormItemProps {
   error?: React.ReactNode;
   disabled?: boolean;
   required?: boolean;
-  tag?: "h1" | "h2" | "h3" | "h4" | "h5" | "label" | "legend";
-  titleClassName?: string;
-  notePosition?: "before" | "after";
   divider?: boolean;
+  tag?: "h1" | "h2" | "h3" | "h4" | "h5" | "label" | "legend";
+  notePosition?: "before" | "after";
+  style?: React.CSSProperties;
+  noteStyle?: React.CSSProperties;
+  className?: string;
+  titleClassName?: string;
+  noteClassName?: string;
 }
 ```
 
-#### Input (text input)
+#### TextInput
 
 ```tsx
 import { components } from "replugged";
-const { FormItem, Input } = components;
+const { FormItem, TextInput } = components;
 
 export function Settings(): React.ReactElement {
   return (
     <FormItem title="Foo">
-      <Input {...util.useSetting(cfg, "foo", "bar")} />
+      <TextInput {...util.useSetting(cfg, "foo", "bar")} />
     </FormItem>
   );
 }
@@ -240,6 +244,7 @@ Props:
 interface TextInputProps {
   autoFocus?: boolean;
   disabled?: boolean;
+  editable?: boolean;
   minLength?: number;
   maxLength?: number;
   name?: string;
@@ -248,7 +253,53 @@ interface TextInputProps {
   type?: string;
   error?: string;
   value?: string;
+  style?: React.CSSProperties;
+  className?: string;
+  inputClassName?: string;
   onChange?: (e: string) => void;
+  onFocus?: (e: React.FocusEvent<HTMLInputElement>) => void;
+  onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
+  onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
+}
+```
+
+#### TextArea
+
+```tsx
+import { components } from "replugged";
+const { FormItem, TextArea } = components;
+
+export function Settings(): React.ReactElement {
+  return (
+    <FormItem title="Foo">
+      <TextArea {...util.useSetting(cfg, "foo", "bar")} />
+    </FormItem>
+  );
+}
+```
+
+Props:
+
+```ts
+interface TextAreaProps {
+  autoFocus?: boolean;
+  disabled?: boolean;
+  required?: boolean;
+  editable?: boolean;
+  allowOverflow?: boolean;
+  resizeable?: boolean;
+  flex?: boolean;
+  autosize?: boolean;
+  minLength?: number;
+  maxLength?: number;
+  rows?: number;
+  name?: string;
+  placeholder?: string;
+  error?: string;
+  value?: string;
+  className?: string;
+  onChange?: (e: string) => void;
+  onInvalid?: (e: React.FormEvent<HTMLInputElement>) => void;
   onFocus?: (e: React.FocusEvent<HTMLInputElement>) => void;
   onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
   onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
@@ -272,11 +323,48 @@ Props:
 
 ```ts
 interface SwitchItemProps {
-  note?: string;
   value: boolean;
   onChange: (e: boolean) => void;
+  note?: string;
+  tooltipNote?: string;
   disabled?: boolean;
-  tooltipNode?: string;
+  hideBorder?: boolean;
+  style?: React.CSSProperties;
+  className?: string;
+}
+```
+
+#### CheckboxItem
+
+```tsx
+import { components } from "replugged";
+const { CheckboxItem } = components;
+
+export function Settings(): React.ReactElement {
+  return <CheckboxItem {...util.useSetting(cfg, "foo", true)}>Checkbox title</CheckboxItem>;
+}
+```
+
+Props:
+
+```ts
+interface CheckboxItemProps {
+  disabled?: boolean;
+  readOnly?: boolean;
+  reverse?: boolean;
+  displayOnly?: boolean;
+  shape?: string;
+  align?: string;
+  type?: string;
+  color?: string;
+  checkboxColor?: string;
+  size?: number;
+  value?: boolean;
+  style?: React.CSSProperties;
+  className?: string;
+  innerClassName?: string;
+  onClick?: (e: React.MouseEvent<HTMLInputElement>) => void;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 ```
 
@@ -316,7 +404,7 @@ interface RadioOptionType {
   disabled?: boolean;
   color?: string;
   tooltipText?: string;
-  tooltipPosition?: "top" | "bottom" | "left" | "right" | "center";
+  tooltipPosition?: "top" | "bottom" | "left" | "right" | "center" | "window_center";
 }
 
 interface RadioItemProps {
@@ -328,6 +416,8 @@ interface RadioItemProps {
   size?: string;
   radioPosition?: "left" | "right";
   withTransparentBackground?: boolean;
+  style?: React.CSSProperties;
+  className?: string;
   itemInfoClassName?: string;
   itemTitleClassName?: string;
   radioItemClassName?: string;
@@ -374,51 +464,52 @@ interface SelectOptionType {
 
 interface SelectItemProps {
   options: SelectOptionType[];
-  note?: string;
   value?: string;
   onChange?: (e: string) => void;
-  onSelect?: (e: string) => void;
-  onClear?: () => void;
-  disabled?: boolean;
+  note?: string;
   isSelected?: (e: string) => void;
   serialize?: (e: string) => void;
   select?: (e: string) => void;
+  onSelect?: (e: string) => void;
   clear?: () => void;
+  onClear?: () => void;
   placeholder?: string;
   isDisabled?: boolean;
+  disabled?: boolean;
   maxVisibleItems?: number;
   autoFocus?: boolean;
   popoutWidth?: number;
   clearable?: boolean;
   look?: number;
-  popoutPosition?: "top" | "bottom" | "left" | "right" | "center";
+  popoutPosition?: "top" | "bottom" | "left" | "right" | "center" | "window_center";
   closeOnSelect?: boolean;
   hideIcon?: boolean;
   onClose?: () => void;
   onOpen?: () => void;
   renderOptionLabel?: (e: SelectOptionType) => void;
   renderOptionValue?: (e: SelectOptionType[]) => void;
+  style?: React.CSSProperties;
+  className?: string;
   popoutClassName?: string;
   optionClassName?: string;
 }
 ```
 
-#### Slider
+#### SliderItem
 
 ```tsx
 import { components } from "replugged";
-const { FormItem, Slider } = components;
+const { SliderItem } = components;
 
 export function Settings(): React.ReactElement {
   return (
-    <FormItem title="Foo">
-      <Slider
-        {...util.useSetting(cfg, "foo", 0)}
-        minValue={0}
-        maxValue={100}
-        markers={[0, 25, 50, 75, 100]}
-      />
-    </FormItem>
+    <SliderItem
+      {...util.useSetting(cfg, "foo", 0)}
+      minValue={0}
+      maxValue={100}
+      markers={[0, 25, 50, 75, 100]}>
+      Slider title
+    </SliderItem>
   );
 }
 ```
@@ -426,9 +517,10 @@ export function Settings(): React.ReactElement {
 Props:
 
 ```ts
-interface SliderCompProps {
+interface SliderItemProps {
   value?: number;
   onChange?: (e: number) => void;
+  note?: string;
   disabled?: boolean;
   markers?: number[];
   stickToMarkers?: boolean;
@@ -437,8 +529,14 @@ interface SliderCompProps {
   minValue?: number;
   maxValue?: number;
   mini?: boolean;
+  hideBubble?: boolean;
+  barStyles?: React.CSSProperties;
+  fillStyles?: React.CSSProperties;
+  grabberStyles?: React.CSSProperties;
   style?: React.CSSProperties;
   className?: string;
+  barClassName?: string;
+  grabberClassName?: string;
   onValueChange?: (e: number) => void;
   asValueChanges?: (e: number) => void;
   onValueRender?: (e: number) => string;
