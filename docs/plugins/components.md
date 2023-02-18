@@ -97,7 +97,47 @@ Props:
 
 Example:
 
+```tsx
+import { components } from "replugged";
+const { FormItem, TextInput } = components;
+
+export function Settings(): React.ReactElement {
+  return (
+    <FormItem title="Foo">
+      <TextInput {...util.useSetting(cfg, "foo", "bar")} />
+    </FormItem>
+  );
+}
+```
+
+Properties:
+
+| Property | Description                                                                       |
+| -------- | --------------------------------------------------------------------------------- |
+| `.Sizes` | Checkbox aligns. Available properties: <ul><li>`DEFAULT`</li><li>`MINI`</li></ul> |
+
 Props:
+
+| Name              | Type                                                 | Description                                               |
+| ----------------- | ---------------------------------------------------- | --------------------------------------------------------- |
+| `autoFocus?`      | `boolean`                                            | Whether the input should be on focus; defaults to `false` |
+| `className?`      | `string`                                             | Component class name                                      |
+| `disabled?`       | `boolean`                                            | Whether the input should be disabled; defaults to `false` |
+| `editable?`       | `boolean`                                            | Whether the input should be editable; defaults to `true`  |
+| `error?`          | `string`                                             | Input error message if length exceeds limits              |
+| `inputClassName?` | `string`                                             | Input element class name                                  |
+| `maxLength?`      | `number`                                             | Input maximum length; defaults to `999`                   |
+| `minLength?`      | `number`                                             | Input minimum length                                      |
+| `name?`           | `number`                                             | Input element name                                        |
+| `onBlur?`         | `(e: React.FocusEvent<HTMLInputElement>) => void`    | Function ran on input focus loose                         |
+| `onChange?`       | `(e: string) => void`                                | Function ran on input value change                        |
+| `onFocus?`        | `(e: React.FocusEvent<HTMLInputElement>) => void`    | Function ran on input focus                               |
+| `onKeyDown?`      | `(e: React.KeyboardEvent<HTMLInputElement>) => void` | Function ran on key press                                 |
+| `placeholder?`    | `string`                                             | Input placeholder                                         |
+| `size?`           | `string`                                             | Input size; defaults to `"default"`                       |
+| `style?`          | `React.CSSProperties`                                | Component style                                           |
+| `type?`           | `React.CSSProperties`                                | Input type; defaults to `"text"`                          |
+| `value?`          | `string`                                             | Input value                                               |
 
 ## Other Components
 
