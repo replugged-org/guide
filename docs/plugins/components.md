@@ -36,11 +36,11 @@ export function Settings(): React.ReactElement {
 
 Properties:
 
-| Property  | Description                                                                                                        |
-| --------- | ------------------------------------------------------------------------------------------------------------------ |
-| `.Aligns` | Checkbox aligns. Available properties: <ul><li>`TOP`</li><li>`CENTER`</li></ul>                                    |
-| `.Shapes` | Checkbox shapes. Available properties: <ul><li>`BOX`</li><li>`ROUND`</li><li>`SMALL`</li></ul>                     |
-| `.Types`  | Checkbox types. Available properties: <ul><li>`DEFAULT`</li><li>`INVERTED`</li><li>`GHOST`</li><li>`ROW`</li></ul> |
+| Property  | Description                                                                            |
+| --------- | -------------------------------------------------------------------------------------- |
+| `.Aligns` | Checkbox aligns. Available properties: <br/>`TOP` \| `CENTER`                          |
+| `.Shapes` | Checkbox shapes. Available properties: <br/>`BOX` \| `ROUND` \| `SMALL`                |
+| `.Types`  | Checkbox types. Available properties: <br/>`DEFAULT` \| `INVERTED` \| `GHOST` \| `ROW` |
 
 Props:
 
@@ -148,9 +148,9 @@ export function Settings(): React.ReactElement {
 
 Properties:
 
-| Property | Description                                                                       |
-| -------- | --------------------------------------------------------------------------------- |
-| `.Sizes` | Checkbox aligns. Available properties: <ul><li>`DEFAULT`</li><li>`MINI`</li></ul> |
+| Property | Description                                                     |
+| -------- | --------------------------------------------------------------- |
+| `.Sizes` | Checkbox aligns. Available properties: <br/>`DEFAULT` \| `MINI` |
 
 Props:
 
@@ -269,9 +269,9 @@ const { Loader } = components;
 
 Properties:
 
-| Property | Description                                                                                                                                                              |
-| -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `.Type`  | Loader types. Available properties: <ul><li>`WANDERING_CUBES`</li><li>`CHASING_DOTS`</li><li>`PULSING_ELLIPSIS`</li><li>`SPINNING_CIRCLE`</li><li>`LOW_MOTION`</li></ul> |
+| Property | Description                                                                                                                             |
+| -------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| `.Type`  | Loader types. Available properties: <br/>`WANDERING_CUBES` \| `CHASING_DOTS` \| `PULSING_ELLIPSIS` \| `SPINNING_CIRCLE` \| `LOW_MOTION` |
 
 Props:
 
@@ -296,9 +296,9 @@ const { Notice } = components;
 
 Properties:
 
-| Property       | Type     | Description                                                                                                           |
-| -------------- | -------- | --------------------------------------------------------------------------------------------------------------------- |
-| `.NoticeTypes` | `Object` | Notice types. All available properties: <ul><li>`WARNING`</li><li>`INFO`</li><li>`ERROR`</li><li>`POSITIVE`</li></ul> |
+| Property       | Description                                                                           |
+| -------------- | ------------------------------------------------------------------------------------- |
+| `.NoticeTypes` | Notice types. Available properties: <br/>`WARNING` \| `INFO` \| `ERROR` \| `POSITIVE` |
 
 Props:
 
@@ -308,3 +308,44 @@ Props:
 | `messageType`  | `number` | Notice type                                                 |
 | `textColor?`   | `string` | Text color (variable name); defaults to `"text-normal"`     |
 | `textVariant?` | `string` | Text variant (variant name); defaults to `"text-sm/medium"` |
+
+### Tooltip
+
+Example:
+
+```tsx
+import { components } from "replugged";
+const { Tooltip } = components;
+
+<Tooltip text="Tooltip text">{/* Your components here */}</Tooltip>;
+```
+
+Properties:
+
+| Property     | Description                                                                                                                      |
+| ------------ | -------------------------------------------------------------------------------------------------------------------------------- |
+| `.Aligns`    | Tooltip aligns. Available properties: <br/>`TOP` \| `CENTER` \| `BOTTOM` \| `LEFT` \| `RIGHT`                                    |
+| `.Colors`    | Tooltip colors. Available properties: <br/>`PRIMARY` \| `BLACK` \| `GREY` \| `BRAND` \| `GREEN` \| `YELLOW` \| `RED` \| `CUSTOM` |
+| `.Positions` | Tooltip positions. Available properties: <br/>`TOP` \| `BOTTOM` \| `LEFT` \| `RIGHT` \| `CENTER` \| `WINDOW_CENTER`              |
+
+Props:
+
+| Name                           | Type                             | Description                                                   |
+| ------------------------------ | -------------------------------- | ------------------------------------------------------------- |
+| `align?`                       | `string`                         | Tooltip alignment; defaults to `"center"`                     |
+| `allowOverflow?`               | `boolean`                        | Whether the tooltip content can overflow; defaults to `false` |
+| `className?`                   | `string`                         | Component class name                                          |
+| `color?`                       | `string`                         | Tooltip color; defaults to `"primary"`                        |
+| `delay?`                       | `number`                         | Tooltip spawn delay                                           |
+| `disableTooltipPointerEvents?` | `boolean`                        | Whether the tooltip has pointer events disabled               |
+| `forceOpen?`                   | `boolean`                        | Whether the tooltip is always visible; defaults to `false`    |
+| `hide?`                        | `boolean`                        | Whether the tooltip is hidden; defaults to `false`            |
+| `hideOnClick?`                 | `boolean`                        | Whether the tooltip is hidden on click; defaults to `true`    |
+| `onAnimationRest?`             | `(e: object, t: object) => void` | Function ran when the tooltip is animating                    |
+| `position?`                    | `string`                         | Tooltip position; defaults to `"top"`                         |
+| `shouldShow?`                  | `boolean`                        | Whether the tooltip should show; defaults to `true`           |
+| `spacing?`                     | `number`                         | Distance from the children; defaults to `8`                   |
+| `style?`                       | `React.CSSProperties`            | Component style                                               |
+| `text`                         | `string`                         | Tooltip text                                                  |
+| `tooltipClassName?`            | `string`                         | Tooltip element class name                                    |
+| `tooltipContentClassName?`     | `string`                         | Tooltip content element class name                            |
