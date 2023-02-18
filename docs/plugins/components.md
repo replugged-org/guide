@@ -10,18 +10,20 @@ description: Documented components for plugins
 
 :::caution
 
-Any components below whose name ends in `Item` already has a `FormItem` wrapper. You should not use
-this on those components.
+Any components below whose name ends in `Item` already has a `FormItem` (or equivalent) wrapper. You
+should not use this on those components.
 
 :::
 
-### Button / ButtonItem
+<!--- TODO: Explain here the difference between the original component and *Item components in terms of props -->
+
+### Button and ButtonItem
 
 Example:
 
 Props:
 
-### Checkbox / CheckboxItem
+### Checkbox and CheckboxItem
 
 Example:
 
@@ -63,25 +65,81 @@ Props:
 | `type?`           | `string`                                           | Checkbox type; defaults to `"default"`                                  |
 | `value?`          | `boolean`                                          | Checkbox state; defaults to `false`                                     |
 
-### Radio / RadioItem
+### Radio and RadioItem
+
+Example:
+
+```tsx
+import { components } from "replugged";
+const { RadioItem } = components;
+
+export function Settings(): React.ReactElement {
+  return (
+    <RadioItem
+      {...util.useSetting(cfg, "foo", "bar")}
+      options={[
+        {
+          name: "Option 1",
+          value: "option1",
+        },
+        {
+          name: "Option 2",
+          value: "option2",
+        },
+      ]}>
+      Radio title
+    </RadioItem>
+  );
+}
+```
+
+Properties:
+
+| Property | Description                                                                              |
+| -------- | ---------------------------------------------------------------------------------------- |
+| `.Sizes` | Radio group sizes. Available properties: <br/>`NOT_SET` \| `NONE` \| `SMALL` \| `MEDIUM` |
+
+Props:
+
+| Name                         | Type                           | Description                                                 |
+| ---------------------------- | ------------------------------ | ----------------------------------------------------------- |
+| `className?`                 | `string`                       | Component class name                                        |
+| `disabled?`                  | `boolean`                      | Whether the radio group is disabled; defaults to `false`    |
+| `itemInfoClassName?`         | `string`                       | Radio info element class name                               |
+| `itemTitleClassName?`        | `string`                       | Radio title element class name                              |
+| `onChange`                   | `(e: RadioOptionType) => void` | Function ran on radio value change                          |
+| `options`                    | `RadioOptionType[]`            | Array of radio options; check out `RadioOptionType` props   |
+| `radioItemClassName?`        | `string`                       | Radio item element class name                               |
+| `radioPosition?`             | `string`                       | Radio position; defaults to `"left"`                        |
+| `size?`                      | `string`                       | Radio group size; defaults to `"10px"`                      |
+| `value?`                     | `string`                       | Selected radio value                                        |
+| `withTransparentBackground?` | `boolean`                      | Whether the radio group is transparent; defaults to `false` |
+
+`RadioOptionType` Props:
+
+| Name               | Type      | Description                                                             |
+| ------------------ | --------- | ----------------------------------------------------------------------- |
+| `name`             | `string`  | Option name                                                             |
+| `value`            | `string`  | Option value                                                            |
+| `desc?`            | `string`  | Option description                                                      |
+| `disabled?`        | `boolean` | Whether the option is disabled; defaults to `false`                     |
+| `color?`           | `string`  | Option color                                                            |
+| `tooltipText?`     | `string`  | Tooltip text displayed on the option                                    |
+| `tooltipPosition?` | `string`  | Tooltip position displayed on the option; check out `Tooltip.Positions` |
+
+### Select and SelectItem
 
 Example:
 
 Props:
 
-### Select / SelectItem
+### Slider and SliderItem
 
 Example:
 
 Props:
 
-### Slider / SliderItem
-
-Example:
-
-Props:
-
-### Switch / SwitchItem
+### Switch and SwitchItem
 
 Example:
 
