@@ -6,6 +6,8 @@ description: Documented components for plugins
 
 # Components
 
+## Input Components
+
 :::caution
 
 Any components below whose name ends in `Item` already has a `FormItem` wrapper. You should not use
@@ -13,7 +15,57 @@ this on those components.
 
 :::
 
-## Category
+### Button / ButtonItem
+
+Example:
+
+Props:
+
+### Checkbox / CheckboxItem
+
+Example:
+
+Props:
+
+### Radio / RadioItem
+
+Example:
+
+Props:
+
+### Select / SelectItem
+
+Example:
+
+Props:
+
+### Slider / SliderItem
+
+Example:
+
+Props:
+
+### Switch / SwitchItem
+
+Example:
+
+Props:
+
+### TextArea
+
+Example:
+
+Props:
+
+### TextInput
+
+Example:
+
+Props:
+
+## Other Components
+
+### Category
 
 Example:
 
@@ -21,13 +73,9 @@ Example:
 import { components } from "replugged";
 const { Category } = components;
 
-export function Settings(): React.ReactElement {
-  return (
-    <Category title="Foo" note="This is a description">
-      {/* Your setting components here */}
-    </Category>
-  );
-}
+<Category title="Foo" note="This is a description">
+  {/* Your setting components here */}
+</Category>;
 ```
 
 Props:
@@ -36,7 +84,7 @@ Props:
 | ----------- | ------------ | ------------------------------------------------------------ |
 | `disabled?` | `boolean`    | Whether the category should be disabled; defaults to `false` |
 | `note?`     | `string`     | Description of what the category contains                    |
-| `onChange?` | `() => void` | Function ran when the open state is overridden               |
+| `onChange?` | `() => void` | Function ran when the open state changes                     |
 | `open?`     | `boolean`    | Whether the category should be opened; defaults to `false`   |
 | `title`     | `string`     | Category's title                                             |
 
@@ -47,7 +95,7 @@ must be specified to override.
 
 :::
 
-## Divider
+### Divider
 
 Example:
 
@@ -55,9 +103,7 @@ Example:
 import { components } from "replugged";
 const { Divider } = components;
 
-export function Settings(): React.ReactElement {
-  return <Divider />;
-}
+<Divider />;
 ```
 
 Props:
@@ -67,7 +113,7 @@ Props:
 | `className?` | `string`              | Component's class name |
 | `style?`     | `React.CSSProperties` | Component's style      |
 
-## FormItem
+### FormItem
 
 Example:
 
@@ -75,13 +121,9 @@ Example:
 import { components } from "replugged";
 const { FormItem } = components;
 
-export function Settings(): React.ReactElement {
-  return (
-    <FormItem title="Foo" note="This is a description">
-      {/* Your setting components here */}
-    </FormItem>
-  );
-}
+<FormItem title="Foo" note="This is a description">
+  {/* Your setting components here */}
+</FormItem>;
 ```
 
 Props:
@@ -90,7 +132,7 @@ Props:
 | ----------------- | --------------------- | ----------------------------------------------------------------------------------------- |
 | `className?`      | `string`              | Component's class name                                                                    |
 | `disabled?`       | `boolean`             | Whether the form should be disabled; defaults to `false`                                  |
-| `divider?`        | `boolean`             | Whether a divider should be displayed at the end of the form                              |
+| `divider?`        | `boolean`             | Whether a divider should be displayed at the end of the form; defaults to `false`         |
 | `error?`          | `React.ReactNode`     | Form's error message                                                                      |
 | `note?`           | `string`              | Description of what the form contains                                                     |
 | `noteClassName?`  | `string`              | Note's class name                                                                         |
@@ -102,7 +144,7 @@ Props:
 | `title?`          | `React.ReactNode`     | Form's title                                                                              |
 | `titleClassName?` | `string`              | Title's class name                                                                        |
 
-## Loader
+### Loader
 
 Example:
 
@@ -110,9 +152,7 @@ Example:
 import { components } from "replugged";
 const { Loader } = components;
 
-export function Settings(): React.ReactElement {
-  return <Loader type={Loader.Type.WANDERING_CUBES} />;
-}
+<Loader type={Loader.Type.WANDERING_CUBES} />;
 ```
 
 Props:
@@ -134,7 +174,7 @@ Types available: `WANDERING_CUBES` | `CHASING_DOTS` | `PULSING_ELLIPSIS` | `SPIN
 
 :::
 
-## Notice
+### Notice
 
 Example:
 
@@ -142,19 +182,17 @@ Example:
 import { components } from "replugged";
 const { Notice } = components;
 
-export function Settings(): React.ReactElement {
-  return <Notice messageType={Notice.NoticeTypes.POSITIVE}>Notice text</Notice>;
-}
+<Notice messageType={Notice.NoticeTypes.POSITIVE}>Notice text</Notice>;
 ```
 
 Props:
 
-| Name           | Type     | Description                                               |
-| -------------- | -------- | --------------------------------------------------------- |
-| `className?`   | `string` | Component's class name                                    |
-| `messageType`  | `number` | Notice type                                               |
-| `textColor?`   | `string` | Text color (variable name); defaults to `text-normal`     |
-| `textVariant?` | `string` | Text variant (variant name); defaults to `text-sm/medium` |
+| Name           | Type     | Description                                                 |
+| -------------- | -------- | ----------------------------------------------------------- |
+| `className?`   | `string` | Component's class name                                      |
+| `messageType`  | `number` | Notice type                                                 |
+| `textColor?`   | `string` | Text color (variable name); defaults to `"text-normal"`     |
+| `textVariant?` | `string` | Text variant (variant name); defaults to `"text-sm/medium"` |
 
 :::tip
 
