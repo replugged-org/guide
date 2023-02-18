@@ -61,7 +61,7 @@ Props:
 | `disabled?`       | `boolean`                                          | Whether the checkbox is disabled; defaults to `false`                   |
 | `displayOnly?`    | `boolean`                                          | Whether the checkbox is a static element; defaults to `false`           |
 | `innerClassName?` | `string`                                           | Checkbox element class name                                             |
-| `onChange?`       | `(e: React.ChangeEvent<HTMLInputElement>) => void` | Function ran on checkbox value change                                   |
+| `onChange?`       | `(e: React.ChangeEvent<HTMLInputElement>) => void` | Function ran on value change                                            |
 | `onClick?`        | `(e: React.MouseEvent<HTMLInputElement>) => void`  | Function ran on checkbox click                                          |
 | `readOnly?`       | `boolean`                                          | Whether the checkbox is read only; defaults to `false`                  |
 | `reverse?`        | `boolean`                                          | Whether the checkbox position is on the right side; defaults to `false` |
@@ -113,7 +113,7 @@ Props:
 | `disabled?`                  | `boolean`                      | Whether the radio group is disabled; defaults to `false`    |
 | `itemInfoClassName?`         | `string`                       | Radio info element class name                               |
 | `itemTitleClassName?`        | `string`                       | Radio title element class name                              |
-| `onChange`                   | `(e: RadioOptionType) => void` | Function ran on radio value change                          |
+| `onChange`                   | `(e: RadioOptionType) => void` | Function ran on value change                                |
 | `options`                    | `RadioOptionType[]`            | Array of radio options; check out `RadioOptionType` props   |
 | `radioItemClassName?`        | `string`                       | Radio item element class name                               |
 | `radioPosition?`             | `string`                       | Radio position; defaults to `"left"`                        |
@@ -143,7 +143,48 @@ Props:
 
 Example:
 
+```tsx
+import { components } from "replugged";
+const { SliderItem } = components;
+
+export function Settings(): React.ReactElement {
+  return (
+    <SliderItem
+      {...util.useSetting(cfg, "foo", 0)}
+      minValue={0}
+      maxValue={100}
+      markers={[0, 25, 50, 75, 100]}>
+      Slider title
+    </SliderItem>
+  );
+}
+```
+
 Props:
+
+| Name                | Type                    | Description                                                                         |
+| ------------------- | ----------------------- | ----------------------------------------------------------------------------------- |
+| `asValueChanges?`   | `(e: number) => void`   | Function ran on grabber move                                                        |
+| `barClassName?`     | `string`                | Bar element class name                                                              |
+| `barStyles?`        | `React.CSSProperties`   | Bar element style                                                                   |
+| `className?`        | `string`                | Component class name                                                                |
+| `defaultValue?`     | `number`                | Default value marked in green                                                       |
+| `disabled?`         | `boolean`               | Whether the slider is disabled; defaults to `false`                                 |
+| `fillStyles?`       | `React.CSSProperties`   | Bar fill element style                                                              |
+| `grabberClassName?` | `string`                | Grabber element class name                                                          |
+| `grabberStyles?`    | `React.CSSProperties`   | Grabber element style                                                               |
+| `hideBubble?`       | `boolean`               | Whether the tooltip is hidden when `stickToMarkers` is `false`; defaults to `false` |
+| `initialValue?`     | `number`                | Initial value the slider grabber is at; alias of `value`; defaults to `10`          |
+| `markers?`          | `number[]`              | Array of slider markers                                                             |
+| `maxValue?`         | `number`                | Slider maximum value; defaults to `100`                                             |
+| `minValue?`         | `number`                | Slider minimum value; defaults to `0`                                               |
+| `mini?`             | `boolean`               | Whether the slider grabber is a small dot; defaults to `false`                      |
+| `onMarkerRender?`   | `(e: number) => string` | Function ran on marker render, useful to customize markers                          |
+| `onChange?`         | `(e: number) => void`   | Function ran on value change                                                        |
+| `onValueChange?`    | `(e: number) => void`   | Function ran on value change; alias of `onChange`                                   |
+| `onValueRender?`    | `(e: number) => string` | Function ran on value render                                                        |
+| `stickToMarkers?`   | `boolean`               | Whether the slider grabber can stick to markers; defaults to `false`                |
+| `value?`            | `number`                | Slider value                                                                        |
 
 ### Switch and SwitchItem
 
@@ -182,10 +223,10 @@ Props:
 | `maxLength?`     | `number`                                             | Input maximum length                                                  |
 | `minLength?`     | `number`                                             | Input minimum length                                                  |
 | `name?`          | `string`                                             | Input element name                                                    |
-| `onBlur?`        | `(e: React.FocusEvent<HTMLInputElement>) => void`    | Function ran on input focus loose                                     |
-| `onChange?`      | `(e: string) => void`                                | Function ran on input value change                                    |
-| `onFocus?`       | `(e: React.FocusEvent<HTMLInputElement>) => void`    | Function ran on input focus                                           |
-| `onInvalid?`     | `(e: React.FormEvent<HTMLInputElement>) => void`     | Function ran on input invalid submission                              |
+| `onBlur?`        | `(e: React.FocusEvent<HTMLInputElement>) => void`    | Function ran on focus loose                                           |
+| `onChange?`      | `(e: string) => void`                                | Function ran on value change                                          |
+| `onFocus?`       | `(e: React.FocusEvent<HTMLInputElement>) => void`    | Function ran on focus                                                 |
+| `onInvalid?`     | `(e: React.FormEvent<HTMLInputElement>) => void`     | Function ran on invalid submission                                    |
 | `onKeyDown?`     | `(e: React.KeyboardEvent<HTMLInputElement>) => void` | Function ran on key press                                             |
 | `placeholder?`   | `string`                                             | Input placeholder                                                     |
 | `required?`      | `boolean`                                            | Whether the input completion is required                              |
@@ -229,9 +270,9 @@ Props:
 | `maxLength?`      | `number`                                             | Input maximum length; defaults to `999`            |
 | `minLength?`      | `number`                                             | Input minimum length                               |
 | `name?`           | `string`                                             | Input element name                                 |
-| `onBlur?`         | `(e: React.FocusEvent<HTMLInputElement>) => void`    | Function ran on input focus loose                  |
-| `onChange?`       | `(e: string) => void`                                | Function ran on input value change                 |
-| `onFocus?`        | `(e: React.FocusEvent<HTMLInputElement>) => void`    | Function ran on input focus                        |
+| `onBlur?`         | `(e: React.FocusEvent<HTMLInputElement>) => void`    | Function ran on focus loose                        |
+| `onChange?`       | `(e: string) => void`                                | Function ran on value change                       |
+| `onFocus?`        | `(e: React.FocusEvent<HTMLInputElement>) => void`    | Function ran on focus                              |
 | `onKeyDown?`      | `(e: React.KeyboardEvent<HTMLInputElement>) => void` | Function ran on key press                          |
 | `placeholder?`    | `string`                                             | Input placeholder                                  |
 | `size?`           | `string`                                             | Input size; defaults to `"default"`                |
@@ -260,7 +301,7 @@ Props:
 | ----------- | ------------ | ----------------------------------------------------- |
 | `disabled?` | `boolean`    | Whether the category is disabled; defaults to `false` |
 | `note?`     | `string`     | Description of what the category contains             |
-| `onChange?` | `() => void` | Function ran when the open state changes              |
+| `onChange?` | `() => void` | Function ran on open state change                     |
 | `open?`     | `boolean`    | Whether the category is opened; defaults to `false`   |
 | `title`     | `string`     | Category title                                        |
 
@@ -394,22 +435,22 @@ Properties:
 
 Props:
 
-| Name                           | Type                             | Description                                                   |
-| ------------------------------ | -------------------------------- | ------------------------------------------------------------- |
-| `align?`                       | `string`                         | Tooltip alignment; defaults to `"center"`                     |
-| `allowOverflow?`               | `boolean`                        | Whether the tooltip content can overflow; defaults to `false` |
-| `className?`                   | `string`                         | Component class name                                          |
-| `color?`                       | `string`                         | Tooltip color; defaults to `"primary"`                        |
-| `delay?`                       | `number`                         | Tooltip spawn delay                                           |
-| `disableTooltipPointerEvents?` | `boolean`                        | Whether the tooltip has pointer events disabled               |
-| `forceOpen?`                   | `boolean`                        | Whether the tooltip is always visible; defaults to `false`    |
-| `hide?`                        | `boolean`                        | Whether the tooltip is hidden; defaults to `false`            |
-| `hideOnClick?`                 | `boolean`                        | Whether the tooltip is hidden on click; defaults to `true`    |
-| `onAnimationRest?`             | `(e: object, t: object) => void` | Function ran when the tooltip is animating                    |
-| `position?`                    | `string`                         | Tooltip position; defaults to `"top"`                         |
-| `shouldShow?`                  | `boolean`                        | Whether the tooltip should show; defaults to `true`           |
-| `spacing?`                     | `number`                         | Distance from the children; defaults to `8`                   |
-| `style?`                       | `React.CSSProperties`            | Component style                                               |
-| `text`                         | `string`                         | Tooltip text                                                  |
-| `tooltipClassName?`            | `string`                         | Tooltip element class name                                    |
-| `tooltipContentClassName?`     | `string`                         | Tooltip content element class name                            |
+| Name                           | Type                             | Description                                                          |
+| ------------------------------ | -------------------------------- | -------------------------------------------------------------------- |
+| `align?`                       | `string`                         | Tooltip alignment; defaults to `"center"`                            |
+| `allowOverflow?`               | `boolean`                        | Whether the tooltip content can overflow; defaults to `false`        |
+| `className?`                   | `string`                         | Component class name                                                 |
+| `color?`                       | `string`                         | Tooltip color; defaults to `"primary"`                               |
+| `delay?`                       | `number`                         | Tooltip spawn delay                                                  |
+| `disableTooltipPointerEvents?` | `boolean`                        | Whether the tooltip has pointer events disabled; defaults to `false` |
+| `forceOpen?`                   | `boolean`                        | Whether the tooltip is always visible; defaults to `false`           |
+| `hide?`                        | `boolean`                        | Whether the tooltip is hidden; defaults to `false`                   |
+| `hideOnClick?`                 | `boolean`                        | Whether the tooltip is hidden on click; defaults to `true`           |
+| `onAnimationRest?`             | `(e: object, t: object) => void` | Function ran when the tooltip is animating                           |
+| `position?`                    | `string`                         | Tooltip position; defaults to `"top"`                                |
+| `shouldShow?`                  | `boolean`                        | Whether the tooltip should show; defaults to `true`                  |
+| `spacing?`                     | `number`                         | Distance from the children; defaults to `8`                          |
+| `style?`                       | `React.CSSProperties`            | Component style                                                      |
+| `text`                         | `string`                         | Tooltip text                                                         |
+| `tooltipClassName?`            | `string`                         | Tooltip element class name                                           |
+| `tooltipContentClassName?`     | `string`                         | Tooltip content element class name                                   |
