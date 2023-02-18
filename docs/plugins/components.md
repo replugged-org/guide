@@ -155,6 +155,18 @@ const { Loader } = components;
 <Loader type={Loader.Type.WANDERING_CUBES} />;
 ```
 
+Properties:
+
+| Name    | Type     | Description                                                                                                                                                                  |
+| ------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `.Type` | `Object` | Loader types. All available properties: <ul><li>`WANDERING_CUBES`</li><li>`CHASING_DOTS`</li><li>`PULSING_ELLIPSIS`</li><li>`SPINNING_CIRCLE`</li><li>`LOW_MOTION`</li></ul> |
+
+:::tip
+
+Use `Loader.Type` with the `type` prop!
+
+:::
+
 Props:
 
 | Name             | Type                  | Description                                               |
@@ -164,15 +176,6 @@ Props:
 | `itemClassName?` | `string`              | Class name of all the elements inside the loader          |
 | `style?`         | `React.CSSProperties` | Component's style                                         |
 | `type?`          | `string`              | Loader type; defaults to `"wanderingCubes"`               |
-
-:::tip
-
-Use `Loader.Type` with `type`!
-
-Types available: `WANDERING_CUBES` | `CHASING_DOTS` | `PULSING_ELLIPSIS` | `SPINNING_CIRCLE` |
-`LOW_MOTION`
-
-:::
 
 ### Notice
 
@@ -185,6 +188,18 @@ const { Notice } = components;
 <Notice messageType={Notice.NoticeTypes.POSITIVE}>Notice text</Notice>;
 ```
 
+Properties:
+
+| Name           | Type     | Description                                                                                                           |
+| -------------- | -------- | --------------------------------------------------------------------------------------------------------------------- |
+| `.NoticeTypes` | `Object` | Notice types. All available properties: <ul><li>`WARNING`</li><li>`INFO`</li><li>`ERROR`</li><li>`POSITIVE`</li></ul> |
+
+:::tip
+
+Use `Notice.NoticeTypes` with the `messageType` prop!
+
+:::
+
 Props:
 
 | Name           | Type     | Description                                                 |
@@ -193,11 +208,3 @@ Props:
 | `messageType`  | `number` | Notice type                                                 |
 | `textColor?`   | `string` | Text color (variable name); defaults to `"text-normal"`     |
 | `textVariant?` | `string` | Text variant (variant name); defaults to `"text-sm/medium"` |
-
-:::tip
-
-Use `Notice.NoticeTypes` with `messageType`!
-
-Types available: `WARNING` | `INFO` | `ERROR` | `POSITIVE`
-
-:::
