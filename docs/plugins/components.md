@@ -15,7 +15,13 @@ should not use this on those components.
 
 :::
 
-<!--- TODO: Explain here the difference between the original component and *Item components in terms of props -->
+All components ending with `Item` have their original counterpart, and differ in some props:
+
+| Name        | Type                  | Description                                      |
+| ----------- | --------------------- | ------------------------------------------------ |
+| `children?` | `React.ReactNode`     | Wrapper component title                          |
+| `note?`     | `string`              | Description of what the input component is about |
+| `style?`    | `React.CSSProperties` | Wrapper component style                          |
 
 ### Button and ButtonItem
 
@@ -51,7 +57,7 @@ Props:
 | `align?`          | `string`                                           | Alignment of the elements inside the checkbox; defaults to `"center"`   |
 | `checkboxColor?`  | `string`                                           | Checkbox border color                                                   |
 | `className?`      | `string`                                           | Component class name                                                    |
-| `color?`          | `string`                                           | Checkbox color; defaults to the default branding color                  |
+| `color?`          | `string`                                           | Checkbox color; defaults to the branding color                          |
 | `disabled?`       | `boolean`                                          | Whether the checkbox is disabled; defaults to `false`                   |
 | `displayOnly?`    | `boolean`                                          | Whether the checkbox is a static element; defaults to `false`           |
 | `innerClassName?` | `string`                                           | Checkbox element class name                                             |
