@@ -25,7 +25,43 @@ Props:
 
 Example:
 
+```tsx
+import { components } from "replugged";
+const { CheckboxItem } = components;
+
+export function Settings(): React.ReactElement {
+  return <CheckboxItem {...util.useSetting(cfg, "foo", "bar")}>Checkbox title</CheckboxItem>;
+}
+```
+
+Properties:
+
+| Property  | Description                                                                                                        |
+| --------- | ------------------------------------------------------------------------------------------------------------------ |
+| `.Aligns` | Checkbox aligns. Available properties: <ul><li>`TOP`</li><li>`CENTER`</li></ul>                                    |
+| `.Shapes` | Checkbox shapes. Available properties: <ul><li>`BOX`</li><li>`ROUND`</li><li>`SMALL`</li></ul>                     |
+| `.Types`  | Checkbox types. Available properties: <ul><li>`DEFAULT`</li><li>`INVERTED`</li><li>`GHOST`</li><li>`ROW`</li></ul> |
+
 Props:
+
+| Name              | Type                                               | Description                                                                    |
+| ----------------- | -------------------------------------------------- | ------------------------------------------------------------------------------ |
+| `align?`          | `string`                                           | Alignment of the elements inside the checkbox; defaults to `"center"`          |
+| `checkboxColor?`  | `string`                                           | Checkbox border color                                                          |
+| `className?`      | `string`                                           | Component class name                                                           |
+| `color?`          | `string`                                           | Checkbox color; defaults to the default branding color                         |
+| `disabled?`       | `boolean`                                          | Whether the checkbox should be disabled; defaults to `false`                   |
+| `displayOnly?`    | `boolean`                                          | Whether the checkbox should be a static element; defaults to `false`           |
+| `innerClassName?` | `string`                                           | Checkbox element class name                                                    |
+| `onChange?`       | `(e: React.ChangeEvent<HTMLInputElement>) => void` | Function ran on checkbox value change                                          |
+| `onClick?`        | `(e: React.MouseEvent<HTMLInputElement>) => void`  | Function ran on checkbox click                                                 |
+| `readOnly?`       | `boolean`                                          | Whether the checkbox should be read only; defaults to `false`                  |
+| `reverse?`        | `boolean`                                          | Whether the checkbox position should be on the right side; defaults to `false` |
+| `shape?`          | `string`                                           | Checkbox shape; defaults to `"box"`                                            |
+| `size?`           | `number`                                           | Checkbox size; defaults to `24`                                                |
+| `style?`          | `React.CSSProperties`                              | Component style                                                                |
+| `type?`           | `string`                                           | Checkbox type; defaults to `"default"`                                         |
+| `value?`          | `boolean`                                          | Checkbox state; defaults to `false`                                            |
 
 ### Radio / RadioItem
 
@@ -86,7 +122,7 @@ Props:
 | `note?`     | `string`     | Description of what the category contains                    |
 | `onChange?` | `() => void` | Function ran when the open state changes                     |
 | `open?`     | `boolean`    | Whether the category should be opened; defaults to `false`   |
-| `title`     | `string`     | Category's title                                             |
+| `title`     | `string`     | Category title                                               |
 
 :::caution
 
@@ -108,10 +144,10 @@ const { Divider } = components;
 
 Props:
 
-| Name         | Type                  | Description            |
-| ------------ | --------------------- | ---------------------- |
-| `className?` | `string`              | Component's class name |
-| `style?`     | `React.CSSProperties` | Component's style      |
+| Name         | Type                  | Description          |
+| ------------ | --------------------- | -------------------- |
+| `className?` | `string`              | Component class name |
+| `style?`     | `React.CSSProperties` | Component style      |
 
 ### FormItem
 
@@ -130,19 +166,19 @@ Props:
 
 | Name              | Type                  | Description                                                                               |
 | ----------------- | --------------------- | ----------------------------------------------------------------------------------------- |
-| `className?`      | `string`              | Component's class name                                                                    |
+| `className?`      | `string`              | Component class name                                                                      |
 | `disabled?`       | `boolean`             | Whether the form should be disabled; defaults to `false`                                  |
 | `divider?`        | `boolean`             | Whether a divider should be displayed at the end of the form; defaults to `false`         |
-| `error?`          | `React.ReactNode`     | Form's error message                                                                      |
+| `error?`          | `React.ReactNode`     | Form error message                                                                        |
 | `note?`           | `string`              | Description of what the form contains                                                     |
-| `noteClassName?`  | `string`              | Note's class name                                                                         |
+| `noteClassName?`  | `string`              | Note class name                                                                           |
 | `notePosition?`   | `string`              | Whether the note should be displayed before or after the children; defaults to `"before"` |
-| `noteStyle?`      | `React.CSSProperties` | Note's style                                                                              |
+| `noteStyle?`      | `React.CSSProperties` | Note style                                                                                |
 | `required?`       | `boolean`             | Whether the form completion should be required; defaults to `false`                       |
-| `style?`          | `React.CSSProperties` | Component's style                                                                         |
-| `tag?`            | `string`              | Form's title tag; defaults to `"h5"`                                                      |
-| `title?`          | `React.ReactNode`     | Form's title                                                                              |
-| `titleClassName?` | `string`              | Title's class name                                                                        |
+| `style?`          | `React.CSSProperties` | Component style                                                                           |
+| `tag?`            | `string`              | Form title tag; defaults to `"h5"`                                                        |
+| `title?`          | `React.ReactNode`     | Form title                                                                                |
+| `titleClassName?` | `string`              | Title class name                                                                          |
 
 ### Loader
 
@@ -157,24 +193,18 @@ const { Loader } = components;
 
 Properties:
 
-| Name    | Type     | Description                                                                                                                                                                  |
-| ------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `.Type` | `Object` | Loader types. All available properties: <ul><li>`WANDERING_CUBES`</li><li>`CHASING_DOTS`</li><li>`PULSING_ELLIPSIS`</li><li>`SPINNING_CIRCLE`</li><li>`LOW_MOTION`</li></ul> |
-
-:::tip
-
-Use `Loader.Type` with the `type` prop!
-
-:::
+| Property | Description                                                                                                                                                              |
+| -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `.Type`  | Loader types. Available properties: <ul><li>`WANDERING_CUBES`</li><li>`CHASING_DOTS`</li><li>`PULSING_ELLIPSIS`</li><li>`SPINNING_CIRCLE`</li><li>`LOW_MOTION`</li></ul> |
 
 Props:
 
 | Name             | Type                  | Description                                               |
 | ---------------- | --------------------- | --------------------------------------------------------- |
 | `animated?`      | `boolean`             | Whether the loader should be animated; defaults to `true` |
-| `className?`     | `string`              | Component's class name                                    |
+| `className?`     | `string`              | Component class name                                      |
 | `itemClassName?` | `string`              | Class name of all the elements inside the loader          |
-| `style?`         | `React.CSSProperties` | Component's style                                         |
+| `style?`         | `React.CSSProperties` | Component style                                           |
 | `type?`          | `string`              | Loader type; defaults to `"wanderingCubes"`               |
 
 ### Notice
@@ -190,21 +220,15 @@ const { Notice } = components;
 
 Properties:
 
-| Name           | Type     | Description                                                                                                           |
+| Property       | Type     | Description                                                                                                           |
 | -------------- | -------- | --------------------------------------------------------------------------------------------------------------------- |
 | `.NoticeTypes` | `Object` | Notice types. All available properties: <ul><li>`WARNING`</li><li>`INFO`</li><li>`ERROR`</li><li>`POSITIVE`</li></ul> |
-
-:::tip
-
-Use `Notice.NoticeTypes` with the `messageType` prop!
-
-:::
 
 Props:
 
 | Name           | Type     | Description                                                 |
 | -------------- | -------- | ----------------------------------------------------------- |
-| `className?`   | `string` | Component's class name                                      |
+| `className?`   | `string` | Component class name                                        |
 | `messageType`  | `number` | Notice type                                                 |
 | `textColor?`   | `string` | Text color (variable name); defaults to `"text-normal"`     |
 | `textVariant?` | `string` | Text variant (variant name); defaults to `"text-sm/medium"` |
