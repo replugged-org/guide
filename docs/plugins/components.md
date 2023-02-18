@@ -150,7 +150,7 @@ Properties:
 
 | Property | Description                                                     |
 | -------- | --------------------------------------------------------------- |
-| `.Sizes` | Checkbox aligns. Available properties: <br/>`DEFAULT` \| `MINI` |
+| `.Sizes` | TextInput sizes. Available properties: <br/>`DEFAULT` \| `MINI` |
 
 Props:
 
