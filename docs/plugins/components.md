@@ -17,11 +17,11 @@ should not use this on those components.
 
 All components ending with `Item` have their original counterpart, and differ in some props:
 
-| Name        | Type                  | Description                                      |
-| ----------- | --------------------- | ------------------------------------------------ |
-| `children?` | `React.ReactNode`     | Wrapper component title                          |
-| `note?`     | `string`              | Description of what the input component is about |
-| `style?`    | `React.CSSProperties` | Wrapper component style                          |
+| Name        | Type                | Default | Description                                      |
+| ----------- | ------------------- | ------- | ------------------------------------------------ |
+| `children?` | React.ReactNode     |         | Wrapper component title                          |
+| `note?`     | string              |         | Description of what the input component is about |
+| `style?`    | React.CSSProperties |         | Wrapper component style                          |
 
 ### Button and ButtonItem
 
@@ -44,32 +44,32 @@ export function Settings(): React.ReactElement {
 
 Properties:
 
-| Property  | Description                                                                            |
-| --------- | -------------------------------------------------------------------------------------- |
-| `.Aligns` | Checkbox aligns. Available properties: <br/>`TOP` \| `CENTER`                          |
-| `.Shapes` | Checkbox shapes. Available properties: <br/>`BOX` \| `ROUND` \| `SMALL`                |
-| `.Types`  | Checkbox types. Available properties: <br/>`DEFAULT` \| `INVERTED` \| `GHOST` \| `ROW` |
+| Property  | Description                                                     |
+| --------- | --------------------------------------------------------------- |
+| `.Aligns` | Checkbox alignments <br/>`TOP` \| `CENTER`                      |
+| `.Shapes` | Checkbox shapes <br/>`BOX` \| `ROUND` \| `SMALL`                |
+| `.Types`  | Checkbox types <br/>`DEFAULT` \| `INVERTED` \| `GHOST` \| `ROW` |
 
 Props:
 
-| Name              | Type                                               | Description                                                             |
-| ----------------- | -------------------------------------------------- | ----------------------------------------------------------------------- |
-| `align?`          | `string`                                           | Alignment of the elements inside the checkbox; defaults to `"center"`   |
-| `checkboxColor?`  | `string`                                           | Checkbox border color                                                   |
-| `className?`      | `string`                                           | Component class name                                                    |
-| `color?`          | `string`                                           | Checkbox color; defaults to the branding color                          |
-| `disabled?`       | `boolean`                                          | Whether the checkbox is disabled; defaults to `false`                   |
-| `displayOnly?`    | `boolean`                                          | Whether the checkbox is a static element; defaults to `false`           |
-| `innerClassName?` | `string`                                           | Checkbox element class name                                             |
-| `onChange?`       | `(e: React.ChangeEvent<HTMLInputElement>) => void` | Function ran on value change                                            |
-| `onClick?`        | `(e: React.MouseEvent<HTMLInputElement>) => void`  | Function ran on checkbox click                                          |
-| `readOnly?`       | `boolean`                                          | Whether the checkbox is read only; defaults to `false`                  |
-| `reverse?`        | `boolean`                                          | Whether the checkbox position is on the right side; defaults to `false` |
-| `shape?`          | `string`                                           | Checkbox shape; defaults to `"box"`                                     |
-| `size?`           | `number`                                           | Checkbox size; defaults to `24`                                         |
-| `style?`          | `React.CSSProperties`                              | Component style                                                         |
-| `type?`           | `string`                                           | Checkbox type; defaults to `"default"`                                  |
-| `value?`          | `boolean`                                          | Checkbox state; defaults to `false`                                     |
+| Name              | Type                | Default            | Description                                        |
+| ----------------- | ------------------- | ------------------ | -------------------------------------------------- |
+| `align?`          | string              | `center`           | Alignment of the elements inside the checkbox      |
+| `checkboxColor?`  | string              |                    | Checkbox border color                              |
+| `className?`      | string              |                    | Component class name                               |
+| `color?`          | string              | `var(--brand-500)` | Checkbox color                                     |
+| `disabled?`       | boolean             | `false`            | Whether the checkbox is disabled                   |
+| `displayOnly?`    | boolean             | `false`            | Whether the checkbox is a static element           |
+| `innerClassName?` | string              |                    | Checkbox element class name                        |
+| `onChange?`       | Function            |                    | Function ran on value change                       |
+| `onClick?`        | Function            |                    | Function ran on checkbox click                     |
+| `readOnly?`       | boolean             | `false`            | Whether the checkbox is read only                  |
+| `reverse?`        | boolean             | `false`            | Whether the checkbox position is on the right side |
+| `shape?`          | string              | `box-*`            | Define checkbox shape                              |
+| `size?`           | number              | `24`               | Checkbox width and height                          |
+| `style?`          | React.CSSProperties |                    | Component style                                    |
+| `type?`           | string              | `default`          | Define checkbox type                               |
+| `value?`          | boolean             | `false`            | Checkbox state                                     |
 
 ### Radio and RadioItem
 
@@ -101,37 +101,37 @@ export function Settings(): React.ReactElement {
 
 Properties:
 
-| Property | Description                                                                              |
-| -------- | ---------------------------------------------------------------------------------------- |
-| `.Sizes` | Radio group sizes. Available properties: <br/>`NOT_SET` \| `NONE` \| `SMALL` \| `MEDIUM` |
+| Property | Description                                                       |
+| -------- | ----------------------------------------------------------------- |
+| `.Sizes` | Radio group sizes <br/>`NOT_SET` \| `NONE` \| `SMALL` \| `MEDIUM` |
 
 Props:
 
-| Name                         | Type                           | Description                                                 |
-| ---------------------------- | ------------------------------ | ----------------------------------------------------------- |
-| `className?`                 | `string`                       | Component class name                                        |
-| `disabled?`                  | `boolean`                      | Whether the radio group is disabled; defaults to `false`    |
-| `itemInfoClassName?`         | `string`                       | Radio info element class name                               |
-| `itemTitleClassName?`        | `string`                       | Radio title element class name                              |
-| `onChange`                   | `(e: RadioOptionType) => void` | Function ran on value change                                |
-| `options`                    | `RadioOptionType[]`            | Array of radio options; check out `RadioOptionType` props   |
-| `radioItemClassName?`        | `string`                       | Radio item element class name                               |
-| `radioPosition?`             | `string`                       | Radio position; defaults to `"left"`                        |
-| `size?`                      | `string`                       | Radio group size; defaults to `"10px"`                      |
-| `value?`                     | `string`                       | Selected radio value                                        |
-| `withTransparentBackground?` | `boolean`                      | Whether the radio group is transparent; defaults to `false` |
+| Name                         | Type              | Default | Description                                               |
+| ---------------------------- | ----------------- | ------- | --------------------------------------------------------- |
+| `className?`                 | string            |         | Component class name                                      |
+| `disabled?`                  | boolean           | `false` | Whether the radio group is disabled                       |
+| `itemInfoClassName?`         | string            |         | Radio info element class name                             |
+| `itemTitleClassName?`        | string            |         | Radio title element class name                            |
+| `onChange`                   | Function          |         | Function ran on value change                              |
+| `options`                    | RadioOptionType[] |         | Array of radio options; check out `RadioOptionType` props |
+| `radioItemClassName?`        | string            |         | Radio item element class name                             |
+| `radioPosition?`             | string            | `left`  | Position of the radio                                     |
+| `size?`                      | string            | `10px`  | Define radio group size                                   |
+| `value?`                     | string            |         | Selected radio value                                      |
+| `withTransparentBackground?` | boolean           | `false` | Whether the radio group is transparent                    |
 
 `RadioOptionType` Props:
 
-| Name               | Type      | Description                                                             |
-| ------------------ | --------- | ----------------------------------------------------------------------- |
-| `name`             | `string`  | Option name                                                             |
-| `value`            | `string`  | Option value                                                            |
-| `desc?`            | `string`  | Option description                                                      |
-| `disabled?`        | `boolean` | Whether the option is disabled; defaults to `false`                     |
-| `color?`           | `string`  | Option color                                                            |
-| `tooltipText?`     | `string`  | Tooltip text displayed on the option                                    |
-| `tooltipPosition?` | `string`  | Tooltip position displayed on the option; check out `Tooltip.Positions` |
+| Name               | Type    | Default | Description                                                             |
+| ------------------ | ------- | ------- | ----------------------------------------------------------------------- |
+| `color?`           | string  |         | Color displayed on the side                                             |
+| `desc?`            | string  |         | Option description                                                      |
+| `disabled?`        | boolean | `false` | Whether the option is disabled                                          |
+| `name`             | string  |         | Option name                                                             |
+| `tooltipPosition?` | string  |         | Tooltip position displayed on the option; check out `Tooltip.Positions` |
+| `tooltipText?`     | string  |         | Tooltip text displayed on the option                                    |
+| `value`            | string  |         | Option value                                                            |
 
 ### Select and SelectItem
 
@@ -162,29 +162,29 @@ export function Settings(): React.ReactElement {
 
 Props:
 
-| Name                | Type                    | Description                                                                         |
-| ------------------- | ----------------------- | ----------------------------------------------------------------------------------- |
-| `asValueChanges?`   | `(e: number) => void`   | Function ran on grabber move                                                        |
-| `barClassName?`     | `string`                | Bar element class name                                                              |
-| `barStyles?`        | `React.CSSProperties`   | Bar element style                                                                   |
-| `className?`        | `string`                | Component class name                                                                |
-| `defaultValue?`     | `number`                | Default value marked in green                                                       |
-| `disabled?`         | `boolean`               | Whether the slider is disabled; defaults to `false`                                 |
-| `fillStyles?`       | `React.CSSProperties`   | Bar fill element style                                                              |
-| `grabberClassName?` | `string`                | Grabber element class name                                                          |
-| `grabberStyles?`    | `React.CSSProperties`   | Grabber element style                                                               |
-| `hideBubble?`       | `boolean`               | Whether the tooltip is hidden when `stickToMarkers` is `false`; defaults to `false` |
-| `initialValue?`     | `number`                | Initial value the slider grabber is at; alias of `value`; defaults to `10`          |
-| `markers?`          | `number[]`              | Array of slider markers                                                             |
-| `maxValue?`         | `number`                | Slider maximum value; defaults to `100`                                             |
-| `minValue?`         | `number`                | Slider minimum value; defaults to `0`                                               |
-| `mini?`             | `boolean`               | Whether the slider grabber is a small dot; defaults to `false`                      |
-| `onMarkerRender?`   | `(e: number) => string` | Function ran on marker render, useful to customize markers                          |
-| `onChange?`         | `(e: number) => void`   | Function ran on value change                                                        |
-| `onValueChange?`    | `(e: number) => void`   | Function ran on value change; alias of `onChange`                                   |
-| `onValueRender?`    | `(e: number) => string` | Function ran on value render                                                        |
-| `stickToMarkers?`   | `boolean`               | Whether the slider grabber can stick to markers; defaults to `false`                |
-| `value?`            | `number`                | Slider value                                                                        |
+| Name                | Type                | Default | Description                                                    |
+| ------------------- | ------------------- | ------- | -------------------------------------------------------------- |
+| `asValueChanges?`   | Function            |         | Function ran on grabber move                                   |
+| `barClassName?`     | string              |         | Bar element class name                                         |
+| `barStyles?`        | React.CSSProperties |         | Bar element style                                              |
+| `className?`        | string              |         | Component class name                                           |
+| `defaultValue?`     | number              |         | Default value, marked in green                                 |
+| `disabled?`         | boolean             | `false` | Whether the slider is disabled                                 |
+| `fillStyles?`       | React.CSSProperties |         | Bar fill element style                                         |
+| `grabberClassName?` | string              |         | Grabber element class name                                     |
+| `grabberStyles?`    | React.CSSProperties |         | Grabber element style                                          |
+| `hideBubble?`       | boolean             | `false` | Whether the tooltip is hidden when `stickToMarkers` is `false` |
+| `initialValue?`     | number              | `10`    | Initial value the slider grabber is at; alias of `value`       |
+| `markers?`          | number[]            |         | Array of slider markers                                        |
+| `maxValue?`         | number              | `100`   | Slider maximum value                                           |
+| `minValue?`         | number              | `0`     | Slider minimum value                                           |
+| `mini?`             | boolean             | `false` | Whether the slider grabber is a small dot                      |
+| `onMarkerRender?`   | Function            |         | Function ran on marker render, useful to customize markers     |
+| `onChange?`         | Function            |         | Function ran on value change                                   |
+| `onValueChange?`    | Function            |         | Function ran on value change; alias of `onChange`              |
+| `onValueRender?`    | Function            |         | Function ran on value render                                   |
+| `stickToMarkers?`   | boolean             | `false` | Whether the slider grabber can stick to markers                |
+| `value?`            | number              |         | Slider value                                                   |
 
 ### Switch and SwitchItem
 
@@ -211,28 +211,28 @@ export function Settings(): React.ReactElement {
 
 Props:
 
-| Name             | Type                                                 | Description                                                           |
-| ---------------- | ---------------------------------------------------- | --------------------------------------------------------------------- |
-| `allowOverflow?` | `boolean`                                            | Whether the input can exceed the maximum length; defaults to `false`  |
-| `autoFocus?`     | `boolean`                                            | Whether the input is on focus; defaults to `false`                    |
-| `autosize?`      | `boolean`                                            | Whether the input can automatically set its size; defaults to `false` |
-| `className?`     | `string`                                             | Component class name                                                  |
-| `disabled?`      | `boolean`                                            | Whether the input is disabled; defaults to `false`                    |
-| `error?`         | `string`                                             | Input error message if length exceeds limits                          |
-| `flex?`          | `boolean`                                            | Whether the input is flexible; defaults to `false`                    |
-| `maxLength?`     | `number`                                             | Input maximum length                                                  |
-| `minLength?`     | `number`                                             | Input minimum length                                                  |
-| `name?`          | `string`                                             | Input element name                                                    |
-| `onBlur?`        | `(e: React.FocusEvent<HTMLInputElement>) => void`    | Function ran on focus loose                                           |
-| `onChange?`      | `(e: string) => void`                                | Function ran on value change                                          |
-| `onFocus?`       | `(e: React.FocusEvent<HTMLInputElement>) => void`    | Function ran on focus                                                 |
-| `onInvalid?`     | `(e: React.FormEvent<HTMLInputElement>) => void`     | Function ran on invalid submission                                    |
-| `onKeyDown?`     | `(e: React.KeyboardEvent<HTMLInputElement>) => void` | Function ran on key press                                             |
-| `placeholder?`   | `string`                                             | Input placeholder                                                     |
-| `required?`      | `boolean`                                            | Whether the input completion is required                              |
-| `resizeable?`    | `boolean`                                            | Whether the input can be resized; defaults to `false`                 |
-| `rows?`          | `number`                                             | Input rows; defaults to `3`                                           |
-| `value?`         | `string`                                             | Input value                                                           |
+| Name             | Type     | Default | Description                                      |
+| ---------------- | -------- | ------- | ------------------------------------------------ |
+| `allowOverflow?` | boolean  | `false` | Whether the input can exceed the maximum length  |
+| `autoFocus?`     | boolean  | `false` | Whether the input is on focus                    |
+| `autosize?`      | boolean  | `false` | Whether the input can automatically set its size |
+| `className?`     | string   |         | Component class name                             |
+| `disabled?`      | boolean  | `false` | Whether the input is disabled                    |
+| `error?`         | string   |         | Error message displayed if length exceeds limits |
+| `flex?`          | boolean  | `false` | Whether the input is flexible                    |
+| `maxLength?`     | number   |         | Value maximum length                             |
+| `minLength?`     | number   |         | Value minimum length                             |
+| `name?`          | string   |         | Input element name                               |
+| `onBlur?`        | Function |         | Function ran on focus loose                      |
+| `onChange?`      | Function |         | Function ran on value change                     |
+| `onFocus?`       | Function |         | Function ran on focus                            |
+| `onInvalid?`     | Function |         | Function ran on invalid submission               |
+| `onKeyDown?`     | Function |         | Function ran on key press                        |
+| `placeholder?`   | string   |         | Input placeholder                                |
+| `required?`      | boolean  |         | Whether the input completion is required         |
+| `resizeable?`    | boolean  | `false` | Whether the input can be resized                 |
+| `rows?`          | number   | `3`     | Define the number of rows the input has          |
+| `value?`         | string   |         | Input value                                      |
 
 ### TextInput
 
@@ -253,32 +253,32 @@ export function Settings(): React.ReactElement {
 
 Properties:
 
-| Property | Description                                                     |
-| -------- | --------------------------------------------------------------- |
-| `.Sizes` | TextInput sizes. Available properties: <br/>`DEFAULT` \| `MINI` |
+| Property | Description                          |
+| -------- | ------------------------------------ |
+| `.Sizes` | Input sizes <br/>`DEFAULT` \| `MINI` |
 
 Props:
 
-| Name              | Type                                                 | Description                                        |
-| ----------------- | ---------------------------------------------------- | -------------------------------------------------- |
-| `autoFocus?`      | `boolean`                                            | Whether the input is on focus; defaults to `false` |
-| `className?`      | `string`                                             | Component class name                               |
-| `disabled?`       | `boolean`                                            | Whether the input is disabled; defaults to `false` |
-| `editable?`       | `boolean`                                            | Whether the input is editable; defaults to `true`  |
-| `error?`          | `string`                                             | Input error message if length exceeds limits       |
-| `inputClassName?` | `string`                                             | Input element class name                           |
-| `maxLength?`      | `number`                                             | Input maximum length; defaults to `999`            |
-| `minLength?`      | `number`                                             | Input minimum length                               |
-| `name?`           | `string`                                             | Input element name                                 |
-| `onBlur?`         | `(e: React.FocusEvent<HTMLInputElement>) => void`    | Function ran on focus loose                        |
-| `onChange?`       | `(e: string) => void`                                | Function ran on value change                       |
-| `onFocus?`        | `(e: React.FocusEvent<HTMLInputElement>) => void`    | Function ran on focus                              |
-| `onKeyDown?`      | `(e: React.KeyboardEvent<HTMLInputElement>) => void` | Function ran on key press                          |
-| `placeholder?`    | `string`                                             | Input placeholder                                  |
-| `size?`           | `string`                                             | Input size; defaults to `"default"`                |
-| `style?`          | `React.CSSProperties`                                | Component style                                    |
-| `type?`           | `React.CSSProperties`                                | Input type; defaults to `"text"`                   |
-| `value?`          | `string`                                             | Input value                                        |
+| Name              | Type                | Default   | Description                                      |
+| ----------------- | ------------------- | --------- | ------------------------------------------------ |
+| `autoFocus?`      | boolean             | `false`   | Whether the input is on focus                    |
+| `className?`      | string              |           | Component class name                             |
+| `disabled?`       | boolean             | `false`   | Whether the input is disabled                    |
+| `editable?`       | boolean             | `true`    | Whether the input is editable                    |
+| `error?`          | string              |           | Error message displayed if length exceeds limits |
+| `inputClassName?` | string              |           | Input element class name                         |
+| `maxLength?`      | number              | `999`     | Value maximum length                             |
+| `minLength?`      | number              |           | Value minimum length                             |
+| `name?`           | string              |           | Input element name                               |
+| `onBlur?`         | Function            |           | Function ran on focus loose                      |
+| `onChange?`       | Function            |           | Function ran on value change                     |
+| `onFocus?`        | Function            |           | Function ran on focus                            |
+| `onKeyDown?`      | Function            |           | Function ran on key press                        |
+| `placeholder?`    | string              |           | Input placeholder                                |
+| `size?`           | string              | `default` | Define the input size                            |
+| `style?`          | React.CSSProperties |           | Component style                                  |
+| `type?`           | string              | `text`    | Define the input type                            |
+| `value?`          | string              |           | Input value                                      |
 
 ## Other Components
 
@@ -297,13 +297,13 @@ const { Category } = components;
 
 Props:
 
-| Name        | Type         | Description                                           |
-| ----------- | ------------ | ----------------------------------------------------- |
-| `disabled?` | `boolean`    | Whether the category is disabled; defaults to `false` |
-| `note?`     | `string`     | Description of what the category contains             |
-| `onChange?` | `() => void` | Function ran on open state change                     |
-| `open?`     | `boolean`    | Whether the category is opened; defaults to `false`   |
-| `title`     | `string`     | Category title                                        |
+| Name        | Type     | Default | Description                                        |
+| ----------- | -------- | ------- | -------------------------------------------------- |
+| `disabled?` | boolean  | `false` | Whether the category and its children are disabled |
+| `note?`     | string   |         | Description of what the category contains          |
+| `onChange?` | Function |         | Function ran on open state change                  |
+| `open?`     | boolean  | `false` | Whether the category is opened                     |
+| `title`     | string   |         | Category title                                     |
 
 :::caution
 
@@ -325,10 +325,10 @@ const { Divider } = components;
 
 Props:
 
-| Name         | Type                  | Description          |
-| ------------ | --------------------- | -------------------- |
-| `className?` | `string`              | Component class name |
-| `style?`     | `React.CSSProperties` | Component style      |
+| Name         | Type                | Default | Description          |
+| ------------ | ------------------- | ------- | -------------------- |
+| `className?` | string              |         | Component class name |
+| `style?`     | React.CSSProperties |         | Component style      |
 
 ### FormItem
 
@@ -345,21 +345,21 @@ const { FormItem } = components;
 
 Props:
 
-| Name              | Type                  | Description                                                                        |
-| ----------------- | --------------------- | ---------------------------------------------------------------------------------- |
-| `className?`      | `string`              | Component class name                                                               |
-| `disabled?`       | `boolean`             | Whether the form is disabled; defaults to `false`                                  |
-| `divider?`        | `boolean`             | Whether a divider is displayed at the end of the form; defaults to `false`         |
-| `error?`          | `React.ReactNode`     | Form error message                                                                 |
-| `note?`           | `string`              | Description of what the form contains                                              |
-| `noteClassName?`  | `string`              | Note class name                                                                    |
-| `notePosition?`   | `string`              | Whether the note is displayed before or after the children; defaults to `"before"` |
-| `noteStyle?`      | `React.CSSProperties` | Note style                                                                         |
-| `required?`       | `boolean`             | Whether the form completion is required; defaults to `false`                       |
-| `style?`          | `React.CSSProperties` | Component style                                                                    |
-| `tag?`            | `string`              | Form title tag; defaults to `"h5"`                                                 |
-| `title?`          | `React.ReactNode`     | Form title                                                                         |
-| `titleClassName?` | `string`              | Title class name                                                                   |
+| Name              | Type                | Default  | Description                                                |
+| ----------------- | ------------------- | -------- | ---------------------------------------------------------- |
+| `className?`      | string              |          | Component class name                                       |
+| `disabled?`       | boolean             | `false`  | Whether the form is disabled                               |
+| `divider?`        | boolean             | `false`  | Whether a divider is displayed at the end of the form      |
+| `error?`          | React.ReactNode     |          | Error message displayed                                    |
+| `note?`           | string              |          | Description of what the form contains                      |
+| `noteClassName?`  | string              |          | Note class name                                            |
+| `notePosition?`   | string              | `before` | Whether the note is displayed before or after the children |
+| `noteStyle?`      | React.CSSProperties |          | Note style                                                 |
+| `required?`       | boolean             | `false`  | Whether the form completion is required                    |
+| `style?`          | React.CSSProperties |          | Component style                                            |
+| `tag?`            | string              | `h5`     | Define the form title tag                                  |
+| `title?`          | React.ReactNode     |          | Form title                                                 |
+| `titleClassName?` | string              |          | Title class name                                           |
 
 ### Loader
 
@@ -374,19 +374,19 @@ const { Loader } = components;
 
 Properties:
 
-| Property | Description                                                                                                                             |
-| -------- | --------------------------------------------------------------------------------------------------------------------------------------- |
-| `.Type`  | Loader types. Available properties: <br/>`WANDERING_CUBES` \| `CHASING_DOTS` \| `PULSING_ELLIPSIS` \| `SPINNING_CIRCLE` \| `LOW_MOTION` |
+| Property | Description                                                                                                      |
+| -------- | ---------------------------------------------------------------------------------------------------------------- |
+| `.Type`  | Loader types <br/>`WANDERING_CUBES` \| `CHASING_DOTS` \| `PULSING_ELLIPSIS` \| `SPINNING_CIRCLE` \| `LOW_MOTION` |
 
 Props:
 
-| Name             | Type                  | Description                                        |
-| ---------------- | --------------------- | -------------------------------------------------- |
-| `animated?`      | `boolean`             | Whether the loader is animated; defaults to `true` |
-| `className?`     | `string`              | Component class name                               |
-| `itemClassName?` | `string`              | Class name of all the elements inside the loader   |
-| `style?`         | `React.CSSProperties` | Component style                                    |
-| `type?`          | `string`              | Loader type; defaults to `"wanderingCubes"`        |
+| Name             | Type                | Default          | Description                                      |
+| ---------------- | ------------------- | ---------------- | ------------------------------------------------ |
+| `animated?`      | boolean             | `true`           | Whether the loader is animated                   |
+| `className?`     | string              |                  | Component class name                             |
+| `itemClassName?` | string              |                  | Class name of all the elements inside the loader |
+| `style?`         | React.CSSProperties |                  | Component style                                  |
+| `type?`          | string              | `wanderingCubes` | Define type of loader                            |
 
 ### Notice
 
@@ -396,23 +396,23 @@ Example:
 import { components } from "replugged";
 const { Notice } = components;
 
-<Notice messageType={Notice.NoticeTypes.POSITIVE}>Notice text</Notice>;
+<Notice messageType={Notice.Types.POSITIVE}>Notice text</Notice>;
 ```
 
 Properties:
 
-| Property       | Description                                                                           |
-| -------------- | ------------------------------------------------------------------------------------- |
-| `.NoticeTypes` | Notice types. Available properties: <br/>`WARNING` \| `INFO` \| `ERROR` \| `POSITIVE` |
+| Property | Description                                                    |
+| -------- | -------------------------------------------------------------- |
+| `.Types` | Notice types <br/>`WARNING` \| `INFO` \| `ERROR` \| `POSITIVE` |
 
 Props:
 
-| Name           | Type     | Description                                                 |
-| -------------- | -------- | ----------------------------------------------------------- |
-| `className?`   | `string` | Component class name                                        |
-| `messageType`  | `number` | Notice type                                                 |
-| `textColor?`   | `string` | Text color (variable name); defaults to `"text-normal"`     |
-| `textVariant?` | `string` | Text variant (variant name); defaults to `"text-sm/medium"` |
+| Name           | Type   | Default          | Description                 |
+| -------------- | ------ | ---------------- | --------------------------- |
+| `className?`   | string |                  | Component class name        |
+| `messageType`  | number |                  | Define type of notice       |
+| `textColor?`   | string | `text-normal`    | Text color (variable name)  |
+| `textVariant?` | string | `text-sm/medium` | Text variant (variant name) |
 
 ### Tooltip
 
@@ -427,30 +427,30 @@ const { Tooltip } = components;
 
 Properties:
 
-| Property     | Description                                                                                                                      |
-| ------------ | -------------------------------------------------------------------------------------------------------------------------------- |
-| `.Aligns`    | Tooltip aligns. Available properties: <br/>`TOP` \| `CENTER` \| `BOTTOM` \| `LEFT` \| `RIGHT`                                    |
-| `.Colors`    | Tooltip colors. Available properties: <br/>`PRIMARY` \| `BLACK` \| `GREY` \| `BRAND` \| `GREEN` \| `YELLOW` \| `RED` \| `CUSTOM` |
-| `.Positions` | Tooltip positions. Available properties: <br/>`TOP` \| `BOTTOM` \| `LEFT` \| `RIGHT` \| `CENTER` \| `WINDOW_CENTER`              |
+| Property     | Description                                                                                               |
+| ------------ | --------------------------------------------------------------------------------------------------------- |
+| `.Aligns`    | Tooltip alignments <br/>`TOP` \| `CENTER` \| `BOTTOM` \| `LEFT` \| `RIGHT`                                |
+| `.Colors`    | Tooltip colors <br/>`PRIMARY` \| `BLACK` \| `GREY` \| `BRAND` \| `GREEN` \| `YELLOW` \| `RED` \| `CUSTOM` |
+| `.Positions` | Tooltip positions <br/>`TOP` \| `BOTTOM` \| `LEFT` \| `RIGHT` \| `CENTER` \| `WINDOW_CENTER`              |
 
 Props:
 
-| Name                           | Type                             | Description                                                          |
-| ------------------------------ | -------------------------------- | -------------------------------------------------------------------- |
-| `align?`                       | `string`                         | Tooltip alignment; defaults to `"center"`                            |
-| `allowOverflow?`               | `boolean`                        | Whether the tooltip content can overflow; defaults to `false`        |
-| `className?`                   | `string`                         | Component class name                                                 |
-| `color?`                       | `string`                         | Tooltip color; defaults to `"primary"`                               |
-| `delay?`                       | `number`                         | Tooltip spawn delay                                                  |
-| `disableTooltipPointerEvents?` | `boolean`                        | Whether the tooltip has pointer events disabled; defaults to `false` |
-| `forceOpen?`                   | `boolean`                        | Whether the tooltip is always visible; defaults to `false`           |
-| `hide?`                        | `boolean`                        | Whether the tooltip is hidden; defaults to `false`                   |
-| `hideOnClick?`                 | `boolean`                        | Whether the tooltip is hidden on click; defaults to `true`           |
-| `onAnimationRest?`             | `(e: object, t: object) => void` | Function ran when the tooltip is animating                           |
-| `position?`                    | `string`                         | Tooltip position; defaults to `"top"`                                |
-| `shouldShow?`                  | `boolean`                        | Whether the tooltip should show; defaults to `true`                  |
-| `spacing?`                     | `number`                         | Distance from the children; defaults to `8`                          |
-| `style?`                       | `React.CSSProperties`            | Component style                                                      |
-| `text`                         | `string`                         | Tooltip text                                                         |
-| `tooltipClassName?`            | `string`                         | Tooltip element class name                                           |
-| `tooltipContentClassName?`     | `string`                         | Tooltip content element class name                                   |
+| Name                           | Type                | Default   | Description                                                                       |
+| ------------------------------ | ------------------- | --------- | --------------------------------------------------------------------------------- |
+| `align?`                       | string              | `center`  | Tooltip alignment to the children. Works together with `position`                 |
+| `allowOverflow?`               | boolean             | `false`   | Whether the tooltip content can overflow                                          |
+| `className?`                   | string              |           | Component class name                                                              |
+| `color?`                       | string              | `primary` | Sets color of the tooltip                                                         |
+| `delay?`                       | number              |           | How long the tooltip takes to appear in milliseconds                              |
+| `disableTooltipPointerEvents?` | boolean             | `false`   | Whether to disable pointer events on the tooltip                                  |
+| `forceOpen?`                   | boolean             | `false`   | Whether the tooltip is always visible                                             |
+| `hide?`                        | boolean             | `false`   | Whether the tooltip is hidden                                                     |
+| `hideOnClick?`                 | boolean             | `true`    | Whether the tooltip hides after clicking anywhere                                 |
+| `onAnimationRest?`             | Function            |           | Function ran when the tooltip is animating. Its parameters are related to springs |
+| `position?`                    | string              | `top`     | Tooltip position. Works together with `align`                                     |
+| `shouldShow?`                  | boolean             | `true`    | Whether the tooltip can show                                                      |
+| `spacing?`                     | number              | `8`       | Distance from the children                                                        |
+| `style?`                       | React.CSSProperties |           | Component style                                                                   |
+| `text`                         | string              |           | Tooltip text                                                                      |
+| `tooltipClassName?`            | string              |           | Tooltip element class name                                                        |
+| `tooltipContentClassName?`     | string              |           | Tooltip content element class name                                                |
