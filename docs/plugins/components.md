@@ -363,6 +363,40 @@ Props:
 | `title?`          | React.ReactNode     |          | Form title                                                 |
 | `titleClassName?` | string              |          | Title class name                                           |
 
+### FormText
+
+Example:
+
+```tsx
+import { components } from "replugged";
+const { FormText } = components;
+
+<FormText.DEFAULT>This is an example</FormText.DEFAULT>;
+```
+
+Related Components:
+
+| Component            | Description            |
+| -------------------- | ---------------------- |
+| `.DEFAULT`           | Type `default`         |
+| `.INPUT_PLACEHOLDER` | Type `placeholder`     |
+| `.DESCRIPTION`       | Type `description`     |
+| `.LABEL_BOLD`        | Type `labelBold`       |
+| `.LABEL_SELECTED`    | Type `labelSelected`   |
+| `.LABEL_DESCRIPTOR`  | Type `labelDescriptor` |
+| `.ERROR`             | Type `error`           |
+| `.SUCCESS`           | Type `success`         |
+
+Props:
+
+| Name          | Type                | Default   | Description                    |
+| ------------- | ------------------- | --------- | ------------------------------ |
+| `className?`  | string              |           | Component class name           |
+| `disabled?`   | boolean             | `false`   | Whether the text is disabled   |
+| `selectable?` | boolean             | `false`   | Whether the text is selectable |
+| `style?`      | React.CSSProperties |           | Component style                |
+| `type?`       | string              | `default` | Define type of text            |
+
 ### Loader
 
 Example:
@@ -427,16 +461,16 @@ const { Text } = components;
 <Text.Normal>This is an example</Text.Normal>;
 ```
 
-Properties:
+Related Components:
 
-| Property   | Description                                                    |
-| ---------- | -------------------------------------------------------------- |
-| `.Eyebrow` | Text component with variant `eyebrow`                          |
-| `.H1`      | Text component with variant `heading-xl/bold` and tag `h1`     |
-| `.H2`      | Text component with variant `heading-lg/semibold` and tag `h2` |
-| `.H3`      | Text component with variant `heading-md/bold` and tag `h3`     |
-| `.H4`      | Text component with variant `heading-sm/bold` and tag `h4`     |
-| `.Normal`  | Text component with variant `text-sm/normal` and tag `span`    |
+| Component  | Description                                |
+| ---------- | ------------------------------------------ |
+| `.Eyebrow` | Variant `eyebrow`                          |
+| `.H1`      | Variant `heading-xl/bold` and tag `h1`     |
+| `.H2`      | Variant `heading-lg/semibold` and tag `h2` |
+| `.H3`      | Variant `heading-md/bold` and tag `h3`     |
+| `.H4`      | Variant `heading-sm/bold` and tag `h4`     |
+| `.Normal`  | Variant `text-sm/normal` and tag `span`    |
 
 Props:
 
