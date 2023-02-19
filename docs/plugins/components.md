@@ -192,7 +192,28 @@ Props:
 
 Example:
 
+```tsx
+import { components } from "replugged";
+const { SwitchItem } = components;
+
+export function Settings(): React.ReactElement {
+  return <SwitchItem {...util.useSetting(cfg, "foo", true)}>Switch title</SwitchItem>;
+}
+```
+
 Props:
+
+| Name           | Type                | Default | Description                                                      |
+| -------------- | ------------------- | ------- | ---------------------------------------------------------------- |
+| `checked`      | boolean             |         | Slider state; prop not available for the Item version            |
+| `className?`   | string              |         | Component class name                                             |
+| `disabled?`    | boolean             | `false` | Whether the switch is disabled                                   |
+| `hideBorder?`  | boolean             | `false` | Whether a divider is not displayed at the end of the switch item |
+| `note?`        | string              |         | Description of what the switch item is about                     |
+| `onChange?`    | Function            |         | Function ran on state change                                     |
+| `style?`       | React.CSSProperties |         | Component style                                                  |
+| `tooltipNote?` | string              |         | Tooltip text displayed on the switch item                        |
+| `value?`       | boolean             |         | Switch item value                                                |
 
 ### TextArea
 
