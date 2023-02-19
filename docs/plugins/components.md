@@ -427,6 +427,17 @@ const { Text } = components;
 <Text.Normal>This is an example</Text.Normal>;
 ```
 
+Properties:
+
+| Property   | Description                                                    |
+| ---------- | -------------------------------------------------------------- |
+| `.Eyebrow` | Text component with variant `eyebrow`                          |
+| `.H1`      | Text component with variant `heading-xl/bold` and tag `h1`     |
+| `.H2`      | Text component with variant `heading-lg/semibold` and tag `h2` |
+| `.H3`      | Text component with variant `heading-md/bold` and tag `h3`     |
+| `.H4`      | Text component with variant `heading-sm/bold` and tag `h4`     |
+| `.Normal`  | Text component with variant `text-sm/normal` and tag `span`    |
+
 Props:
 
 | Name                    | Type                | Default | Description                                                             |
