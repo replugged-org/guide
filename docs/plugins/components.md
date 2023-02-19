@@ -314,6 +314,28 @@ must be specified to override.
 
 :::
 
+### Clickable
+
+Example:
+
+```tsx
+import { components } from "replugged";
+const { Clickable } = components;
+
+<Clickable onClick={() => console.log("Clicked!")}>{/* Your components here */}</Clickable>;
+```
+
+Props:
+
+| Name         | Type                | Default  | Description                              |
+| ------------ | ------------------- | -------- | ---------------------------------------- |
+| `className?` | string              |          | Component class name                     |
+| `onClick?`   | Function            |          | Function ran when clicking the component |
+| `role?`      | string              | `button` | Define the element role                  |
+| `style?`     | React.CSSProperties |          | Component style                          |
+| `tabIndex?`  | number              | `0`      | Tab index                                |
+| `tag?`       | string              | `div`    | Define the element type                  |
+
 ### Divider
 
 Example:
