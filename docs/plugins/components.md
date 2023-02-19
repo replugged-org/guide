@@ -162,29 +162,31 @@ export function Settings(): React.ReactElement {
 
 Props:
 
-| Name                | Type                | Default | Description                                                    |
-| ------------------- | ------------------- | ------- | -------------------------------------------------------------- |
-| `asValueChanges?`   | Function            |         | Function ran on grabber move                                   |
-| `barClassName?`     | string              |         | Bar element class name                                         |
-| `barStyles?`        | React.CSSProperties |         | Bar element style                                              |
-| `className?`        | string              |         | Component class name                                           |
-| `defaultValue?`     | number              |         | Default value, marked in green                                 |
-| `disabled?`         | boolean             | `false` | Whether the slider is disabled                                 |
-| `fillStyles?`       | React.CSSProperties |         | Bar fill element style                                         |
-| `grabberClassName?` | string              |         | Grabber element class name                                     |
-| `grabberStyles?`    | React.CSSProperties |         | Grabber element style                                          |
-| `hideBubble?`       | boolean             | `false` | Whether the tooltip is hidden when `stickToMarkers` is `false` |
-| `initialValue?`     | number              | `10`    | Initial value the slider grabber is at; alias of `value`       |
-| `markers?`          | number[]            |         | Array of slider markers                                        |
-| `maxValue?`         | number              | `100`   | Slider maximum value                                           |
-| `minValue?`         | number              | `0`     | Slider minimum value                                           |
-| `mini?`             | boolean             | `false` | Whether the slider grabber is a small dot                      |
-| `onMarkerRender?`   | Function            |         | Function ran on marker render, useful to customize markers     |
-| `onChange?`         | Function            |         | Function ran on value change                                   |
-| `onValueChange?`    | Function            |         | Function ran on value change; alias of `onChange`              |
-| `onValueRender?`    | Function            |         | Function ran on value render                                   |
-| `stickToMarkers?`   | boolean             | `false` | Whether the slider grabber can stick to markers                |
-| `value?`            | number              |         | Slider value                                                   |
+| Name                | Type                | Default | Description                                                        |
+| ------------------- | ------------------- | ------- | ------------------------------------------------------------------ |
+| `asValueChanges?`   | Function            |         | Function ran on grabber move                                       |
+| `barClassName?`     | string              |         | Bar element class name                                             |
+| `barStyles?`        | React.CSSProperties |         | Bar element style                                                  |
+| `className?`        | string              |         | Component class name                                               |
+| `defaultValue?`     | number              |         | Default value, marked in green                                     |
+| `disabled?`         | boolean             | `false` | Whether the slider is disabled                                     |
+| `equidistant?`      | boolean             | `false` | Whether the markers are equidistant from each other                |
+| `fillStyles?`       | React.CSSProperties |         | Bar fill element style                                             |
+| `grabberClassName?` | string              |         | Grabber element class name                                         |
+| `grabberStyles?`    | React.CSSProperties |         | Grabber element style                                              |
+| `hideBubble?`       | boolean             | `false` | Whether the tooltip is hidden when `stickToMarkers` is `false`     |
+| `initialValue?`     | number              | `10`    | Initial value the slider grabber is at; alias of `value`           |
+| `markers?`          | number[]            |         | Array of slider markers                                            |
+| `keyboardStep?`     | number              | `1`     | By how much the slider grabber has to move if the keyboard is used |
+| `maxValue?`         | number              | `100`   | Slider maximum value                                               |
+| `minValue?`         | number              | `0`     | Slider minimum value                                               |
+| `mini?`             | boolean             | `false` | Whether the slider grabber is a small dot                          |
+| `onMarkerRender?`   | Function            |         | Function ran on marker render, useful to customize markers         |
+| `onChange?`         | Function            |         | Function ran on value change                                       |
+| `onValueChange?`    | Function            |         | Function ran on value change; alias of `onChange`                  |
+| `onValueRender?`    | Function            |         | Function ran on value render                                       |
+| `stickToMarkers?`   | boolean             | `false` | Whether the slider grabber can stick to markers                    |
+| `value?`            | number              |         | Slider value                                                       |
 
 ### Switch and SwitchItem
 
@@ -229,7 +231,7 @@ Props:
 | `onInvalid?`     | Function |         | Function ran on invalid submission               |
 | `onKeyDown?`     | Function |         | Function ran on key press                        |
 | `placeholder?`   | string   |         | Input placeholder                                |
-| `required?`      | boolean  |         | Whether the input completion is required         |
+| `required?`      | boolean  | `false` | Whether the input completion is required         |
 | `resizeable?`    | boolean  | `false` | Whether the input can be resized                 |
 | `rows?`          | number   | `3`     | Define the number of rows the input has          |
 | `value?`         | string   |         | Input value                                      |
@@ -414,6 +416,41 @@ Props:
 | `textColor?`   | string | `text-normal`    | Text color (variable name)  |
 | `textVariant?` | string | `text-sm/medium` | Text variant (variant name) |
 
+### Text
+
+Example:
+
+```tsx
+import { components } from "replugged";
+const { Text } = components;
+
+<Text.Normal>This is an example</Text.Normal>;
+```
+
+Props:
+
+| Name                    | Type                | Default | Description                                                             |
+| ----------------------- | ------------------- | ------- | ----------------------------------------------------------------------- |
+| `allowMarkdownHeading?` | boolean             | `false` | Whether markdown headings are displayed; works together with `markdown` |
+| `allowMarkdownLinks?`   | boolean             | `false` | Whether markdown links are displayed; works together with `markdown`    |
+| `allowMarkdownList?`    | boolean             | `false` | Whether markdown lists are displayed; works together with `markdown`    |
+| `className?`            | string              |         | Component class name                                                    |
+| `color?`                | string              |         | Text color (variable name)                                              |
+| `lineClamp?`            | number              |         | How many lines to clamp                                                 |
+| `markdown?`             | boolean             | `false` | Whether the text is markdown compatible                                 |
+| `selectable?`           | boolean             | `false` | Whether the text is selectable                                          |
+| `style?`                | React.CSSProperties |         | Component style                                                         |
+| `tabularNumbers?`       | boolean             | `false` | Whether the text font supports tabular numbers                          |
+| `tag?`                  | string              | `div`   | Define the text element tag                                             |
+| `variant?`              | string              |         | Text variant (variant name)                                             |
+
+:::tip
+
+You can see all the different text variants with Discord's Text Components page, available with the
+developer settings enabled
+
+:::
+
 ### Tooltip
 
 Example:
@@ -437,7 +474,7 @@ Props:
 
 | Name                           | Type                | Default   | Description                                                                       |
 | ------------------------------ | ------------------- | --------- | --------------------------------------------------------------------------------- |
-| `align?`                       | string              | `center`  | Tooltip alignment to the children. Works together with `position`                 |
+| `align?`                       | string              | `center`  | Tooltip alignment to the children; works together with `position`                 |
 | `allowOverflow?`               | boolean             | `false`   | Whether the tooltip content can overflow                                          |
 | `className?`                   | string              |           | Component class name                                                              |
 | `color?`                       | string              | `primary` | Sets color of the tooltip                                                         |
@@ -446,8 +483,8 @@ Props:
 | `forceOpen?`                   | boolean             | `false`   | Whether the tooltip is always visible                                             |
 | `hide?`                        | boolean             | `false`   | Whether the tooltip is hidden                                                     |
 | `hideOnClick?`                 | boolean             | `true`    | Whether the tooltip hides after clicking anywhere                                 |
-| `onAnimationRest?`             | Function            |           | Function ran when the tooltip is animating. Its parameters are related to springs |
-| `position?`                    | string              | `top`     | Tooltip position. Works together with `align`                                     |
+| `onAnimationRest?`             | Function            |           | Function ran when the tooltip is animating; its parameters are related to springs |
+| `position?`                    | string              | `top`     | Tooltip position; works together with `align`                                     |
 | `shouldShow?`                  | boolean             | `true`    | Whether the tooltip can show                                                      |
 | `spacing?`                     | number              | `8`       | Distance from the children                                                        |
 | `style?`                       | React.CSSProperties |           | Component style                                                                   |
