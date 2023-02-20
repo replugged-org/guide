@@ -137,7 +137,70 @@ Props:
 
 Example:
 
+```tsx
+import { components } from "replugged";
+const { SelectItem } = components;
+
+export function Settings(): React.ReactElement {
+  return (
+    <SelectItem
+      {...util.useSetting(cfg, "foo", "bar")}
+      options={[
+        {
+          label: "Option 1",
+          value: "option1",
+        },
+        {
+          label: "Option 2",
+          value: "option2",
+        },
+      ]}>
+      Select title
+    </SelectItem>
+  );
+}
+```
+
 Props:
+
+| Name                 | Type               | Default  | Description                                                                                                 |
+| -------------------- | ------------------ | -------- | ----------------------------------------------------------------------------------------------------------- |
+| `autoFocus?`         | boolean            | `false`  | Whether the select is on focus                                                                              |
+| `className?`         | string             |          | Component class name                                                                                        |
+| `clear?`             | Function           |          | Function ran when the selection is cleared; works together with `clearable`; alias of `onClear`             |
+| `clearable?`         | boolean            | `false`  | Whether the selection is clearable from its button; works together with `clear`                             |
+| `closeOnSelect?`     | boolean            | `true`   | Whether to close the popout once selected an option                                                         |
+| `disabled?`          | boolean            | `false`  | Whether the select is disabled; alias of `isDisabled`                                                       |
+| `hideIcon?`          | boolean            | `false`  | Whether the arrow icon is hidden                                                                            |
+| `isDisabled?`        | boolean            | `false`  | Whether the select is disabled; alias of `disabled`                                                         |
+| `isSelected`         | Function           |          | Function ran to check if the option passed as a parameter is selectable; not necessary if `value` is passed |
+| `look?`              | number             | `0`      | Define the select style                                                                                     |
+| `maxVisibleItems?`   | number             | `7`      | How many options are visible                                                                                |
+| `onChange`           | Function           |          | Function ran on selection change; alias of `onSelect` and `select`                                          |
+| `onClear?`           | Function           |          | Function ran when the selection is cleared; works together with `clearable`; alias of `clear`               |
+| `onClose?`           | Function           |          | Function ran when the popout got closed                                                                     |
+| `onOpen?`            | Function           |          | Function ran when the popout got opened                                                                     |
+| `onSelect`           | Function           |          | Function ran on selection change; alias of `onChange` and `select`                                          |
+| `optionClassName?`   | string             |          | Option element class name                                                                                   |
+| `options`            | SelectOptionType[] |          | Array of select options; check out `SelectOptionType` props                                                 |
+| `placeholder?`       | string             | `Select` | Select placeholder text                                                                                     |
+| `popoutClassName?`   | string             |          | Popout element class name                                                                                   |
+| `popoutPosition?`    | string             |          | Popout position displayed on the select; check out `Tooltip.Positions`                                      |
+| `popoutWidth?`       | number             |          | Popout width                                                                                                |
+| `renderOptionLabel?` | Function           |          | Function ran on option label element render, useful to labels                                               |
+| `renderOptionValue?` | Function           |          | Function ran on option value element render, useful to values                                               |
+| `select`             | Function           |          | Function ran on selection change; alias of `onChange` and `onSelect`                                        |
+| `serialize?`         | Function           |          | Function ran to serialize the option                                                                        |
+| `value?`             | string             |          | Selected option value                                                                                       |
+
+`SelectOptionType` Props:
+
+| Name        | Type    | Default | Description                    |
+| ----------- | ------- | ------- | ------------------------------ |
+| `disabled?` | boolean | `false` | Whether the option is disabled |
+| `key?`      | string  |         | Option key                     |
+| `label`     | string  |         | Option name                    |
+| `value`     | string  |         | Option value                   |
 
 ### Slider and SliderItem
 
@@ -184,7 +247,7 @@ Props:
 | `onMarkerRender?`   | Function            |         | Function ran on marker render, useful to customize markers         |
 | `onChange?`         | Function            |         | Function ran on value change                                       |
 | `onValueChange?`    | Function            |         | Function ran on value change; alias of `onChange`                  |
-| `onValueRender?`    | Function            |         | Function ran on value render                                       |
+| `onValueRender?`    | Function            |         | Function ran on value render , useful to customize values          |
 | `stickToMarkers?`   | boolean             | `false` | Whether the slider grabber can stick to markers                    |
 | `value?`            | number              |         | Slider value                                                       |
 
@@ -251,7 +314,7 @@ Props:
 | `onFocus?`       | Function |         | Function ran on focus                            |
 | `onInvalid?`     | Function |         | Function ran on invalid submission               |
 | `onKeyDown?`     | Function |         | Function ran on key press                        |
-| `placeholder?`   | string   |         | Input placeholder                                |
+| `placeholder?`   | string   |         | Input placeholder text                           |
 | `required?`      | boolean  | `false` | Whether the input completion is required         |
 | `resizeable?`    | boolean  | `false` | Whether the input can be resized                 |
 | `rows?`          | number   | `3`     | Define the number of rows the input has          |
@@ -297,7 +360,7 @@ Props:
 | `onChange?`       | Function            |           | Function ran on value change                     |
 | `onFocus?`        | Function            |           | Function ran on focus                            |
 | `onKeyDown?`      | Function            |           | Function ran on key press                        |
-| `placeholder?`    | string              |           | Input placeholder                                |
+| `placeholder?`    | string              |           | Input placeholder text                           |
 | `size?`           | string              | `default` | Define the input size                            |
 | `style?`          | React.CSSProperties |           | Component style                                  |
 | `type?`           | string              | `text`    | Define the input type                            |
@@ -535,7 +598,7 @@ Props:
 :::tip
 
 You can see all the different text variants with Discord's Text Components page, available with the
-developer settings enabled
+developer settings enabled.
 
 :::
 
