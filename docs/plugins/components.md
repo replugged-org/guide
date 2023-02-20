@@ -473,11 +473,13 @@ Props:
 
 ### ContextMenu
 
-Example:
+<!-- TODO: add doc page reference for common modules (https://github.com/replugged-org/guide/issues/3) -->
 
-Related Components:
+:::info
 
-Props:
+ContextMenu is still a work in progress.
+
+:::
 
 ### Divider
 
