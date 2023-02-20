@@ -36,9 +36,9 @@ export function Settings(): React.ReactElement {
 }
 ```
 
-Properties:
+Enums:
 
-| Property  | Description                                                     |
+| Enum      | Description                                                     |
 | --------- | --------------------------------------------------------------- |
 | `.Aligns` | Checkbox alignments <br/>`TOP` \| `CENTER`                      |
 | `.Shapes` | Checkbox shapes <br/>`BOX` \| `ROUND` \| `SMALL`                |
@@ -93,9 +93,9 @@ export function Settings(): React.ReactElement {
 }
 ```
 
-Properties:
+Enums:
 
-| Property | Description                                                       |
+| Enum     | Description                                                       |
 | -------- | ----------------------------------------------------------------- |
 | `.Sizes` | Radio group sizes <br/>`NOT_SET` \| `NONE` \| `SMALL` \| `MEDIUM` |
 
@@ -331,9 +331,9 @@ export function Settings(): React.ReactElement {
 }
 ```
 
-Properties:
+Enums:
 
-| Property | Description                          |
+| Enum     | Description                          |
 | -------- | ------------------------------------ |
 | `.Sizes` | Input sizes <br/>`DEFAULT` \| `MINI` |
 
@@ -375,9 +375,9 @@ const { ButtonItem } = components;
 </ButtonItem>;
 ```
 
-Properties:
+Enums:
 
-| Property        | Description                                                                                                                                         |
+| Enum            | Description                                                                                                                                         |
 | --------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `.BorderColors` | Button border colors <br/>`BRAND` \| `RED` \| `GREEN` \| `YELLOW` \| `PRIMARY` \| `LINK` \| `WHITE` \| `BLACK` \| `TRANSPARENT` \| `BRAND_NEW`      |
 | `.Colors`       | Button colors <br/>`BRAND` \| `RED` \| `GREEN` \| `YELLOW` \| `PRIMARY` \| `LINK` \| `WHITE` \| `BLACK` \| `TRANSPARENT` \| `BRAND_NEW` \| `CUSTOM` |
@@ -535,9 +535,9 @@ Related Components:
 | --------- | ------------------------------------- |
 | `.Child`  | Flex child, useful together with Flex |
 
-Properties:
+Enums:
 
-| Property     | Description                                                                     |
+| Enum         | Description                                                                     |
 | ------------ | ------------------------------------------------------------------------------- |
 | `.Align`     | Flexbox alignments <br/>`START` \| `END` \| `CENTER` \| `STRETCH` \| `BASELINE` |
 | `.Direction` | Flexbox directions <br/>`VERTICAL` \| `HORIZONTAL` \| `HORIZONTAL_REVERSE`      |
@@ -643,11 +643,11 @@ const { Loader } = components;
 <Loader type={Loader.Type.WANDERING_CUBES} />;
 ```
 
-Properties:
+Enums:
 
-| Property | Description                                                                                                      |
-| -------- | ---------------------------------------------------------------------------------------------------------------- |
-| `.Type`  | Loader types <br/>`WANDERING_CUBES` \| `CHASING_DOTS` \| `PULSING_ELLIPSIS` \| `SPINNING_CIRCLE` \| `LOW_MOTION` |
+| Enum    | Description                                                                                                      |
+| ------- | ---------------------------------------------------------------------------------------------------------------- |
+| `.Type` | Loader types <br/>`WANDERING_CUBES` \| `CHASING_DOTS` \| `PULSING_ELLIPSIS` \| `SPINNING_CIRCLE` \| `LOW_MOTION` |
 
 Props:
 
@@ -739,9 +739,9 @@ const { Notice } = components;
 <Notice messageType={Notice.Types.POSITIVE}>Notice text</Notice>;
 ```
 
-Properties:
+Enums:
 
-| Property | Description                                                    |
+| Enum     | Description                                                    |
 | -------- | -------------------------------------------------------------- |
 | `.Types` | Notice types <br/>`WARNING` \| `INFO` \| `ERROR` \| `POSITIVE` |
 
@@ -811,9 +811,9 @@ const { Tooltip } = components;
 <Tooltip text="Tooltip text">{/* Your components here */}</Tooltip>;
 ```
 
-Properties:
+Enums:
 
-| Property     | Description                                                                                               |
+| Enum         | Description                                                                                               |
 | ------------ | --------------------------------------------------------------------------------------------------------- |
 | `.Aligns`    | Tooltip alignments <br/>`TOP` \| `CENTER` \| `BOTTOM` \| `LEFT` \| `RIGHT`                                |
 | `.Colors`    | Tooltip colors <br/>`PRIMARY` \| `BLACK` \| `GREY` \| `BRAND` \| `GREEN` \| `YELLOW` \| `RED` \| `CUSTOM` |
