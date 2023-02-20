@@ -6,8 +6,6 @@ description: Documented components for plugins
 
 # Components
 
-## Input components
-
 :::caution
 
 Any components below whose name ends in `Item` already has a `FormItem` (or equivalent) wrapper. You
@@ -15,19 +13,15 @@ should not use this on those components.
 
 :::
 
-All components ending with `Item` have their original counterpart, and differ in some props:
+## Input components
+
+All input components ending with `Item` have their original counterpart, and differ in some props:
 
 | Name        | Type                | Default | Description                                      |
 | ----------- | ------------------- | ------- | ------------------------------------------------ |
 | `children?` | React.ReactNode     |         | Wrapper component title                          |
 | `note?`     | string              |         | Description of what the input component is about |
 | `style?`    | React.CSSProperties |         | Wrapper component style                          |
-
-### Button and ButtonItem
-
-Example:
-
-Props:
 
 ### Checkbox and CheckboxItem
 
@@ -367,6 +361,67 @@ Props:
 | `value?`          | string              |           | Input value                                      |
 
 ## Other components
+
+### Button and ButtonItem
+
+Example:
+
+```tsx
+import { components } from "replugged";
+const { ButtonItem } = components;
+
+export function Settings(): React.ReactElement {
+  return (
+    <ButtonItem button="Button text" onClick={() => console.log("Pressed!")}>
+      Title
+    </ButtonItem>
+  );
+}
+```
+
+Properties:
+
+| Property        | Description                                                                                                                                         |
+| --------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `.BorderColors` | Button border colors <br/>`BRAND` \| `RED` \| `GREEN` \| `YELLOW` \| `PRIMARY` \| `LINK` \| `WHITE` \| `BLACK` \| `TRANSPARENT` \| `BRAND_NEW`      |
+| `.Colors`       | Button colors <br/>`BRAND` \| `RED` \| `GREEN` \| `YELLOW` \| `PRIMARY` \| `LINK` \| `WHITE` \| `BLACK` \| `TRANSPARENT` \| `BRAND_NEW` \| `CUSTOM` |
+| `.Hovers`       | Button color hovers <br/>`DEFAULT` \| `BRAND` \| `RED` \| `GREEN` \| `YELLOW` \| `PRIMARY` \| `LINK` \| `WHITE` \| `BLACK` \| `TRANSPARENT`         |
+| `.Looks`        | Button looks <br/>`FILLED` \| `INVERTED` \| `OUTLINED` \| `LINK` \| `BLANK`                                                                         |
+| `.Sizes`        | Button sizes <br/>`NONE` \| `TINY` \| `SMALL` \| `MEDIUM` \| `LARGE` \| `XLARGE` \| `MIN` \| `MAX` \| `ICON`                                        |
+
+Props:
+
+| Name                       | Type                | Default            | Description                                                                                  |
+| -------------------------- | ------------------- | ------------------ | -------------------------------------------------------------------------------------------- |
+| `borderColor?`             | string              |                    | Button border color                                                                          |
+| `button`                   | string              |                    | Button text for the item component                                                           |
+| `className?`               | string              |                    | Component class name                                                                         |
+| `color?`                   | string              | `colorBrand-*`     | Button color                                                                                 |
+| `disabled?`                | boolean             | `false`            | Whether the button is disabled                                                               |
+| `fullWidth?`               | boolean             | `false`            | Whether the button width is at maximum                                                       |
+| `grow?`                    | boolean             | `true`             | Whether the button size can grow                                                             |
+| `hideBorder?`              | boolean             | `false`            | Whether a divider is not displayed at the end of the button item                             |
+| `hover?`                   | string              |                    | Button hover color                                                                           |
+| `innerClassName?`          | string              |                    | Text element class name                                                                      |
+| `look?`                    | string              | `lookFilled-*`     | Button look                                                                                  |
+| `note?`                    | string              |                    | Description of what the button item is about                                                 |
+| `onClick`                  | Function            |                    | Function ran on button click                                                                 |
+| `onDoubleClick?`           | Function            |                    | Function ran on double button click                                                          |
+| `onKeyDown?`               | Function            |                    | Function ran on key press                                                                    |
+| `onMouseDown?`             | Function            |                    | Function ran on mouse down                                                                   |
+| `onMouseEnter?`            | Function            |                    | Function ran on mouse enter                                                                  |
+| `onMouseLeave?`            | Function            |                    | Function ran on mouse leave                                                                  |
+| `onMouseUp?`               | Function            |                    | Function ran on mouse up                                                                     |
+| `size?`                    | string              | `sizeMedium-*`     | Button size                                                                                  |
+| `style?`                   | React.CSSProperties |                    | Component style                                                                              |
+| `submitting?`              | boolean             | `false`            | Whether to display a loader inside the button; works together with `disabled` set to `false` |
+| `submittingFinishedLabel?` | string              | `Loading finished` | Announce finish loading message for screen-reader users; works together with `submitting`    |
+| `submittingStartedLabel?`  | string              | `Loading`          | Announce start loading message for screen-reader users; works together with `submitting`     |
+| `success?`                 | boolean             | `false`            | Whether the button color is green                                                            |
+| `tooltipPosition?`         | string              |                    | Tooltip position displayed on the button item; check out `Tooltip.Positions`                 |
+| `tooltipText?`             | string              |                    | Tooltip text displayed on the button item                                                    |
+| `type?`                    | string              | `button`           | Button element type                                                                          |
+| `wrapperClassName?`        | string              |                    | Wrapper element class name                                                                   |
 
 ### Category
 
