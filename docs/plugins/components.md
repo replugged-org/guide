@@ -370,13 +370,9 @@ Example:
 import { components } from "replugged";
 const { ButtonItem } = components;
 
-export function Settings(): React.ReactElement {
-  return (
-    <ButtonItem button="Button text" onClick={() => console.log("Pressed!")}>
-      Title
-    </ButtonItem>
-  );
-}
+<ButtonItem button="Button text" onClick={() => console.log("Pressed!")}>
+  Title
+</ButtonItem>;
 ```
 
 Properties:
@@ -475,6 +471,14 @@ Props:
 | `tabIndex?`  | number              | `0`      | Tab index                                |
 | `tag?`       | string              | `div`    | Define the element type                  |
 
+### ContextMenu
+
+Example:
+
+Related Components:
+
+Props:
+
 ### Divider
 
 Example:
@@ -492,6 +496,12 @@ Props:
 | ------------ | ------------------- | ------- | -------------------- |
 | `className?` | string              |         | Component class name |
 | `style?`     | React.CSSProperties |         | Component style      |
+
+### ErrorBoundary
+
+Example:
+
+Props:
 
 ### Flex
 
@@ -633,6 +643,14 @@ Props:
 | `itemClassName?` | string              |                  | Class name of all the elements inside the loader |
 | `style?`         | React.CSSProperties |                  | Component style                                  |
 | `type?`          | string              | `wanderingCubes` | Define type of loader                            |
+
+### Modal
+
+Example:
+
+Related Components:
+
+Props:
 
 ### Notice
 
