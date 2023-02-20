@@ -438,6 +438,55 @@ Props:
 | `className?` | string              |         | Component class name |
 | `style?`     | React.CSSProperties |         | Component style      |
 
+### Flex
+
+Example:
+
+```tsx
+import { components } from "replugged";
+const { Flex } = components;
+
+<Flex direction={Flex.Direction.VERTICAL}>{/* Your components here */}</Flex>;
+```
+
+Related Components:
+
+| Component | Description                           |
+| --------- | ------------------------------------- |
+| `.Child`  | Flex child, useful together with Flex |
+
+Properties:
+
+| Property     | Description                                                                     |
+| ------------ | ------------------------------------------------------------------------------- |
+| `.Align`     | Flexbox alignments <br/>`START` \| `END` \| `CENTER` \| `STRETCH` \| `BASELINE` |
+| `.Direction` | Flexbox directions <br/>`VERTICAL` \| `HORIZONTAL` \| `HORIZONTAL_REVERSE`      |
+| `.Justify`   | Flexbox justifies <br/>`START` \| `END` \| `CENTER` \| `BETWEEN` \| `AROUND`    |
+| `.Wrap`      | Flexbox wraps <br/>`NO_WRAP` \| `WRAP` \| `WRAP_REVERSE`                        |
+
+Props:
+
+| Name         | Type                | Default          | Description       |
+| ------------ | ------------------- | ---------------- | ----------------- |
+| `align?`     | string              | `alignStretch-*` | Flexbox align     |
+| `basis?`     | string              | `auto`           | Flexbox basis     |
+| `direction?` | string              | `horizontal-*`   | Flexbox direction |
+| `grow?`      | number              | `1`              | Flexbox grow      |
+| `justify?`   | string              | `justifyStart-*` | Flexbox justify   |
+| `shrink?`    | number              | `1`              | Flexbox shrink    |
+| `style?`     | React.CSSProperties |                  | Component style   |
+| `wrap?`      | string              | `noWrap-*`       | Flexbox wrap      |
+
+`.Child` Props:
+
+| Name      | Type                | Default | Description                  |
+| --------- | ------------------- | ------- | ---------------------------- |
+| `basis?`  | string              | `auto`  | Flexbox basis                |
+| `grow?`   | number              | `1`     | Flexbox grow                 |
+| `shrink?` | number              | `1`     | Flexbox shrink               |
+| `style?`  | React.CSSProperties |         | Component style              |
+| `wrap?`   | boolean             | `false` | Whether to wrap its children |
+
 ### FormItem
 
 Example:
