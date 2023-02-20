@@ -501,7 +501,20 @@ Props:
 
 Example:
 
+```tsx
+import { components } from "replugged";
+const { ErrorBoundary } = components;
+
+<ErrorBoundary>{/* Your components here */}</ErrorBoundary>;
+```
+
 Props:
+
+| Name        | Type            | Default | Description                               |
+| ----------- | --------------- | ------- | ----------------------------------------- |
+| `fallback?` | React.ReactNode |         | Fallback elements to show                 |
+| `onError?`  | Function        |         | Function ran when an error is triggered   |
+| `silent?`   | boolean         | `false` | Whether to not print the error to console |
 
 ### Flex
 
