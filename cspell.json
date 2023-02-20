@@ -14,7 +14,8 @@
     "replugged",
     "resizeable",
     "typeof",
-    "uninject"
+    "uninject",
+    "XLARGE"
   ],
   "ignoreWords": [],
   "import": []
