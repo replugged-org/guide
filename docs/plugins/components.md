@@ -55,8 +55,8 @@ Props:
 | `disabled?`       | boolean             | `false`            | Whether the checkbox is disabled                   |
 | `displayOnly?`    | boolean             | `false`            | Whether the checkbox is a static element           |
 | `innerClassName?` | string              |                    | Checkbox element class name                        |
-| `onChange?`       | Function            |                    | Function ran on value change                       |
-| `onClick?`        | Function            |                    | Function ran on checkbox click                     |
+| `onChange?`       | function            |                    | Function ran on value change                       |
+| `onClick?`        | function            |                    | Function ran on checkbox click                     |
 | `readOnly?`       | boolean             | `false`            | Whether the checkbox is read only                  |
 | `reverse?`        | boolean             | `false`            | Whether the checkbox position is on the right side |
 | `shape?`          | string              | `box-*`            | Define checkbox shape                              |
@@ -107,7 +107,7 @@ Props:
 | `disabled?`                  | boolean           | `false` | Whether the radio group is disabled                       |
 | `itemInfoClassName?`         | string            |         | Radio info element class name                             |
 | `itemTitleClassName?`        | string            |         | Radio title element class name                            |
-| `onChange`                   | Function          |         | Function ran on value change                              |
+| `onChange`                   | function          |         | Function ran on value change                              |
 | `options`                    | RadioOptionType[] |         | Array of radio options; check out `RadioOptionType` props |
 | `radioItemClassName?`        | string            |         | Radio item element class name                             |
 | `radioPosition?`             | string            | `left`  | Position of the radio                                     |
@@ -161,30 +161,30 @@ Props:
 | -------------------- | ------------------ | -------- | ----------------------------------------------------------------------------------------------------------- |
 | `autoFocus?`         | boolean            | `false`  | Whether the select is on focus                                                                              |
 | `className?`         | string             |          | Component class name                                                                                        |
-| `clear?`             | Function           |          | Function ran when the selection is cleared; works together with `clearable`; alias of `onClear`             |
+| `clear?`             | function           |          | Function ran when the selection is cleared; works together with `clearable`; alias of `onClear`             |
 | `clearable?`         | boolean            | `false`  | Whether the selection is clearable from its button; works together with `clear`                             |
 | `closeOnSelect?`     | boolean            | `true`   | Whether to close the popout once selected an option                                                         |
 | `disabled?`          | boolean            | `false`  | Whether the select is disabled; alias of `isDisabled`                                                       |
 | `hideIcon?`          | boolean            | `false`  | Whether the arrow icon is hidden                                                                            |
 | `isDisabled?`        | boolean            | `false`  | Whether the select is disabled; alias of `disabled`                                                         |
-| `isSelected`         | Function           |          | Function ran to check if the option passed as a parameter is selectable; not necessary if `value` is passed |
+| `isSelected`         | function           |          | Function ran to check if the option passed as a parameter is selectable; not necessary if `value` is passed |
 | `look?`              | number             | `0`      | Define the select style                                                                                     |
 | `maxVisibleItems?`   | number             | `7`      | How many options are visible                                                                                |
-| `onChange`           | Function           |          | Function ran on selection change; alias of `onSelect` and `select`                                          |
-| `onClear?`           | Function           |          | Function ran when the selection is cleared; works together with `clearable`; alias of `clear`               |
-| `onClose?`           | Function           |          | Function ran when the popout got closed                                                                     |
-| `onOpen?`            | Function           |          | Function ran when the popout got opened                                                                     |
-| `onSelect`           | Function           |          | Function ran on selection change; alias of `onChange` and `select`                                          |
+| `onChange`           | function           |          | Function ran on selection change; alias of `onSelect` and `select`                                          |
+| `onClear?`           | function           |          | Function ran when the selection is cleared; works together with `clearable`; alias of `clear`               |
+| `onClose?`           | function           |          | Function ran when the popout got closed                                                                     |
+| `onOpen?`            | function           |          | Function ran when the popout got opened                                                                     |
+| `onSelect`           | function           |          | Function ran on selection change; alias of `onChange` and `select`                                          |
 | `optionClassName?`   | string             |          | Option element class name                                                                                   |
 | `options`            | SelectOptionType[] |          | Array of select options; check out `SelectOptionType` props                                                 |
 | `placeholder?`       | string             | `Select` | Select placeholder text                                                                                     |
 | `popoutClassName?`   | string             |          | Popout element class name                                                                                   |
 | `popoutPosition?`    | string             |          | Popout position displayed on the select; check out `Tooltip.Positions`                                      |
 | `popoutWidth?`       | number             |          | Popout width                                                                                                |
-| `renderOptionLabel?` | Function           |          | Function ran on option label element render, useful to labels                                               |
-| `renderOptionValue?` | Function           |          | Function ran on option value element render, useful to values                                               |
-| `select`             | Function           |          | Function ran on selection change; alias of `onChange` and `onSelect`                                        |
-| `serialize?`         | Function           |          | Function ran to serialize the option                                                                        |
+| `renderOptionLabel?` | function           |          | Function ran on option label element render, useful to labels                                               |
+| `renderOptionValue?` | function           |          | Function ran on option value element render, useful to values                                               |
+| `select`             | function           |          | Function ran on selection change; alias of `onChange` and `onSelect`                                        |
+| `serialize?`         | function           |          | Function ran to serialize the option                                                                        |
 | `value?`             | string             |          | Selected option value                                                                                       |
 
 `SelectOptionType` Props:
@@ -221,7 +221,7 @@ Props:
 
 | Name                | Type                | Default | Description                                                        |
 | ------------------- | ------------------- | ------- | ------------------------------------------------------------------ |
-| `asValueChanges?`   | Function            |         | Function ran on grabber move                                       |
+| `asValueChanges?`   | function            |         | Function ran on grabber move                                       |
 | `barClassName?`     | string              |         | Bar element class name                                             |
 | `barStyles?`        | React.CSSProperties |         | Bar element style                                                  |
 | `className?`        | string              |         | Component class name                                               |
@@ -238,10 +238,10 @@ Props:
 | `maxValue?`         | number              | `100`   | Slider maximum value                                               |
 | `minValue?`         | number              | `0`     | Slider minimum value                                               |
 | `mini?`             | boolean             | `false` | Whether the slider grabber is a small dot                          |
-| `onMarkerRender?`   | Function            |         | Function ran on marker render, useful to customize markers         |
-| `onChange?`         | Function            |         | Function ran on value change                                       |
-| `onValueChange?`    | Function            |         | Function ran on value change; alias of `onChange`                  |
-| `onValueRender?`    | Function            |         | Function ran on value render , useful to customize values          |
+| `onMarkerRender?`   | function            |         | Function ran on marker render, useful to customize markers         |
+| `onChange?`         | function            |         | Function ran on value change                                       |
+| `onValueChange?`    | function            |         | Function ran on value change; alias of `onChange`                  |
+| `onValueRender?`    | function            |         | Function ran on value render , useful to customize values          |
 | `stickToMarkers?`   | boolean             | `false` | Whether the slider grabber can stick to markers                    |
 | `value?`            | number              |         | Slider value                                                       |
 
@@ -267,7 +267,7 @@ Props:
 | `disabled?`    | boolean             | `false` | Whether the switch is disabled                                   |
 | `hideBorder?`  | boolean             | `false` | Whether a divider is not displayed at the end of the switch item |
 | `note?`        | string              |         | Description of what the switch item is about                     |
-| `onChange`     | Function            |         | Function ran on state change                                     |
+| `onChange`     | function            |         | Function ran on state change                                     |
 | `style?`       | React.CSSProperties |         | Component style                                                  |
 | `tooltipNote?` | string              |         | Tooltip text displayed on the switch item                        |
 | `value`        | boolean             |         | Switch item value                                                |
@@ -303,11 +303,11 @@ Props:
 | `maxLength?`     | number   |         | Value maximum length                             |
 | `minLength?`     | number   |         | Value minimum length                             |
 | `name?`          | string   |         | Input element name                               |
-| `onBlur?`        | Function |         | Function ran on focus loose                      |
-| `onChange?`      | Function |         | Function ran on value change                     |
-| `onFocus?`       | Function |         | Function ran on focus                            |
-| `onInvalid?`     | Function |         | Function ran on invalid submission               |
-| `onKeyDown?`     | Function |         | Function ran on key press                        |
+| `onBlur?`        | function |         | Function ran on focus loose                      |
+| `onChange?`      | function |         | Function ran on value change                     |
+| `onFocus?`       | function |         | Function ran on focus                            |
+| `onInvalid?`     | function |         | Function ran on invalid submission               |
+| `onKeyDown?`     | function |         | Function ran on key press                        |
 | `placeholder?`   | string   |         | Input placeholder text                           |
 | `required?`      | boolean  | `false` | Whether the input completion is required         |
 | `resizeable?`    | boolean  | `false` | Whether the input can be resized                 |
@@ -350,10 +350,10 @@ Props:
 | `maxLength?`      | number              | `999`     | Value maximum length                             |
 | `minLength?`      | number              |           | Value minimum length                             |
 | `name?`           | string              |           | Input element name                               |
-| `onBlur?`         | Function            |           | Function ran on focus loose                      |
-| `onChange?`       | Function            |           | Function ran on value change                     |
-| `onFocus?`        | Function            |           | Function ran on focus                            |
-| `onKeyDown?`      | Function            |           | Function ran on key press                        |
+| `onBlur?`         | function            |           | Function ran on focus loose                      |
+| `onChange?`       | function            |           | Function ran on value change                     |
+| `onFocus?`        | function            |           | Function ran on focus                            |
+| `onKeyDown?`      | function            |           | Function ran on key press                        |
 | `placeholder?`    | string              |           | Input placeholder text                           |
 | `size?`           | string              | `default` | Define the input size                            |
 | `style?`          | React.CSSProperties |           | Component style                                  |
@@ -401,13 +401,13 @@ Props:
 | `innerClassName?`          | string              |                    | Text element class name                                                                      |
 | `look?`                    | string              | `lookFilled-*`     | Button look                                                                                  |
 | `note?`                    | string              |                    | Description of what the button item is about                                                 |
-| `onClick`                  | Function            |                    | Function ran on button click                                                                 |
-| `onDoubleClick?`           | Function            |                    | Function ran on double button click                                                          |
-| `onKeyDown?`               | Function            |                    | Function ran on key press                                                                    |
-| `onMouseDown?`             | Function            |                    | Function ran on mouse down                                                                   |
-| `onMouseEnter?`            | Function            |                    | Function ran on mouse enter                                                                  |
-| `onMouseLeave?`            | Function            |                    | Function ran on mouse leave                                                                  |
-| `onMouseUp?`               | Function            |                    | Function ran on mouse up                                                                     |
+| `onClick`                  | function            |                    | Function ran on button click                                                                 |
+| `onDoubleClick?`           | function            |                    | Function ran on double button click                                                          |
+| `onKeyDown?`               | function            |                    | Function ran on key press                                                                    |
+| `onMouseDown?`             | function            |                    | Function ran on mouse down                                                                   |
+| `onMouseEnter?`            | function            |                    | Function ran on mouse enter                                                                  |
+| `onMouseLeave?`            | function            |                    | Function ran on mouse leave                                                                  |
+| `onMouseUp?`               | function            |                    | Function ran on mouse up                                                                     |
 | `size?`                    | string              | `sizeMedium-*`     | Button size                                                                                  |
 | `style?`                   | React.CSSProperties |                    | Component style                                                                              |
 | `submitting?`              | boolean             | `false`            | Whether to display a loader inside the button; works together with `disabled` set to `false` |
@@ -438,7 +438,7 @@ Props:
 | ----------- | -------- | ------- | -------------------------------------------------- |
 | `disabled?` | boolean  | `false` | Whether the category and its children are disabled |
 | `note?`     | string   |         | Description of what the category contains          |
-| `onChange?` | Function |         | Function ran on open state change                  |
+| `onChange?` | function |         | Function ran on open state change                  |
 | `open?`     | boolean  | `false` | Whether the category is opened                     |
 | `title`     | string   |         | Category title                                     |
 
@@ -465,7 +465,7 @@ Props:
 | Name         | Type                | Default  | Description                              |
 | ------------ | ------------------- | -------- | ---------------------------------------- |
 | `className?` | string              |          | Component class name                     |
-| `onClick?`   | Function            |          | Function ran when clicking the component |
+| `onClick?`   | function            |          | Function ran when clicking the component |
 | `role?`      | string              | `button` | Define the element role                  |
 | `style?`     | React.CSSProperties |          | Component style                          |
 | `tabIndex?`  | number              | `0`      | Tab index                                |
@@ -513,7 +513,7 @@ Props:
 | Name        | Type            | Default | Description                               |
 | ----------- | --------------- | ------- | ----------------------------------------- |
 | `fallback?` | React.ReactNode |         | Fallback elements to show                 |
-| `onError?`  | Function        |         | Function ran when an error is triggered   |
+| `onError?`  | function        |         | Function ran when an error is triggered   |
 | `silent?`   | boolean         | `false` | Whether to not print the error to console |
 
 ### Flex
@@ -661,9 +661,70 @@ Props:
 
 Example:
 
+```tsx
+import { common, components } from "replugged";
+const { modal } = common;
+const { Modal } = components;
+
+modal.openModal((props) => (
+  <Modal.ModalRoot {...props}>
+    <Modal.ModalHeader>{/* Your components for the header here */}</Modal.ModalHeader>
+    <Modal.ModalContent>{/* Your components here */}</Modal.ModalContent>
+    <Modal.ModalFooter>{/* Your components for the footer here */}</Modal.ModalFooter>
+  </Modal.ModalRoot>
+));
+```
+
+<!-- TODO: add doc page reference for common modules (https://github.com/replugged-org/guide/issues/3) -->
+
 Related Components:
 
-Props:
+| Component           | Description            |
+| ------------------- | ---------------------- |
+| `.ModalCloseButton` | Close button component |
+| `.ModalContent`     | Contains the content   |
+| `.ModalFooter`      | Contains the footer    |
+| `.ModalHeader`      | Contains the header    |
+| `.ModalRoot`        | Root component         |
+
+`.ModalCloseButton` Props:
+
+| Name                    | Type     | Default | Description                                              |
+| ----------------------- | -------- | ------- | -------------------------------------------------------- |
+| `className?`            | string   |         | Component class name                                     |
+| `hideOnFullscreen?`     | boolean  | `false` | Whether the button is hidden when modal is in fullscreen |
+| `onClick`               | function |         | Function ran when clicking the close button              |
+| `withCircleBackground?` | boolean  | `false` | Whether the button is in a circle                        |
+
+`.ModalFooter` Props:
+
+| Name         | Type   | Default               | Description          |
+| ------------ | ------ | --------------------- | -------------------- |
+| `align?`     | string | `alignStretch-*`      | Flexbox align        |
+| `className?` | string |                       | Component class name |
+| `direction?` | string | `horizontalReverse-*` | Flexbox direction    |
+| `justify?`   | string | `justifyStart-*`      | Flexbox justify      |
+| `wrap?`      | string | `noWrap-*`            | Flexbox wrap         |
+
+`.ModalHeader` Props:
+
+| Name         | Type   | Default          | Description          |
+| ------------ | ------ | ---------------- | -------------------- |
+| `align?`     | string | `alignCenter-*`  | Flexbox align        |
+| `className?` | string |                  | Component class name |
+| `direction?` | string | `horizontal-*`   | Flexbox direction    |
+| `justify?`   | string | `justifyStart-*` | Flexbox justify      |
+| `wrap?`      | string | `noWrap-*`       | Flexbox wrap         |
+
+`.ModalRoot` Props:
+
+| Name               | Type     | Default  | Description                                   |
+| ------------------ | -------- | -------- | --------------------------------------------- |
+| `className?`       | string   |          | Component class name                          |
+| `onAnimationEnd?`  | function |          | Function ran when the modal stopped animating |
+| `role?`            | string   | `dialog` | Modal element role                            |
+| `size?`            | string   | `small`  | Modal size                                    |
+| `transitionState?` | string   |          | Modal state                                   |
 
 ### Notice
 
@@ -769,7 +830,7 @@ Props:
 | `forceOpen?`                   | boolean             | `false`   | Whether the tooltip is always visible                                             |
 | `hide?`                        | boolean             | `false`   | Whether the tooltip is hidden                                                     |
 | `hideOnClick?`                 | boolean             | `true`    | Whether the tooltip hides after clicking anywhere                                 |
-| `onAnimationRest?`             | Function            |           | Function ran when the tooltip is animating; its parameters are related to springs |
+| `onAnimationRest?`             | function            |           | Function ran when the tooltip is animating; its parameters are related to springs |
 | `position?`                    | string              | `top`     | Tooltip position; works together with `align`                                     |
 | `shouldShow?`                  | boolean             | `true`    | Whether the tooltip can show                                                      |
 | `spacing?`                     | number              | `8`       | Distance from the children                                                        |
