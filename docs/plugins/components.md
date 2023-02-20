@@ -6,7 +6,7 @@ description: Documented components for plugins
 
 # Components
 
-## Input Components
+## Input components
 
 :::caution
 
@@ -205,15 +205,15 @@ Props:
 
 | Name           | Type                | Default | Description                                                      |
 | -------------- | ------------------- | ------- | ---------------------------------------------------------------- |
-| `checked`      | boolean             |         | Slider state; prop not available for the Item version            |
+| `checked`      | boolean             |         | Switch state; use `value` with the Item component instead        |
 | `className?`   | string              |         | Component class name                                             |
 | `disabled?`    | boolean             | `false` | Whether the switch is disabled                                   |
 | `hideBorder?`  | boolean             | `false` | Whether a divider is not displayed at the end of the switch item |
 | `note?`        | string              |         | Description of what the switch item is about                     |
-| `onChange?`    | Function            |         | Function ran on state change                                     |
+| `onChange`     | Function            |         | Function ran on state change                                     |
 | `style?`       | React.CSSProperties |         | Component style                                                  |
 | `tooltipNote?` | string              |         | Tooltip text displayed on the switch item                        |
-| `value?`       | boolean             |         | Switch item value                                                |
+| `value`        | boolean             |         | Switch item value                                                |
 
 ### TextArea
 
@@ -303,7 +303,7 @@ Props:
 | `type?`           | string              | `text`    | Define the input type                            |
 | `value?`          | string              |           | Input value                                      |
 
-## Other Components
+## Other components
 
 ### Category
 
