@@ -51,24 +51,24 @@ Enums:
 
 Props:
 
-| Name             | Type              | Default            | Description                                        |
-| ---------------- | ----------------- | ------------------ | -------------------------------------------------- |
-| `align`          | `Checkbox.Aligns` | `CENTER`           | Alignment of the elements inside the checkbox      |
-| `checkboxColor`  | string            |                    | Checkbox border color                              |
-| `className`      | string            |                    | Component class name                               |
-| `color`          | string            | `var(--brand-500)` | Checkbox color                                     |
-| `disabled`       | boolean           | `false`            | Whether the checkbox is disabled                   |
-| `displayOnly`    | boolean           | `false`            | Whether the checkbox is a static element           |
-| `innerClassName` | string            |                    | Checkbox element class name                        |
-| `onChange`       | function          |                    | Function ran on value change                       |
-| `onClick`        | function          |                    | Function ran on checkbox click                     |
-| `readOnly`       | boolean           | `false`            | Whether the checkbox is read only                  |
-| `reverse`        | boolean           | `false`            | Whether the checkbox position is on the right side |
-| `shape`          | `Checkbox.Shapes` | `BOX`              | Define checkbox shape                              |
-| `size`           | number            | `24`               | Checkbox width and height                          |
-| `style`          | <CSSProperties /> |                    | Component style                                    |
-| `type`           | `Checkbox.Types`  | `DEFAULT`          | Define checkbox type                               |
-| `value`          | boolean           | `false`            | Checkbox state                                     |
+| Name             | Type                                 | Default            | Description                                        |
+| ---------------- | ------------------------------------ | ------------------ | -------------------------------------------------- |
+| `align`          | `Checkbox.Aligns`                    | `CENTER`           | Alignment of the elements inside the checkbox      |
+| `checkboxColor`  | string                               |                    | Checkbox border color                              |
+| `className`      | string                               |                    | Component class name                               |
+| `color`          | string                               | `var(--brand-500)` | Checkbox color                                     |
+| `disabled`       | boolean                              | `false`            | Whether the checkbox is disabled                   |
+| `displayOnly`    | boolean                              | `false`            | Whether the checkbox is a static element           |
+| `innerClassName` | string                               |                    | Checkbox element class name                        |
+| `onChange`       | (e: ChangeEvent, t: boolean) => void |                    | Function ran on value change                       |
+| `onClick`        | (e: MouseEvent) => void              |                    | Function ran on checkbox click                     |
+| `readOnly`       | boolean                              | `false`            | Whether the checkbox is read only                  |
+| `reverse`        | boolean                              | `false`            | Whether the checkbox position is on the right side |
+| `shape`          | `Checkbox.Shapes`                    | `BOX`              | Define checkbox shape                              |
+| `size`           | number                               | `24`               | Checkbox width and height                          |
+| `style`          | <CSSProperties />                    |                    | Component style                                    |
+| `type`           | `Checkbox.Types`                     | `DEFAULT`          | Define checkbox type                               |
+| `value`          | boolean                              | `false`            | Checkbox state                                     |
 
 ### Radio and RadioItem
 
@@ -106,19 +106,19 @@ Enums:
 
 Props:
 
-| Name                        | Type                               | Default  | Description                                               |
-| --------------------------- | ---------------------------------- | -------- | --------------------------------------------------------- |
-| `className`                 | string                             |          | Component class name                                      |
-| `disabled`                  | boolean                            | `false`  | Whether the radio group is disabled                       |
-| `itemInfoClassName`         | string                             |          | Radio info element class name                             |
-| `itemTitleClassName`        | string                             |          | Radio title element class name                            |
-| `onChange`                  | function **(required)**            |          | Function ran on value change                              |
-| `options`                   | `RadioOptionType[]` **(required)** |          | Array of radio options; check out `RadioOptionType` props |
-| `radioItemClassName`        | string                             |          | Radio item element class name                             |
-| `radioPosition`             | string                             | `left`   | Position of the radio                                     |
-| `size`                      | `Radio.Sizes`                      | `MEDIUM` | Define radio group size                                   |
-| `value`                     | string                             |          | Selected radio value                                      |
-| `withTransparentBackground` | boolean                            | `false`  | Whether the radio group is transparent                    |
+| Name                        | Type                                          | Default  | Description                                               |
+| --------------------------- | --------------------------------------------- | -------- | --------------------------------------------------------- |
+| `className`                 | string                                        |          | Component class name                                      |
+| `disabled`                  | boolean                                       | `false`  | Whether the radio group is disabled                       |
+| `itemInfoClassName`         | string                                        |          | Radio info element class name                             |
+| `itemTitleClassName`        | string                                        |          | Radio title element class name                            |
+| `onChange`                  | (e: `RadioOptionType`) => void **(required)** |          | Function ran on value change                              |
+| `options`                   | `RadioOptionType[]` **(required)**            |          | Array of radio options; check out `RadioOptionType` props |
+| `radioItemClassName`        | string                                        |          | Radio item element class name                             |
+| `radioPosition`             | string                                        | `left`   | Position of the radio                                     |
+| `size`                      | `Radio.Sizes`                                 | `MEDIUM` | Define radio group size                                   |
+| `value`                     | string                                        |          | Selected radio value                                      |
+| `withTransparentBackground` | boolean                                       | `false`  | Whether the radio group is transparent                    |
 
 `RadioOptionType` Props:
 
@@ -166,30 +166,30 @@ Props:
 | ------------------- | ----------------------------------- | -------- | ----------------------------------------------------------------------------------------------------------- |
 | `autoFocus`         | boolean                             | `false`  | Whether the select is on focus                                                                              |
 | `className`         | string                              |          | Component class name                                                                                        |
-| `clear`             | function                            |          | Function ran when the selection is cleared; works together with `clearable`; alias of `onClear`             |
+| `clear`             | () => void                          |          | Function ran when the selection is cleared; works together with `clearable`; alias of `onClear`             |
 | `clearable`         | boolean                             | `false`  | Whether the selection is clearable from its button; works together with `clear`                             |
 | `closeOnSelect`     | boolean                             | `true`   | Whether to close the popout once selected an option                                                         |
 | `disabled`          | boolean                             | `false`  | Whether the select is disabled; alias of `isDisabled`                                                       |
 | `hideIcon`          | boolean                             | `false`  | Whether the arrow icon is hidden                                                                            |
 | `isDisabled`        | boolean                             | `false`  | Whether the select is disabled; alias of `disabled`                                                         |
-| `isSelected`        | function **(required)**             |          | Function ran to check if the option passed as a parameter is selectable; not necessary if `value` is passed |
+| `isSelected`        | (e: string) => void **(required)**  |          | Function ran to check if the option passed as a parameter is selectable; not necessary if `value` is passed |
 | `look`              | number                              | `0`      | Define the select style                                                                                     |
 | `maxVisibleItems`   | number                              | `7`      | How many options are visible                                                                                |
-| `onChange`          | function **(required)**             |          | Function ran on selection change; alias of `onSelect` and `select`                                          |
-| `onClear`           | function                            |          | Function ran when the selection is cleared; works together with `clearable`; alias of `clear`               |
-| `onClose`           | function                            |          | Function ran when the popout got closed                                                                     |
-| `onOpen`            | function                            |          | Function ran when the popout got opened                                                                     |
-| `onSelect`          | function **(required)**             |          | Function ran on selection change; alias of `onChange` and `select`                                          |
+| `onChange`          | (e: string) => void **(required)**  |          | Function ran on selection change; alias of `onSelect` and `select`                                          |
+| `onClear`           | () => void                          |          | Function ran when the selection is cleared; works together with `clearable`; alias of `clear`               |
+| `onClose`           | () => void                          |          | Function ran when the popout got closed                                                                     |
+| `onOpen`            | () => void                          |          | Function ran when the popout got opened                                                                     |
+| `onSelect`          | (e: string) => void **(required)**  |          | Function ran on selection change; alias of `onChange` and `select`                                          |
 | `optionClassName`   | string                              |          | Option element class name                                                                                   |
 | `options`           | `SelectOptionType[]` **(required)** |          | Array of select options; check out `SelectOptionType` props                                                 |
 | `placeholder`       | string                              | `Select` | Select placeholder text                                                                                     |
 | `popoutClassName`   | string                              |          | Popout element class name                                                                                   |
 | `popoutPosition`    | string                              |          | Popout position displayed on the select; check out `Tooltip.Positions`                                      |
 | `popoutWidth`       | number                              |          | Popout width                                                                                                |
-| `renderOptionLabel` | function                            |          | Function ran on option label element render, useful to labels                                               |
-| `renderOptionValue` | function                            |          | Function ran on option value element render, useful to values                                               |
-| `select`            | function **(required)**             |          | Function ran on selection change; alias of `onChange` and `onSelect`                                        |
-| `serialize`         | function                            |          | Function ran to serialize the option                                                                        |
+| `renderOptionLabel` | (e: `SelectOptionType`) => void     |          | Function ran on option label element render, useful to labels                                               |
+| `renderOptionValue` | (e: `SelectOptionType[]`) => void   |          | Function ran on option value element render, useful to values                                               |
+| `select`            | (e: string) => void **(required)**  |          | Function ran on selection change; alias of `onChange` and `onSelect`                                        |
+| `serialize`         | (e: string) => void                 |          | Function ran to serialize the option                                                                        |
 | `value`             | string                              |          | Selected option value                                                                                       |
 
 `SelectOptionType` Props:
@@ -224,31 +224,31 @@ export function Settings(): React.ReactElement {
 
 Props:
 
-| Name               | Type              | Default | Description                                                        |
-| ------------------ | ----------------- | ------- | ------------------------------------------------------------------ |
-| `asValueChanges`   | function          |         | Function ran on grabber move                                       |
-| `barClassName`     | string            |         | Bar element class name                                             |
-| `barStyles`        | <CSSProperties /> |         | Bar element style                                                  |
-| `className`        | string            |         | Component class name                                               |
-| `defaultValue`     | number            |         | Default value, marked in green                                     |
-| `disabled`         | boolean           | `false` | Whether the slider is disabled                                     |
-| `equidistant`      | boolean           | `false` | Whether the markers are equidistant from each other                |
-| `fillStyles`       | <CSSProperties /> |         | Bar fill element style                                             |
-| `grabberClassName` | string            |         | Grabber element class name                                         |
-| `grabberStyles`    | <CSSProperties /> |         | Grabber element style                                              |
-| `hideBubble`       | boolean           | `false` | Whether the tooltip is hidden when `stickToMarkers` is `false`     |
-| `initialValue`     | number            | `10`    | Initial value the slider grabber is at; alias of `value`           |
-| `markers`          | number[]          |         | Array of slider markers                                            |
-| `keyboardStep`     | number            | `1`     | By how much the slider grabber has to move if the keyboard is used |
-| `maxValue`         | number            | `100`   | Slider maximum value                                               |
-| `minValue`         | number            | `0`     | Slider minimum value                                               |
-| `mini`             | boolean           | `false` | Whether the slider grabber is a small dot                          |
-| `onMarkerRender`   | function          |         | Function ran on marker render, useful to customize markers         |
-| `onChange`         | function          |         | Function ran on value change                                       |
-| `onValueChange`    | function          |         | Function ran on value change; alias of `onChange`                  |
-| `onValueRender`    | function          |         | Function ran on value render , useful to customize values          |
-| `stickToMarkers`   | boolean           | `false` | Whether the slider grabber can stick to markers                    |
-| `value`            | number            |         | Slider value                                                       |
+| Name               | Type                | Default | Description                                                        |
+| ------------------ | ------------------- | ------- | ------------------------------------------------------------------ |
+| `asValueChanges`   | (e: number) => void |         | Function ran on grabber move                                       |
+| `barClassName`     | string              |         | Bar element class name                                             |
+| `barStyles`        | <CSSProperties />   |         | Bar element style                                                  |
+| `className`        | string              |         | Component class name                                               |
+| `defaultValue`     | number              |         | Default value, marked in green                                     |
+| `disabled`         | boolean             | `false` | Whether the slider is disabled                                     |
+| `equidistant`      | boolean             | `false` | Whether the markers are equidistant from each other                |
+| `fillStyles`       | <CSSProperties />   |         | Bar fill element style                                             |
+| `grabberClassName` | string              |         | Grabber element class name                                         |
+| `grabberStyles`    | <CSSProperties />   |         | Grabber element style                                              |
+| `hideBubble`       | boolean             | `false` | Whether the tooltip is hidden when `stickToMarkers` is `false`     |
+| `initialValue`     | number              | `10`    | Initial value the slider grabber is at; alias of `value`           |
+| `markers`          | number[]            |         | Array of slider markers                                            |
+| `keyboardStep`     | number              | `1`     | By how much the slider grabber has to move if the keyboard is used |
+| `maxValue`         | number              | `100`   | Slider maximum value                                               |
+| `minValue`         | number              | `0`     | Slider minimum value                                               |
+| `mini`             | boolean             | `false` | Whether the slider grabber is a small dot                          |
+| `onMarkerRender`   | (e: number) => void |         | Function ran on marker render, useful to customize markers         |
+| `onChange`         | (e: number) => void |         | Function ran on value change                                       |
+| `onValueChange`    | (e: number) => void |         | Function ran on value change; alias of `onChange`                  |
+| `onValueRender`    | (e: number) => void |         | Function ran on value render, useful to customize values           |
+| `stickToMarkers`   | boolean             | `false` | Whether the slider grabber can stick to markers                    |
+| `value`            | number              |         | Slider value                                                       |
 
 ### Switch and SwitchItem
 
@@ -265,17 +265,17 @@ export function Settings(): React.ReactElement {
 
 Props:
 
-| Name          | Type                    | Default | Description                                                      |
-| ------------- | ----------------------- | ------- | ---------------------------------------------------------------- |
-| `checked`     | boolean **(required)**  |         | Switch state; use `value` with the Item component instead        |
-| `className`   | string                  |         | Component class name                                             |
-| `disabled`    | boolean                 | `false` | Whether the switch is disabled                                   |
-| `hideBorder`  | boolean                 | `false` | Whether a divider is not displayed at the end of the switch item |
-| `note`        | string                  |         | Description of what the switch item is about                     |
-| `onChange`    | function **(required)** |         | Function ran on state change                                     |
-| `style`       | <CSSProperties />       |         | Component style                                                  |
-| `tooltipNote` | string                  |         | Tooltip text displayed on the switch item                        |
-| `value`       | boolean **(required)**  |         | Switch item value                                                |
+| Name          | Type                                | Default | Description                                                      |
+| ------------- | ----------------------------------- | ------- | ---------------------------------------------------------------- |
+| `checked`     | boolean **(required)**              |         | Switch state; use `value` with the Item component instead        |
+| `className`   | string                              |         | Component class name                                             |
+| `disabled`    | boolean                             | `false` | Whether the switch is disabled                                   |
+| `hideBorder`  | boolean                             | `false` | Whether a divider is not displayed at the end of the switch item |
+| `note`        | string                              |         | Description of what the switch item is about                     |
+| `onChange`    | (e: boolean) => void **(required)** |         | Function ran on state change                                     |
+| `style`       | <CSSProperties />                   |         | Component style                                                  |
+| `tooltipNote` | string                              |         | Tooltip text displayed on the switch item                        |
+| `value`       | boolean **(required)**              |         | Switch item value                                                |
 
 ### TextArea
 
@@ -296,28 +296,28 @@ export function Settings(): React.ReactElement {
 
 Props:
 
-| Name            | Type     | Default | Description                                      |
-| --------------- | -------- | ------- | ------------------------------------------------ |
-| `allowOverflow` | boolean  | `false` | Whether the input can exceed the maximum length  |
-| `autoFocus`     | boolean  | `false` | Whether the input is on focus                    |
-| `autosize`      | boolean  | `false` | Whether the input can automatically set its size |
-| `className`     | string   |         | Component class name                             |
-| `disabled`      | boolean  | `false` | Whether the input is disabled                    |
-| `error`         | string   |         | Error message displayed if length exceeds limits |
-| `flex`          | boolean  | `false` | Whether the input is flexible                    |
-| `maxLength`     | number   |         | Value maximum length                             |
-| `minLength`     | number   |         | Value minimum length                             |
-| `name`          | string   |         | Input element name                               |
-| `onBlur`        | function |         | Function ran on focus loose                      |
-| `onChange`      | function |         | Function ran on value change                     |
-| `onFocus`       | function |         | Function ran on focus                            |
-| `onInvalid`     | function |         | Function ran on invalid submission               |
-| `onKeyDown`     | function |         | Function ran on key press                        |
-| `placeholder`   | string   |         | Input placeholder text                           |
-| `required`      | boolean  | `false` | Whether the input completion is required         |
-| `resizeable`    | boolean  | `false` | Whether the input can be resized                 |
-| `rows`          | number   | `3`     | Define the number of rows the input has          |
-| `value`         | string   |         | Input value                                      |
+| Name            | Type                       | Default | Description                                      |
+| --------------- | -------------------------- | ------- | ------------------------------------------------ |
+| `allowOverflow` | boolean                    | `false` | Whether the input can exceed the maximum length  |
+| `autoFocus`     | boolean                    | `false` | Whether the input is on focus                    |
+| `autosize`      | boolean                    | `false` | Whether the input can automatically set its size |
+| `className`     | string                     |         | Component class name                             |
+| `disabled`      | boolean                    | `false` | Whether the input is disabled                    |
+| `error`         | string                     |         | Error message displayed if length exceeds limits |
+| `flex`          | boolean                    | `false` | Whether the input is flexible                    |
+| `maxLength`     | number                     |         | Value maximum length                             |
+| `minLength`     | number                     |         | Value minimum length                             |
+| `name`          | string                     |         | Input element name                               |
+| `onBlur`        | (e: FocusEvent) => void    |         | Function ran on focus loose                      |
+| `onChange`      | (e: string) => void        |         | Function ran on value change                     |
+| `onFocus`       | (e: FocusEvent) => void    |         | Function ran on focus                            |
+| `onInvalid`     | (e: FormEvent) => void     |         | Function ran on invalid submission               |
+| `onKeyDown`     | (e: KeyboardEvent) => void |         | Function ran on key press                        |
+| `placeholder`   | string                     |         | Input placeholder text                           |
+| `required`      | boolean                    | `false` | Whether the input completion is required         |
+| `resizeable`    | boolean                    | `false` | Whether the input can be resized                 |
+| `rows`          | number                     | `3`     | Define the number of rows the input has          |
+| `value`         | string                     |         | Input value                                      |
 
 ### TextInput
 
@@ -344,26 +344,26 @@ Enums:
 
 Props:
 
-| Name             | Type              | Default   | Description                                      |
-| ---------------- | ----------------- | --------- | ------------------------------------------------ |
-| `autoFocus`      | boolean           | `false`   | Whether the input is on focus                    |
-| `className`      | string            |           | Component class name                             |
-| `disabled`       | boolean           | `false`   | Whether the input is disabled                    |
-| `editable`       | boolean           | `true`    | Whether the input is editable                    |
-| `error`          | string            |           | Error message displayed if length exceeds limits |
-| `inputClassName` | string            |           | Input element class name                         |
-| `maxLength`      | number            | `999`     | Value maximum length                             |
-| `minLength`      | number            |           | Value minimum length                             |
-| `name`           | string            |           | Input element name                               |
-| `onBlur`         | function          |           | Function ran on focus loose                      |
-| `onChange`       | function          |           | Function ran on value change                     |
-| `onFocus`        | function          |           | Function ran on focus                            |
-| `onKeyDown`      | function          |           | Function ran on key press                        |
-| `placeholder`    | string            |           | Input placeholder text                           |
-| `size`           | `TextInput.Sizes` | `DEFAULT` | Define the input size                            |
-| `style`          | <CSSProperties /> |           | Component style                                  |
-| `type`           | string            | `text`    | Define the input type                            |
-| `value`          | string            |           | Input value                                      |
+| Name             | Type                       | Default   | Description                                      |
+| ---------------- | -------------------------- | --------- | ------------------------------------------------ |
+| `autoFocus`      | boolean                    | `false`   | Whether the input is on focus                    |
+| `className`      | string                     |           | Component class name                             |
+| `disabled`       | boolean                    | `false`   | Whether the input is disabled                    |
+| `editable`       | boolean                    | `true`    | Whether the input is editable                    |
+| `error`          | string                     |           | Error message displayed if length exceeds limits |
+| `inputClassName` | string                     |           | Input element class name                         |
+| `maxLength`      | number                     | `999`     | Value maximum length                             |
+| `minLength`      | number                     |           | Value minimum length                             |
+| `name`           | string                     |           | Input element name                               |
+| `onBlur`         | (e: FocusEvent) => void    |           | Function ran on focus loose                      |
+| `onChange`       | (e: string) => void        |           | Function ran on value change                     |
+| `onFocus`        | (e: FocusEvent) => void    |           | Function ran on focus                            |
+| `onKeyDown`      | (e: KeyboardEvent) => void |           | Function ran on key press                        |
+| `placeholder`    | string                     |           | Input placeholder text                           |
+| `size`           | `TextInput.Sizes`          | `DEFAULT` | Define the input size                            |
+| `style`          | <CSSProperties />          |           | Component style                                  |
+| `type`           | string                     | `text`    | Define the input type                            |
+| `value`          | string                     |           | Input value                                      |
 
 ## Other components
 
@@ -392,37 +392,37 @@ Enums:
 
 Props:
 
-| Name                      | Type                    | Default            | Description                                                                                  |
-| ------------------------- | ----------------------- | ------------------ | -------------------------------------------------------------------------------------------- |
-| `borderColor`             | `Button.BorderColors`   |                    | Button border color                                                                          |
-| `button`                  | string **(required)**   |                    | Button text for the item component                                                           |
-| `className`               | string                  |                    | Component class name                                                                         |
-| `color`                   | `Button.Colors`         | `BRAND`            | Button color                                                                                 |
-| `disabled`                | boolean                 | `false`            | Whether the button is disabled                                                               |
-| `fullWidth`               | boolean                 | `false`            | Whether the button width is at maximum                                                       |
-| `grow`                    | boolean                 | `true`             | Whether the button size can grow                                                             |
-| `hideBorder`              | boolean                 | `false`            | Whether a divider is not displayed at the end of the button item                             |
-| `hover`                   | `Button.Hovers`         |                    | Button hover color                                                                           |
-| `innerClassName`          | string                  |                    | Text element class name                                                                      |
-| `look`                    | `Button.Looks`          | `FILLED`           | Button look                                                                                  |
-| `note`                    | string                  |                    | Description of what the button item is about                                                 |
-| `onClick`                 | function **(required)** |                    | Function ran on button click                                                                 |
-| `onDoubleClick`           | function                |                    | Function ran on double button click                                                          |
-| `onKeyDown`               | function                |                    | Function ran on key press                                                                    |
-| `onMouseDown`             | function                |                    | Function ran on mouse down                                                                   |
-| `onMouseEnter`            | function                |                    | Function ran on mouse enter                                                                  |
-| `onMouseLeave`            | function                |                    | Function ran on mouse leave                                                                  |
-| `onMouseUp`               | function                |                    | Function ran on mouse up                                                                     |
-| `size`                    | `Button.Sizes`          | `MEDIUM`           | Button size                                                                                  |
-| `style`                   | <CSSProperties />       |                    | Component style                                                                              |
-| `submitting`              | boolean                 | `false`            | Whether to display a loader inside the button; works together with `disabled` set to `false` |
-| `submittingFinishedLabel` | string                  | `Loading finished` | Announce finish loading message for screen-reader users; works together with `submitting`    |
-| `submittingStartedLabel`  | string                  | `Loading`          | Announce start loading message for screen-reader users; works together with `submitting`     |
-| `success`                 | boolean                 | `false`            | Whether the button color is green                                                            |
-| `tooltipPosition`         | string                  |                    | Tooltip position displayed on the button item; check out `Tooltip.Positions`                 |
-| `tooltipText`             | string                  |                    | Tooltip text displayed on the button item                                                    |
-| `type`                    | string                  | `button`           | Button element type                                                                          |
-| `wrapperClassName`        | string                  |                    | Wrapper element class name                                                                   |
+| Name                      | Type                       | Default            | Description                                                                                  |
+| ------------------------- | -------------------------- | ------------------ | -------------------------------------------------------------------------------------------- |
+| `borderColor`             | `Button.BorderColors`      |                    | Button border color                                                                          |
+| `button`                  | string **(required)**      |                    | Button text for the item component                                                           |
+| `className`               | string                     |                    | Component class name                                                                         |
+| `color`                   | `Button.Colors`            | `BRAND`            | Button color                                                                                 |
+| `disabled`                | boolean                    | `false`            | Whether the button is disabled                                                               |
+| `fullWidth`               | boolean                    | `false`            | Whether the button width is at maximum                                                       |
+| `grow`                    | boolean                    | `true`             | Whether the button size can grow                                                             |
+| `hideBorder`              | boolean                    | `false`            | Whether a divider is not displayed at the end of the button item                             |
+| `hover`                   | `Button.Hovers`            |                    | Button hover color                                                                           |
+| `innerClassName`          | string                     |                    | Text element class name                                                                      |
+| `look`                    | `Button.Looks`             | `FILLED`           | Button look                                                                                  |
+| `note`                    | string                     |                    | Description of what the button item is about                                                 |
+| `onClick`                 | () => void **(required)**  |                    | Function ran on button click                                                                 |
+| `onDoubleClick`           | (e: MouseEvent) => void    |                    | Function ran on double button click                                                          |
+| `onKeyDown`               | (e: KeyboardEvent) => void |                    | Function ran on key press                                                                    |
+| `onMouseDown`             | (e: MouseEvent) => void    |                    | Function ran on mouse down                                                                   |
+| `onMouseEnter`            | (e: MouseEvent) => void    |                    | Function ran on mouse enter                                                                  |
+| `onMouseLeave`            | (e: MouseEvent) => void    |                    | Function ran on mouse leave                                                                  |
+| `onMouseUp`               | (e: MouseEvent) => void    |                    | Function ran on mouse up                                                                     |
+| `size`                    | `Button.Sizes`             | `MEDIUM`           | Button size                                                                                  |
+| `style`                   | <CSSProperties />          |                    | Component style                                                                              |
+| `submitting`              | boolean                    | `false`            | Whether to display a loader inside the button; works together with `disabled` set to `false` |
+| `submittingFinishedLabel` | string                     | `Loading finished` | Announce finish loading message for screen-reader users; works together with `submitting`    |
+| `submittingStartedLabel`  | string                     | `Loading`          | Announce start loading message for screen-reader users; works together with `submitting`     |
+| `success`                 | boolean                    | `false`            | Whether the button color is green                                                            |
+| `tooltipPosition`         | string                     |                    | Tooltip position displayed on the button item; check out `Tooltip.Positions`                 |
+| `tooltipText`             | string                     |                    | Tooltip text displayed on the button item                                                    |
+| `type`                    | string                     | `button`           | Button element type                                                                          |
+| `wrapperClassName`        | string                     |                    | Wrapper element class name                                                                   |
 
 ### Category
 
@@ -443,7 +443,7 @@ Props:
 | ---------- | --------------------- | ------- | -------------------------------------------------- |
 | `disabled` | boolean               | `false` | Whether the category and its children are disabled |
 | `note`     | string                |         | Description of what the category contains          |
-| `onChange` | function              |         | Function ran on open state change                  |
+| `onChange` | () => void            |         | Function ran on open state change                  |
 | `open`     | boolean               | `false` | Whether the category is opened                     |
 | `title`    | string **(required)** |         | Category title                                     |
 
@@ -470,7 +470,7 @@ Props:
 | Name        | Type              | Default  | Description                              |
 | ----------- | ----------------- | -------- | ---------------------------------------- |
 | `className` | string            |          | Component class name                     |
-| `onClick`   | function          |          | Function ran when clicking the component |
+| `onClick`   | () => void        |          | Function ran when clicking the component |
 | `role`      | string            | `button` | Define the element role                  |
 | `style`     | <CSSProperties /> |          | Component style                          |
 | `tabIndex`  | number            | `0`      | Tab index                                |
@@ -517,11 +517,11 @@ const { ErrorBoundary } = components;
 
 Props:
 
-| Name       | Type       | Default | Description                               |
-| ---------- | ---------- | ------- | ----------------------------------------- |
-| `fallback` | React node |         | Fallback elements to show                 |
-| `onError`  | function   |         | Function ran when an error is triggered   |
-| `silent`   | boolean    | `false` | Whether to not print the error to console |
+| Name       | Type                                         | Default | Description                               |
+| ---------- | -------------------------------------------- | ------- | ----------------------------------------- |
+| `fallback` | React node                                   |         | Fallback elements to show                 |
+| `onError`  | (error: unknown, errorInfo: unknown) => void |         | Function ran when an error is triggered   |
+| `silent`   | boolean                                      | `false` | Whether to not print the error to console |
 
 ### Flex
 
@@ -709,7 +709,7 @@ Related Components:
 | ---------------------- | ----------------------- | ------- | -------------------------------------------------------- |
 | `className`            | string                  |         | Component class name                                     |
 | `hideOnFullscreen`     | boolean                 | `false` | Whether the button is hidden when modal is in fullscreen |
-| `onClick`              | function **(required)** |         | Function ran when clicking the close button              |
+| `onClick`              | (): void **(required)** |         | Function ran when clicking the close button              |
 | `withCircleBackground` | boolean                 | `false` | Whether the button is in a circle                        |
 
 `.ModalFooter` Props:
@@ -734,13 +734,13 @@ Related Components:
 
 `.ModalRoot` Props:
 
-| Name              | Type     | Default  | Description                                   |
-| ----------------- | -------- | -------- | --------------------------------------------- |
-| `className`       | string   |          | Component class name                          |
-| `onAnimationEnd`  | function |          | Function ran when the modal stopped animating |
-| `role`            | string   | `dialog` | Modal element role                            |
-| `size`            | string   | `small`  | Modal size                                    |
-| `transitionState` | string   |          | Modal state                                   |
+| Name              | Type       | Default  | Description                                   |
+| ----------------- | ---------- | -------- | --------------------------------------------- |
+| `className`       | string     |          | Component class name                          |
+| `onAnimationEnd`  | (): string |          | Function ran when the modal stopped animating |
+| `role`            | string     | `dialog` | Modal element role                            |
+| `size`            | string     | `small`  | Modal size                                    |
+| `transitionState` | string     |          | Modal state                                   |
 
 ### Notice
 
@@ -835,22 +835,22 @@ Enums:
 
 Props:
 
-| Name                          | Type                  | Default   | Description                                                                       |
-| ----------------------------- | --------------------- | --------- | --------------------------------------------------------------------------------- |
-| `align`                       | `Tooltip.Aligns`      | `CENTER`  | Tooltip alignment to the children; works together with `position`                 |
-| `allowOverflow`               | boolean               | `false`   | Whether the tooltip content can overflow                                          |
-| `className`                   | string                |           | Component class name                                                              |
-| `color`                       | `Tooltip.Colors`      | `PRIMARY` | Sets color of the tooltip                                                         |
-| `delay`                       | number                |           | How long the tooltip takes to appear in milliseconds                              |
-| `disableTooltipPointerEvents` | boolean               | `false`   | Whether to disable pointer events on the tooltip                                  |
-| `forceOpen`                   | boolean               | `false`   | Whether the tooltip is always visible                                             |
-| `hide`                        | boolean               | `false`   | Whether the tooltip is hidden                                                     |
-| `hideOnClick`                 | boolean               | `true`    | Whether the tooltip hides after clicking anywhere                                 |
-| `onAnimationRest`             | function              |           | Function ran when the tooltip is animating; its parameters are related to springs |
-| `position`                    | `Tooltip.Positions`   | `TOP`     | Tooltip position; works together with `align`                                     |
-| `shouldShow`                  | boolean               | `true`    | Whether the tooltip can show                                                      |
-| `spacing`                     | number                | `8`       | Distance from the children                                                        |
-| `style`                       | <CSSProperties />     |           | Component style                                                                   |
-| `text`                        | string **(required)** |           | Tooltip text                                                                      |
-| `tooltipClassName`            | string                |           | Tooltip element class name                                                        |
-| `tooltipContentClassName`     | string                |           | Tooltip content element class name                                                |
+| Name                          | Type                           | Default   | Description                                                                       |
+| ----------------------------- | ------------------------------ | --------- | --------------------------------------------------------------------------------- |
+| `align`                       | `Tooltip.Aligns`               | `CENTER`  | Tooltip alignment to the children; works together with `position`                 |
+| `allowOverflow`               | boolean                        | `false`   | Whether the tooltip content can overflow                                          |
+| `className`                   | string                         |           | Component class name                                                              |
+| `color`                       | `Tooltip.Colors`               | `PRIMARY` | Sets color of the tooltip                                                         |
+| `delay`                       | number                         |           | How long the tooltip takes to appear in milliseconds                              |
+| `disableTooltipPointerEvents` | boolean                        | `false`   | Whether to disable pointer events on the tooltip                                  |
+| `forceOpen`                   | boolean                        | `false`   | Whether the tooltip is always visible                                             |
+| `hide`                        | boolean                        | `false`   | Whether the tooltip is hidden                                                     |
+| `hideOnClick`                 | boolean                        | `true`    | Whether the tooltip hides after clicking anywhere                                 |
+| `onAnimationRest`             | (e: object, t: object) => void |           | Function ran when the tooltip is animating; its parameters are related to springs |
+| `position`                    | `Tooltip.Positions`            | `TOP`     | Tooltip position; works together with `align`                                     |
+| `shouldShow`                  | boolean                        | `true`    | Whether the tooltip can show                                                      |
+| `spacing`                     | number                         | `8`       | Distance from the children                                                        |
+| `style`                       | <CSSProperties />              |           | Component style                                                                   |
+| `text`                        | string **(required)**          |           | Tooltip text                                                                      |
+| `tooltipClassName`            | string                         |           | Tooltip element class name                                                        |
+| `tooltipContentClassName`     | string                         |           | Tooltip content element class name                                                |
