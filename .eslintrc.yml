@@ -49,11 +49,11 @@ overrides:
       no-void: off
       consistent-return: off
 
-  - files: "**/*.md"
+  - files: "**/*.{md,mdx}"
     processor: markdown/markdown
 
   - files:
-      - "**/*.md/*.ts"
+      - "**/*.{md,mdx}/*.ts"
     extends: eslint-config-dmitmel/presets/typescript-addon
     rules:
       node/no-missing-import: off

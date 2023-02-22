@@ -12,9 +12,14 @@ export const CSSProperties = () => (
 
 :::caution
 
-- Most props are optional unless specified with **(required)** in the type!
-- Enums found on this page are only accessible by the original component! (e.g. `Item` components
-  cannot access them)
+All props are optional unless they say **(required)**.
+
+:::
+
+:::caution
+
+Enums listed on this page cannot be accessed on the `Item` components. For example,
+`Checkbox.Aligns` is **not** available on `CheckboxItem.Aligns`.
 
 :::
 
@@ -43,32 +48,32 @@ export function Settings(): React.ReactElement {
 
 Enums:
 
-| Enum      | Description                                                     |
-| --------- | --------------------------------------------------------------- |
-| `.Aligns` | Checkbox alignments <br/>`TOP` \| `CENTER`                      |
-| `.Shapes` | Checkbox shapes <br/>`BOX` \| `ROUND` \| `SMALL`                |
-| `.Types`  | Checkbox types <br/>`DEFAULT` \| `INVERTED` \| `GHOST` \| `ROW` |
+| Enum              | Description                                                     |
+| ----------------- | --------------------------------------------------------------- |
+| `Checkbox.Aligns` | Checkbox alignments <br/>`TOP` \| `CENTER`                      |
+| `Checkbox.Shapes` | Checkbox shapes <br/>`BOX` \| `ROUND` \| `SMALL`                |
+| `Checkbox.Types`  | Checkbox types <br/>`DEFAULT` \| `INVERTED` \| `GHOST` \| `ROW` |
 
 Props:
 
-| Name             | Type                                 | Default            | Description                                        |
-| ---------------- | ------------------------------------ | ------------------ | -------------------------------------------------- |
-| `align`          | `Checkbox.Aligns`                    | `CENTER`           | Alignment of the elements inside the checkbox      |
-| `checkboxColor`  | string                               |                    | Checkbox border color                              |
-| `className`      | string                               |                    | Component class name                               |
-| `color`          | string                               | `var(--brand-500)` | Checkbox color                                     |
-| `disabled`       | boolean                              | `false`            | Whether the checkbox is disabled                   |
-| `displayOnly`    | boolean                              | `false`            | Whether the checkbox is a static element           |
-| `innerClassName` | string                               |                    | Checkbox element class name                        |
-| `onChange`       | (e: ChangeEvent, t: boolean) => void |                    | Function ran on value change                       |
-| `onClick`        | (e: MouseEvent) => void              |                    | Function ran on checkbox click                     |
-| `readOnly`       | boolean                              | `false`            | Whether the checkbox is read only                  |
-| `reverse`        | boolean                              | `false`            | Whether the checkbox position is on the right side |
-| `shape`          | `Checkbox.Shapes`                    | `BOX`              | Define checkbox shape                              |
-| `size`           | number                               | `24`               | Checkbox width and height                          |
-| `style`          | <CSSProperties />                    |                    | Component style                                    |
-| `type`           | `Checkbox.Types`                     | `DEFAULT`          | Define checkbox type                               |
-| `value`          | boolean                              | `false`            | Checkbox state                                     |
+| Name             | Type                                 | Default                  | Description                                        |
+| ---------------- | ------------------------------------ | ------------------------ | -------------------------------------------------- |
+| `align`          | `Checkbox.Aligns`                    | `Checkbox.Aligns.CENTER` | Alignment of the elements inside the checkbox      |
+| `checkboxColor`  | string                               |                          | Checkbox border color                              |
+| `className`      | string                               |                          | Component class name                               |
+| `color`          | string                               | `var(--brand-500)`       | Checkbox color                                     |
+| `disabled`       | boolean                              | `false`                  | Whether the checkbox is disabled                   |
+| `displayOnly`    | boolean                              | `false`                  | Whether the checkbox is a static element           |
+| `innerClassName` | string                               |                          | Checkbox element class name                        |
+| `onChange`       | (e: ChangeEvent, t: boolean) => void |                          | Function ran on value change                       |
+| `onClick`        | (e: MouseEvent) => void              |                          | Function ran on checkbox click                     |
+| `readOnly`       | boolean                              | `false`                  | Whether the checkbox is read only                  |
+| `reverse`        | boolean                              | `false`                  | Whether the checkbox position is on the right side |
+| `shape`          | `Checkbox.Shapes`                    | `Checkbox.Shapes.BOX`    | Define checkbox shape                              |
+| `size`           | number                               | `24`                     | Checkbox width and height                          |
+| `style`          | <CSSProperties />                    |                          | Component style                                    |
+| `type`           | `Checkbox.Types`                     | `Checkbox.Types.DEFAULT` | Define checkbox type                               |
+| `value`          | boolean                              | `false`                  | Checkbox state                                     |
 
 ### Radio and RadioItem
 
@@ -100,25 +105,25 @@ export function Settings(): React.ReactElement {
 
 Enums:
 
-| Enum     | Description                                                       |
-| -------- | ----------------------------------------------------------------- |
-| `.Sizes` | Radio group sizes <br/>`NOT_SET` \| `NONE` \| `SMALL` \| `MEDIUM` |
+| Enum          | Description                                                       |
+| ------------- | ----------------------------------------------------------------- |
+| `Radio.Sizes` | Radio group sizes <br/>`NOT_SET` \| `NONE` \| `SMALL` \| `MEDIUM` |
 
 Props:
 
-| Name                        | Type                                          | Default  | Description                                               |
-| --------------------------- | --------------------------------------------- | -------- | --------------------------------------------------------- |
-| `className`                 | string                                        |          | Component class name                                      |
-| `disabled`                  | boolean                                       | `false`  | Whether the radio group is disabled                       |
-| `itemInfoClassName`         | string                                        |          | Radio info element class name                             |
-| `itemTitleClassName`        | string                                        |          | Radio title element class name                            |
-| `onChange`                  | (e: `RadioOptionType`) => void **(required)** |          | Function ran on value change                              |
-| `options`                   | `RadioOptionType[]` **(required)**            |          | Array of radio options; check out `RadioOptionType` props |
-| `radioItemClassName`        | string                                        |          | Radio item element class name                             |
-| `radioPosition`             | string                                        | `left`   | Position of the radio                                     |
-| `size`                      | `Radio.Sizes`                                 | `MEDIUM` | Define radio group size                                   |
-| `value`                     | string                                        |          | Selected radio value                                      |
-| `withTransparentBackground` | boolean                                       | `false`  | Whether the radio group is transparent                    |
+| Name                        | Type                                          | Default              | Description                                               |
+| --------------------------- | --------------------------------------------- | -------------------- | --------------------------------------------------------- |
+| `className`                 | string                                        |                      | Component class name                                      |
+| `disabled`                  | boolean                                       | `false`              | Whether the radio group is disabled                       |
+| `itemInfoClassName`         | string                                        |                      | Radio info element class name                             |
+| `itemTitleClassName`        | string                                        |                      | Radio title element class name                            |
+| `onChange`                  | (e: `RadioOptionType`) => void **(required)** |                      | Function ran on value change                              |
+| `options`                   | `RadioOptionType[]` **(required)**            |                      | Array of radio options; check out `RadioOptionType` props |
+| `radioItemClassName`        | string                                        |                      | Radio item element class name                             |
+| `radioPosition`             | string                                        | `left`               | Position of the radio                                     |
+| `size`                      | `Radio.Sizes`                                 | `Radio.Sizes.MEDIUM` | Define radio group size                                   |
+| `value`                     | string                                        |                      | Selected radio value                                      |
+| `withTransparentBackground` | boolean                                       | `false`              | Whether the radio group is transparent                    |
 
 `RadioOptionType` Props:
 
@@ -338,32 +343,32 @@ export function Settings(): React.ReactElement {
 
 Enums:
 
-| Enum     | Description                          |
-| -------- | ------------------------------------ |
-| `.Sizes` | Input sizes <br/>`DEFAULT` \| `MINI` |
+| Enum              | Description                          |
+| ----------------- | ------------------------------------ |
+| `TextInput.Sizes` | Input sizes <br/>`DEFAULT` \| `MINI` |
 
 Props:
 
-| Name             | Type                       | Default   | Description                                      |
-| ---------------- | -------------------------- | --------- | ------------------------------------------------ |
-| `autoFocus`      | boolean                    | `false`   | Whether the input is on focus                    |
-| `className`      | string                     |           | Component class name                             |
-| `disabled`       | boolean                    | `false`   | Whether the input is disabled                    |
-| `editable`       | boolean                    | `true`    | Whether the input is editable                    |
-| `error`          | string                     |           | Error message displayed if length exceeds limits |
-| `inputClassName` | string                     |           | Input element class name                         |
-| `maxLength`      | number                     | `999`     | Value maximum length                             |
-| `minLength`      | number                     |           | Value minimum length                             |
-| `name`           | string                     |           | Input element name                               |
-| `onBlur`         | (e: FocusEvent) => void    |           | Function ran on focus loose                      |
-| `onChange`       | (e: string) => void        |           | Function ran on value change                     |
-| `onFocus`        | (e: FocusEvent) => void    |           | Function ran on focus                            |
-| `onKeyDown`      | (e: KeyboardEvent) => void |           | Function ran on key press                        |
-| `placeholder`    | string                     |           | Input placeholder text                           |
-| `size`           | `TextInput.Sizes`          | `DEFAULT` | Define the input size                            |
-| `style`          | <CSSProperties />          |           | Component style                                  |
-| `type`           | string                     | `text`    | Define the input type                            |
-| `value`          | string                     |           | Input value                                      |
+| Name             | Type                       | Default                   | Description                                      |
+| ---------------- | -------------------------- | ------------------------- | ------------------------------------------------ |
+| `autoFocus`      | boolean                    | `false`                   | Whether the input is on focus                    |
+| `className`      | string                     |                           | Component class name                             |
+| `disabled`       | boolean                    | `false`                   | Whether the input is disabled                    |
+| `editable`       | boolean                    | `true`                    | Whether the input is editable                    |
+| `error`          | string                     |                           | Error message displayed if length exceeds limits |
+| `inputClassName` | string                     |                           | Input element class name                         |
+| `maxLength`      | number                     | `999`                     | Value maximum length                             |
+| `minLength`      | number                     |                           | Value minimum length                             |
+| `name`           | string                     |                           | Input element name                               |
+| `onBlur`         | (e: FocusEvent) => void    |                           | Function ran on focus loose                      |
+| `onChange`       | (e: string) => void        |                           | Function ran on value change                     |
+| `onFocus`        | (e: FocusEvent) => void    |                           | Function ran on focus                            |
+| `onKeyDown`      | (e: KeyboardEvent) => void |                           | Function ran on key press                        |
+| `placeholder`    | string                     |                           | Input placeholder text                           |
+| `size`           | `TextInput.Sizes`          | `TextInput.Sizes.DEFAULT` | Define the input size                            |
+| `style`          | <CSSProperties />          |                           | Component style                                  |
+| `type`           | string                     | `text`                    | Define the input type                            |
+| `value`          | string                     |                           | Input value                                      |
 
 ## Other components
 
@@ -382,47 +387,47 @@ const { ButtonItem } = components;
 
 Enums:
 
-| Enum            | Description                                                                                                                                         |
-| --------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `.BorderColors` | Button border colors <br/>`BRAND` \| `RED` \| `GREEN` \| `YELLOW` \| `PRIMARY` \| `LINK` \| `WHITE` \| `BLACK` \| `TRANSPARENT` \| `BRAND_NEW`      |
-| `.Colors`       | Button colors <br/>`BRAND` \| `RED` \| `GREEN` \| `YELLOW` \| `PRIMARY` \| `LINK` \| `WHITE` \| `BLACK` \| `TRANSPARENT` \| `BRAND_NEW` \| `CUSTOM` |
-| `.Hovers`       | Button color hovers <br/>`DEFAULT` \| `BRAND` \| `RED` \| `GREEN` \| `YELLOW` \| `PRIMARY` \| `LINK` \| `WHITE` \| `BLACK` \| `TRANSPARENT`         |
-| `.Looks`        | Button looks <br/>`FILLED` \| `INVERTED` \| `OUTLINED` \| `LINK` \| `BLANK`                                                                         |
-| `.Sizes`        | Button sizes <br/>`NONE` \| `TINY` \| `SMALL` \| `MEDIUM` \| `LARGE` \| `XLARGE` \| `MIN` \| `MAX` \| `ICON`                                        |
+| Enum                  | Description                                                                                                                                         |
+| --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Button.BorderColors` | Button border colors <br/>`BRAND` \| `RED` \| `GREEN` \| `YELLOW` \| `PRIMARY` \| `LINK` \| `WHITE` \| `BLACK` \| `TRANSPARENT` \| `BRAND_NEW`      |
+| `Button.Colors`       | Button colors <br/>`BRAND` \| `RED` \| `GREEN` \| `YELLOW` \| `PRIMARY` \| `LINK` \| `WHITE` \| `BLACK` \| `TRANSPARENT` \| `BRAND_NEW` \| `CUSTOM` |
+| `Button.Hovers`       | Button color hovers <br/>`DEFAULT` \| `BRAND` \| `RED` \| `GREEN` \| `YELLOW` \| `PRIMARY` \| `LINK` \| `WHITE` \| `BLACK` \| `TRANSPARENT`         |
+| `Button.Looks`        | Button looks <br/>`FILLED` \| `INVERTED` \| `OUTLINED` \| `LINK` \| `BLANK`                                                                         |
+| `Button.Sizes`        | Button sizes <br/>`NONE` \| `TINY` \| `SMALL` \| `MEDIUM` \| `LARGE` \| `XLARGE` \| `MIN` \| `MAX` \| `ICON`                                        |
 
 Props:
 
-| Name                      | Type                       | Default            | Description                                                                                  |
-| ------------------------- | -------------------------- | ------------------ | -------------------------------------------------------------------------------------------- |
-| `borderColor`             | `Button.BorderColors`      |                    | Button border color                                                                          |
-| `button`                  | string **(required)**      |                    | Button text for the item component                                                           |
-| `className`               | string                     |                    | Component class name                                                                         |
-| `color`                   | `Button.Colors`            | `BRAND`            | Button color                                                                                 |
-| `disabled`                | boolean                    | `false`            | Whether the button is disabled                                                               |
-| `fullWidth`               | boolean                    | `false`            | Whether the button width is at maximum                                                       |
-| `grow`                    | boolean                    | `true`             | Whether the button size can grow                                                             |
-| `hideBorder`              | boolean                    | `false`            | Whether a divider is not displayed at the end of the button item                             |
-| `hover`                   | `Button.Hovers`            |                    | Button hover color                                                                           |
-| `innerClassName`          | string                     |                    | Text element class name                                                                      |
-| `look`                    | `Button.Looks`             | `FILLED`           | Button look                                                                                  |
-| `note`                    | string                     |                    | Description of what the button item is about                                                 |
-| `onClick`                 | () => void **(required)**  |                    | Function ran on button click                                                                 |
-| `onDoubleClick`           | (e: MouseEvent) => void    |                    | Function ran on double button click                                                          |
-| `onKeyDown`               | (e: KeyboardEvent) => void |                    | Function ran on key press                                                                    |
-| `onMouseDown`             | (e: MouseEvent) => void    |                    | Function ran on mouse down                                                                   |
-| `onMouseEnter`            | (e: MouseEvent) => void    |                    | Function ran on mouse enter                                                                  |
-| `onMouseLeave`            | (e: MouseEvent) => void    |                    | Function ran on mouse leave                                                                  |
-| `onMouseUp`               | (e: MouseEvent) => void    |                    | Function ran on mouse up                                                                     |
-| `size`                    | `Button.Sizes`             | `MEDIUM`           | Button size                                                                                  |
-| `style`                   | <CSSProperties />          |                    | Component style                                                                              |
-| `submitting`              | boolean                    | `false`            | Whether to display a loader inside the button; works together with `disabled` set to `false` |
-| `submittingFinishedLabel` | string                     | `Loading finished` | Announce finish loading message for screen-reader users; works together with `submitting`    |
-| `submittingStartedLabel`  | string                     | `Loading`          | Announce start loading message for screen-reader users; works together with `submitting`     |
-| `success`                 | boolean                    | `false`            | Whether the button color is green                                                            |
-| `tooltipPosition`         | string                     |                    | Tooltip position displayed on the button item; check out `Tooltip.Positions`                 |
-| `tooltipText`             | string                     |                    | Tooltip text displayed on the button item                                                    |
-| `type`                    | string                     | `button`           | Button element type                                                                          |
-| `wrapperClassName`        | string                     |                    | Wrapper element class name                                                                   |
+| Name                      | Type                       | Default               | Description                                                                                  |
+| ------------------------- | -------------------------- | --------------------- | -------------------------------------------------------------------------------------------- |
+| `borderColor`             | `Button.BorderColors`      |                       | Button border color                                                                          |
+| `button`                  | string **(required)**      |                       | Button text for the item component                                                           |
+| `className`               | string                     |                       | Component class name                                                                         |
+| `color`                   | `Button.Colors`            | `Button.Colors.BRAND` | Button color                                                                                 |
+| `disabled`                | boolean                    | `false`               | Whether the button is disabled                                                               |
+| `fullWidth`               | boolean                    | `false`               | Whether the button width is at maximum                                                       |
+| `grow`                    | boolean                    | `true`                | Whether the button size can grow                                                             |
+| `hideBorder`              | boolean                    | `false`               | Whether a divider is not displayed at the end of the button item                             |
+| `hover`                   | `Button.Hovers`            |                       | Button hover color                                                                           |
+| `innerClassName`          | string                     |                       | Text element class name                                                                      |
+| `look`                    | `Button.Looks`             | `Button.Looks.FILLED` | Button look                                                                                  |
+| `note`                    | string                     |                       | Description of what the button item is about                                                 |
+| `onClick`                 | () => void **(required)**  |                       | Function ran on button click                                                                 |
+| `onDoubleClick`           | (e: MouseEvent) => void    |                       | Function ran on double button click                                                          |
+| `onKeyDown`               | (e: KeyboardEvent) => void |                       | Function ran on key press                                                                    |
+| `onMouseDown`             | (e: MouseEvent) => void    |                       | Function ran on mouse down                                                                   |
+| `onMouseEnter`            | (e: MouseEvent) => void    |                       | Function ran on mouse enter                                                                  |
+| `onMouseLeave`            | (e: MouseEvent) => void    |                       | Function ran on mouse leave                                                                  |
+| `onMouseUp`               | (e: MouseEvent) => void    |                       | Function ran on mouse up                                                                     |
+| `size`                    | `Button.Sizes`             | `Button.Sizes.MEDIUM` | Button size                                                                                  |
+| `style`                   | <CSSProperties />          |                       | Component style                                                                              |
+| `submitting`              | boolean                    | `false`               | Whether to display a loader inside the button; works together with `disabled` set to `false` |
+| `submittingFinishedLabel` | string                     | `Loading finished`    | Announce finish loading message for screen-reader users; works together with `submitting`    |
+| `submittingStartedLabel`  | string                     | `Loading`             | Announce start loading message for screen-reader users; works together with `submitting`     |
+| `success`                 | boolean                    | `false`               | Whether the button color is green                                                            |
+| `tooltipPosition`         | string                     |                       | Tooltip position displayed on the button item; check out `Tooltip.Positions`                 |
+| `tooltipText`             | string                     |                       | Tooltip text displayed on the button item                                                    |
+| `type`                    | string                     | `button`              | Button element type                                                                          |
+| `wrapperClassName`        | string                     |                       | Wrapper element class name                                                                   |
 
 ### Category
 
@@ -536,31 +541,31 @@ const { Flex } = components;
 
 Related Components:
 
-| Component | Description                           |
-| --------- | ------------------------------------- |
-| `.Child`  | Flex child, useful together with Flex |
+| Component    | Description                           |
+| ------------ | ------------------------------------- |
+| `Flex.Child` | Flex child, useful together with Flex |
 
 Enums:
 
-| Enum         | Description                                                                     |
-| ------------ | ------------------------------------------------------------------------------- |
-| `.Align`     | Flexbox alignments <br/>`START` \| `END` \| `CENTER` \| `STRETCH` \| `BASELINE` |
-| `.Direction` | Flexbox directions <br/>`VERTICAL` \| `HORIZONTAL` \| `HORIZONTAL_REVERSE`      |
-| `.Justify`   | Flexbox justifies <br/>`START` \| `END` \| `CENTER` \| `BETWEEN` \| `AROUND`    |
-| `.Wrap`      | Flexbox wraps <br/>`NO_WRAP` \| `WRAP` \| `WRAP_REVERSE`                        |
+| Enum             | Description                                                                     |
+| ---------------- | ------------------------------------------------------------------------------- |
+| `Flex.Align`     | Flexbox alignments <br/>`START` \| `END` \| `CENTER` \| `STRETCH` \| `BASELINE` |
+| `Flex.Direction` | Flexbox directions <br/>`VERTICAL` \| `HORIZONTAL` \| `HORIZONTAL_REVERSE`      |
+| `Flex.Justify`   | Flexbox justifies <br/>`START` \| `END` \| `CENTER` \| `BETWEEN` \| `AROUND`    |
+| `Flex.Wrap`      | Flexbox wraps <br/>`NO_WRAP` \| `WRAP` \| `WRAP_REVERSE`                        |
 
 Props:
 
-| Name        | Type              | Default      | Description       |
-| ----------- | ----------------- | ------------ | ----------------- |
-| `align`     | `Flex.Align`      | `STRETCH`    | Flexbox align     |
-| `basis`     | string            | `auto`       | Flexbox basis     |
-| `direction` | `Flex.Direction`  | `HORIZONTAL` | Flexbox direction |
-| `grow`      | number            | `1`          | Flexbox grow      |
-| `justify`   | `Flex.Justify`    | `START`      | Flexbox justify   |
-| `shrink`    | number            | `1`          | Flexbox shrink    |
-| `style`     | <CSSProperties /> |              | Component style   |
-| `wrap`      | `Flex.Wrap`       | `NO_WRAP`    | Flexbox wrap      |
+| Name        | Type              | Default                     | Description       |
+| ----------- | ----------------- | --------------------------- | ----------------- |
+| `align`     | `Flex.Align`      | `Flex.Align.STRETCH`        | Flexbox align     |
+| `basis`     | string            | `auto`                      | Flexbox basis     |
+| `direction` | `Flex.Direction`  | `Flex.Direction.HORIZONTAL` | Flexbox direction |
+| `grow`      | number            | `1`                         | Flexbox grow      |
+| `justify`   | `Flex.Justify`    | `Flex.Justify.START`        | Flexbox justify   |
+| `shrink`    | number            | `1`                         | Flexbox shrink    |
+| `style`     | <CSSProperties /> |                             | Component style   |
+| `wrap`      | `Flex.Wrap`       | `Flex.Wrap.NO_WRAP`         | Flexbox wrap      |
 
 `.Child` Props:
 
@@ -625,16 +630,16 @@ const { FormText } = components;
 
 Related Components:
 
-| Component            | Description            |
-| -------------------- | ---------------------- |
-| `.DEFAULT`           | Type `default`         |
-| `.INPUT_PLACEHOLDER` | Type `placeholder`     |
-| `.DESCRIPTION`       | Type `description`     |
-| `.LABEL_BOLD`        | Type `labelBold`       |
-| `.LABEL_SELECTED`    | Type `labelSelected`   |
-| `.LABEL_DESCRIPTOR`  | Type `labelDescriptor` |
-| `.ERROR`             | Type `error`           |
-| `.SUCCESS`           | Type `success`         |
+| Component                    | Description            |
+| ---------------------------- | ---------------------- |
+| `FormText.DEFAULT`           | Type `default`         |
+| `FormText.INPUT_PLACEHOLDER` | Type `placeholder`     |
+| `FormText.DESCRIPTION`       | Type `description`     |
+| `FormText.LABEL_BOLD`        | Type `labelBold`       |
+| `FormText.LABEL_SELECTED`    | Type `labelSelected`   |
+| `FormText.LABEL_DESCRIPTOR`  | Type `labelDescriptor` |
+| `FormText.ERROR`             | Type `error`           |
+| `FormText.SUCCESS`           | Type `success`         |
 
 Props:
 
@@ -659,19 +664,19 @@ const { Loader } = components;
 
 Enums:
 
-| Enum    | Description                                                                                                      |
-| ------- | ---------------------------------------------------------------------------------------------------------------- |
-| `.Type` | Loader types <br/>`WANDERING_CUBES` \| `CHASING_DOTS` \| `PULSING_ELLIPSIS` \| `SPINNING_CIRCLE` \| `LOW_MOTION` |
+| Enum          | Description                                                                                                      |
+| ------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `Loader.Type` | Loader types <br/>`WANDERING_CUBES` \| `CHASING_DOTS` \| `PULSING_ELLIPSIS` \| `SPINNING_CIRCLE` \| `LOW_MOTION` |
 
 Props:
 
-| Name            | Type              | Default           | Description                                      |
-| --------------- | ----------------- | ----------------- | ------------------------------------------------ |
-| `animated`      | boolean           | `true`            | Whether the loader is animated                   |
-| `className`     | string            |                   | Component class name                             |
-| `itemClassName` | string            |                   | Class name of all the elements inside the loader |
-| `style`         | <CSSProperties /> |                   | Component style                                  |
-| `type`          | `Loader.Type`     | `WANDERING_CUBES` | Define type of loader                            |
+| Name            | Type              | Default                       | Description                                      |
+| --------------- | ----------------- | ----------------------------- | ------------------------------------------------ |
+| `animated`      | boolean           | `true`                        | Whether the loader is animated                   |
+| `className`     | string            |                               | Component class name                             |
+| `itemClassName` | string            |                               | Class name of all the elements inside the loader |
+| `style`         | <CSSProperties /> |                               | Component style                                  |
+| `type`          | `Loader.Type`     | `Loader.Type.WANDERING_CUBES` | Define type of loader                            |
 
 ### Modal
 
@@ -695,13 +700,13 @@ modal.openModal((props) => (
 
 Related Components:
 
-| Component           | Description            |
-| ------------------- | ---------------------- |
-| `.ModalCloseButton` | Close button component |
-| `.ModalContent`     | Contains the content   |
-| `.ModalFooter`      | Contains the footer    |
-| `.ModalHeader`      | Contains the header    |
-| `.ModalRoot`        | Root component         |
+| Component                | Description            |
+| ------------------------ | ---------------------- |
+| `Modal.ModalCloseButton` | Close button component |
+| `Modal.ModalContent`     | Contains the content   |
+| `Modal.ModalFooter`      | Contains the footer    |
+| `Modal.ModalHeader`      | Contains the header    |
+| `Modal.ModalRoot`        | Root component         |
 
 `.ModalCloseButton` Props:
 
@@ -755,9 +760,9 @@ const { Notice } = components;
 
 Enums:
 
-| Enum     | Description                                                    |
-| -------- | -------------------------------------------------------------- |
-| `.Types` | Notice types <br/>`WARNING` \| `INFO` \| `ERROR` \| `POSITIVE` |
+| Enum           | Description                                                    |
+| -------------- | -------------------------------------------------------------- |
+| `Notice.Types` | Notice types <br/>`WARNING` \| `INFO` \| `ERROR` \| `POSITIVE` |
 
 Props:
 
@@ -781,14 +786,14 @@ const { Text } = components;
 
 Related Components:
 
-| Component  | Description                                |
-| ---------- | ------------------------------------------ |
-| `.Eyebrow` | Variant `eyebrow`                          |
-| `.H1`      | Variant `heading-xl/bold` and tag `h1`     |
-| `.H2`      | Variant `heading-lg/semibold` and tag `h2` |
-| `.H3`      | Variant `heading-md/bold` and tag `h3`     |
-| `.H4`      | Variant `heading-sm/bold` and tag `h4`     |
-| `.Normal`  | Variant `text-sm/normal` and tag `span`    |
+| Component      | Description                                |
+| -------------- | ------------------------------------------ |
+| `Text.Eyebrow` | Variant `eyebrow`                          |
+| `Text.H1`      | Variant `heading-xl/bold` and tag `h1`     |
+| `Text.H2`      | Variant `heading-lg/semibold` and tag `h2` |
+| `Text.H3`      | Variant `heading-md/bold` and tag `h3`     |
+| `Text.H4`      | Variant `heading-sm/bold` and tag `h4`     |
+| `Text.Normal`  | Variant `text-sm/normal` and tag `span`    |
 
 Props:
 
@@ -827,30 +832,30 @@ const { Tooltip } = components;
 
 Enums:
 
-| Enum         | Description                                                                                               |
-| ------------ | --------------------------------------------------------------------------------------------------------- |
-| `.Aligns`    | Tooltip alignments <br/>`TOP` \| `CENTER` \| `BOTTOM` \| `LEFT` \| `RIGHT`                                |
-| `.Colors`    | Tooltip colors <br/>`PRIMARY` \| `BLACK` \| `GREY` \| `BRAND` \| `GREEN` \| `YELLOW` \| `RED` \| `CUSTOM` |
-| `.Positions` | Tooltip positions <br/>`TOP` \| `BOTTOM` \| `LEFT` \| `RIGHT` \| `CENTER` \| `WINDOW_CENTER`              |
+| Enum                | Description                                                                                               |
+| ------------------- | --------------------------------------------------------------------------------------------------------- |
+| `Tooltip.Aligns`    | Tooltip alignments <br/>`TOP` \| `CENTER` \| `BOTTOM` \| `LEFT` \| `RIGHT`                                |
+| `Tooltip.Colors`    | Tooltip colors <br/>`PRIMARY` \| `BLACK` \| `GREY` \| `BRAND` \| `GREEN` \| `YELLOW` \| `RED` \| `CUSTOM` |
+| `Tooltip.Positions` | Tooltip positions <br/>`TOP` \| `BOTTOM` \| `LEFT` \| `RIGHT` \| `CENTER` \| `WINDOW_CENTER`              |
 
 Props:
 
-| Name                          | Type                           | Default   | Description                                                                       |
-| ----------------------------- | ------------------------------ | --------- | --------------------------------------------------------------------------------- |
-| `align`                       | `Tooltip.Aligns`               | `CENTER`  | Tooltip alignment to the children; works together with `position`                 |
-| `allowOverflow`               | boolean                        | `false`   | Whether the tooltip content can overflow                                          |
-| `className`                   | string                         |           | Component class name                                                              |
-| `color`                       | `Tooltip.Colors`               | `PRIMARY` | Sets color of the tooltip                                                         |
-| `delay`                       | number                         |           | How long the tooltip takes to appear in milliseconds                              |
-| `disableTooltipPointerEvents` | boolean                        | `false`   | Whether to disable pointer events on the tooltip                                  |
-| `forceOpen`                   | boolean                        | `false`   | Whether the tooltip is always visible                                             |
-| `hide`                        | boolean                        | `false`   | Whether the tooltip is hidden                                                     |
-| `hideOnClick`                 | boolean                        | `true`    | Whether the tooltip hides after clicking anywhere                                 |
-| `onAnimationRest`             | (e: object, t: object) => void |           | Function ran when the tooltip is animating; its parameters are related to springs |
-| `position`                    | `Tooltip.Positions`            | `TOP`     | Tooltip position; works together with `align`                                     |
-| `shouldShow`                  | boolean                        | `true`    | Whether the tooltip can show                                                      |
-| `spacing`                     | number                         | `8`       | Distance from the children                                                        |
-| `style`                       | <CSSProperties />              |           | Component style                                                                   |
-| `text`                        | string **(required)**          |           | Tooltip text                                                                      |
-| `tooltipClassName`            | string                         |           | Tooltip element class name                                                        |
-| `tooltipContentClassName`     | string                         |           | Tooltip content element class name                                                |
+| Name                          | Type                           | Default                  | Description                                                                       |
+| ----------------------------- | ------------------------------ | ------------------------ | --------------------------------------------------------------------------------- |
+| `align`                       | `Tooltip.Aligns`               | `Tooltip.Aligns.CENTER`  | Tooltip alignment to the children; works together with `position`                 |
+| `allowOverflow`               | boolean                        | `false`                  | Whether the tooltip content can overflow                                          |
+| `className`                   | string                         |                          | Component class name                                                              |
+| `color`                       | `Tooltip.Colors`               | `Tooltip.Colors.PRIMARY` | Sets color of the tooltip                                                         |
+| `delay`                       | number                         |                          | How long the tooltip takes to appear in milliseconds                              |
+| `disableTooltipPointerEvents` | boolean                        | `false`                  | Whether to disable pointer events on the tooltip                                  |
+| `forceOpen`                   | boolean                        | `false`                  | Whether the tooltip is always visible                                             |
+| `hide`                        | boolean                        | `false`                  | Whether the tooltip is hidden                                                     |
+| `hideOnClick`                 | boolean                        | `true`                   | Whether the tooltip hides after clicking anywhere                                 |
+| `onAnimationRest`             | (e: object, t: object) => void |                          | Function ran when the tooltip is animating; its parameters are related to springs |
+| `position`                    | `Tooltip.Positions`            | `Tooltip.Positions.TOP`  | Tooltip position; works together with `align`                                     |
+| `shouldShow`                  | boolean                        | `true`                   | Whether the tooltip can show                                                      |
+| `spacing`                     | number                         | `8`                      | Distance from the children                                                        |
+| `style`                       | <CSSProperties />              |                          | Component style                                                                   |
+| `text`                        | string **(required)**          |                          | Tooltip text                                                                      |
+| `tooltipClassName`            | string                         |                          | Tooltip element class name                                                        |
+| `tooltipContentClassName`     | string                         |                          | Tooltip content element class name                                                |
