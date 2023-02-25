@@ -7,13 +7,16 @@
     "asar",
     "autosize",
     "clsx",
+    "Flexbox",
+    "fullscreen",
     "Infima",
     "keyof",
     "popout",
     "replugged",
     "resizeable",
     "typeof",
-    "uninject"
+    "uninject",
+    "XLARGE"
   ],
   "ignoreWords": [],
   "import": []
