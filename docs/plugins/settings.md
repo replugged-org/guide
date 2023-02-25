@@ -134,7 +134,7 @@ import { settings, util } from "replugged";
 const cfg = await settings.init("YOUR_PLUGIN_ID");
 
 export function Settings(): React.ReactElement {
-  return <Input {...util.useSetting(cfg, "foo", "bar")} />;
+  return <TextInput {...util.useSetting(cfg, "foo", "bar")} />;
 }
 ```
 
@@ -158,7 +158,7 @@ const cfg = await settings.init("YOUR_PLUGIN_ID");
 export function Settings(): React.ReactElement {
   const { value, onChange } = util.useSetting(cfg, "foo", "bar");
   return (
-    <Input
+    <TextInput
       value={value}
       onChange={(value) => {
         console.log(value);
