@@ -21,7 +21,7 @@ You will also need to have [Node.js](https://nodejs.org/), [pnpm](https://pnpm.i
 [VSCode](https://code.visualstudio.com/)).
 
 To use and test the plugin, you will need to have [Discord](https://discord.com/download) with
-[Replugged](https://replugged.dev/installation) installed.
+[Replugged](https://replugged.dev/download) installed.
 
 ## Creating a plugin
 
