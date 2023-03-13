@@ -575,6 +575,46 @@ Props:
 | `style`  | <CSSProperties /> |         | Component style              |
 | `wrap`   | boolean           | `false` | Whether to wrap its children |
 
+### FormNotice
+
+Example:
+
+```tsx
+import { components } from "replugged";
+const { FormNotice } = components;
+
+<FormNotice title="Foo" body="This is a description" type={FormNotice.Types.PRIMARY} />;
+```
+
+Enums:
+
+| Enum               | Description                                                                              |
+| ------------------ | ---------------------------------------------------------------------------------------- |
+| `FormNotice.Types` | Notice types <br/>`PRIMARY` \| `DANGER` \| `WARNING` \| `SUCCESS` \| `BRAND` \| `CUSTOM` |
+
+Props:
+
+| Name            | Type               | Default                   | Description                                                                   |
+| --------------- | ------------------ | ------------------------- | ----------------------------------------------------------------------------- |
+| `align`         | `Flex.Align`       | `Flex.Align.START`        | Flexbox align                                                                 |
+| `body`          | React node         |                           | Notice description                                                            |
+| `button`        | React node         |                           | Button component                                                              |
+| `className`     | string             |                           | Component class name                                                          |
+| `iconClassName` | string             |                           | Icon element class name                                                       |
+| `imageData`     | `ImageData`        |                           | Object that includes the information needed to display an image in the notice |
+| `style`         | <CSSProperties />  |                           | Component style                                                               |
+| `title`         | React node         |                           | Notice title                                                                  |
+| `type`          | `FormNotice.Types` | `FormNotice.Types.DANGER` | Notice type                                                                   |
+
+`ImageData` Props:
+
+| Name       | Type   | Default | Description                              |
+| ---------- | ------ | ------- | ---------------------------------------- |
+| `height`   | number |         | Image height                             |
+| `position` | string |         | Position of the image; `left` or `right` |
+| `src`      | string |         | Image source path                        |
+| `width`    | number |         | Image width                              |
+
 ### FormItem
 
 FormItem is a wrapper component that can be used to add a title and/or description to a component.
@@ -717,23 +757,23 @@ Related Components:
 
 `Modal.ModalFooter` Props:
 
-| Name        | Type   | Default               | Description          |
-| ----------- | ------ | --------------------- | -------------------- |
-| `align`     | string | `alignStretch-*`      | Flexbox align        |
-| `className` | string |                       | Component class name |
-| `direction` | string | `horizontalReverse-*` | Flexbox direction    |
-| `justify`   | string | `justifyStart-*`      | Flexbox justify      |
-| `wrap`      | string | `noWrap-*`            | Flexbox wrap         |
+| Name        | Type             | Default                             | Description          |
+| ----------- | ---------------- | ----------------------------------- | -------------------- |
+| `align`     | `Flex.Align`     | `Flex.Align.STRETCH`                | Flexbox align        |
+| `className` | string           |                                     | Component class name |
+| `direction` | `Flex.Direction` | `Flex.Direction.HORIZONTAL_REVERSE` | Flexbox direction    |
+| `justify`   | `Flex.Justify`   | `Flex.Justify.START`                | Flexbox justify      |
+| `wrap`      | `Flex.Wrap`      | `Flex.Wrap.NO_WRAP`                 | Flexbox wrap         |
 
 `Modal.ModalHeader` Props:
 
-| Name        | Type   | Default          | Description          |
-| ----------- | ------ | ---------------- | -------------------- |
-| `align`     | string | `alignCenter-*`  | Flexbox align        |
-| `className` | string |                  | Component class name |
-| `direction` | string | `horizontal-*`   | Flexbox direction    |
-| `justify`   | string | `justifyStart-*` | Flexbox justify      |
-| `wrap`      | string | `noWrap-*`       | Flexbox wrap         |
+| Name        | Type             | Default                     | Description          |
+| ----------- | ---------------- | --------------------------- | -------------------- |
+| `align`     | `Flex.Align`     | `Flex.Align.CENTER`         | Flexbox align        |
+| `className` | string           |                             | Component class name |
+| `direction` | `Flex.Direction` | `Flex.Direction.HORIZONTAL` | Flexbox direction    |
+| `justify`   | `Flex.Justify`   | `Flex.Justify.START`        | Flexbox justify      |
+| `wrap`      | `Flex.Wrap`      | `Flex.Wrap.NO_WRAP`         | Flexbox wrap         |
 
 `Modal.ModalRoot` Props:
 
