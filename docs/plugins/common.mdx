@@ -1,0 +1,100 @@
+---
+sidebar_position: 6
+title: Common Modules
+description: Documented common modules for plugins
+---
+
+export const DiscordAPIDocs = (props) => {
+  const url = "https://discord.com/developers/docs/" + props.link;
+  return <a href={url}>{props.name}</a>;
+};
+
+export const APIReferences = {
+  Guild: () => <DiscordAPIDocs name="Guild" link="resources/guild#guild-object-guild-structure" />,
+};
+
+## Stores
+
+### `channels`
+
+### `guilds`
+
+Functions:
+
+| Name                       | Parameters                       | Return Type                             | Description                                                              |
+| -------------------------- | -------------------------------- | --------------------------------------- | ------------------------------------------------------------------------ |
+| `getGuild`                 | `guildId`: string                | <APIReferences.Guild /> \| undefined    | Gets the guild by its id                                                 |
+| `getGuildCount`            |                                  | number                                  | Returns the number of how many guilds the user is in                     |
+| `getGuildId`               |                                  | string \| undefined                     | Returns the id of the currently selected guild                           |
+| `getGuilds`                |                                  | Record<string, <APIReferences.Guild />> | Gets all guilds                                                          |
+| `getLastSelectedGuildId`   |                                  | string \| undefined                     | Returns the last selected guild id                                       |
+| `getLastSelectedTimestamp` | `guildId`: string **(required)** | number                                  | Returns the timestamp of when a specific guild was last selected         |
+| `getState`                 |                                  | `State`                                 | Returns an object containing some information about guild selections     |
+| `getTabsV2SelectedGuildId` |                                  | string \| undefined                     | Returns the id of the last selected guild or the first guild in the list |
+| `isLoaded`                 |                                  | boolean                                 | Returns a value indicating whether all initial guilds have been loaded   |
+| `getCurrentGuild`          |                                  | <APIReferences.Guild /> \| undefined    | Gets the current selected guild by its id                                |
+
+`State`:
+
+| Name                           | Type                   | Description                                               |
+| ------------------------------ | ---------------------- | --------------------------------------------------------- |
+| `lastSelectedGuildId`          | string                 | Last selected guild id                                    |
+| `selectedGuildId`              | string                 | Current selected guild id                                 |
+| `selectedGuildTimestampMillis` | Record<string, number> | Object containing timestamps of when guilds were selected |
+
+### `messages`
+
+### `users`
+
+## Utility
+
+### `api`
+
+### `constants`
+
+### `contextMenu`
+
+:::info
+
+`contextMenu` is still a work in progress.
+
+:::
+
+### `flux`
+
+### `fluxDispatcher`
+
+### `i18n`
+
+### `modal`
+
+### `parser`
+
+### `toast`
+
+### `typing`
+
+Functions:
+
+| Name          | Parameters                         | Return Type | Description                                        |
+| ------------- | ---------------------------------- | ----------- | -------------------------------------------------- |
+| `startTyping` | `channelId`: string **(required)** |             | Starts your typing indicator in a specific channel |
+| `stopTyping`  | `channelId`: string **(required)** |             | Stops your typing indicator in a specific channel  |
+
+## External Libraries
+
+### `hljs`
+
+**highlight.js** | [Documentation](https://highlightjs.org/usage/)
+
+### `lodash`
+
+**Lodash** | [Documentation](https://lodash.com/docs)
+
+### `ReactDOM`
+
+**ReactDOM** | [Documentation](https://reactjs.org/docs/react-dom.html)
+
+### `React`
+
+**React** | [Documentation](https://reactjs.org/docs/react-api.html)
