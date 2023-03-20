@@ -113,3 +113,37 @@ export function stop() {
   injector.uninjectAll();
 }
 ```
+
+## Utilities
+
+There may be some common injections that a plugin may need. You can also access this from the
+injector instance. To uninject each of these, the same methods as above can be used.
+
+### Message Popover
+
+In order to add a button to the popover that appears when you hover over a message, you can use
+`injector.utils.addPopoverButton`.
+
+```ts
+import { Injector, webpack } from "replugged";
+const injector = new Injector();
+
+function start() {
+  injector.utils.addPopoverButton((msg: Message, channel: Channel) => {
+    return {
+      label: "Click the button!",
+      icon: myVeryCoolIcon(), // Cool icon
+      onClick: () => {
+        // do stuff here when someone left clicks the button
+      },
+      onContextMenu: () => {
+        // do other stuff here when someone right clicks the button
+      },
+    };
+  });
+}
+
+function stop() {
+  injector.uninjectAll();
+}
+```
