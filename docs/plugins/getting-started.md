@@ -75,7 +75,7 @@ using plaintext patches (we will go over that later).
 
 :::tip
 
-You can reload the plugin from Discord devtools by running
+You can reload the plugin from Discord DevTools by running
 `replugged.plugins.reload('PLUGIN_ID_HERE')`. `PLUGIN_ID_HERE` should be replaced with your plugin
 ID (the one you set in `manifest.json`).
 

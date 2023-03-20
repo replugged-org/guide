@@ -31,7 +31,7 @@ will not work. You should always import from `replugged` itself and destructure 
 
 :::tip
 
-You can access common modules in Discord devtools with `replugged.common`.
+You can access common modules in Discord DevTools with `replugged.common`.
 
 :::
 
@@ -123,7 +123,7 @@ export function start() {
 
 For modules that do not have human-readable properties (such as components), you can use
 `getBySource` to find a module by its source code. To use this, you will need to find the source
-code of your module in the Discord devtools. Once you find it, you will need to come up with a
+code of your module in the Discord DevTools. Once you find it, you will need to come up with a
 unique string (or regex) that is only present in that module. You can then use this string to find
 the module.
 
@@ -152,7 +152,7 @@ minified code.
 
 You should make sure that your query will only match one module. If it matches multiple modules, you
 might sometimes get the wrong module and your plugin could break. To test your query, you can call
-the function in Discord devtools with `{all: true}` and see if it returns multiple modules.
+the function in Discord DevTools with `{all: true}` and see if it returns multiple modules.
 
 ```js
 replugged.webpack.getBySource("HORIZONTAL_REVERSE", { all: true });

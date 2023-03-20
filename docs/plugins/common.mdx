@@ -13,6 +13,12 @@ export const APIReferences = {
   Guild: () => <DiscordAPIDocs name="Guild" link="guild#guild-object-guild-structure" />,
 };
 
+:::caution
+
+All props/parameters are optional unless they say **(required)**.
+
+:::
+
 ## Stores
 
 ### `channels`
@@ -96,7 +102,7 @@ Props:
 | `RPCEvents`      | Record<string, string>              | RPC events                                                                               |
 | `Scopes`         | Record<string, string>              | Scopes                                                                                   |
 | `Status`         | Record<string, string>              | User statuses                                                                            |
-| `Themes`         | Record<string, string>              | Client themes                                                                            |
+| `Themes`         | Record<string, string>              | Client themes; alias of `constants.ColorGenerator.themes`                                |
 
 #### `ColorGenerator`
 
@@ -136,6 +142,82 @@ Props:
 ### `i18n`
 
 ### `modal`
+
+Enums:
+
+:::info
+
+The following enums are a shortcut to the [`Flex`](components#flex) component enums.
+
+:::
+
+| Enum              | Description                                                                      |
+| ----------------- | -------------------------------------------------------------------------------- |
+| `modal.Align`     | Flexbox alignments <br />`START` \| `END` \| `CENTER` \| `STRETCH` \| `BASELINE` |
+| `modal.Direction` | Flexbox directions <br />`VERTICAL` \| `HORIZONTAL` \| `HORIZONTAL_REVERSE`      |
+| `modal.Justify`   | Flexbox justifies <br />`START` \| `END` \| `CENTER` \| `BETWEEN` \| `AROUND`    |
+| `modal.Wrap`      | Flexbox wraps <br />`NO_WRAP` \| `WRAP` \| `WRAP_REVERSE`                        |
+
+Functions:
+
+| Name         | Parameters                                                                                                                 | Return Type              | Description                                                                  |
+| ------------ | -------------------------------------------------------------------------------------------------------------------------- | ------------------------ | ---------------------------------------------------------------------------- |
+| `alert`      | `props`: `AlertProps` **(required)**                                                                                       |                          | Brings up a modal useful for a quick response                                |
+| `closeModal` | `modalKey`: string **(required)** <br /> `contextKey`: string                                                              |                          | Closes a specific modal by its key                                           |
+| `confirm`    | `props`: `AlertProps` **(required)**                                                                                       | Promise<boolean \| null> | Brings up an alert modal useful for asking the user for a quick confirmation |
+| `openModal`  | `render`: (`props`: `ModalProps`) => ReactNode **(required)** <br /> `options`: `ModalOptions` <br /> `contextKey`: string | string                   | Opens a specific modal and returns its key                                   |
+
+:::info
+
+The `confirm` function has `title`, `cancelText`, `onConfirm`, `onCancel` and `onCloseCallback` with
+a default value. Closing the modal determines the return value of the promise. For example, clicking
+the confirm button of the modal, the promise value will be `true`.
+
+Example:
+
+```tsx
+import { common } from "replugged";
+const { modal } = common;
+
+modal.confirm({}).then((confirmed) => {
+  if (confirmed) console.log("Confirmed!");
+  else console.log("Cancelled!");
+});
+```
+
+:::
+
+`AlertProps` Props:
+
+| Name                   | Type                    | Default               | Description                                    |
+| ---------------------- | ----------------------- | --------------------- | ---------------------------------------------- |
+| `body`                 | boolean \| ReactElement |                       | Modal content                                  |
+| `cancelText`           | string                  |                       | Text for the cancel button                     |
+| `className`            | string                  |                       | Component class name                           |
+| `confirmColor`         | `Button.Colors`         | `Button.Colors.BRAND` | Primary button color                           |
+| `confirmText`          | string                  | `Okay`                | Text for the cancel button                     |
+| `onCancel`             | () => void              |                       | Function ran on modal cancel                   |
+| `onCloseCallback`      | () => void              |                       | Function ran on modal close                    |
+| `onConfirm`            | () => void              |                       | Function ran when the primary button is used   |
+| `onConfirmSecondary`   | () => void              |                       | Function ran when the secondary button is used |
+| `secondaryConfirmText` | string                  |                       | Text for the secondary button                  |
+| `title`                | string                  |                       | Modal title                                    |
+| `titleClassName`       | string                  |                       | Title element class name                       |
+
+`ModalOptions` Props:
+
+| Name              | Type       | Default | Description                                  |
+| ----------------- | ---------- | ------- | -------------------------------------------- |
+| `modalKey`        | string     |         | Modal key                                    |
+| `onCloseCallback` | () => void |         | Function ran when the modal gets closed      |
+| `onCloseRequest`  | () => void |         | Function ran when clicking outside the modal |
+
+`ModalProps` Props:
+
+| Name              | Type               | Default | Description                             |
+| ----------------- | ------------------ | ------- | --------------------------------------- |
+| `onClose`         | (): Promise<void\> |         | Function ran when the modal gets closed |
+| `transitionState` | string             |         | Modal state                             |
 
 ### `parser`
 
