@@ -27,7 +27,7 @@ All input components ending with `Item` have their original counterpart, and dif
 
 | Name       | Type              | Default | Description                                      |
 | ---------- | ----------------- | ------- | ------------------------------------------------ |
-| `children` | React node        |         | Wrapper component title                          |
+| `children` | ReactNode         |         | Wrapper component title                          |
 | `note`     | string            |         | Description of what the input component is about |
 | `style`    | <CSSProperties /> |         | Wrapper component style                          |
 
@@ -46,11 +46,11 @@ export function Settings(): React.ReactElement {
 
 Enums:
 
-| Enum              | Description                                                     |
-| ----------------- | --------------------------------------------------------------- |
-| `Checkbox.Aligns` | Checkbox alignments <br/>`TOP` \| `CENTER`                      |
-| `Checkbox.Shapes` | Checkbox shapes <br/>`BOX` \| `ROUND` \| `SMALL`                |
-| `Checkbox.Types`  | Checkbox types <br/>`DEFAULT` \| `INVERTED` \| `GHOST` \| `ROW` |
+| Enum              | Description                                                      |
+| ----------------- | ---------------------------------------------------------------- |
+| `Checkbox.Aligns` | Checkbox alignments <br />`TOP` \| `CENTER`                      |
+| `Checkbox.Shapes` | Checkbox shapes <br />`BOX` \| `ROUND` \| `SMALL`                |
+| `Checkbox.Types`  | Checkbox types <br />`DEFAULT` \| `INVERTED` \| `GHOST` \| `ROW` |
 
 Props:
 
@@ -103,9 +103,9 @@ export function Settings(): React.ReactElement {
 
 Enums:
 
-| Enum          | Description                                                       |
-| ------------- | ----------------------------------------------------------------- |
-| `Radio.Sizes` | Radio group sizes <br/>`NOT_SET` \| `NONE` \| `SMALL` \| `MEDIUM` |
+| Enum          | Description                                                        |
+| ------------- | ------------------------------------------------------------------ |
+| `Radio.Sizes` | Radio group sizes <br />`NOT_SET` \| `NONE` \| `SMALL` \| `MEDIUM` |
 
 Props:
 
@@ -341,9 +341,9 @@ export function Settings(): React.ReactElement {
 
 Enums:
 
-| Enum              | Description                          |
-| ----------------- | ------------------------------------ |
-| `TextInput.Sizes` | Input sizes <br/>`DEFAULT` \| `MINI` |
+| Enum              | Description                           |
+| ----------------- | ------------------------------------- |
+| `TextInput.Sizes` | Input sizes <br />`DEFAULT` \| `MINI` |
 
 Props:
 
@@ -385,13 +385,13 @@ const { ButtonItem } = components;
 
 Enums:
 
-| Enum                  | Description                                                                                                                                         |
-| --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Button.BorderColors` | Button border colors <br/>`BRAND` \| `RED` \| `GREEN` \| `YELLOW` \| `PRIMARY` \| `LINK` \| `WHITE` \| `BLACK` \| `TRANSPARENT` \| `BRAND_NEW`      |
-| `Button.Colors`       | Button colors <br/>`BRAND` \| `RED` \| `GREEN` \| `YELLOW` \| `PRIMARY` \| `LINK` \| `WHITE` \| `BLACK` \| `TRANSPARENT` \| `BRAND_NEW` \| `CUSTOM` |
-| `Button.Hovers`       | Button color hovers <br/>`DEFAULT` \| `BRAND` \| `RED` \| `GREEN` \| `YELLOW` \| `PRIMARY` \| `LINK` \| `WHITE` \| `BLACK` \| `TRANSPARENT`         |
-| `Button.Looks`        | Button looks <br/>`FILLED` \| `INVERTED` \| `OUTLINED` \| `LINK` \| `BLANK`                                                                         |
-| `Button.Sizes`        | Button sizes <br/>`NONE` \| `TINY` \| `SMALL` \| `MEDIUM` \| `LARGE` \| `XLARGE` \| `MIN` \| `MAX` \| `ICON`                                        |
+| Enum                  | Description                                                                                                                                          |
+| --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Button.BorderColors` | Button border colors <br />`BRAND` \| `RED` \| `GREEN` \| `YELLOW` \| `PRIMARY` \| `LINK` \| `WHITE` \| `BLACK` \| `TRANSPARENT` \| `BRAND_NEW`      |
+| `Button.Colors`       | Button colors <br />`BRAND` \| `RED` \| `GREEN` \| `YELLOW` \| `PRIMARY` \| `LINK` \| `WHITE` \| `BLACK` \| `TRANSPARENT` \| `BRAND_NEW` \| `CUSTOM` |
+| `Button.Hovers`       | Button color hovers <br />`DEFAULT` \| `BRAND` \| `RED` \| `GREEN` \| `YELLOW` \| `PRIMARY` \| `LINK` \| `WHITE` \| `BLACK` \| `TRANSPARENT`         |
+| `Button.Looks`        | Button looks <br />`FILLED` \| `INVERTED` \| `OUTLINED` \| `LINK` \| `BLANK`                                                                         |
+| `Button.Sizes`        | Button sizes <br />`NONE` \| `TINY` \| `SMALL` \| `MEDIUM` \| `LARGE` \| `XLARGE` \| `MIN` \| `MAX` \| `ICON`                                        |
 
 Props:
 
@@ -522,7 +522,7 @@ Props:
 
 | Name       | Type                                         | Default | Description                               |
 | ---------- | -------------------------------------------- | ------- | ----------------------------------------- |
-| `fallback` | React node                                   |         | Fallback elements to show                 |
+| `fallback` | ReactNode                                    |         | Fallback elements to show                 |
 | `onError`  | (error: unknown, errorInfo: unknown) => void |         | Function ran when an error is triggered   |
 | `silent`   | boolean                                      | `false` | Whether to not print the error to console |
 
@@ -545,12 +545,12 @@ Related Components:
 
 Enums:
 
-| Enum             | Description                                                                     |
-| ---------------- | ------------------------------------------------------------------------------- |
-| `Flex.Align`     | Flexbox alignments <br/>`START` \| `END` \| `CENTER` \| `STRETCH` \| `BASELINE` |
-| `Flex.Direction` | Flexbox directions <br/>`VERTICAL` \| `HORIZONTAL` \| `HORIZONTAL_REVERSE`      |
-| `Flex.Justify`   | Flexbox justifies <br/>`START` \| `END` \| `CENTER` \| `BETWEEN` \| `AROUND`    |
-| `Flex.Wrap`      | Flexbox wraps <br/>`NO_WRAP` \| `WRAP` \| `WRAP_REVERSE`                        |
+| Enum             | Description                                                                      |
+| ---------------- | -------------------------------------------------------------------------------- |
+| `Flex.Align`     | Flexbox alignments <br />`START` \| `END` \| `CENTER` \| `STRETCH` \| `BASELINE` |
+| `Flex.Direction` | Flexbox directions <br />`VERTICAL` \| `HORIZONTAL` \| `HORIZONTAL_REVERSE`      |
+| `Flex.Justify`   | Flexbox justifies <br />`START` \| `END` \| `CENTER` \| `BETWEEN` \| `AROUND`    |
+| `Flex.Wrap`      | Flexbox wraps <br />`NO_WRAP` \| `WRAP` \| `WRAP_REVERSE`                        |
 
 Props:
 
@@ -588,22 +588,22 @@ const { FormNotice } = components;
 
 Enums:
 
-| Enum               | Description                                                                              |
-| ------------------ | ---------------------------------------------------------------------------------------- |
-| `FormNotice.Types` | Notice types <br/>`PRIMARY` \| `DANGER` \| `WARNING` \| `SUCCESS` \| `BRAND` \| `CUSTOM` |
+| Enum               | Description                                                                               |
+| ------------------ | ----------------------------------------------------------------------------------------- |
+| `FormNotice.Types` | Notice types <br />`PRIMARY` \| `DANGER` \| `WARNING` \| `SUCCESS` \| `BRAND` \| `CUSTOM` |
 
 Props:
 
 | Name            | Type               | Default                   | Description                                                                   |
 | --------------- | ------------------ | ------------------------- | ----------------------------------------------------------------------------- |
 | `align`         | `Flex.Align`       | `Flex.Align.START`        | Flexbox align                                                                 |
-| `body`          | React node         |                           | Notice description                                                            |
-| `button`        | React node         |                           | Button component                                                              |
+| `body`          | ReactNode          |                           | Notice description                                                            |
+| `button`        | ReactNode          |                           | Button component                                                              |
 | `className`     | string             |                           | Component class name                                                          |
 | `iconClassName` | string             |                           | Icon element class name                                                       |
 | `imageData`     | `ImageData`        |                           | Object that includes the information needed to display an image in the notice |
 | `style`         | <CSSProperties />  |                           | Component style                                                               |
-| `title`         | React node         |                           | Notice title                                                                  |
+| `title`         | ReactNode          |                           | Notice title                                                                  |
 | `type`          | `FormNotice.Types` | `FormNotice.Types.DANGER` | Notice type                                                                   |
 
 `ImageData` Props:
@@ -644,7 +644,7 @@ Props:
 | `className`      | string            |          | Component class name                                       |
 | `disabled`       | boolean           | `false`  | Whether the form is disabled                               |
 | `divider`        | boolean           | `false`  | Whether a divider is displayed at the end of the form      |
-| `error`          | React node        |          | Error message displayed                                    |
+| `error`          | ReactNode         |          | Error message displayed                                    |
 | `note`           | string            |          | Description of what the form contains                      |
 | `noteClassName`  | string            |          | Note class name                                            |
 | `notePosition`   | string            | `before` | Whether the note is displayed before or after the children |
@@ -652,7 +652,7 @@ Props:
 | `required`       | boolean           | `false`  | Whether the form completion is required                    |
 | `style`          | <CSSProperties /> |          | Component style                                            |
 | `tag`            | string            | `h5`     | Define the form title tag                                  |
-| `title`          | React node        |          | Form title                                                 |
+| `title`          | ReactNode         |          | Form title                                                 |
 | `titleClassName` | string            |          | Title class name                                           |
 
 ### FormText
@@ -702,9 +702,9 @@ const { Loader } = components;
 
 Enums:
 
-| Enum          | Description                                                                                                      |
-| ------------- | ---------------------------------------------------------------------------------------------------------------- |
-| `Loader.Type` | Loader types <br/>`WANDERING_CUBES` \| `CHASING_DOTS` \| `PULSING_ELLIPSIS` \| `SPINNING_CIRCLE` \| `LOW_MOTION` |
+| Enum          | Description                                                                                                       |
+| ------------- | ----------------------------------------------------------------------------------------------------------------- |
+| `Loader.Type` | Loader types <br />`WANDERING_CUBES` \| `CHASING_DOTS` \| `PULSING_ELLIPSIS` \| `SPINNING_CIRCLE` \| `LOW_MOTION` |
 
 Props:
 
@@ -798,9 +798,9 @@ const { Notice } = components;
 
 Enums:
 
-| Enum           | Description                                                    |
-| -------------- | -------------------------------------------------------------- |
-| `Notice.Types` | Notice types <br/>`WARNING` \| `INFO` \| `ERROR` \| `POSITIVE` |
+| Enum           | Description                                                     |
+| -------------- | --------------------------------------------------------------- |
+| `Notice.Types` | Notice types <br />`WARNING` \| `INFO` \| `ERROR` \| `POSITIVE` |
 
 Props:
 
@@ -870,11 +870,11 @@ const { Tooltip } = components;
 
 Enums:
 
-| Enum                | Description                                                                                               |
-| ------------------- | --------------------------------------------------------------------------------------------------------- |
-| `Tooltip.Aligns`    | Tooltip alignments <br/>`TOP` \| `CENTER` \| `BOTTOM` \| `LEFT` \| `RIGHT`                                |
-| `Tooltip.Colors`    | Tooltip colors <br/>`PRIMARY` \| `BLACK` \| `GREY` \| `BRAND` \| `GREEN` \| `YELLOW` \| `RED` \| `CUSTOM` |
-| `Tooltip.Positions` | Tooltip positions <br/>`TOP` \| `BOTTOM` \| `LEFT` \| `RIGHT` \| `CENTER` \| `WINDOW_CENTER`              |
+| Enum                | Description                                                                                                |
+| ------------------- | ---------------------------------------------------------------------------------------------------------- |
+| `Tooltip.Aligns`    | Tooltip alignments <br />`TOP` \| `CENTER` \| `BOTTOM` \| `LEFT` \| `RIGHT`                                |
+| `Tooltip.Colors`    | Tooltip colors <br />`PRIMARY` \| `BLACK` \| `GREY` \| `BRAND` \| `GREEN` \| `YELLOW` \| `RED` \| `CUSTOM` |
+| `Tooltip.Positions` | Tooltip positions <br />`TOP` \| `BOTTOM` \| `LEFT` \| `RIGHT` \| `CENTER` \| `WINDOW_CENTER`              |
 
 Props:
 

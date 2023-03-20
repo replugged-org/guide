@@ -50,6 +50,36 @@ Functions:
 
 ### `api`
 
+Functions:
+
+| Name            | Parameters                          | Return Type | Description                    |
+| --------------- | ----------------------------------- | ----------- | ------------------------------ |
+| `delete`        | `req`: `RequestOpts` **(required)** | `Response`  | Fetch with DELETE method       |
+| `get`           | `req`: `RequestOpts` **(required)** | `Response`  | Fetch with GET method          |
+| `getAPIBaseURL` | `version`: boolean                  | string      | Returns Discord's base API URL |
+| `patch`         | `req`: `RequestOpts` **(required)** | `Response`  | Fetch with PATCH method        |
+| `post`          | `req`: `RequestOpts` **(required)** | `Response`  | Fetch with POST method         |
+| `put`           | `req`: `RequestOpts` **(required)** | `Response`  | Fetch with PUT method          |
+
+`RequestOpts` Props:
+
+| Name      | Type                    | Description             |
+| --------- | ----------------------- | ----------------------- |
+| `body`    | Record<string, unknown> | Body for the request    |
+| `headers` | Record<string, string>  | Headers for the request |
+| `query`   | Record<string, string>  | Request queries         |
+| `url`     | string **(required)**   | URL to fetch from       |
+
+`Response` Props:
+
+| Name      | Type                   | Description                          |
+| --------- | ---------------------- | ------------------------------------ |
+| `body`    | unknown                | Body contents                        |
+| `headers` | Record<string, string> | Headers associated with the response |
+| `ok`      | boolean                | Whether the response was successful  |
+| `status`  | number                 | Status code of the response          |
+| `text`    | string                 | Response body in text                |
+
 ### `constants`
 
 Props:
@@ -122,22 +152,22 @@ toast.toast("Toast text", toast.Kind.FAILURE, { duration: 5000 });
 
 Enums:
 
-| Enum             | Description                                                      |
-| ---------------- | ---------------------------------------------------------------- |
-| `toast.Kind`     | Toast types <br/>`MESSAGE` \| `SUCCESS` \| `FAILURE` \| `CUSTOM` |
-| `toast.Position` | Toast positions <br/>`TOP` \| `BOTTOM`                           |
+| Enum             | Description                                                       |
+| ---------------- | ----------------------------------------------------------------- |
+| `toast.Kind`     | Toast types <br />`MESSAGE` \| `SUCCESS` \| `FAILURE` \| `CUSTOM` |
+| `toast.Position` | Toast positions <br />`TOP` \| `BOTTOM`                           |
 
 Functions:
 
-| Name    | Parameters                                                                                                       | Return Type | Description                                                                  |
-| ------- | ---------------------------------------------------------------------------------------------------------------- | ----------- | ---------------------------------------------------------------------------- |
-| `toast` | `content`: string \| React element \| null **(required)** <br /> `kind`: `toast.Kind` <br /> `opts`: `ToastOpts` |             | Makes a toast appear on the screen; `toast.Kind.SUCCESS` is the default type |
+| Name    | Parameters                                                                                                      | Return Type | Description                                                                  |
+| ------- | --------------------------------------------------------------------------------------------------------------- | ----------- | ---------------------------------------------------------------------------- |
+| `toast` | `content`: string \| ReactElement \| null **(required)** <br /> `kind`: `toast.Kind` <br /> `opts`: `ToastOpts` |             | Makes a toast appear on the screen; `toast.Kind.SUCCESS` is the default type |
 
 `ToastOpts` Props:
 
 | Name        | Type             | Default              | Description                                            |
 | ----------- | ---------------- | -------------------- | ------------------------------------------------------ |
-| `component` | React element    |                      | Custom toast component                                 |
+| `component` | ReactElement     |                      | Custom toast component                                 |
 | `duration`  | number           | `3000`               | How long the toast stays on the screen in milliseconds |
 | `position`  | `toast.Position` | `toast.Position.TOP` | Toast position                                         |
 
