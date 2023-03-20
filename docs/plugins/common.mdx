@@ -5,12 +5,12 @@ description: Documented common modules for plugins
 ---
 
 export const DiscordAPIDocs = (props) => {
-  const url = "https://discord.com/developers/docs/" + props.link;
+  const url = "https://discord.com/developers/docs/resources/" + props.link;
   return <a href={url}>{props.name}</a>;
 };
 
 export const APIReferences = {
-  Guild: () => <DiscordAPIDocs name="Guild" link="resources/guild#guild-object-guild-structure" />,
+  Guild: () => <DiscordAPIDocs name="Guild" link="guild#guild-object-guild-structure" />,
 };
 
 ## Stores
@@ -34,7 +34,7 @@ Functions:
 | `isLoaded`                 |                                  | boolean                                 | Returns a value indicating whether all initial guilds have been loaded   |
 | `getCurrentGuild`          |                                  | <APIReferences.Guild /> \| undefined    | Gets the current selected guild by its id                                |
 
-`State`:
+`State` Props:
 
 | Name                           | Type                   | Description                                               |
 | ------------------------------ | ---------------------- | --------------------------------------------------------- |
@@ -51,6 +51,45 @@ Functions:
 ### `api`
 
 ### `constants`
+
+Props:
+
+| Name             | Type                                | Description                                                                              |
+| ---------------- | ----------------------------------- | ---------------------------------------------------------------------------------------- |
+| `CSSVariables`   | Record<string, string>              | CSS variables                                                                            |
+| `ColorGenerator` | [`ColorMod`](common#colorgenerator) | Utility module containing functions useful for generating colors from a given saturation |
+| `Paths`          | Record<string, string>              | Paths                                                                                    |
+| `Permissions`    | Record<string, bigint>              | Permissions                                                                              |
+| `raw`            | Record<string, unknown>             | Raw module with all constants; check out its contents with DevTools                      |
+| `RPCCommands`    | Record<string, string>              | RPC commands                                                                             |
+| `RPCErrors`      | Record<string, string \| number>    | RPC errors                                                                               |
+| `RPCEvents`      | Record<string, string>              | RPC events                                                                               |
+| `Scopes`         | Record<string, string>              | Scopes                                                                                   |
+| `Status`         | Record<string, string>              | User statuses                                                                            |
+| `Themes`         | Record<string, string>              | Client themes                                                                            |
+
+#### `ColorGenerator`
+
+Example:
+
+In the following example we will generate a color based on the original value of the
+`BACKGROUND_PRIMARY` variable but with the saturation multiplied by `2`.
+
+```tsx
+import { common } from "replugged";
+const { constants } = common;
+const { ColorGenerator, Themes } = constants;
+
+ColorGenerator.colors.BACKGROUND_PRIMARY.resolve({ theme: Themes.DARK, saturation: 2 });
+```
+
+Props:
+
+| Name               | Type                             | Description                                                                                                                    |
+| ------------------ | -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| `colors`           | Record<string, `Color`>          | Contains all CSS variables with the corresponding function to generate a color based on a given saturation                     |
+| `themes`           | Record<string, string>           | Client themes                                                                                                                  |
+| `unsafe_rawColors` | Record<string, `UnsafeRawColor`> | Contains all CSS variables for specific colors with the corresponding function to generate a color based on a given saturation |
 
 ### `contextMenu`
 
@@ -71,6 +110,36 @@ Functions:
 ### `parser`
 
 ### `toast`
+
+Example:
+
+```tsx
+import { common } from "replugged";
+const { toast } = common;
+
+toast.toast("Toast text", toast.Kind.FAILURE, { duration: 5000 });
+```
+
+Enums:
+
+| Enum             | Description                                                      |
+| ---------------- | ---------------------------------------------------------------- |
+| `toast.Kind`     | Toast types <br/>`MESSAGE` \| `SUCCESS` \| `FAILURE` \| `CUSTOM` |
+| `toast.Position` | Toast positions <br/>`TOP` \| `BOTTOM`                           |
+
+Functions:
+
+| Name    | Parameters                                                                                                       | Return Type | Description                                                                  |
+| ------- | ---------------------------------------------------------------------------------------------------------------- | ----------- | ---------------------------------------------------------------------------- |
+| `toast` | `content`: string \| React element \| null **(required)** <br /> `kind`: `toast.Kind` <br /> `opts`: `ToastOpts` |             | Makes a toast appear on the screen; `toast.Kind.SUCCESS` is the default type |
+
+`ToastOpts` Props:
+
+| Name        | Type             | Default              | Description                                            |
+| ----------- | ---------------- | -------------------- | ------------------------------------------------------ |
+| `component` | React element    |                      | Custom toast component                                 |
+| `duration`  | number           | `3000`               | How long the toast stays on the screen in milliseconds |
+| `position`  | `toast.Position` | `toast.Position.TOP` | Toast position                                         |
 
 ### `typing`
 
