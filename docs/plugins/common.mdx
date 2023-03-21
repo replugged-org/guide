@@ -29,6 +29,7 @@ Functions:
 
 | Name                       | Parameters                       | Return Type                             | Description                                                              |
 | -------------------------- | -------------------------------- | --------------------------------------- | ------------------------------------------------------------------------ |
+| `getCurrentGuild`          |                                  | <APIReferences.Guild /> \| undefined    | Gets the current selected guild by its id                                |
 | `getGuild`                 | `guildId`: string                | <APIReferences.Guild /> \| undefined    | Gets the guild by its id                                                 |
 | `getGuildCount`            |                                  | number                                  | Returns the number of how many guilds the user is in                     |
 | `getGuildId`               |                                  | string \| undefined                     | Returns the id of the currently selected guild                           |
@@ -38,7 +39,6 @@ Functions:
 | `getState`                 |                                  | `State`                                 | Returns an object containing some information about guild selections     |
 | `getTabsV2SelectedGuildId` |                                  | string \| undefined                     | Returns the id of the last selected guild or the first guild in the list |
 | `isLoaded`                 |                                  | boolean                                 | Returns a value indicating whether all initial guilds have been loaded   |
-| `getCurrentGuild`          |                                  | <APIReferences.Guild /> \| undefined    | Gets the current selected guild by its id                                |
 
 `State` Props:
 
@@ -52,7 +52,7 @@ Functions:
 
 ### `users`
 
-## Utility
+## Utilities
 
 ### `api`
 
@@ -80,7 +80,7 @@ Functions:
 
 | Name      | Type                   | Description                          |
 | --------- | ---------------------- | ------------------------------------ |
-| `body`    | unknown                | Body contents                        |
+| `body`    | T                      | Body contents                        |
 | `headers` | Record<string, string> | Headers associated with the response |
 | `ok`      | boolean                | Whether the response was successful  |
 | `status`  | number                 | Status code of the response          |
@@ -92,8 +92,8 @@ Props:
 
 | Name             | Type                                | Description                                                                              |
 | ---------------- | ----------------------------------- | ---------------------------------------------------------------------------------------- |
-| `CSSVariables`   | Record<string, string>              | CSS variables                                                                            |
 | `ColorGenerator` | [`ColorMod`](common#colorgenerator) | Utility module containing functions useful for generating colors from a given saturation |
+| `CSSVariables`   | Record<string, string>              | CSS variables                                                                            |
 | `Paths`          | Record<string, string>              | Paths                                                                                    |
 | `Permissions`    | Record<string, bigint>              | Permissions                                                                              |
 | `raw`            | Record<string, unknown>             | Raw module with all constants; check out its contents with DevTools                      |
@@ -220,6 +220,54 @@ modal.confirm({}).then((confirmed) => {
 | `transitionState` | string             |         | Modal state                             |
 
 ### `parser`
+
+Props:
+
+| Name           | Type                   | Description                                         |
+| -------------- | ---------------------- | --------------------------------------------------- |
+| `defaultRules` | Record<string, `Rule`> | Includes a list of default rules used by the parser |
+
+Functions:
+
+| Name                               | Parameters                                                                        | Return Type           | Description                                                                                               |
+| ---------------------------------- | --------------------------------------------------------------------------------- | --------------------- | --------------------------------------------------------------------------------------------------------- |
+| `parse`                            | `text`: string **(required)** <br /> `inline`: boolean <br /> `opts`: `ParseOpts` | ReactElement          | Converts an HTML string to React elements                                                                 |
+| `parseAutoModerationSystemMessage` | `text`: string **(required)** <br /> `inline`: boolean <br /> `opts`: `ParseOpts` | ReactElement          | `parse` function but highlights text defined in `highlightText` parse option                              |
+| `parseEmbedTitle`                  | `text`: string **(required)** <br /> `inline`: boolean <br /> `opts`: `ParseOpts` | ReactElement          | `parse` function but with `codeBlock`, `br`, `mention`, `channel` and `roleMention` rules ommitted        |
+| `parseForumPostGuidelines`         | `text`: string **(required)** <br /> `inline`: boolean <br /> `opts`: `ParseOpts` | ReactElement          | `parse` function but with `paragraph` and `newline` rules ommitted                                        |
+| `parseForumPostMostRecentMessage`  | `text`: string **(required)** <br /> `inline`: boolean <br /> `opts`: `ParseOpts` | ReactElement          | `parse` function but with some emoji sizing changes and `blockQuote`, `codeBlock` and `br` rules ommitted |
+| `parseGuildEventDescription`       | `text`: string **(required)** <br /> `inline`: boolean <br /> `opts`: `ParseOpts` | ReactElement          | `parse` function but with `codeBlock`, `blockQuote` and `br` rules ommitted                               |
+| `parseGuildVerificationFormRule`   | `text`: string **(required)** <br /> `inline`: boolean <br /> `opts`: `ParseOpts` | ReactElement          | `parse` function but with `codeBlock`, `br` and `blockQuote` rules ommitted                               |
+| `parseInlineReply`                 | `text`: string **(required)** <br /> `inline`: boolean <br /> `opts`: `ParseOpts` | ReactElement          | `parse` function but with `blockQuote`, `codeBlock` and `br` rules ommitted                               |
+| `parseTopic`                       | `text`: string **(required)** <br /> `inline`: boolean <br /> `opts`: `ParseOpts` | ReactElement          | `parse` function but with `inlineCode`, `codeBlock`, `br` and `blockQuote` rules ommitted                 |
+| `reactParserFor`                   | `rules`: Record<string, Rule> **(required)**                                      | (...) => ReactElement | Creates a new parser function based on certain rules                                                      |
+
+`ParseOpts` Props:
+
+| Name                       | Type     | Description                                     |
+| -------------------------- | -------- | ----------------------------------------------- |
+| `allowHeading`             | boolean  | Whether headings are allowed                    |
+| `allowLinks`               | boolean  | Whether links are allowed                       |
+| `allowList`                | boolean  | Whether lists are allowed                       |
+| `channelId`                | string   | Channel id of where the string is located       |
+| `disableAnimatedEmoji`     | boolean  | Whether animated emojis are disabled            |
+| `disableAutoBlockNewlines` | boolean  | Whether new lines are not added at the end      |
+| `formatInline`             | boolean  | Whether headings and lists should all be inline |
+| `highlightWord`            | string   | Word to highlight                               |
+| `isInteracting`            | boolean  | Whether the string is interacted with           |
+| `mentionChannels`          | string[] | Ids of the mentioned channels                   |
+| `noStyleAndInteraction`    | boolean  | Whether interactions and style are not applied  |
+| `previewLinkTarget`        | boolean  | Whether to preview real URL on hover            |
+| `returnMentionIds`         | boolean  | Whether mention ids should be returned          |
+
+`Rule` Props:
+
+| Name    | Type                                                      | Description                                          |
+| ------- | --------------------------------------------------------- | ---------------------------------------------------- |
+| `match` | (source: string, state: State) => RegExpExecArray \| null | Function is ran to verify string match               |
+| `order` | boolean                                                   | Rule order                                           |
+| `parse` | (match: RegExpExecArray) => T                             | Function is ran to parse the string                  |
+| `react` | (props: T, ...rest: unknown[]) => ReactElement            | Function ran to return a React element after parsing |
 
 ### `toast`
 
