@@ -10,6 +10,7 @@ export const DiscordAPIDocs = (props) => {
 };
 
 export const APIReferences = {
+  Channel: () => <DiscordAPIDocs name="Channel" link="channel#channel-object-channel-structure" />,
   Guild: () => <DiscordAPIDocs name="Guild" link="guild#guild-object-guild-structure" />,
 };
 
@@ -22,6 +23,41 @@ All props/parameters are optional unless they say **(required)**.
 ## Stores
 
 ### `channels`
+
+Functions:
+
+| Name                                     | Parameters                         | Return Type                               | Description                                               |
+| ---------------------------------------- | ---------------------------------- | ----------------------------------------- | --------------------------------------------------------- |
+| `getAllThreadsForParent`                 | `channelId`: string **(required)** | <APIReferences.Channel />[]               | Gets all fetched threads by its channel (parent) id       |
+| `getBasicChannel`                        | `channelId`: string **(required)** | <APIReferences.Channel />                 | Gets the basic channel by its id                          |
+| `getCachedChannelJsonForGuild`           | `channelId`: string **(required)** | unknown                                   | Gets the cached channel in JSON by its id                 |
+| `getChannel`                             | `channelId`: string **(required)** | <APIReferences.Channel />                 | Gets the channel by its id                                |
+| `getChannelId`                           | `guildId`: string                  | string \| undefined                       | Returns the current selected channel id                   |
+| `getCurrentlySelectedChannelId`          | `guildId`: string                  | string \| undefined                       | Returns the current selected channel id                   |
+| `getDMFromUserId`                        | `userId`: string **(required)**    | string \| undefined                       | Returns the DM channel id by its user id                  |
+| `getDMUserIds`                           |                                    | string[]                                  | Returns all DM channel ids                                |
+| `getGuildChannelsVersion`                | `guildId`: string **(required)**   | number                                    | Returns the channel version by guild id                   |
+| `getInitialOverlayState`                 |                                    | Record<string, <APIReferences.Channel />> | Gets all guild and DM channels                            |
+| `getLastChannelFollowingDestination`     |                                    | `LastChannelFollowingDestination`         | Gets information on the last channel follow               |
+| `getLastSelectedChannelId`               | `guildId`: string                  | string \| undefined                       | Returns the last selected channel id                      |
+| `getLastSelectedChannels`                | `guildId`: string **(required)**   | string \| undefined                       | Returns the last selected channel id by its guild id      |
+| `getMostRecentSelectedTextChannelId`     | `guildId`: string                  | string \| undefined                       | Returns the last selected text channel id by its guild id |
+| `getMutableBasicGuildChannelsForGuild`   | `guildId`: string **(required)**   | Record<string, <APIReferences.Channel />> | Gets all basic channels by its guild id                   |
+| `getMutableGuildChannelsForGuild`        | `guildId`: string **(required)**   | Record<string, <APIReferences.Channel />> | Gets all channels by its guild id                         |
+| `getMutablePrivateChannels`              |                                    | Record<string, <APIReferences.Channel />> | Gets all DM channels                                      |
+| `getPrivateChannelsVersion`              |                                    | number                                    | Returns the DM channel version                            |
+| `getSortedPrivateChannels`               |                                    | <APIReferences.Channel />[]               | Gets all DM channels sorted by the last message           |
+| `getVoiceChannelId`                      |                                    | string \| undefined                       | Returns the current voice channel id                      |
+| `hasChannel`                             | `channelId`: string **(required)** | boolean                                   | Whether the channel id is registered in the channel store |
+| `hasRestoredGuild`                       | `guildId`: string **(required)**   | boolean                                   | Whether the guild is restored                             |
+| `loadAllGuildAndPrivateChannelsFromDisk` |                                    | Record<string, <APIReferences.Channel />> | Gets all guild and DM channels                            |
+
+`LastChannelFollowingDestination` Props:
+
+| Name        | Type   | Description                                                       |
+| ----------- | ------ | ----------------------------------------------------------------- |
+| `channelId` | string | Id of the channel to which the follow was assigned                |
+| `guildId`   | string | Id of the guild with the channel to which the follow was assigned |
 
 ### `guilds`
 
@@ -160,12 +196,12 @@ The following enums are a shortcut to the [`Flex`](components#flex) component en
 
 Functions:
 
-| Name         | Parameters                                                                                                                 | Return Type              | Description                                                                  |
-| ------------ | -------------------------------------------------------------------------------------------------------------------------- | ------------------------ | ---------------------------------------------------------------------------- |
-| `alert`      | `props`: `AlertProps` **(required)**                                                                                       |                          | Brings up a modal useful for a quick response                                |
-| `closeModal` | `modalKey`: string **(required)** <br /> `contextKey`: string                                                              |                          | Closes a specific modal by its key                                           |
-| `confirm`    | `props`: `AlertProps` **(required)**                                                                                       | Promise<boolean \| null> | Brings up an alert modal useful for asking the user for a quick confirmation |
-| `openModal`  | `render`: (`props`: `ModalProps`) => ReactNode **(required)** <br /> `options`: `ModalOptions` <br /> `contextKey`: string | string                   | Opens a specific modal and returns its key                                   |
+| Name         | Parameters                                                                                                               | Return Type              | Description                                                                  |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------ | ---------------------------------------------------------------------------- |
+| `alert`      | `props`: `AlertProps` **(required)**                                                                                     |                          | Brings up a modal useful for a quick response                                |
+| `closeModal` | `modalKey`: string **(required)** <br /> `contextKey`: string                                                            |                          | Closes a specific modal by its key                                           |
+| `confirm`    | `props`: `AlertProps` **(required)**                                                                                     | Promise<boolean \| null> | Brings up an alert modal useful for asking the user for a quick confirmation |
+| `openModal`  | `render`: (props: `ModalProps`) => ReactNode **(required)** <br /> `options`: `ModalOptions` <br /> `contextKey`: string | string                   | Opens a specific modal and returns its key                                   |
 
 :::info
 
@@ -229,18 +265,18 @@ Props:
 
 Functions:
 
-| Name                               | Parameters                                                                        | Return Type           | Description                                                                                               |
-| ---------------------------------- | --------------------------------------------------------------------------------- | --------------------- | --------------------------------------------------------------------------------------------------------- |
-| `parse`                            | `text`: string **(required)** <br /> `inline`: boolean <br /> `opts`: `ParseOpts` | ReactElement          | Converts an HTML string to React elements                                                                 |
-| `parseAutoModerationSystemMessage` | `text`: string **(required)** <br /> `inline`: boolean <br /> `opts`: `ParseOpts` | ReactElement          | `parse` function but highlights text defined in `highlightText` parse option                              |
-| `parseEmbedTitle`                  | `text`: string **(required)** <br /> `inline`: boolean <br /> `opts`: `ParseOpts` | ReactElement          | `parse` function but with `codeBlock`, `br`, `mention`, `channel` and `roleMention` rules ommitted        |
-| `parseForumPostGuidelines`         | `text`: string **(required)** <br /> `inline`: boolean <br /> `opts`: `ParseOpts` | ReactElement          | `parse` function but with `paragraph` and `newline` rules ommitted                                        |
-| `parseForumPostMostRecentMessage`  | `text`: string **(required)** <br /> `inline`: boolean <br /> `opts`: `ParseOpts` | ReactElement          | `parse` function but with some emoji sizing changes and `blockQuote`, `codeBlock` and `br` rules ommitted |
-| `parseGuildEventDescription`       | `text`: string **(required)** <br /> `inline`: boolean <br /> `opts`: `ParseOpts` | ReactElement          | `parse` function but with `codeBlock`, `blockQuote` and `br` rules ommitted                               |
-| `parseGuildVerificationFormRule`   | `text`: string **(required)** <br /> `inline`: boolean <br /> `opts`: `ParseOpts` | ReactElement          | `parse` function but with `codeBlock`, `br` and `blockQuote` rules ommitted                               |
-| `parseInlineReply`                 | `text`: string **(required)** <br /> `inline`: boolean <br /> `opts`: `ParseOpts` | ReactElement          | `parse` function but with `blockQuote`, `codeBlock` and `br` rules ommitted                               |
-| `parseTopic`                       | `text`: string **(required)** <br /> `inline`: boolean <br /> `opts`: `ParseOpts` | ReactElement          | `parse` function but with `inlineCode`, `codeBlock`, `br` and `blockQuote` rules ommitted                 |
-| `reactParserFor`                   | `rules`: Record<string, Rule> **(required)**                                      | (...) => ReactElement | Creates a new parser function based on certain rules                                                      |
+| Name                               | Parameters                                                                        | Return Type           | Description                                                                                              |
+| ---------------------------------- | --------------------------------------------------------------------------------- | --------------------- | -------------------------------------------------------------------------------------------------------- |
+| `parse`                            | `text`: string **(required)** <br /> `inline`: boolean <br /> `opts`: `ParseOpts` | ReactElement          | Converts an HTML string to React elements                                                                |
+| `parseAutoModerationSystemMessage` | `text`: string **(required)** <br /> `inline`: boolean <br /> `opts`: `ParseOpts` | ReactElement          | `parse` function but highlights text defined in `highlightText` parse option                             |
+| `parseEmbedTitle`                  | `text`: string **(required)** <br /> `inline`: boolean <br /> `opts`: `ParseOpts` | ReactElement          | `parse` function but with `codeBlock`, `br`, `mention`, `channel` and `roleMention` rules omitted        |
+| `parseForumPostGuidelines`         | `text`: string **(required)** <br /> `inline`: boolean <br /> `opts`: `ParseOpts` | ReactElement          | `parse` function but with `paragraph` and `newline` rules omitted                                        |
+| `parseForumPostMostRecentMessage`  | `text`: string **(required)** <br /> `inline`: boolean <br /> `opts`: `ParseOpts` | ReactElement          | `parse` function but with some emoji sizing changes and `blockQuote`, `codeBlock` and `br` rules omitted |
+| `parseGuildEventDescription`       | `text`: string **(required)** <br /> `inline`: boolean <br /> `opts`: `ParseOpts` | ReactElement          | `parse` function but with `codeBlock`, `blockQuote` and `br` rules omitted                               |
+| `parseGuildVerificationFormRule`   | `text`: string **(required)** <br /> `inline`: boolean <br /> `opts`: `ParseOpts` | ReactElement          | `parse` function but with `codeBlock`, `br` and `blockQuote` rules omitted                               |
+| `parseInlineReply`                 | `text`: string **(required)** <br /> `inline`: boolean <br /> `opts`: `ParseOpts` | ReactElement          | `parse` function but with `blockQuote`, `codeBlock` and `br` rules omitted                               |
+| `parseTopic`                       | `text`: string **(required)** <br /> `inline`: boolean <br /> `opts`: `ParseOpts` | ReactElement          | `parse` function but with `inlineCode`, `codeBlock`, `br` and `blockQuote` rules omitted                 |
+| `reactParserFor`                   | `rules`: Record<string, Rule> **(required)**                                      | (...) => ReactElement | Creates a new parser function based on specific rules                                                    |
 
 `ParseOpts` Props:
 
