@@ -187,6 +187,8 @@ Props:
 
 #### `ColorGenerator`
 
+<!-- TODO: `Color` and `UnsafeRawColor` aren't documented -->
+
 Example:
 
 In the following example we will generate a color based on the original value of the
@@ -221,6 +223,47 @@ Props:
 ### `fluxDispatcher`
 
 ### `i18n`
+
+<!-- TODO: `Messages` and all props/functions starting with an underscore aren't documented -->
+
+Props:
+
+| Name          | Type                       | Description                                  |
+| ------------- | -------------------------- | -------------------------------------------- |
+| `loadPromise` | Promise<void\>             | Promise of when messages got fetched         |
+| `Messages`    | Record<string, `Messages`> | Contains all strings for the selected locale |
+
+Functions:
+
+| Name                          | Parameters                                                               | Return Type  | Description                                                                       |
+| ----------------------------- | ------------------------------------------------------------------------ | ------------ | --------------------------------------------------------------------------------- |
+| `getAvailableLocales`         |                                                                          | `Locale`[]   | Gets all available locales                                                        |
+| `getDefaultLocale`            |                                                                          | string       | Gets the default locale                                                           |
+| `getLanguages`                |                                                                          | `Language`[] | Gets all available languages                                                      |
+| `getLocale`                   |                                                                          | string       | Gets the selected locale                                                          |
+| `getLocaleInfo`               |                                                                          | `Language`   | Gets information on the selected locale                                           |
+| `setLocale`                   | `locale`: string                                                         | void         | Change locale                                                                     |
+| `setUpdateRules`              | `rules`: Record<string, `Rule`>                                          | void         | Set parser rules; check out [`parser`](common#parser) module for the `Rule` props |
+| `updateMessagesForExperiment` | `locale`: string <br /> `callback`: (messages: `Messages`) => `Messages` | void         | Change all strings for a specific locale                                          |
+
+`Language` Props:
+
+| Name           | Type    | Description                                           |
+| -------------- | ------- | ----------------------------------------------------- |
+| `code`         | string  | Language code                                         |
+| `enabled`      | boolean | Whether the language is enabled and usable in the app |
+| `enabledAPI`   | boolean | Whether the language API is enabled                   |
+| `englishName`  | string  | English name of the language                          |
+| `name`         | string  | Language name                                         |
+| `postgresLang` | string  | Character set type                                    |
+
+`Locale` Props:
+
+| Name            | Type   | Description                  |
+| --------------- | ------ | ---------------------------- |
+| `localizedName` | string | Localized name of the locale |
+| `name`          | string | Locale name                  |
+| `value`         | string | Language code                |
 
 ### `modal`
 
@@ -310,18 +353,18 @@ Props:
 
 Functions:
 
-| Name                               | Parameters                                                                        | Return Type           | Description                                                                                                                 |
-| ---------------------------------- | --------------------------------------------------------------------------------- | --------------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| `parse`                            | `text`: string **(required)** <br /> `inline`: boolean <br /> `opts`: `ParseOpts` | ReactElement          | Converts an HTML string to React elements                                                                                   |
-| `parseAutoModerationSystemMessage` | `text`: string **(required)** <br /> `inline`: boolean <br /> `opts`: `ParseOpts` | ReactElement          | `parse` function but highlights text defined in `highlightText` parse option                                                |
-| `parseEmbedTitle`                  | `text`: string **(required)** <br /> `inline`: boolean <br /> `opts`: `ParseOpts` | ReactElement          | `parse` function but with `codeBlock`, `br`, `mention`, `channel` and `roleMention` rules omitted                           |
-| `parseForumPostGuidelines`         | `text`: string **(required)** <br /> `inline`: boolean <br /> `opts`: `ParseOpts` | ReactElement          | `parse` function but with `paragraph` and `newline` rules omitted                                                           |
-| `parseForumPostMostRecentMessage`  | `text`: string **(required)** <br /> `inline`: boolean <br /> `opts`: `ParseOpts` | ReactElement          | `parse` function but with some emoji sizing changes and `blockQuote`, `codeBlock` and `br` rules omitted                    |
-| `parseGuildEventDescription`       | `text`: string **(required)** <br /> `inline`: boolean <br /> `opts`: `ParseOpts` | ReactElement          | `parse` function but with `codeBlock`, `blockQuote` and `br` rules omitted                                                  |
-| `parseGuildVerificationFormRule`   | `text`: string **(required)** <br /> `inline`: boolean <br /> `opts`: `ParseOpts` | ReactElement          | `parse` function but with `codeBlock`, `br` and `blockQuote` rules omitted                                                  |
-| `parseInlineReply`                 | `text`: string **(required)** <br /> `inline`: boolean <br /> `opts`: `ParseOpts` | ReactElement          | `parse` function but with `blockQuote`, `codeBlock` and `br` rules omitted                                                  |
-| `parseTopic`                       | `text`: string **(required)** <br /> `inline`: boolean <br /> `opts`: `ParseOpts` | ReactElement          | `parse` function but with `inlineCode`, `codeBlock`, `br` and `blockQuote` rules omitted                                    |
-| `reactParserFor`                   | `rules`: Record<string, Rule> **(required)**                                      | (...) => ReactElement | Creates a new parser function based on specific rules; the returned function has the same parameters of the functions above |
+| Name                               | Parameters                                                                        | Return Type           | Description                                                                                                                        |
+| ---------------------------------- | --------------------------------------------------------------------------------- | --------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `parse`                            | `text`: string **(required)** <br /> `inline`: boolean <br /> `opts`: `ParseOpts` | ReactElement          | Converts an HTML string to React elements                                                                                          |
+| `parseAutoModerationSystemMessage` | `text`: string **(required)** <br /> `inline`: boolean <br /> `opts`: `ParseOpts` | ReactElement          | `parse` function but highlights text defined in `highlightText` parse option                                                       |
+| `parseEmbedTitle`                  | `text`: string **(required)** <br /> `inline`: boolean <br /> `opts`: `ParseOpts` | ReactElement          | `parse` function but with `codeBlock`, `br`, `mention`, `channel` and `roleMention` rules omitted                                  |
+| `parseForumPostGuidelines`         | `text`: string **(required)** <br /> `inline`: boolean <br /> `opts`: `ParseOpts` | ReactElement          | `parse` function but with `paragraph` and `newline` rules omitted                                                                  |
+| `parseForumPostMostRecentMessage`  | `text`: string **(required)** <br /> `inline`: boolean <br /> `opts`: `ParseOpts` | ReactElement          | `parse` function but with some emoji sizing changes and `blockQuote`, `codeBlock` and `br` rules omitted                           |
+| `parseGuildEventDescription`       | `text`: string **(required)** <br /> `inline`: boolean <br /> `opts`: `ParseOpts` | ReactElement          | `parse` function but with `codeBlock`, `blockQuote` and `br` rules omitted                                                         |
+| `parseGuildVerificationFormRule`   | `text`: string **(required)** <br /> `inline`: boolean <br /> `opts`: `ParseOpts` | ReactElement          | `parse` function but with `codeBlock`, `br` and `blockQuote` rules omitted                                                         |
+| `parseInlineReply`                 | `text`: string **(required)** <br /> `inline`: boolean <br /> `opts`: `ParseOpts` | ReactElement          | `parse` function but with `blockQuote`, `codeBlock` and `br` rules omitted                                                         |
+| `parseTopic`                       | `text`: string **(required)** <br /> `inline`: boolean <br /> `opts`: `ParseOpts` | ReactElement          | `parse` function but with `inlineCode`, `codeBlock`, `br` and `blockQuote` rules omitted                                           |
+| `reactParserFor`                   | `rules`: Record<string, Rule> **(required)**                                      | (...) => ReactElement | Creates a new parser function based on specific rules; the returned function has the same parameters of the other parser functions |
 
 `ParseOpts` Props:
 
