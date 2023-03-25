@@ -4,13 +4,15 @@ title: Components
 description: Documented components for plugins
 ---
 
+export const Required = () => <span style={{ color: "red" }}>*</span>;
+
 export const CSSProperties = () => (
   <a href="https://reactjs.org/docs/dom-elements.html#style">CSSProperties</a>
 );
 
 :::caution
 
-All props are optional unless they say **(required)**.
+All props are optional unless they are marked with an asterisk ( <Required /> ).
 
 :::
 
@@ -109,31 +111,31 @@ Enums:
 
 Props:
 
-| Name                        | Type                                          | Default              | Description                                               |
-| --------------------------- | --------------------------------------------- | -------------------- | --------------------------------------------------------- |
-| `className`                 | string                                        |                      | Component class name                                      |
-| `disabled`                  | boolean                                       | `false`              | Whether the radio group is disabled                       |
-| `itemInfoClassName`         | string                                        |                      | Radio info element class name                             |
-| `itemTitleClassName`        | string                                        |                      | Radio title element class name                            |
-| `onChange`                  | (e: `RadioOptionType`) => void **(required)** |                      | Function ran on value change                              |
-| `options`                   | `RadioOptionType[]` **(required)**            |                      | Array of radio options; check out `RadioOptionType` props |
-| `radioItemClassName`        | string                                        |                      | Radio item element class name                             |
-| `radioPosition`             | string                                        | `left`               | Position of the radio                                     |
-| `size`                      | `Radio.Sizes`                                 | `Radio.Sizes.MEDIUM` | Define radio group size                                   |
-| `value`                     | string                                        |                      | Selected radio value                                      |
-| `withTransparentBackground` | boolean                                       | `false`              | Whether the radio group is transparent                    |
+| Name                        | Type                                        | Default              | Description                                               |
+| --------------------------- | ------------------------------------------- | -------------------- | --------------------------------------------------------- |
+| `className`                 | string                                      |                      | Component class name                                      |
+| `disabled`                  | boolean                                     | `false`              | Whether the radio group is disabled                       |
+| `itemInfoClassName`         | string                                      |                      | Radio info element class name                             |
+| `itemTitleClassName`        | string                                      |                      | Radio title element class name                            |
+| `onChange`                  | <Required /> (e: `RadioOptionType`) => void |                      | Function ran on value change                              |
+| `options`                   | <Required /> `RadioOptionType[]`            |                      | Array of radio options; check out `RadioOptionType` props |
+| `radioItemClassName`        | string                                      |                      | Radio item element class name                             |
+| `radioPosition`             | string                                      | `left`               | Position of the radio                                     |
+| `size`                      | `Radio.Sizes`                               | `Radio.Sizes.MEDIUM` | Define radio group size                                   |
+| `value`                     | string                                      |                      | Selected radio value                                      |
+| `withTransparentBackground` | boolean                                     | `false`              | Whether the radio group is transparent                    |
 
 `RadioOptionType` Props:
 
-| Name              | Type                  | Default | Description                                                             |
-| ----------------- | --------------------- | ------- | ----------------------------------------------------------------------- |
-| `color`           | string                |         | Color displayed on the side                                             |
-| `desc`            | string                |         | Option description                                                      |
-| `disabled`        | boolean               | `false` | Whether the option is disabled                                          |
-| `name`            | string **(required)** |         | Option name                                                             |
-| `tooltipPosition` | string                |         | Tooltip position displayed on the option; check out `Tooltip.Positions` |
-| `tooltipText`     | string                |         | Tooltip text displayed on the option                                    |
-| `value`           | string **(required)** |         | Option value                                                            |
+| Name              | Type                | Default | Description                                                             |
+| ----------------- | ------------------- | ------- | ----------------------------------------------------------------------- |
+| `color`           | string              |         | Color displayed on the side                                             |
+| `desc`            | string              |         | Option description                                                      |
+| `disabled`        | boolean             | `false` | Whether the option is disabled                                          |
+| `name`            | <Required /> string |         | Option name                                                             |
+| `tooltipPosition` | string              |         | Tooltip position displayed on the option; check out `Tooltip.Positions` |
+| `tooltipText`     | string              |         | Tooltip text displayed on the option                                    |
+| `value`           | <Required /> string |         | Option value                                                            |
 
 ### Select and SelectItem
 
@@ -165,44 +167,44 @@ export function Settings(): React.ReactElement {
 
 Props:
 
-| Name                | Type                                | Default  | Description                                                                                                 |
-| ------------------- | ----------------------------------- | -------- | ----------------------------------------------------------------------------------------------------------- |
-| `autoFocus`         | boolean                             | `false`  | Whether the select is on focus                                                                              |
-| `className`         | string                              |          | Component class name                                                                                        |
-| `clear`             | () => void                          |          | Function ran when the selection is cleared; works together with `clearable`; alias of `onClear`             |
-| `clearable`         | boolean                             | `false`  | Whether the selection is clearable from its button; works together with `clear`                             |
-| `closeOnSelect`     | boolean                             | `true`   | Whether to close the popout once selected an option                                                         |
-| `disabled`          | boolean                             | `false`  | Whether the select is disabled; alias of `isDisabled`                                                       |
-| `hideIcon`          | boolean                             | `false`  | Whether the arrow icon is hidden                                                                            |
-| `isDisabled`        | boolean                             | `false`  | Whether the select is disabled; alias of `disabled`                                                         |
-| `isSelected`        | (e: string) => void **(required)**  |          | Function ran to check if the option passed as a parameter is selectable; not necessary if `value` is passed |
-| `look`              | number                              | `0`      | Define the select style                                                                                     |
-| `maxVisibleItems`   | number                              | `7`      | How many options are visible                                                                                |
-| `onChange`          | (e: string) => void **(required)**  |          | Function ran on selection change; alias of `onSelect` and `select`                                          |
-| `onClear`           | () => void                          |          | Function ran when the selection is cleared; works together with `clearable`; alias of `clear`               |
-| `onClose`           | () => void                          |          | Function ran when the popout got closed                                                                     |
-| `onOpen`            | () => void                          |          | Function ran when the popout got opened                                                                     |
-| `onSelect`          | (e: string) => void **(required)**  |          | Function ran on selection change; alias of `onChange` and `select`                                          |
-| `optionClassName`   | string                              |          | Option element class name                                                                                   |
-| `options`           | `SelectOptionType[]` **(required)** |          | Array of select options; check out `SelectOptionType` props                                                 |
-| `placeholder`       | string                              | `Select` | Select placeholder text                                                                                     |
-| `popoutClassName`   | string                              |          | Popout element class name                                                                                   |
-| `popoutPosition`    | string                              |          | Popout position displayed on the select; check out `Tooltip.Positions`                                      |
-| `popoutWidth`       | number                              |          | Popout width                                                                                                |
-| `renderOptionLabel` | (e: `SelectOptionType`) => void     |          | Function ran on option label element render, useful to labels                                               |
-| `renderOptionValue` | (e: `SelectOptionType[]`) => void   |          | Function ran on option value element render, useful to values                                               |
-| `select`            | (e: string) => void **(required)**  |          | Function ran on selection change; alias of `onChange` and `onSelect`                                        |
-| `serialize`         | (e: string) => void                 |          | Function ran to serialize the option                                                                        |
-| `value`             | string                              |          | Selected option value                                                                                       |
+| Name                | Type                              | Default  | Description                                                                                                 |
+| ------------------- | --------------------------------- | -------- | ----------------------------------------------------------------------------------------------------------- |
+| `autoFocus`         | boolean                           | `false`  | Whether the select is on focus                                                                              |
+| `className`         | string                            |          | Component class name                                                                                        |
+| `clear`             | () => void                        |          | Function ran when the selection is cleared; works together with `clearable`; alias of `onClear`             |
+| `clearable`         | boolean                           | `false`  | Whether the selection is clearable from its button; works together with `clear`                             |
+| `closeOnSelect`     | boolean                           | `true`   | Whether to close the popout once selected an option                                                         |
+| `disabled`          | boolean                           | `false`  | Whether the select is disabled; alias of `isDisabled`                                                       |
+| `hideIcon`          | boolean                           | `false`  | Whether the arrow icon is hidden                                                                            |
+| `isDisabled`        | boolean                           | `false`  | Whether the select is disabled; alias of `disabled`                                                         |
+| `isSelected`        | <Required /> (e: string) => void  |          | Function ran to check if the option passed as a parameter is selectable; not necessary if `value` is passed |
+| `look`              | number                            | `0`      | Define the select style                                                                                     |
+| `maxVisibleItems`   | number                            | `7`      | How many options are visible                                                                                |
+| `onChange`          | <Required /> (e: string) => void  |          | Function ran on selection change; alias of `onSelect` and `select`                                          |
+| `onClear`           | () => void                        |          | Function ran when the selection is cleared; works together with `clearable`; alias of `clear`               |
+| `onClose`           | () => void                        |          | Function ran when the popout got closed                                                                     |
+| `onOpen`            | () => void                        |          | Function ran when the popout got opened                                                                     |
+| `onSelect`          | <Required /> (e: string) => void  |          | Function ran on selection change; alias of `onChange` and `select`                                          |
+| `optionClassName`   | string                            |          | Option element class name                                                                                   |
+| `options`           | <Required /> `SelectOptionType[]` |          | Array of select options; check out `SelectOptionType` props                                                 |
+| `placeholder`       | string                            | `Select` | Select placeholder text                                                                                     |
+| `popoutClassName`   | string                            |          | Popout element class name                                                                                   |
+| `popoutPosition`    | string                            |          | Popout position displayed on the select; check out `Tooltip.Positions`                                      |
+| `popoutWidth`       | number                            |          | Popout width                                                                                                |
+| `renderOptionLabel` | (e: `SelectOptionType`) => void   |          | Function ran on option label element render, useful to labels                                               |
+| `renderOptionValue` | (e: `SelectOptionType[]`) => void |          | Function ran on option value element render, useful to values                                               |
+| `select`            | <Required /> (e: string) => void  |          | Function ran on selection change; alias of `onChange` and `onSelect`                                        |
+| `serialize`         | (e: string) => void               |          | Function ran to serialize the option                                                                        |
+| `value`             | string                            |          | Selected option value                                                                                       |
 
 `SelectOptionType` Props:
 
-| Name       | Type                  | Default | Description                    |
-| ---------- | --------------------- | ------- | ------------------------------ |
-| `disabled` | boolean               | `false` | Whether the option is disabled |
-| `key`      | string                |         | Option key                     |
-| `label`    | string **(required)** |         | Option name                    |
-| `value`    | string **(required)** |         | Option value                   |
+| Name       | Type                | Default | Description                    |
+| ---------- | ------------------- | ------- | ------------------------------ |
+| `disabled` | boolean             | `false` | Whether the option is disabled |
+| `key`      | string              |         | Option key                     |
+| `label`    | <Required /> string |         | Option name                    |
+| `value`    | <Required /> string |         | Option value                   |
 
 ### Slider and SliderItem
 
@@ -268,17 +270,17 @@ export function Settings(): React.ReactElement {
 
 Props:
 
-| Name          | Type                                | Default | Description                                                      |
-| ------------- | ----------------------------------- | ------- | ---------------------------------------------------------------- |
-| `checked`     | boolean **(required)**              |         | Switch state; use `value` with the Item component instead        |
-| `className`   | string                              |         | Component class name                                             |
-| `disabled`    | boolean                             | `false` | Whether the switch is disabled                                   |
-| `hideBorder`  | boolean                             | `false` | Whether a divider is not displayed at the end of the switch item |
-| `note`        | string                              |         | Description of what the switch item is about                     |
-| `onChange`    | (e: boolean) => void **(required)** |         | Function ran on state change                                     |
-| `style`       | <CSSProperties />                   |         | Component style                                                  |
-| `tooltipNote` | string                              |         | Tooltip text displayed on the switch item                        |
-| `value`       | boolean **(required)**              |         | Switch item value                                                |
+| Name          | Type                              | Default | Description                                                      |
+| ------------- | --------------------------------- | ------- | ---------------------------------------------------------------- |
+| `checked`     | <Required /> boolean              |         | Switch state; use `value` with the Item component instead        |
+| `className`   | string                            |         | Component class name                                             |
+| `disabled`    | boolean                           | `false` | Whether the switch is disabled                                   |
+| `hideBorder`  | boolean                           | `false` | Whether a divider is not displayed at the end of the switch item |
+| `note`        | string                            |         | Description of what the switch item is about                     |
+| `onChange`    | <Required /> (e: boolean) => void |         | Function ran on state change                                     |
+| `style`       | <CSSProperties />                 |         | Component style                                                  |
+| `tooltipNote` | string                            |         | Tooltip text displayed on the switch item                        |
+| `value`       | <Required /> boolean              |         | Switch item value                                                |
 
 ### TextArea
 
@@ -398,7 +400,7 @@ Props:
 | Name                      | Type                       | Default               | Description                                                                                  |
 | ------------------------- | -------------------------- | --------------------- | -------------------------------------------------------------------------------------------- |
 | `borderColor`             | `Button.BorderColors`      |                       | Button border color                                                                          |
-| `button`                  | string **(required)**      |                       | Button text for the item component                                                           |
+| `button`                  | <Required /> string        |                       | Button text for the item component                                                           |
 | `className`               | string                     |                       | Component class name                                                                         |
 | `color`                   | `Button.Colors`            | `Button.Colors.BRAND` | Button color                                                                                 |
 | `disabled`                | boolean                    | `false`               | Whether the button is disabled                                                               |
@@ -409,7 +411,7 @@ Props:
 | `innerClassName`          | string                     |                       | Text element class name                                                                      |
 | `look`                    | `Button.Looks`             | `Button.Looks.FILLED` | Button look                                                                                  |
 | `note`                    | string                     |                       | Description of what the button item is about                                                 |
-| `onClick`                 | () => void **(required)**  |                       | Function ran on button click                                                                 |
+| `onClick`                 | <Required /> () => void    |                       | Function ran on button click                                                                 |
 | `onDoubleClick`           | (e: MouseEvent) => void    |                       | Function ran on double button click                                                          |
 | `onKeyDown`               | (e: KeyboardEvent) => void |                       | Function ran on key press                                                                    |
 | `onMouseDown`             | (e: MouseEvent) => void    |                       | Function ran on mouse down                                                                   |
@@ -442,13 +444,13 @@ const { Category } = components;
 
 Props:
 
-| Name       | Type                  | Default | Description                                        |
-| ---------- | --------------------- | ------- | -------------------------------------------------- |
-| `disabled` | boolean               | `false` | Whether the category and its children are disabled |
-| `note`     | string                |         | Description of what the category contains          |
-| `onChange` | () => void            |         | Function ran on open state change                  |
-| `open`     | boolean               | `false` | Whether the category is opened                     |
-| `title`    | string **(required)** |         | Category title                                     |
+| Name       | Type                | Default | Description                                        |
+| ---------- | ------------------- | ------- | -------------------------------------------------- |
+| `disabled` | boolean             | `false` | Whether the category and its children are disabled |
+| `note`     | string              |         | Description of what the category contains          |
+| `onChange` | () => void          |         | Function ran on open state change                  |
+| `open`     | boolean             | `false` | Whether the category is opened                     |
+| `title`    | <Required /> string |         | Category title                                     |
 
 :::caution
 
@@ -541,7 +543,7 @@ const { Flex } = components;
 <Flex direction={Flex.Direction.VERTICAL}>{/* Your components here */}</Flex>;
 ```
 
-Related Components:
+Subcomponents:
 
 | Component    | Description                           |
 | ------------ | ------------------------------------- |
@@ -670,7 +672,7 @@ const { FormText } = components;
 <FormText.DEFAULT>This is an example</FormText.DEFAULT>;
 ```
 
-Related Components:
+Subcomponents:
 
 | Component                    | Description            |
 | ---------------------------- | ---------------------- |
@@ -744,7 +746,7 @@ modal.openModal((props) => (
 ));
 ```
 
-Related Components:
+Subcomponents:
 
 | Component                | Description            |
 | ------------------------ | ---------------------- |
@@ -756,12 +758,12 @@ Related Components:
 
 `Modal.ModalCloseButton` Props:
 
-| Name                   | Type                    | Default | Description                                              |
-| ---------------------- | ----------------------- | ------- | -------------------------------------------------------- |
-| `className`            | string                  |         | Component class name                                     |
-| `hideOnFullscreen`     | boolean                 | `false` | Whether the button is hidden when modal is in fullscreen |
-| `onClick`              | (): void **(required)** |         | Function ran when clicking the close button              |
-| `withCircleBackground` | boolean                 | `false` | Whether the button is in a circle                        |
+| Name                   | Type                  | Default | Description                                              |
+| ---------------------- | --------------------- | ------- | -------------------------------------------------------- |
+| `className`            | string                |         | Component class name                                     |
+| `hideOnFullscreen`     | boolean               | `false` | Whether the button is hidden when modal is in fullscreen |
+| `onClick`              | <Required /> (): void |         | Function ran when clicking the close button              |
+| `withCircleBackground` | boolean               | `false` | Whether the button is in a circle                        |
 
 `Modal.ModalFooter` Props:
 
@@ -830,7 +832,7 @@ const { Text } = components;
 <Text.Normal>This is an example</Text.Normal>;
 ```
 
-Related Components:
+Subcomponents:
 
 | Component      | Description                                |
 | -------------- | ------------------------------------------ |
@@ -902,6 +904,6 @@ Props:
 | `shouldShow`                  | boolean                        | `true`                   | Whether the tooltip can show                                                      |
 | `spacing`                     | number                         | `8`                      | Distance from the children                                                        |
 | `style`                       | <CSSProperties />              |                          | Component style                                                                   |
-| `text`                        | string **(required)**          |                          | Tooltip text                                                                      |
+| `text`                        | <Required /> string            |                          | Tooltip text                                                                      |
 | `tooltipClassName`            | string                         |                          | Tooltip element class name                                                        |
 | `tooltipContentClassName`     | string                         |                          | Tooltip content element class name                                                |

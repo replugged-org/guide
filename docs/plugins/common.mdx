@@ -4,6 +4,8 @@ title: Common Modules
 description: Documented common modules for plugins
 ---
 
+export const Required = () => <span style={{ color: "red" }}>*</span>;
+
 export const DiscordAPIDocs = (props) => {
   const url = "https://discord.com/developers/docs/resources/" + props.link;
   return <a href={url}>{props.name}</a>;
@@ -20,7 +22,7 @@ export const APIReferences = {
 
 :::caution
 
-All props/parameters are optional unless they say **(required)**.
+All props/parameters are optional unless they are marked with an asterisk ( <Required /> ).
 
 :::
 
@@ -36,33 +38,35 @@ everything is documented** there.
 
 ### `channels`
 
+All functions of `ChannelStore` and `SelectedChannelStore` are in this module.
+
 Functions:
 
-| Name                                     | Parameters                         | Return Type                               | Description                                                 |
-| ---------------------------------------- | ---------------------------------- | ----------------------------------------- | ----------------------------------------------------------- |
-| `getAllThreadsForParent`                 | `channelId`: string                | <APIReferences.Channel />[]               | Gets all fetched threads by its channel (parent) id         |
-| `getBasicChannel`                        | `channelId`: string **(required)** | <APIReferences.Channel /> \| undefined    | Gets the basic channel by its id                            |
-| `getCachedChannelJsonForGuild`           | `channelId`: string **(required)** | unknown                                   | Gets the cached channel in JSON by its id                   |
-| `getChannel`                             | `channelId`: string **(required)** | <APIReferences.Channel /> \| undefined    | Gets the channel by its id                                  |
-| `getChannelId`                           | `guildId`: string                  | string \| undefined                       | Gets the current selected channel id                        |
-| `getCurrentlySelectedChannelId`          | `guildId`: string                  | string \| undefined                       | Gets the current selected channel id                        |
-| `getDMFromUserId`                        | `userId`: string **(required)**    | string \| undefined                       | Gets the DM channel id by its user id                       |
-| `getDMUserIds`                           |                                    | string[]                                  | Gets all DM channel ids                                     |
-| `getGuildChannelsVersion`                | `guildId`: string                  | number                                    | Gets the channel version by guild id                        |
-| `getInitialOverlayState`                 |                                    | Record<string, <APIReferences.Channel />> | Gets all guild and DM channels                              |
-| `getLastChannelFollowingDestination`     |                                    | `LastChannelFollowingDestination`         | Gets information on the last channel follow                 |
-| `getLastSelectedChannelId`               | `guildId`: string                  | string \| undefined                       | Gets the last selected channel id                           |
-| `getLastSelectedChannels`                | `guildId`: string **(required)**   | string \| undefined                       | Gets the last selected channel id by its guild id           |
-| `getMostRecentSelectedTextChannelId`     | `guildId`: string                  | string \| undefined                       | Gets the last selected text channel id by its guild id      |
-| `getMutableBasicGuildChannelsForGuild`   | `guildId`: string                  | Record<string, <APIReferences.Channel />> | Gets all basic channels by its guild id                     |
-| `getMutableGuildChannelsForGuild`        | `guildId`: string                  | Record<string, <APIReferences.Channel />> | Gets all channels by its guild id                           |
-| `getMutablePrivateChannels`              |                                    | Record<string, <APIReferences.Channel />> | Gets all DM channels                                        |
-| `getPrivateChannelsVersion`              |                                    | number                                    | Gets the DM channel version                                 |
-| `getSortedPrivateChannels`               |                                    | <APIReferences.Channel />[]               | Gets all DM channels sorted by the last message             |
-| `getVoiceChannelId`                      |                                    | string \| undefined                       | Gets the current voice channel id                           |
-| `hasChannel`                             | `channelId`: string **(required)** | boolean                                   | Checks if the channel id is registered in the channel store |
-| `hasRestoredGuild`                       | `guildId`: string **(required)**   | boolean                                   | Checks if the guild's channels are restored                 |
-| `loadAllGuildAndPrivateChannelsFromDisk` |                                    | Record<string, <APIReferences.Channel />> | Gets all guild and DM channels                              |
+| Name                                     | Parameters                       | Return Type                               | Description                                                 |
+| ---------------------------------------- | -------------------------------- | ----------------------------------------- | ----------------------------------------------------------- |
+| `getAllThreadsForParent`                 | `channelId`: string              | <APIReferences.Channel />[]               | Gets all fetched threads by its channel (parent) id         |
+| `getBasicChannel`                        | <Required /> `channelId`: string | <APIReferences.Channel /> \| undefined    | Gets the basic channel by its id                            |
+| `getCachedChannelJsonForGuild`           | <Required /> `channelId`: string | unknown                                   | Gets the cached channel in JSON by its id                   |
+| `getChannel`                             | <Required /> `channelId`: string | <APIReferences.Channel /> \| undefined    | Gets the channel by its id                                  |
+| `getChannelId`                           | `guildId`: string                | string \| undefined                       | Gets the current selected channel id                        |
+| `getCurrentlySelectedChannelId`          | `guildId`: string                | string \| undefined                       | Gets the current selected channel id                        |
+| `getDMFromUserId`                        | <Required /> `userId`: string    | string \| undefined                       | Gets the DM channel id by its user id                       |
+| `getDMUserIds`                           |                                  | string[]                                  | Gets all DM channel ids                                     |
+| `getGuildChannelsVersion`                | `guildId`: string                | number                                    | Gets the channel version by guild id                        |
+| `getInitialOverlayState`                 |                                  | Record<string, <APIReferences.Channel />> | Gets all guild and DM channels                              |
+| `getLastChannelFollowingDestination`     |                                  | `LastChannelFollowingDestination`         | Gets information on the last channel follow                 |
+| `getLastSelectedChannelId`               | `guildId`: string                | string \| undefined                       | Gets the last selected channel id                           |
+| `getLastSelectedChannels`                | <Required /> `guildId`: string   | string \| undefined                       | Gets the last selected channel id by its guild id           |
+| `getMostRecentSelectedTextChannelId`     | `guildId`: string                | string \| undefined                       | Gets the last selected text channel id by its guild id      |
+| `getMutableBasicGuildChannelsForGuild`   | `guildId`: string                | Record<string, <APIReferences.Channel />> | Gets all basic channels by its guild id                     |
+| `getMutableGuildChannelsForGuild`        | `guildId`: string                | Record<string, <APIReferences.Channel />> | Gets all channels by its guild id                           |
+| `getMutablePrivateChannels`              |                                  | Record<string, <APIReferences.Channel />> | Gets all DM channels                                        |
+| `getPrivateChannelsVersion`              |                                  | number                                    | Gets the DM channel version                                 |
+| `getSortedPrivateChannels`               |                                  | <APIReferences.Channel />[]               | Gets all DM channels sorted by the last message             |
+| `getVoiceChannelId`                      |                                  | string \| undefined                       | Gets the current voice channel id                           |
+| `hasChannel`                             | <Required /> `channelId`: string | boolean                                   | Checks if the channel id is registered in the channel store |
+| `hasRestoredGuild`                       | <Required /> `guildId`: string   | boolean                                   | Checks if the guild's channels are restored                 |
+| `loadAllGuildAndPrivateChannelsFromDisk` |                                  | Record<string, <APIReferences.Channel />> | Gets all guild and DM channels                              |
 
 `LastChannelFollowingDestination` Props:
 
@@ -73,20 +77,22 @@ Functions:
 
 ### `guilds`
 
+All functions of `GuildStore` and `SelectedGuildStore` are in this module.
+
 Functions:
 
-| Name                       | Parameters                       | Return Type                             | Description                                                           |
-| -------------------------- | -------------------------------- | --------------------------------------- | --------------------------------------------------------------------- |
-| `getCurrentGuild`          |                                  | <APIReferences.Guild /> \| undefined    | Gets the current selected guild by its id                             |
-| `getGuild`                 | `guildId`: string                | <APIReferences.Guild /> \| undefined    | Gets the guild by its id                                              |
-| `getGuildCount`            |                                  | number                                  | Gets the number of how many guilds the current user is in             |
-| `getGuildId`               |                                  | string \| undefined                     | Gets the id of the currently selected guild                           |
-| `getGuilds`                |                                  | Record<string, <APIReferences.Guild />> | Gets all guilds                                                       |
-| `getLastSelectedGuildId`   |                                  | string \| undefined                     | Gets the last selected guild id                                       |
-| `getLastSelectedTimestamp` | `guildId`: string **(required)** | number                                  | Gets the timestamp of when a specific guild was last selected         |
-| `getState`                 |                                  | `State`                                 | Gets an object containing some information about guild selections     |
-| `getTabsV2SelectedGuildId` |                                  | string \| undefined                     | Gets the id of the last selected guild or the first guild in the list |
-| `isLoaded`                 |                                  | boolean                                 | Gets a value indicating whether all initial guilds have been loaded   |
+| Name                       | Parameters                     | Return Type                             | Description                                                           |
+| -------------------------- | ------------------------------ | --------------------------------------- | --------------------------------------------------------------------- |
+| `getCurrentGuild`          |                                | <APIReferences.Guild /> \| undefined    | Gets the current selected guild by its id                             |
+| `getGuild`                 | `guildId`: string              | <APIReferences.Guild /> \| undefined    | Gets the guild by its id                                              |
+| `getGuildCount`            |                                | number                                  | Gets the number of how many guilds the current user is in             |
+| `getGuildId`               |                                | string \| undefined                     | Gets the id of the currently selected guild                           |
+| `getGuilds`                |                                | Record<string, <APIReferences.Guild />> | Gets all guilds                                                       |
+| `getLastSelectedGuildId`   |                                | string \| undefined                     | Gets the last selected guild id                                       |
+| `getLastSelectedTimestamp` | <Required /> `guildId`: string | number                                  | Gets the timestamp of when a specific guild was last selected         |
+| `getState`                 |                                | `State`                                 | Gets an object containing some information about guild selections     |
+| `getTabsV2SelectedGuildId` |                                | string \| undefined                     | Gets the id of the last selected guild or the first guild in the list |
+| `isLoaded`                 |                                | boolean                                 | Gets a value indicating whether all initial guilds have been loaded   |
 
 `State` Props:
 
@@ -100,31 +106,33 @@ Functions:
 
 ### `users`
 
+All functions of `GuildMemberStore` and `UserStore` are in this module.
+
 Functions:
 
-| Name                              | Parameters                                                                                                             | Return Type                                                   | Description                                                        |
-| --------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------------ |
-| `filter`                          | `predicate`: (user: <APIReferences.User />) => <APIReferences.User /> \| boolean **(required)** <br /> `sort`: boolean | <APIReferences.User />[]                                      | Filters all users                                                  |
-| `findByTag`                       | `username`: string <br /> `discriminator`: string                                                                      | <APIReferences.User /> \| undefined                           | Gets the user by its username and discriminator                    |
-| `forEach`                         | `callback`: (user: <APIReferences.User />) => unknown **(required)**                                                   | void                                                          | Runs a function on each user                                       |
-| `getCommunicationDisabledUserMap` |                                                                                                                        | Record<string, string>                                        | Gets all guild member timeout (communication disabled) information |
-| `getCommunicationDisabledVersion` |                                                                                                                        | number                                                        | Gets the communication disabled version                            |
-| `getCurrentUser`                  |                                                                                                                        | <APIReferences.User />                                        | Gets the current user                                              |
-| `getMember`                       | `guildId`: string                                                                                                      | <APIReferences.GuildMember /> \| undefined                    | Gets the guild member by its id                                    |
-| `getMemberIds`                    | `guildId`: string                                                                                                      | string[]                                                      | Gets all guild member ids                                          |
-| `getMemberRoleWithPendingUpdates` | `guildId`: string <br /> `userId`: string                                                                              | string[]                                                      | Gets all pending role updates a guild member has                   |
-| `getMembers`                      | `guildId`: string                                                                                                      | <APIReferences.GuildMember />[]                               | Gets all fetched members in a guild                                |
-| `getMutableAllGuildsAndMembers`   |                                                                                                                        | Record<string, Record<string, <APIReferences.GuildMember />>> | Gets all guilds and its fetched members                            |
-| `getNick`                         | `guildId`: string <br /> `userId`: string                                                                              | string \| undefined                                           | Gets the nickname a guild member has                               |
-| `getNicknameGuildsMapping`        | `userId`: string                                                                                                       | Record<string, string[]>                                      | Gets all nicknames a user has and in which guilds                  |
-| `getNicknames`                    | `userId`: string                                                                                                       | string[]                                                      | Gets all nicknames a user has                                      |
-| `getPendingRoleUpdates`           | `guildId`: string                                                                                                      | `PendingRoleUpdate`                                           | Gets pending role updates of a guild                               |
-| `getSelfMember`                   | `guildId`: string                                                                                                      | <APIReferences.GuildMember /> \| undefined                    | Gets the guild member of the current user                          |
-| `getTrueMember`                   | `guildId`: string <br /> `userId`: string                                                                              | <APIReferences.GuildMember /> \| undefined                    | Gets the guild member by its id                                    |
-| `getUser`                         | `userId`: string                                                                                                       | <APIReferences.User /> \| undefined                           | Gets the user by its id                                            |
-| `getUsers`                        |                                                                                                                        | Record<string, <APIReferences.User />>                        | Gets all users                                                     |
-| `isMember`                        | `guildId`: string <br /> `userId`: string                                                                              | boolean                                                       | Checks if a user is a member of a guild                            |
-| `memberOf`                        | `userId`: string                                                                                                       | string[]                                                      | Gets all mutual servers of a user                                  |
+| Name                              | Parameters                                                                                                           | Return Type                                                   | Description                                                        |
+| --------------------------------- | -------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------------ |
+| `filter`                          | <Required /> `predicate`: (user: <APIReferences.User />) => <APIReferences.User /> \| boolean <br /> `sort`: boolean | <APIReferences.User />[]                                      | Filters all users                                                  |
+| `findByTag`                       | `username`: string <br /> `discriminator`: string                                                                    | <APIReferences.User /> \| undefined                           | Gets the user by its username and discriminator                    |
+| `forEach`                         | <Required /> `callback`: (user: <APIReferences.User />) => unknown                                                   | void                                                          | Runs a function on each user                                       |
+| `getCommunicationDisabledUserMap` |                                                                                                                      | Record<string, string>                                        | Gets all guild member timeout (communication disabled) information |
+| `getCommunicationDisabledVersion` |                                                                                                                      | number                                                        | Gets the communication disabled version                            |
+| `getCurrentUser`                  |                                                                                                                      | <APIReferences.User />                                        | Gets the current user                                              |
+| `getMember`                       | `guildId`: string                                                                                                    | <APIReferences.GuildMember /> \| undefined                    | Gets the guild member by its id                                    |
+| `getMemberIds`                    | `guildId`: string                                                                                                    | string[]                                                      | Gets all guild member ids                                          |
+| `getMemberRoleWithPendingUpdates` | `guildId`: string <br /> `userId`: string                                                                            | string[]                                                      | Gets all pending role updates a guild member has                   |
+| `getMembers`                      | `guildId`: string                                                                                                    | <APIReferences.GuildMember />[]                               | Gets all fetched members in a guild                                |
+| `getMutableAllGuildsAndMembers`   |                                                                                                                      | Record<string, Record<string, <APIReferences.GuildMember />>> | Gets all guilds and its fetched members                            |
+| `getNick`                         | `guildId`: string <br /> `userId`: string                                                                            | string \| undefined                                           | Gets the nickname a guild member has                               |
+| `getNicknameGuildsMapping`        | `userId`: string                                                                                                     | Record<string, string[]>                                      | Gets all nicknames a user has and in which guilds                  |
+| `getNicknames`                    | `userId`: string                                                                                                     | string[]                                                      | Gets all nicknames a user has                                      |
+| `getPendingRoleUpdates`           | `guildId`: string                                                                                                    | `PendingRoleUpdate`                                           | Gets pending role updates of a guild                               |
+| `getSelfMember`                   | `guildId`: string                                                                                                    | <APIReferences.GuildMember /> \| undefined                    | Gets the guild member of the current user                          |
+| `getTrueMember`                   | `guildId`: string <br /> `userId`: string                                                                            | <APIReferences.GuildMember /> \| undefined                    | Gets the guild member by its id                                    |
+| `getUser`                         | `userId`: string                                                                                                     | <APIReferences.User /> \| undefined                           | Gets the user by its id                                            |
+| `getUsers`                        |                                                                                                                      | Record<string, <APIReferences.User />>                        | Gets all users                                                     |
+| `isMember`                        | `guildId`: string <br /> `userId`: string                                                                            | boolean                                                       | Checks if a user is a member of a guild                            |
+| `memberOf`                        | `userId`: string                                                                                                     | string[]                                                      | Gets all mutual servers of a user                                  |
 
 `PendingRoleUpdate` Props:
 
@@ -139,14 +147,14 @@ Functions:
 
 Functions:
 
-| Name            | Parameters                          | Return Type | Description                 |
-| --------------- | ----------------------------------- | ----------- | --------------------------- |
-| `delete`        | `req`: `RequestOpts` **(required)** | `Response`  | Fetch with DELETE method    |
-| `get`           | `req`: `RequestOpts` **(required)** | `Response`  | Fetch with GET method       |
-| `getAPIBaseURL` | `version`: boolean                  | string      | Gets Discord's base API URL |
-| `patch`         | `req`: `RequestOpts` **(required)** | `Response`  | Fetch with PATCH method     |
-| `post`          | `req`: `RequestOpts` **(required)** | `Response`  | Fetch with POST method      |
-| `put`           | `req`: `RequestOpts` **(required)** | `Response`  | Fetch with PUT method       |
+| Name            | Parameters                        | Return Type | Description                 |
+| --------------- | --------------------------------- | ----------- | --------------------------- |
+| `delete`        | <Required /> `req`: `RequestOpts` | `Response`  | Fetch with DELETE method    |
+| `get`           | <Required /> `req`: `RequestOpts` | `Response`  | Fetch with GET method       |
+| `getAPIBaseURL` | `version`: boolean                | string      | Gets Discord's base API URL |
+| `patch`         | <Required /> `req`: `RequestOpts` | `Response`  | Fetch with PATCH method     |
+| `post`          | <Required /> `req`: `RequestOpts` | `Response`  | Fetch with POST method      |
+| `put`           | <Required /> `req`: `RequestOpts` | `Response`  | Fetch with PUT method       |
 
 `RequestOpts` Props:
 
@@ -155,7 +163,7 @@ Functions:
 | `body`    | Record<string, unknown> | Body for the request    |
 | `headers` | Record<string, string>  | Headers for the request |
 | `query`   | Record<string, string>  | Request queries         |
-| `url`     | string **(required)**   | URL to fetch from       |
+| `url`     | <Required /> string     | URL to fetch from       |
 
 `Response` Props:
 
@@ -212,6 +220,8 @@ Props:
 
 ### `contextMenu`
 
+Utility module to use together with the [`ContextMenu`](components#contextmenu) component.
+
 :::info
 
 `contextMenu` is still a work in progress.
@@ -267,6 +277,8 @@ Functions:
 
 ### `modal`
 
+Utility module to use together with the [`modal`](components#modal) component.
+
 Enums:
 
 :::info
@@ -284,12 +296,12 @@ The following enums are a shortcut to the [`Flex`](components#flex) component en
 
 Functions:
 
-| Name         | Parameters                                                                                                               | Return Type              | Description                                                                  |
-| ------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------ | ---------------------------------------------------------------------------- |
-| `alert`      | `props`: `AlertProps` **(required)**                                                                                     | void                     | Brings up a modal useful for a quick response                                |
-| `closeModal` | `modalKey`: string **(required)** <br /> `contextKey`: string                                                            | void                     | Closes a specific modal by its key                                           |
-| `confirm`    | `props`: `AlertProps` **(required)**                                                                                     | Promise<boolean \| null> | Brings up an alert modal useful for asking the user for a quick confirmation |
-| `openModal`  | `render`: (props: `ModalProps`) => ReactNode **(required)** <br /> `options`: `ModalOptions` <br /> `contextKey`: string | string                   | Opens a specific modal and returns its key                                   |
+| Name         | Parameters                                                                                                             | Return Type              | Description                                                                  |
+| ------------ | ---------------------------------------------------------------------------------------------------------------------- | ------------------------ | ---------------------------------------------------------------------------- |
+| `alert`      | <Required /> `props`: `AlertProps`                                                                                     | void                     | Brings up a modal useful for a quick response                                |
+| `closeModal` | <Required /> `modalKey`: string <br /> `contextKey`: string                                                            | void                     | Closes a specific modal by its key                                           |
+| `confirm`    | <Required /> `props`: `AlertProps`                                                                                     | Promise<boolean \| null> | Brings up an alert modal useful for asking the user for a quick confirmation |
+| `openModal`  | <Required /> `render`: (props: `ModalProps`) => ReactNode <br /> `options`: `ModalOptions` <br /> `contextKey`: string | string                   | Opens a specific modal and returns its key                                   |
 
 :::info
 
@@ -353,18 +365,18 @@ Props:
 
 Functions:
 
-| Name                               | Parameters                                                                        | Return Type           | Description                                                                                                                        |
-| ---------------------------------- | --------------------------------------------------------------------------------- | --------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| `parse`                            | `text`: string **(required)** <br /> `inline`: boolean <br /> `opts`: `ParseOpts` | ReactElement          | Converts an HTML string to React elements                                                                                          |
-| `parseAutoModerationSystemMessage` | `text`: string **(required)** <br /> `inline`: boolean <br /> `opts`: `ParseOpts` | ReactElement          | `parse` function but highlights text defined in `highlightText` parse option                                                       |
-| `parseEmbedTitle`                  | `text`: string **(required)** <br /> `inline`: boolean <br /> `opts`: `ParseOpts` | ReactElement          | `parse` function but with `codeBlock`, `br`, `mention`, `channel` and `roleMention` rules omitted                                  |
-| `parseForumPostGuidelines`         | `text`: string **(required)** <br /> `inline`: boolean <br /> `opts`: `ParseOpts` | ReactElement          | `parse` function but with `paragraph` and `newline` rules omitted                                                                  |
-| `parseForumPostMostRecentMessage`  | `text`: string **(required)** <br /> `inline`: boolean <br /> `opts`: `ParseOpts` | ReactElement          | `parse` function but with some emoji sizing changes and `blockQuote`, `codeBlock` and `br` rules omitted                           |
-| `parseGuildEventDescription`       | `text`: string **(required)** <br /> `inline`: boolean <br /> `opts`: `ParseOpts` | ReactElement          | `parse` function but with `codeBlock`, `blockQuote` and `br` rules omitted                                                         |
-| `parseGuildVerificationFormRule`   | `text`: string **(required)** <br /> `inline`: boolean <br /> `opts`: `ParseOpts` | ReactElement          | `parse` function but with `codeBlock`, `br` and `blockQuote` rules omitted                                                         |
-| `parseInlineReply`                 | `text`: string **(required)** <br /> `inline`: boolean <br /> `opts`: `ParseOpts` | ReactElement          | `parse` function but with `blockQuote`, `codeBlock` and `br` rules omitted                                                         |
-| `parseTopic`                       | `text`: string **(required)** <br /> `inline`: boolean <br /> `opts`: `ParseOpts` | ReactElement          | `parse` function but with `inlineCode`, `codeBlock`, `br` and `blockQuote` rules omitted                                           |
-| `reactParserFor`                   | `rules`: Record<string, Rule> **(required)**                                      | (...) => ReactElement | Creates a new parser function based on specific rules; the returned function has the same parameters of the other parser functions |
+| Name                               | Parameters                                                                      | Return Type           | Description                                                                                                                        |
+| ---------------------------------- | ------------------------------------------------------------------------------- | --------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `parse`                            | <Required /> `text`: string <br /> `inline`: boolean <br /> `opts`: `ParseOpts` | ReactElement          | Converts an HTML string to React elements                                                                                          |
+| `parseAutoModerationSystemMessage` | <Required /> `text`: string <br /> `inline`: boolean <br /> `opts`: `ParseOpts` | ReactElement          | `parse` function but highlights text defined in `highlightText` parse option                                                       |
+| `parseEmbedTitle`                  | <Required /> `text`: string <br /> `inline`: boolean <br /> `opts`: `ParseOpts` | ReactElement          | `parse` function but with `codeBlock`, `br`, `mention`, `channel` and `roleMention` rules omitted                                  |
+| `parseForumPostGuidelines`         | <Required /> `text`: string <br /> `inline`: boolean <br /> `opts`: `ParseOpts` | ReactElement          | `parse` function but with `paragraph` and `newline` rules omitted                                                                  |
+| `parseForumPostMostRecentMessage`  | <Required /> `text`: string <br /> `inline`: boolean <br /> `opts`: `ParseOpts` | ReactElement          | `parse` function but with some emoji sizing changes and `blockQuote`, `codeBlock` and `br` rules omitted                           |
+| `parseGuildEventDescription`       | <Required /> `text`: string <br /> `inline`: boolean <br /> `opts`: `ParseOpts` | ReactElement          | `parse` function but with `codeBlock`, `blockQuote` and `br` rules omitted                                                         |
+| `parseGuildVerificationFormRule`   | <Required /> `text`: string <br /> `inline`: boolean <br /> `opts`: `ParseOpts` | ReactElement          | `parse` function but with `codeBlock`, `br` and `blockQuote` rules omitted                                                         |
+| `parseInlineReply`                 | <Required /> `text`: string <br /> `inline`: boolean <br /> `opts`: `ParseOpts` | ReactElement          | `parse` function but with `blockQuote`, `codeBlock` and `br` rules omitted                                                         |
+| `parseTopic`                       | <Required /> `text`: string <br /> `inline`: boolean <br /> `opts`: `ParseOpts` | ReactElement          | `parse` function but with `inlineCode`, `codeBlock`, `br` and `blockQuote` rules omitted                                           |
+| `reactParserFor`                   | <Required /> `rules`: Record<string, Rule>                                      | (...) => ReactElement | Creates a new parser function based on specific rules; the returned function has the same parameters of the other parser functions |
 
 `ParseOpts` Props:
 
@@ -413,9 +425,9 @@ Enums:
 
 Functions:
 
-| Name    | Parameters                                                                                                      | Return Type | Description                                                                  |
-| ------- | --------------------------------------------------------------------------------------------------------------- | ----------- | ---------------------------------------------------------------------------- |
-| `toast` | `content`: string \| ReactElement \| null **(required)** <br /> `kind`: `toast.Kind` <br /> `opts`: `ToastOpts` | void        | Makes a toast appear on the screen; `toast.Kind.SUCCESS` is the default type |
+| Name    | Parameters                                                                                                    | Return Type | Description                                                                  |
+| ------- | ------------------------------------------------------------------------------------------------------------- | ----------- | ---------------------------------------------------------------------------- |
+| `toast` | <Required /> `content`: string \| ReactElement \| null <br /> `kind`: `toast.Kind` <br /> `opts`: `ToastOpts` | void        | Makes a toast appear on the screen; `toast.Kind.SUCCESS` is the default type |
 
 `ToastOpts` Props:
 
@@ -429,10 +441,10 @@ Functions:
 
 Functions:
 
-| Name          | Parameters                         | Return Type | Description                                        |
-| ------------- | ---------------------------------- | ----------- | -------------------------------------------------- |
-| `startTyping` | `channelId`: string **(required)** | void        | Starts your typing indicator in a specific channel |
-| `stopTyping`  | `channelId`: string **(required)** | void        | Stops your typing indicator in a specific channel  |
+| Name          | Parameters                       | Return Type | Description                                        |
+| ------------- | -------------------------------- | ----------- | -------------------------------------------------- |
+| `startTyping` | <Required /> `channelId`: string | void        | Starts your typing indicator in a specific channel |
+| `stopTyping`  | <Required /> `channelId`: string | void        | Stops your typing indicator in a specific channel  |
 
 ## External Libraries
 
