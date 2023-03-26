@@ -13,9 +13,17 @@ export const DiscordAPIDocs = (props) => {
 
 export const APIReferences = {
   Channel: () => <DiscordAPIDocs name="Channel" link="channel#channel-object-channel-structure" />,
+  Emoji: () => <DiscordAPIDocs name="Emoji" link="emoji#emoji-object-emoji-structure" />,
   Guild: () => <DiscordAPIDocs name="Guild" link="guild#guild-object-guild-structure" />,
   GuildMember: () => (
     <DiscordAPIDocs name="GuildMember" link="guild#guild-member-object-guild-member-structure" />
+  ),
+  Message: () => <DiscordAPIDocs name="Message" link="channel#message-object-message-structure" />,
+  MessageAttachment: () => (
+    <DiscordAPIDocs
+      name="MessageAttachment"
+      link="channel#attachment-object-attachment-structure"
+    />
   ),
   User: () => <DiscordAPIDocs name="User" link="user#user-object-user-structure" />,
 };
@@ -28,7 +36,7 @@ All props/parameters are optional unless they are marked with an asterisk ( <Req
 
 :::caution
 
-All API references here, like <APIReferences.User />, lead to the
+All API references, like <APIReferences.User />, lead to the
 [Official Discord API Documentation](https://discord.com/developers/docs/) website, that means **not
 everything is documented** there.
 
@@ -104,6 +112,124 @@ Functions:
 
 ### `messages`
 
+<!-- TODO: `CaptchaPayload`, `FetchMessagesOptions`, `MessageJumpOptions`, `MessagesData` and all functions starting with an underscore aren't documented -->
+
+All functions for message actions are in this module.
+
+Functions:
+
+| Name                            | Parameters                                                                                                                                                                                         | Return Type                                          | Description                                                  |
+| ------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------- | ------------------------------------------------------------ |
+| `clearChannel`                  | <Required /> `channelId`: string                                                                                                                                                                   | void                                                 | Clears a channel from all messages                           |
+| `crosspostMessage`              | <Required /> `channelId`: string <br /> <Required /> `messageId`: string                                                                                                                           | Promise<`Response` \| void>                          | Makes a message public in an announcement channel            |
+| `deleteMessage`                 | <Required /> `channelId`: string <br /> <Required /> `messageId`: string <br /> `keepThreadArchived`: boolean                                                                                      | Promise<void\>                                       | Deletes a message from a channel                             |
+| `dismissAutomatedMessage`       | <Required /> `message`: <APIReferences.Message />                                                                                                                                                  | void                                                 | Dismisses an ephemeral message                               |
+| `editMessage`                   | <Required /> `channelId`: string <br /> <Required /> `messageId`: string <br /> <Required /> `message`: { content: string }                                                                        | Promise<void\>                                       | Edits a message                                              |
+| `endEditMessage`                | <Required /> `channelId`: string <br /> <Required /> `response`: `Response`                                                                                                                        | void                                                 | Dispatches an edited message                                 |
+| `fetchLocalMessages`            | <Required /> `channelId`: string <br /> <Required /> `before`: boolean <br /> <Required /> `after`: boolean <br /> <Required /> `limit`: number <br /> <Required /> `completeClass`: unknown       | Promise<void\>                                       | Fetches local messages                                       |
+| `fetchMessages`                 | <Required /> `options`: `FetchMessagesOptions`                                                                                                                                                     | Promise<boolean\>                                    | Fetches messages                                             |
+| `focusMessage`                  | <Required /> `options`: { channelId: string, messageId: string }                                                                                                                                   | void                                                 | Fetches with a focused message                               |
+| `getMessage`                    | <Required /> `channelId`: string <br /> <Required /> `messageId`: string                                                                                                                           | <APIReferences.Message />                            | Gets the message by its id                                   |
+| `getMessages`                   | <Required /> `channelId`: string                                                                                                                                                                   | `MessagesData`                                       | Gets all messages in a channel, with a system to manage data |
+| `getSendMessageOptionsForReply` | <Required /> `options`: `SendMessageForReplyOptions`                                                                                                                                               | `SendMessageOptionsForReply` \| Record<never, never> | Gets options for a reply                                     |
+| `jumpToMessage`                 | <Required /> `options`: `MessageJumpOptions`                                                                                                                                                       | void                                                 | Jumps to a message                                           |
+| `jumpToPresent`                 | <Required /> `channelId`: string <br /> `limit`: number                                                                                                                                            | void                                                 | Jumps to the most recent message                             |
+| `patchMessageAttachments`       | <Required /> `channelId`: string <br /> <Required /> `messageId`: string <br /> <Required /> `attachments`: <APIReferences.MessageAttachment />[]                                                  | Promise<void\>                                       | Changes the attachments of a message                         |
+| `receiveMessage`                | <Required /> `channelId`: string <br /> <Required /> `message`: <APIReferences.Message /> <br /> `optimistic`: boolean <br /> `sendMessageOptions`: unknown                                        | void                                                 | Reveals a message                                            |
+| `sendBotMessage`                | <Required /> `channelId`: string <br /> <Required /> `content`: string <br /> `messageName`: string                                                                                                | void                                                 | Clyde sends a custom message                                 |
+| `sendClydeError`                | <Required /> `channelId`: string <br /> `errorKey`: number                                                                                                                                         | void                                                 | Clyde sends an error message                                 |
+| `sendGreetMessage`              | <Required /> `channelId`: string <br /> <Required /> `stickerId`: string <br /> `options`: `MessageGreetOptions`                                                                                   | Promise<`Response` \| void>                          | Sends a greet message                                        |
+| `sendInvite`                    | <Required /> `channelId`: string <br /> <Required /> `inviteCode`: string <br /> `analyticsTriggeredFrom`: string <br /> `suggestedInvite`: `InviteSuggestion`                                     | Promise<`Response` \| void>                          | Sends an invite                                              |
+| `sendMessage`                   | <Required /> `channelId`: string <br /> <Required /> `message`: `OutgoingMessage` <br /> `promise`: boolean <br /> `options`: `OutgoingMessageOptions`                                             | Promise<`Response` \| void>                          | Sends a message                                              |
+| `sendStickers`                  | <Required /> `channelId`: string <br /> <Required /> `stickersIds`: string[] <br /> `content`: string <br /> `options`: `SendMessageOptionsForReply` \| Record<never, never> <br /> `tts`: boolean | Promise<`Response` \| void>                          | Sends a sticker                                              |
+| `startEditMessage`              | <Required /> `channelId`: string <br /> <Required /> `messageId`: string <br /> <Required /> `content`: string                                                                                     | void                                                 | Starts editing a message                                     |
+| `suppressEmbeds`                | <Required /> `channelId`: string <br /> <Required /> `messageId`: string                                                                                                                           | Promise<void\>                                       | Deletes an embed from a message                              |
+| `trackInvite`                   | <Required /> `options`: `TrackInviteOptions`                                                                                                                                                       | void                                                 | Tracks an invite for analytics                               |
+| `trackJump`                     | <Required /> `channelId`: string <br /> <Required /> `messageId`: string <br /> <Required /> `context`: string <br /> `extraProperties`: Record<string, unknown>                                   | void                                                 | Tracks a jump for analytics                                  |
+| `truncateMessages`              | <Required /> `channelId`: string <br /> <Required /> `truncateBottom`: number <br /> <Required /> `truncateTop`: number                                                                            | void                                                 | Truncates a message list                                     |
+| `updateEditMessage`             | <Required /> `channelId`: string <br /> <Required /> `textValue`: string <br /> <Required /> `richValue`: unknown                                                                                  | void                                                 | Updates an edit message                                      |
+
+`AllowedMentions` Props:
+
+| Name           | Type     | Description                                                   |
+| -------------- | -------- | ------------------------------------------------------------- |
+| `parse`        | string[] | Array of allowed mention types to parse from the content      |
+| `replied_user` | boolean  | Whether to mention the author of the message being replied to |
+
+`InviteSuggestion` Props:
+
+| Name                     | Type                 | Description                                               |
+| ------------------------ | -------------------- | --------------------------------------------------------- |
+| `isAffinitySuggestion`   | <Required /> boolean | Whether is a real suggestion, not filtered from searching |
+| `isFiltered`             | <Required /> boolean | Whether the suggestion list is filtered                   |
+| `numAffinityConnections` | <Required /> number  | How many real suggestions are available                   |
+| `numTotal`               | <Required /> number  | How many suggestions are available                        |
+| `rowNum`                 | <Required /> number  | Suggestion position                                       |
+
+`MessageGreetOptions` Props:
+
+| Name               | Type               | Default | Description                            |
+| ------------------ | ------------------ | ------- | -------------------------------------- |
+| `allowedMentions`  | `AllowedMentions`  |         | Allowed mentions for the greet message |
+| `captchaPayload`   | `CaptchaPayload`   |         | Captcha data                           |
+| `messageReference` | `MessageReference` |         | Contains information for a reply       |
+
+`MessageReference` Props:
+
+| Name         | Type   | Description                             |
+| ------------ | ------ | --------------------------------------- |
+| `channel_id` | string | Id of the originating message's channel |
+| `guild_id`   | string | Id of the originating message's guild   |
+| `message_id` | string | Id of the originating message           |
+
+`OutgoingMessage` Props:
+
+| Name                     | Type                                   | Default | Description                                  |
+| ------------------------ | -------------------------------------- | ------- | -------------------------------------------- |
+| `content`                | <Required /> string                    |         | Content of the message                       |
+| `invalidEmojis`          | <Required /> <APIReferences.Emoji />[] |         | Array with invalid emoji                     |
+| `tts`                    | boolean                                | `false` | Whether the mention toggle should be visible |
+| `validNonShortcutEmojis` | <Required /> <APIReferences.Emoji />[] |         | Array with valid emojis                      |
+
+`OutgoingMessageOptions` Props:
+
+| Name               | Type                  | Default | Description                                             |
+| ------------------ | --------------------- | ------- | ------------------------------------------------------- |
+| `activityAction`   | `ActivityActionTypes` |         | Activity action type                                    |
+| `allowedMentions`  | `AllowedMentions`     |         | Allowed mentions for the message                        |
+| `captchaPayload`   | `CaptchaPayload`      |         | Captcha data                                            |
+| `location`         | string                |         | Location of the invite                                  |
+| `messageReference` | `MessageReference`    |         | Contains information for a reply                        |
+| `stickerIds`       | string[]              |         | Array with sticker ids                                  |
+| `suggestedInvite`  | `InviteSuggestion`    |         | Object that includes information on a invite suggestion |
+
+`SendMessageForReplyOptions` Props:
+
+| Name                | Type                                   | Default | Description                                                   |
+| ------------------- | -------------------------------------- | ------- | ------------------------------------------------------------- |
+| `channel`           | <Required /> <APIReferences.Channel /> |         | Channel object where to reply                                 |
+| `message`           | <Required /> <APIReferences.Message /> |         | Message object to reply to                                    |
+| `shouldMention`     | <Required /> boolean                   |         | Whether to mention the author of the message being replied to |
+| `showMentionToggle` | <Required /> boolean                   |         | Whether the mention toggle should be visible                  |
+
+`SendMessageOptionsForReply` Props:
+
+| Name               | Type               | Description                      |
+| ------------------ | ------------------ | -------------------------------- |
+| `allowedMentions`  | `AllowedMentions`  | Allowed mentions for the message |
+| `messageReference` | `MessageReference` | Contains information for a reply |
+
+`TrackInviteOptions` Props:
+
+| Name                 | Type                    | Default | Description                                                  |
+| -------------------- | ----------------------- | ------- | ------------------------------------------------------------ |
+| `channelId`          | <Required /> string     |         | Id of the channel where the invite is present                |
+| `inviteKey`          | <Required /> string     |         | Invite code                                                  |
+| `location`           | <Required /> string     |         | Location of the invite                                       |
+| `messageId`          | <Required /> string     |         | Id of the message where the invite is present                |
+| `overrideProperties` | Record<string, unknown> |         | Object that includes information to override for the tracker |
+| `suggested`          | `InviteSuggestion`      |         | Object that includes information on a invite suggestion      |
+
 ### `users`
 
 All functions of `GuildMemberStore` and `UserStore` are in this module.
@@ -158,12 +284,12 @@ Functions:
 
 `RequestOpts` Props:
 
-| Name      | Type                    | Description             |
-| --------- | ----------------------- | ----------------------- |
-| `body`    | Record<string, unknown> | Body for the request    |
-| `headers` | Record<string, string>  | Headers for the request |
-| `query`   | Record<string, string>  | Request queries         |
-| `url`     | <Required /> string     | URL to fetch from       |
+| Name      | Type                    | Default | Description             |
+| --------- | ----------------------- | ------- | ----------------------- |
+| `body`    | Record<string, unknown> |         | Body for the request    |
+| `headers` | Record<string, string>  |         | Headers for the request |
+| `query`   | Record<string, string>  |         | Request queries         |
+| `url`     | <Required /> string     |         | URL to fetch from       |
 
 `Response` Props:
 
