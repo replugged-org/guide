@@ -112,7 +112,7 @@ Functions:
 
 ### `messages`
 
-<!-- TODO: `CaptchaPayload`, `FetchMessagesOptions`, `MessageJumpOptions`, `MessagesData` and all functions starting with an underscore aren't documented -->
+<!-- [!]: `CaptchaPayload`, `FetchMessagesOptions`, `MessageJumpOptions`, `MessagesData` and all functions starting with an underscore aren't documented -->
 
 All functions for message actions are in this module.
 
@@ -321,7 +321,7 @@ Props:
 
 #### `ColorGenerator`
 
-<!-- TODO: `Color` and `UnsafeRawColor` aren't documented -->
+<!-- [!]: `Color` and `UnsafeRawColor` aren't documented -->
 
 Example:
 
@@ -356,11 +356,129 @@ Utility module to use together with the [`ContextMenu`](components#contextmenu) 
 
 ### `flux`
 
+Flux is an architecture for managing data flow. Stores are objects that can hold state and logic.
+They are responsible for updating and retrieving data by triggering actions. The dispatcher is
+responsible for receiving these actions and directing them to the appropriate stores.
+
+Example:
+
+In the following example we will create a new store for mapping messages to users.
+
+```tsx
+import { Message } from "discord-types/general";
+import { common } from "replugged";
+const { fluxDispatcher: Dispatcher, flux: Flux } = common;
+
+class UserMessagesStore extends Flux.Store {
+  public userMessagesMap: Map<string, Map<string, Message>>;
+
+  public constructor() {
+    super(Dispatcher, {
+      MESSAGE_CREATE: ({ message }) => {
+        /*
+          This function will be called only when a message is received.
+          So, only when the dispatcher received the MESSAGE_CREATE action type.
+        */
+        if (message.state === "SENDING") return;
+
+        const userId = message.author.id;
+        const userMessages = this.userMessagesMap.get(userId) ?? new Map();
+
+        userMessages.set(message.id, message);
+
+        this.userMessagesMap.set(userId, userMessages);
+      },
+      USER_MESSAGES_DELETE: ({ userId }) => {
+        // This is a custom action type we created for this example. It will delete a specific map entry (userId).
+        this.clearUserMessages(userId);
+      },
+    });
+
+    this.userMessagesMap = new Map(); // Here are stored all our users and their messages
+  }
+
+  public clearUserMessages(userId: string): void {
+    // Function to delete a user from userMessagesMap
+    if (this.userMessagesMap.has(userId)) {
+      this.userMessagesMap.delete(userId);
+    }
+  }
+}
+
+export default new UserMessagesStore();
+```
+
+In this example, the action of deleting an entry from the map can be called with the
+[`dispatcher`](common#fluxDispatcher):
+
+```tsx
+// ...
+Dispatcher.dispatch({
+  type: "USER_MESSAGES_DELETE",
+  userId: "USER_ID",
+});
+```
+
+Or with the appropriate function:
+
+```tsx
+// ...
+store.clearUserMessages("USER_ID");
+```
+
+:::tip
+
+You can expose a store by setting its display name and the `__getLocalVars` function.
+
+```tsx
+class UserMessagesStore extends Flux.Store {
+  public userMessagesMap: Map<string, Map<string, Message>>;
+  public displayName: string;
+
+  public constructor() {
+    // ...
+    this.userMessagesMap = new Map();
+    // highlight-next-line
+    this.displayName = "UserMessagesStore";
+  }
+
+  // ...
+
+  // highlight-start
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  public __getLocalVars(): Record<string, unknown> {
+    return {
+      userMessagesMap: this.userMessagesMap,
+    };
+  }
+  // highlight-end
+}
+
+export default new UserMessagesStore();
+```
+
+:::
+
 ### `fluxDispatcher`
+
+<!-- [!]: All props/functions starting with an underscore aren't documented -->
+
+Functions:
+
+| Name             | Parameters                                                                                                     | Return Type | Description                                 |
+| ---------------- | -------------------------------------------------------------------------------------------------------------- | ----------- | ------------------------------------------- |
+| `addInterceptor` | <Required /> `callback`: (...rest: unknown[]) => unknown                                                       | void        | Adds an interceptor                         |
+| `createToken`    |                                                                                                                | string      | Creates a token                             |
+| `dispatch`       | <Required /> `event`: { type: string, [index: string]: unknown }                                               | void        | Broadcasts payloads to registered callbacks |
+| `flushWaitQueue` |                                                                                                                | void        | Flushes the waiting queue                   |
+| `isDispatching`  |                                                                                                                | boolean     | Checks if something is already dispatching  |
+| `subscribe`      | <Required /> `eventKey`: string <br /> <Required /> `callback`: (event?: { [index: string]: unknown }) => void | void        | Subscribes to a new event                   |
+| `unsubscribe`    | <Required /> `eventKey`: string <br /> <Required /> `callback`: (event?: { [index: string]: unknown }) => void | void        | Unsubscribes from an event                  |
+| `wait`           | <Required /> `callback`: (...rest: unknown[]) => unknown                                                       | void        | Adds a callback to the wait queue           |
 
 ### `i18n`
 
-<!-- TODO: `Messages` and all props/functions starting with an underscore aren't documented -->
+<!-- [!]: `Messages` and all props/functions starting with an underscore aren't documented -->
 
 Props:
 
