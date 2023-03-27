@@ -1,5 +1,4 @@
 ---
-sidebar_position: 2
 title: Webpack Modules
 description: What are webpack modules and how can you find them?
 ---
@@ -35,7 +34,7 @@ You can access common modules in Discord DevTools with `replugged.common`.
 
 :::
 
-Common modules are documented at [here](common).
+Common modules are documented [here](common).
 
 ### Get module {#getModule}
 
