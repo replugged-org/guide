@@ -9,18 +9,6 @@ Discord is made using [Webpack](https://webpack.js.org/), which is a module bund
 the code into modules and bundles them together. Each module is a JavaScript object that contains
 various exports, such as constants, methods, and React components.
 
-## Finding modules
-
-In order to use a module, you will need to find it first. There are a few ways to do this:
-
-### Common modules
-
-Replugged comes with a bunch of modules that are commonly used. You can access them with:
-
-```ts
-import { common } from "replugged";
-```
-
 :::caution
 
 Your editor may suggest importing a module directly from within `replugged/dist/whatever`, but this
@@ -28,13 +16,14 @@ will not work. You should always import from `replugged` itself and destructure 
 
 :::
 
-:::tip
+## Finding modules
 
-You can access common modules in Discord DevTools with `replugged.common`.
+In order to use a module, you will need to find it first. There are a few ways to do this:
 
-:::
+### Common modules
 
-Common modules are documented [here](common).
+Replugged comes with a bunch of modules that are commonly used. Common modules are documented
+[here](common).
 
 ### Get module {#getModule}
 
