@@ -378,56 +378,62 @@ In the following example we will create a new store for mapping messages to user
 ```tsx
 import { Message } from "discord-types/general";
 import { common } from "replugged";
-const { fluxDispatcher: Dispatcher, flux: Flux } = common;
+const { fluxDispatcher: FluxDispatcher, flux: Flux } = common;
 
-class UserMessagesStore extends Flux.Store {
-  public userMessagesMap: Map<string, Map<string, Message>>;
+// Here are stored all our users and their messages
+const userMessagesMap: Map<string, Map<string, Message>> = new Map();
 
-  public constructor() {
-    super(Dispatcher, {
-      MESSAGE_CREATE: ({ message }) => {
-        /*
-          This function will be called only when a message is received.
-          So, only when the dispatcher received the MESSAGE_CREATE action type.
-        */
-        if (message.state === "SENDING") return;
+function onMessageCreate(message: Message): void {
+  /*
+    This function will be called only when a message is received,
+    so when the dispatcher received the MESSAGE_CREATE action type.
+  */
+  if (message.state === "SENDING") return;
 
-        const userId = message.author.id;
-        const userMessages = this.userMessagesMap.get(userId) ?? new Map();
+  const userId = message.author.id;
+  const userMessages = userMessagesMap.get(userId) ?? new Map();
 
-        userMessages.set(message.id, message);
+  userMessages.set(message.id, message);
 
-        this.userMessagesMap.set(userId, userMessages);
-      },
-      USER_MESSAGES_DELETE: ({ userId }) => {
-        // This is a custom action type we created for this example. It will delete a specific map entry (userId).
-        this.clearUserMessages(userId);
-      },
-    });
+  userMessagesMap.set(userId, userMessages);
+}
 
-    this.userMessagesMap = new Map(); // Here are stored all our users and their messages
-  }
-
-  public clearUserMessages(userId: string): void {
-    // Function to delete a user from userMessagesMap
-    if (this.userMessagesMap.has(userId)) {
-      this.userMessagesMap.delete(userId);
-    }
+function onMessagesClearRequest(userId: string): void {
+  if (userMessagesMap.has(userId)) {
+    userMessagesMap.delete(userId);
   }
 }
 
-export default new UserMessagesStore();
+class UserMessagesStore extends Flux.Store {
+  public clearUserMessages(userId: string): void {
+    // Function to delete a user from userMessagesMap
+    onMessagesClearRequest(userId);
+  }
+}
+
+export default new UserMessagesStore(FluxDispatcher, {
+  MESSAGE_CREATE: (action) => {
+    return onMessageCreate(action.message);
+  },
+  USER_MESSAGES_DELETE: (action) => {
+    // This is a custom action type we created for this example. It will delete a specific map entry (userId).
+    return onMessagesClearRequest(action.userId);
+  },
+});
 ```
 
 In this example, the action of deleting an entry from the map can be called with the
-[`fluxDispatcher`](#fluxDispatcher):
+[`fluxDispatcher`](#fluxDispatcher). We recommend creating separate files that export actions:
 
 ```tsx
-// ...
-Dispatcher.dispatch({
-  type: "USER_MESSAGES_DELETE",
-  userId: "USER_ID",
-});
+export default {
+  clearMessages(userId: string) {
+    FluxDispatcher.dispatch({
+      type: "USER_MESSAGES_DELETE",
+      userId,
+    });
+  },
+};
 ```
 
 Or with the appropriate function:
@@ -443,27 +449,20 @@ You can expose a store by setting its display name and the `__getLocalVars` func
 
 ```tsx
 class UserMessagesStore extends Flux.Store {
-  public userMessagesMap: Map<string, Map<string, Message>>;
-  public displayName: string;
-
-  public constructor() {
-    // ...
-    this.userMessagesMap = new Map();
-    this.displayName = "UserMessagesStore";
-  }
+  public displayName: "UserMessagesStore";
 
   // ...
 
   // highlight-start
   public __getLocalVars(): Record<string, unknown> {
-    return {
-      userMessagesMap: this.userMessagesMap,
-    };
+    return { userMessagesMap };
   }
   // highlight-end
 }
 
-export default new UserMessagesStore();
+export default new UserMessagesStore(FluxDispatcher, {
+  // ...
+});
 ```
 
 :::
