@@ -35,13 +35,7 @@ You can access common modules in Discord DevTools with `replugged.common`.
 
 :::
 
-Common modules are documented at [here](https://docs.replugged.dev/modules/common.html).
-
-:::note
-
-Better documentation for common modules is coming soon.
-
-:::
+Common modules are documented at [here](common).
 
 ### Get module {#getModule}
 

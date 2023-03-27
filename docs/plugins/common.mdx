@@ -1,7 +1,8 @@
 ---
-sidebar_position: 6
+sidebar_position: 5
 title: Common Modules
 description: Documented common modules for plugins
+toc_max_heading_level: 4
 ---
 
 export const Required = () => <span style={{ color: "red" }}>*</span>;
@@ -44,6 +45,13 @@ everything is documented** there.
 
 ## Stores
 
+:::info
+
+You can view all properties of these modules in the DevTools with the `all` function. For example,
+`channels.all()`.
+
+:::
+
 ### `channels`
 
 All functions of `ChannelStore` and `SelectedChannelStore` are in this module.
@@ -62,7 +70,7 @@ Functions:
 | `getDMUserIds`                           |                                  | string[]                                  | Gets all DM channel ids                                     |
 | `getGuildChannelsVersion`                | `guildId`: string                | number                                    | Gets the channel version by guild id                        |
 | `getInitialOverlayState`                 |                                  | Record<string, <APIReferences.Channel />> | Gets all guild and DM channels                              |
-| `getLastChannelFollowingDestination`     |                                  | `LastChannelFollowingDestination`         | Gets information on the last channel follow                 |
+| `getLastChannelFollowingDestination`     |                                  | { channelId: string, guildId: string }    | Gets information on the last channel follow                 |
 | `getLastSelectedChannelId`               | `guildId`: string                | string \| undefined                       | Gets the last selected channel id                           |
 | `getLastSelectedChannels`                | <Required /> `guildId`: string   | string \| undefined                       | Gets the last selected channel id by its guild id           |
 | `getMostRecentSelectedTextChannelId`     | `guildId`: string                | string \| undefined                       | Gets the last selected text channel id by its guild id      |
@@ -76,13 +84,6 @@ Functions:
 | `hasRestoredGuild`                       | <Required /> `guildId`: string   | boolean                                   | Checks if the guild's channels are restored                 |
 | `loadAllGuildAndPrivateChannelsFromDisk` |                                  | Record<string, <APIReferences.Channel />> | Gets all guild and DM channels                              |
 
-`LastChannelFollowingDestination` Props:
-
-| Name        | Type   | Description                                                       |
-| ----------- | ------ | ----------------------------------------------------------------- |
-| `channelId` | string | Id of the channel to which the follow was assigned                |
-| `guildId`   | string | Id of the guild with the channel to which the follow was assigned |
-
 ### `guilds`
 
 All functions of `GuildStore` and `SelectedGuildStore` are in this module.
@@ -91,18 +92,20 @@ Functions:
 
 | Name                       | Parameters                     | Return Type                             | Description                                                           |
 | -------------------------- | ------------------------------ | --------------------------------------- | --------------------------------------------------------------------- |
-| `getCurrentGuild`          |                                | <APIReferences.Guild /> \| undefined    | Gets the current selected guild by its id                             |
-| `getGuild`                 | `guildId`: string              | <APIReferences.Guild /> \| undefined    | Gets the guild by its id                                              |
+| `getCurrentGuild`          |                                | <APIReferences.Guild /> \| undefined    | Gets the currently selected guild object                              |
+| `getGuild`                 | <Required /> `guildId`: string | <APIReferences.Guild /> \| undefined    | Gets the guild by its id                                              |
 | `getGuildCount`            |                                | number                                  | Gets the number of how many guilds the current user is in             |
 | `getGuildId`               |                                | string \| undefined                     | Gets the id of the currently selected guild                           |
 | `getGuilds`                |                                | Record<string, <APIReferences.Guild />> | Gets all guilds                                                       |
 | `getLastSelectedGuildId`   |                                | string \| undefined                     | Gets the last selected guild id                                       |
 | `getLastSelectedTimestamp` | <Required /> `guildId`: string | number                                  | Gets the timestamp of when a specific guild was last selected         |
-| `getState`                 |                                | `State`                                 | Gets an object containing some information about guild selections     |
+| `getState`                 |                                | [`State`](#state)                       | Gets an object containing some information about guild selections     |
 | `getTabsV2SelectedGuildId` |                                | string \| undefined                     | Gets the id of the last selected guild or the first guild in the list |
 | `isLoaded`                 |                                | boolean                                 | Gets a value indicating whether all initial guilds have been loaded   |
 
-`State` Props:
+#### Types
+
+##### `State`
 
 | Name                           | Type                   | Description                                               |
 | ------------------------------ | ---------------------- | --------------------------------------------------------- |
@@ -118,45 +121,47 @@ All functions for message actions are in this module.
 
 Functions:
 
-| Name                            | Parameters                                                                                                                                                                                         | Return Type                                          | Description                                                  |
-| ------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------- | ------------------------------------------------------------ |
-| `clearChannel`                  | <Required /> `channelId`: string                                                                                                                                                                   | void                                                 | Clears a channel from all messages                           |
-| `crosspostMessage`              | <Required /> `channelId`: string <br /> <Required /> `messageId`: string                                                                                                                           | Promise<`Response` \| void>                          | Makes a message public in an announcement channel            |
-| `deleteMessage`                 | <Required /> `channelId`: string <br /> <Required /> `messageId`: string <br /> `keepThreadArchived`: boolean                                                                                      | Promise<void\>                                       | Deletes a message from a channel                             |
-| `dismissAutomatedMessage`       | <Required /> `message`: <APIReferences.Message />                                                                                                                                                  | void                                                 | Dismisses an ephemeral message                               |
-| `editMessage`                   | <Required /> `channelId`: string <br /> <Required /> `messageId`: string <br /> <Required /> `message`: { content: string }                                                                        | Promise<void\>                                       | Edits a message                                              |
-| `endEditMessage`                | <Required /> `channelId`: string <br /> <Required /> `response`: `Response`                                                                                                                        | void                                                 | Dispatches an edited message                                 |
-| `fetchLocalMessages`            | <Required /> `channelId`: string <br /> <Required /> `before`: boolean <br /> <Required /> `after`: boolean <br /> <Required /> `limit`: number <br /> <Required /> `completeClass`: unknown       | Promise<void\>                                       | Fetches local messages                                       |
-| `fetchMessages`                 | <Required /> `options`: `FetchMessagesOptions`                                                                                                                                                     | Promise<boolean\>                                    | Fetches messages                                             |
-| `focusMessage`                  | <Required /> `options`: { channelId: string, messageId: string }                                                                                                                                   | void                                                 | Fetches with a focused message                               |
-| `getMessage`                    | <Required /> `channelId`: string <br /> <Required /> `messageId`: string                                                                                                                           | <APIReferences.Message />                            | Gets the message by its id                                   |
-| `getMessages`                   | <Required /> `channelId`: string                                                                                                                                                                   | `MessagesData`                                       | Gets all messages in a channel, with a system to manage data |
-| `getSendMessageOptionsForReply` | <Required /> `options`: `SendMessageForReplyOptions`                                                                                                                                               | `SendMessageOptionsForReply` \| Record<never, never> | Gets options for a reply                                     |
-| `jumpToMessage`                 | <Required /> `options`: `MessageJumpOptions`                                                                                                                                                       | void                                                 | Jumps to a message                                           |
-| `jumpToPresent`                 | <Required /> `channelId`: string <br /> `limit`: number                                                                                                                                            | void                                                 | Jumps to the most recent message                             |
-| `patchMessageAttachments`       | <Required /> `channelId`: string <br /> <Required /> `messageId`: string <br /> <Required /> `attachments`: <APIReferences.MessageAttachment />[]                                                  | Promise<void\>                                       | Changes the attachments of a message                         |
-| `receiveMessage`                | <Required /> `channelId`: string <br /> <Required /> `message`: <APIReferences.Message /> <br /> `optimistic`: boolean <br /> `sendMessageOptions`: unknown                                        | void                                                 | Reveals a message                                            |
-| `sendBotMessage`                | <Required /> `channelId`: string <br /> <Required /> `content`: string <br /> `messageName`: string                                                                                                | void                                                 | Clyde sends a custom message                                 |
-| `sendClydeError`                | <Required /> `channelId`: string <br /> `errorKey`: number                                                                                                                                         | void                                                 | Clyde sends an error message                                 |
-| `sendGreetMessage`              | <Required /> `channelId`: string <br /> <Required /> `stickerId`: string <br /> `options`: `MessageGreetOptions`                                                                                   | Promise<`Response` \| void>                          | Sends a greet message                                        |
-| `sendInvite`                    | <Required /> `channelId`: string <br /> <Required /> `inviteCode`: string <br /> `analyticsTriggeredFrom`: string <br /> `suggestedInvite`: `InviteSuggestion`                                     | Promise<`Response` \| void>                          | Sends an invite                                              |
-| `sendMessage`                   | <Required /> `channelId`: string <br /> <Required /> `message`: `OutgoingMessage` <br /> `promise`: boolean <br /> `options`: `OutgoingMessageOptions`                                             | Promise<`Response` \| void>                          | Sends a message                                              |
-| `sendStickers`                  | <Required /> `channelId`: string <br /> <Required /> `stickersIds`: string[] <br /> `content`: string <br /> `options`: `SendMessageOptionsForReply` \| Record<never, never> <br /> `tts`: boolean | Promise<`Response` \| void>                          | Sends a sticker                                              |
-| `startEditMessage`              | <Required /> `channelId`: string <br /> <Required /> `messageId`: string <br /> <Required /> `content`: string                                                                                     | void                                                 | Starts editing a message                                     |
-| `suppressEmbeds`                | <Required /> `channelId`: string <br /> <Required /> `messageId`: string                                                                                                                           | Promise<void\>                                       | Deletes an embed from a message                              |
-| `trackInvite`                   | <Required /> `options`: `TrackInviteOptions`                                                                                                                                                       | void                                                 | Tracks an invite for analytics                               |
-| `trackJump`                     | <Required /> `channelId`: string <br /> <Required /> `messageId`: string <br /> <Required /> `context`: string <br /> `extraProperties`: Record<string, unknown>                                   | void                                                 | Tracks a jump for analytics                                  |
-| `truncateMessages`              | <Required /> `channelId`: string <br /> <Required /> `truncateBottom`: number <br /> <Required /> `truncateTop`: number                                                                            | void                                                 | Truncates a message list                                     |
-| `updateEditMessage`             | <Required /> `channelId`: string <br /> <Required /> `textValue`: string <br /> <Required /> `richValue`: unknown                                                                                  | void                                                 | Updates an edit message                                      |
+| Name                            | Parameters                                                                                                                                                                                                      | Return Type                                                       | Description                                                                                        |
+| ------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `clearChannel`                  | <Required /> `channelId`: string                                                                                                                                                                                | void                                                              | Clears all messages in a channel. This will only apply locally and the messages will be re-fetched |
+| `crosspostMessage`              | <Required /> `channelId`: string <br /> <Required /> `messageId`: string                                                                                                                                        | Promise<[`Response`](#Response) \| void>                          | Makes a message public in an announcement channel                                                  |
+| `deleteMessage`                 | <Required /> `channelId`: string <br /> <Required /> `messageId`: string <br /> `keepThreadArchived`: boolean                                                                                                   | Promise<void\>                                                    | Deletes a message from a channel                                                                   |
+| `dismissAutomatedMessage`       | <Required /> `message`: <APIReferences.Message />                                                                                                                                                               | void                                                              | Dismisses an ephemeral message                                                                     |
+| `editMessage`                   | <Required /> `channelId`: string <br /> <Required /> `messageId`: string <br /> <Required /> `message`: { content: string }                                                                                     | Promise<void\>                                                    | Edits a message                                                                                    |
+| `endEditMessage`                | <Required /> `channelId`: string <br /> <Required /> `response`: [`Response`](#Response)                                                                                                                        | void                                                              | Dispatches an edited message                                                                       |
+| `fetchLocalMessages`            | <Required /> `channelId`: string <br /> <Required /> `before`: boolean <br /> <Required /> `after`: boolean <br /> <Required /> `limit`: number <br /> <Required /> `completeClass`: unknown                    | Promise<void\>                                                    | Fetches local messages                                                                             |
+| `fetchMessages`                 | <Required /> `options`: `FetchMessagesOptions`                                                                                                                                                                  | Promise<boolean\>                                                 | Fetches messages                                                                                   |
+| `focusMessage`                  | <Required /> `options`: { channelId: string, messageId: string }                                                                                                                                                | void                                                              | Fetches with a focused message                                                                     |
+| `getMessage`                    | <Required /> `channelId`: string <br /> <Required /> `messageId`: string                                                                                                                                        | <APIReferences.Message />                                         | Gets the message by its id                                                                         |
+| `getMessages`                   | <Required /> `channelId`: string                                                                                                                                                                                | `MessagesData`                                                    | Gets all messages in a channel, with a system to manage data                                       |
+| `getSendMessageOptionsForReply` | <Required /> `options`: [`SendMessageForReplyOptions`](#SendMessageForReplyOptions)                                                                                                                             | [`SendMessageOptionsForReply`](#SendMessageOptionsForReply) \| {} | Gets options for a reply                                                                           |
+| `jumpToMessage`                 | <Required /> `options`: `MessageJumpOptions`                                                                                                                                                                    | void                                                              | Jumps to a message                                                                                 |
+| `jumpToPresent`                 | <Required /> `channelId`: string <br /> `limit`: number                                                                                                                                                         | void                                                              | Jumps to the most recent message                                                                   |
+| `patchMessageAttachments`       | <Required /> `channelId`: string <br /> <Required /> `messageId`: string <br /> <Required /> `attachments`: <APIReferences.MessageAttachment />[]                                                               | Promise<void\>                                                    | Changes the attachments of a message                                                               |
+| `receiveMessage`                | <Required /> `channelId`: string <br /> <Required /> `message`: <APIReferences.Message /> <br /> `optimistic`: boolean <br /> `sendMessageOptions`: unknown                                                     | void                                                              | Reveals a message                                                                                  |
+| `sendBotMessage`                | <Required /> `channelId`: string <br /> <Required /> `content`: string <br /> `messageName`: string                                                                                                             | void                                                              | Clyde sends a custom message                                                                       |
+| `sendClydeError`                | <Required /> `channelId`: string <br /> `errorKey`: number                                                                                                                                                      | void                                                              | Clyde sends an error message                                                                       |
+| `sendGreetMessage`              | <Required /> `channelId`: string <br /> <Required /> `stickerId`: string <br /> `options`: [`MessageGreetOptions`](#MessageGreetOptions)                                                                        | Promise<[`Response`](#Response) \| void>                          | Sends a greet message                                                                              |
+| `sendInvite`                    | <Required /> `channelId`: string <br /> <Required /> `inviteCode`: string <br /> `analyticsTriggeredFrom`: string <br /> `suggestedInvite`: [`InviteSuggestion`](#InviteSuggestion)                             | Promise<[`Response`](#Response) \| void>                          | Sends an invite                                                                                    |
+| `sendMessage`                   | <Required /> `channelId`: string <br /> <Required /> `message`: [`OutgoingMessage`](#OutgoingMessage) <br /> `promise`: boolean <br /> `options`: [`OutgoingMessageOptions`](#OutgoingMessageOptions)           | Promise<[`Response`](#Response) \| void>                          | Sends a message                                                                                    |
+| `sendStickers`                  | <Required /> `channelId`: string <br /> <Required /> `stickersIds`: string[] <br /> `content`: string <br /> `options`: [`SendMessageOptionsForReply`](#SendMessageOptionsForReply) \| {} <br /> `tts`: boolean | Promise<[`Response`](#Response) \| void>                          | Sends a sticker                                                                                    |
+| `startEditMessage`              | <Required /> `channelId`: string <br /> <Required /> `messageId`: string <br /> <Required /> `content`: string                                                                                                  | void                                                              | Starts editing a message                                                                           |
+| `suppressEmbeds`                | <Required /> `channelId`: string <br /> <Required /> `messageId`: string                                                                                                                                        | Promise<void\>                                                    | Deletes an embed from a message                                                                    |
+| `trackInvite`                   | <Required /> `options`: [`TrackInviteOptions`](#TrackInviteOptions)                                                                                                                                             | void                                                              | Tracks an invite for analytics                                                                     |
+| `trackJump`                     | <Required /> `channelId`: string <br /> <Required /> `messageId`: string <br /> <Required /> `context`: string <br /> `extraProperties`: Record<string, unknown>                                                | void                                                              | Tracks a jump for analytics                                                                        |
+| `truncateMessages`              | <Required /> `channelId`: string <br /> <Required /> `truncateBottom`: number <br /> <Required /> `truncateTop`: number                                                                                         | void                                                              | Truncates a message list                                                                           |
+| `updateEditMessage`             | <Required /> `channelId`: string <br /> <Required /> `textValue`: string <br /> <Required /> `richValue`: unknown                                                                                               | void                                                              | Updates an edit message                                                                            |
 
-`AllowedMentions` Props:
+#### Types
+
+##### `AllowedMentions` {#AllowedMentions}
 
 | Name           | Type     | Description                                                   |
 | -------------- | -------- | ------------------------------------------------------------- |
 | `parse`        | string[] | Array of allowed mention types to parse from the content      |
 | `replied_user` | boolean  | Whether to mention the author of the message being replied to |
 
-`InviteSuggestion` Props:
+##### `InviteSuggestion` {#InviteSuggestion}
 
 | Name                     | Type                 | Description                                               |
 | ------------------------ | -------------------- | --------------------------------------------------------- |
@@ -166,15 +171,15 @@ Functions:
 | `numTotal`               | <Required /> number  | How many suggestions are available                        |
 | `rowNum`                 | <Required /> number  | Suggestion position                                       |
 
-`MessageGreetOptions` Props:
+##### `MessageGreetOptions` {#MessageGreetOptions}
 
-| Name               | Type               | Default | Description                            |
-| ------------------ | ------------------ | ------- | -------------------------------------- |
-| `allowedMentions`  | `AllowedMentions`  |         | Allowed mentions for the greet message |
-| `captchaPayload`   | `CaptchaPayload`   |         | Captcha data                           |
-| `messageReference` | `MessageReference` |         | Contains information for a reply       |
+| Name               | Type                                    | Default | Description                            |
+| ------------------ | --------------------------------------- | ------- | -------------------------------------- |
+| `allowedMentions`  | [`AllowedMentions`](#AllowedMentions)   |         | Allowed mentions for the greet message |
+| `captchaPayload`   | `CaptchaPayload`                        |         | Captcha data                           |
+| `messageReference` | [`MessageReference`](#MessageReference) |         | Contains information for a reply       |
 
-`MessageReference` Props:
+##### `MessageReference` {#MessageReference}
 
 | Name         | Type   | Description                             |
 | ------------ | ------ | --------------------------------------- |
@@ -182,7 +187,7 @@ Functions:
 | `guild_id`   | string | Id of the originating message's guild   |
 | `message_id` | string | Id of the originating message           |
 
-`OutgoingMessage` Props:
+##### `OutgoingMessage` {#OutgoingMessage}
 
 | Name                     | Type                                   | Default | Description                                  |
 | ------------------------ | -------------------------------------- | ------- | -------------------------------------------- |
@@ -191,19 +196,19 @@ Functions:
 | `tts`                    | boolean                                | `false` | Whether the mention toggle should be visible |
 | `validNonShortcutEmojis` | <Required /> <APIReferences.Emoji />[] |         | Array with valid emojis                      |
 
-`OutgoingMessageOptions` Props:
+##### `OutgoingMessageOptions` {#OutgoingMessageOptions}
 
-| Name               | Type                  | Default | Description                                             |
-| ------------------ | --------------------- | ------- | ------------------------------------------------------- |
-| `activityAction`   | `ActivityActionTypes` |         | Activity action type                                    |
-| `allowedMentions`  | `AllowedMentions`     |         | Allowed mentions for the message                        |
-| `captchaPayload`   | `CaptchaPayload`      |         | Captcha data                                            |
-| `location`         | string                |         | Location of the invite                                  |
-| `messageReference` | `MessageReference`    |         | Contains information for a reply                        |
-| `stickerIds`       | string[]              |         | Array with sticker ids                                  |
-| `suggestedInvite`  | `InviteSuggestion`    |         | Object that includes information on a invite suggestion |
+| Name               | Type                                    | Default | Description                                             |
+| ------------------ | --------------------------------------- | ------- | ------------------------------------------------------- |
+| `activityAction`   | number                                  |         | Activity action type                                    |
+| `allowedMentions`  | [`AllowedMentions`](#AllowedMentions)   |         | Allowed mentions for the message                        |
+| `captchaPayload`   | `CaptchaPayload`                        |         | Captcha data                                            |
+| `location`         | string                                  |         | Location of the invite                                  |
+| `messageReference` | [`MessageReference`](#MessageReference) |         | Contains information for a reply                        |
+| `stickerIds`       | string[]                                |         | Array with sticker ids                                  |
+| `suggestedInvite`  | [`InviteSuggestion`](#InviteSuggestion) |         | Object that includes information on a invite suggestion |
 
-`SendMessageForReplyOptions` Props:
+##### `SendMessageForReplyOptions` {#SendMessageForReplyOptions}
 
 | Name                | Type                                   | Default | Description                                                   |
 | ------------------- | -------------------------------------- | ------- | ------------------------------------------------------------- |
@@ -212,23 +217,23 @@ Functions:
 | `shouldMention`     | <Required /> boolean                   |         | Whether to mention the author of the message being replied to |
 | `showMentionToggle` | <Required /> boolean                   |         | Whether the mention toggle should be visible                  |
 
-`SendMessageOptionsForReply` Props:
+##### `SendMessageOptionsForReply` {#SendMessageOptionsForReply}
 
-| Name               | Type               | Description                      |
-| ------------------ | ------------------ | -------------------------------- |
-| `allowedMentions`  | `AllowedMentions`  | Allowed mentions for the message |
-| `messageReference` | `MessageReference` | Contains information for a reply |
+| Name               | Type                                    | Description                      |
+| ------------------ | --------------------------------------- | -------------------------------- |
+| `allowedMentions`  | [`AllowedMentions`](#AllowedMentions)   | Allowed mentions for the message |
+| `messageReference` | [`MessageReference`](#MessageReference) | Contains information for a reply |
 
-`TrackInviteOptions` Props:
+##### `TrackInviteOptions` {#TrackInviteOptions}
 
-| Name                 | Type                    | Default | Description                                                  |
-| -------------------- | ----------------------- | ------- | ------------------------------------------------------------ |
-| `channelId`          | <Required /> string     |         | Id of the channel where the invite is present                |
-| `inviteKey`          | <Required /> string     |         | Invite code                                                  |
-| `location`           | <Required /> string     |         | Location of the invite                                       |
-| `messageId`          | <Required /> string     |         | Id of the message where the invite is present                |
-| `overrideProperties` | Record<string, unknown> |         | Object that includes information to override for the tracker |
-| `suggested`          | `InviteSuggestion`      |         | Object that includes information on a invite suggestion      |
+| Name                 | Type                                    | Default | Description                                                  |
+| -------------------- | --------------------------------------- | ------- | ------------------------------------------------------------ |
+| `channelId`          | <Required /> string                     |         | Id of the channel where the invite is present                |
+| `inviteKey`          | <Required /> string                     |         | Invite code                                                  |
+| `location`           | <Required /> string                     |         | Location of the invite                                       |
+| `messageId`          | <Required /> string                     |         | Id of the message where the invite is present                |
+| `overrideProperties` | Record<string, unknown>                 |         | Object that includes information to override for the tracker |
+| `suggested`          | [`InviteSuggestion`](#InviteSuggestion) |         | Object that includes information on a invite suggestion      |
 
 ### `users`
 
@@ -252,7 +257,7 @@ Functions:
 | `getNick`                         | `guildId`: string <br /> `userId`: string                                                                            | string \| undefined                                           | Gets the nickname a guild member has                               |
 | `getNicknameGuildsMapping`        | `userId`: string                                                                                                     | Record<string, string[]>                                      | Gets all nicknames a user has and in which guilds                  |
 | `getNicknames`                    | `userId`: string                                                                                                     | string[]                                                      | Gets all nicknames a user has                                      |
-| `getPendingRoleUpdates`           | `guildId`: string                                                                                                    | `PendingRoleUpdate`                                           | Gets pending role updates of a guild                               |
+| `getPendingRoleUpdates`           | `guildId`: string                                                                                                    | [`PendingRoleUpdate`](#PendingRoleUpdate)                     | Gets pending role updates of a guild                               |
 | `getSelfMember`                   | `guildId`: string                                                                                                    | <APIReferences.GuildMember /> \| undefined                    | Gets the guild member of the current user                          |
 | `getTrueMember`                   | `guildId`: string <br /> `userId`: string                                                                            | <APIReferences.GuildMember /> \| undefined                    | Gets the guild member by its id                                    |
 | `getUser`                         | `userId`: string                                                                                                     | <APIReferences.User /> \| undefined                           | Gets the user by its id                                            |
@@ -260,7 +265,9 @@ Functions:
 | `isMember`                        | `guildId`: string <br /> `userId`: string                                                                            | boolean                                                       | Checks if a user is a member of a guild                            |
 | `memberOf`                        | `userId`: string                                                                                                     | string[]                                                      | Gets all mutual servers of a user                                  |
 
-`PendingRoleUpdate` Props:
+#### Types
+
+##### `PendingRoleUpdate` {#PendingRoleUpdate}
 
 | Name      | Type                     | Description                                   |
 | --------- | ------------------------ | --------------------------------------------- |
@@ -271,35 +278,39 @@ Functions:
 
 ### `api`
 
+This module is for making requests to the Discord API.
+
 Functions:
 
-| Name            | Parameters                        | Return Type | Description                 |
-| --------------- | --------------------------------- | ----------- | --------------------------- |
-| `delete`        | <Required /> `req`: `RequestOpts` | `Response`  | Fetch with DELETE method    |
-| `get`           | <Required /> `req`: `RequestOpts` | `Response`  | Fetch with GET method       |
-| `getAPIBaseURL` | `version`: boolean                | string      | Gets Discord's base API URL |
-| `patch`         | <Required /> `req`: `RequestOpts` | `Response`  | Fetch with PATCH method     |
-| `post`          | <Required /> `req`: `RequestOpts` | `Response`  | Fetch with POST method      |
-| `put`           | <Required /> `req`: `RequestOpts` | `Response`  | Fetch with PUT method       |
+| Name            | Parameters                                                  | Return Type             | Description                 |
+| --------------- | ----------------------------------------------------------- | ----------------------- | --------------------------- |
+| `delete`        | <Required /> `req`: string \| [`RequestOpts`](#RequestOpts) | [`Response`](#Response) | Fetch with DELETE method    |
+| `get`           | <Required /> `req`: string \| [`RequestOpts`](#RequestOpts) | [`Response`](#Response) | Fetch with GET method       |
+| `getAPIBaseURL` | `version`: boolean                                          | string                  | Gets Discord's base API URL |
+| `patch`         | <Required /> `req`: string \| [`RequestOpts`](#RequestOpts) | [`Response`](#Response) | Fetch with PATCH method     |
+| `post`          | <Required /> `req`: string \| [`RequestOpts`](#RequestOpts) | [`Response`](#Response) | Fetch with POST method      |
+| `put`           | <Required /> `req`: string \| [`RequestOpts`](#RequestOpts) | [`Response`](#Response) | Fetch with PUT method       |
 
-`RequestOpts` Props:
+#### Types
 
-| Name      | Type                    | Default | Description             |
-| --------- | ----------------------- | ------- | ----------------------- |
-| `body`    | Record<string, unknown> |         | Body for the request    |
-| `headers` | Record<string, string>  |         | Headers for the request |
-| `query`   | Record<string, string>  |         | Request queries         |
-| `url`     | <Required /> string     |         | URL to fetch from       |
+##### `RequestOpts` {#RequestOpts}
 
-`Response` Props:
+| Name      | Type                    | Default | Description                                   |
+| --------- | ----------------------- | ------- | --------------------------------------------- |
+| `body`    | Record<string, unknown> |         | Body for the request                          |
+| `headers` | Record<string, string>  |         | Headers for the request                       |
+| `query`   | Record<string, string>  |         | Request queries                               |
+| `url`     | <Required /> string     |         | Path to fetch from (without the base API URL) |
 
-| Name      | Type                   | Description                          |
-| --------- | ---------------------- | ------------------------------------ |
-| `body`    | T                      | Body contents                        |
-| `headers` | Record<string, string> | Headers associated with the response |
-| `ok`      | boolean                | Whether the response was successful  |
-| `status`  | number                 | Status code of the response          |
-| `text`    | string                 | Response body in text                |
+##### `Response` {#Response}
+
+| Name      | Type                    | Description                          |
+| --------- | ----------------------- | ------------------------------------ |
+| `body`    | Record<string, unknown> | Body contents                        |
+| `headers` | Record<string, string>  | Headers associated with the response |
+| `ok`      | boolean                 | Whether the response was successful  |
+| `status`  | number                  | Status code of the response          |
+| `text`    | string                  | Response body in text                |
 
 ### `constants`
 
@@ -307,7 +318,7 @@ Props:
 
 | Name             | Type                                | Description                                                                              |
 | ---------------- | ----------------------------------- | ---------------------------------------------------------------------------------------- |
-| `ColorGenerator` | [`ColorMod`](common#colorgenerator) | Utility module containing functions useful for generating colors from a given saturation |
+| `ColorGenerator` | [`ColorGenerator`](#ColorGenerator) | Utility module containing functions useful for generating colors from a given saturation |
 | `CSSVariables`   | Record<string, string>              | CSS variables                                                                            |
 | `Paths`          | Record<string, string>              | Paths                                                                                    |
 | `Permissions`    | Record<string, bigint>              | Permissions                                                                              |
@@ -319,7 +330,7 @@ Props:
 | `Status`         | Record<string, string>              | User statuses                                                                            |
 | `Themes`         | Record<string, string>              | Client themes; alias of `constants.ColorGenerator.themes`                                |
 
-#### `ColorGenerator`
+#### `ColorGenerator` {#ColorGenerator}
 
 <!-- [!]: `Color` and `UnsafeRawColor` aren't documented -->
 
@@ -409,7 +420,7 @@ export default new UserMessagesStore();
 ```
 
 In this example, the action of deleting an entry from the map can be called with the
-[`dispatcher`](common#fluxDispatcher):
+[`fluxDispatcher`](#fluxDispatcher):
 
 ```tsx
 // ...
@@ -438,14 +449,12 @@ class UserMessagesStore extends Flux.Store {
   public constructor() {
     // ...
     this.userMessagesMap = new Map();
-    // highlight-next-line
     this.displayName = "UserMessagesStore";
   }
 
   // ...
 
   // highlight-start
-  // eslint-disable-next-line @typescript-eslint/naming-convention
   public __getLocalVars(): Record<string, unknown> {
     return {
       userMessagesMap: this.userMessagesMap,
@@ -459,7 +468,7 @@ export default new UserMessagesStore();
 
 :::
 
-### `fluxDispatcher`
+### `fluxDispatcher` {#fluxDispatcher}
 
 <!-- [!]: All props/functions starting with an underscore aren't documented -->
 
@@ -489,18 +498,20 @@ Props:
 
 Functions:
 
-| Name                          | Parameters                                                               | Return Type  | Description                                                                       |
-| ----------------------------- | ------------------------------------------------------------------------ | ------------ | --------------------------------------------------------------------------------- |
-| `getAvailableLocales`         |                                                                          | `Locale`[]   | Gets all available locales                                                        |
-| `getDefaultLocale`            |                                                                          | string       | Gets the default locale                                                           |
-| `getLanguages`                |                                                                          | `Language`[] | Gets all available languages                                                      |
-| `getLocale`                   |                                                                          | string       | Gets the selected locale                                                          |
-| `getLocaleInfo`               |                                                                          | `Language`   | Gets information on the selected locale                                           |
-| `setLocale`                   | `locale`: string                                                         | void         | Change locale                                                                     |
-| `setUpdateRules`              | `rules`: Record<string, `Rule`>                                          | void         | Set parser rules; check out [`parser`](common#parser) module for the `Rule` props |
-| `updateMessagesForExperiment` | `locale`: string <br /> `callback`: (messages: `Messages`) => `Messages` | void         | Change all strings for a specific locale                                          |
+| Name                          | Parameters                                                               | Return Type               | Description                               |
+| ----------------------------- | ------------------------------------------------------------------------ | ------------------------- | ----------------------------------------- |
+| `getAvailableLocales`         |                                                                          | [`Locale`](#Locale)[]     | Gets all available locales                |
+| `getDefaultLocale`            |                                                                          | string                    | Gets the default locale                   |
+| `getLanguages`                |                                                                          | [`Language`](#Language)[] | Gets all available languages              |
+| `getLocale`                   |                                                                          | string                    | Gets the selected locale                  |
+| `getLocaleInfo`               |                                                                          | [`Language`](#Language)   | Gets information on the selected locale   |
+| `setLocale`                   | `locale`: string                                                         | void                      | Changes locale                            |
+| `setUpdateRules`              | `rules`: Record<string, [`Rule`](#Rule)>                                 | void                      | Sets parser rules                         |
+| `updateMessagesForExperiment` | `locale`: string <br /> `callback`: (messages: `Messages`) => `Messages` | void                      | Changes all strings for a specific locale |
 
-`Language` Props:
+#### Types
+
+##### `Language` {#Language}
 
 | Name           | Type    | Description                                           |
 | -------------- | ------- | ----------------------------------------------------- |
@@ -511,7 +522,7 @@ Functions:
 | `name`         | string  | Language name                                         |
 | `postgresLang` | string  | Character set type                                    |
 
-`Locale` Props:
+##### `Locale` {#Locale}
 
 | Name            | Type   | Description                  |
 | --------------- | ------ | ---------------------------- |
@@ -540,18 +551,17 @@ The following enums are a shortcut to the [`Flex`](components#flex) component en
 
 Functions:
 
-| Name         | Parameters                                                                                                             | Return Type              | Description                                                                  |
-| ------------ | ---------------------------------------------------------------------------------------------------------------------- | ------------------------ | ---------------------------------------------------------------------------- |
-| `alert`      | <Required /> `props`: `AlertProps`                                                                                     | void                     | Brings up a modal useful for a quick response                                |
-| `closeModal` | <Required /> `modalKey`: string <br /> `contextKey`: string                                                            | void                     | Closes a specific modal by its key                                           |
-| `confirm`    | <Required /> `props`: `AlertProps`                                                                                     | Promise<boolean \| null> | Brings up an alert modal useful for asking the user for a quick confirmation |
-| `openModal`  | <Required /> `render`: (props: `ModalProps`) => ReactNode <br /> `options`: `ModalOptions` <br /> `contextKey`: string | string                   | Opens a specific modal and returns its key                                   |
+| Name         | Parameters                                                                                                                                             | Return Type              | Description                                                                  |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------ | ---------------------------------------------------------------------------- |
+| `alert`      | <Required /> `props`: [`AlertProps`](#AlertProps)                                                                                                      | void                     | Brings up a modal useful for a quick response                                |
+| `closeModal` | <Required /> `modalKey`: string <br /> `contextKey`: string                                                                                            | void                     | Closes a specific modal by its key                                           |
+| `confirm`    | <Required /> `props`: [`AlertProps`](#AlertProps)                                                                                                      | Promise<boolean \| null> | Brings up an alert modal useful for asking the user for a quick confirmation |
+| `openModal`  | <Required /> `render`: (props: [`ModalProps`](#ModalProps)) => ReactNode <br /> `options`: [`ModalOptions`](#ModalOptions) <br /> `contextKey`: string | string                   | Opens a specific modal and returns its key                                   |
 
 :::info
 
 The `confirm` function has `title`, `cancelText`, `onConfirm`, `onCancel` and `onCloseCallback` with
-a default value. Closing the modal determines the return value of the promise. For example, clicking
-the confirm button of the modal, the promise value will be `true`.
+a default value. Whether the confirm button is pressed determines the return value of the promise.
 
 Example:
 
@@ -567,7 +577,9 @@ modal.confirm({}).then((confirmed) => {
 
 :::
 
-`AlertProps` Props:
+#### Types
+
+##### `AlertProps` {#AlertProps}
 
 | Name                   | Type                    | Default               | Description                                    |
 | ---------------------- | ----------------------- | --------------------- | ---------------------------------------------- |
@@ -584,7 +596,7 @@ modal.confirm({}).then((confirmed) => {
 | `title`                | string                  |                       | Modal title                                    |
 | `titleClassName`       | string                  |                       | Title element class name                       |
 
-`ModalOptions` Props:
+##### `ModalOptions` {#ModalOptions}
 
 | Name              | Type       | Default | Description                                  |
 | ----------------- | ---------- | ------- | -------------------------------------------- |
@@ -592,7 +604,7 @@ modal.confirm({}).then((confirmed) => {
 | `onCloseCallback` | () => void |         | Function ran when the modal gets closed      |
 | `onCloseRequest`  | () => void |         | Function ran when clicking outside the modal |
 
-`ModalProps` Props:
+##### `ModalProps` {#ModalProps}
 
 | Name              | Type               | Default | Description                             |
 | ----------------- | ------------------ | ------- | --------------------------------------- |
@@ -601,28 +613,32 @@ modal.confirm({}).then((confirmed) => {
 
 ### `parser`
 
+Utility module for parsing markdown.
+
 Props:
 
-| Name           | Type                   | Description                                         |
-| -------------- | ---------------------- | --------------------------------------------------- |
-| `defaultRules` | Record<string, `Rule`> | Includes a list of default rules used by the parser |
+| Name           | Type                            | Description                                         |
+| -------------- | ------------------------------- | --------------------------------------------------- |
+| `defaultRules` | Record<string, [`Rule`](#Rule)> | Includes a list of default rules used by the parser |
 
 Functions:
 
-| Name                               | Parameters                                                                      | Return Type           | Description                                                                                                                        |
-| ---------------------------------- | ------------------------------------------------------------------------------- | --------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| `parse`                            | <Required /> `text`: string <br /> `inline`: boolean <br /> `opts`: `ParseOpts` | ReactElement          | Converts an HTML string to React elements                                                                                          |
-| `parseAutoModerationSystemMessage` | <Required /> `text`: string <br /> `inline`: boolean <br /> `opts`: `ParseOpts` | ReactElement          | `parse` function but highlights text defined in `highlightText` parse option                                                       |
-| `parseEmbedTitle`                  | <Required /> `text`: string <br /> `inline`: boolean <br /> `opts`: `ParseOpts` | ReactElement          | `parse` function but with `codeBlock`, `br`, `mention`, `channel` and `roleMention` rules omitted                                  |
-| `parseForumPostGuidelines`         | <Required /> `text`: string <br /> `inline`: boolean <br /> `opts`: `ParseOpts` | ReactElement          | `parse` function but with `paragraph` and `newline` rules omitted                                                                  |
-| `parseForumPostMostRecentMessage`  | <Required /> `text`: string <br /> `inline`: boolean <br /> `opts`: `ParseOpts` | ReactElement          | `parse` function but with some emoji sizing changes and `blockQuote`, `codeBlock` and `br` rules omitted                           |
-| `parseGuildEventDescription`       | <Required /> `text`: string <br /> `inline`: boolean <br /> `opts`: `ParseOpts` | ReactElement          | `parse` function but with `codeBlock`, `blockQuote` and `br` rules omitted                                                         |
-| `parseGuildVerificationFormRule`   | <Required /> `text`: string <br /> `inline`: boolean <br /> `opts`: `ParseOpts` | ReactElement          | `parse` function but with `codeBlock`, `br` and `blockQuote` rules omitted                                                         |
-| `parseInlineReply`                 | <Required /> `text`: string <br /> `inline`: boolean <br /> `opts`: `ParseOpts` | ReactElement          | `parse` function but with `blockQuote`, `codeBlock` and `br` rules omitted                                                         |
-| `parseTopic`                       | <Required /> `text`: string <br /> `inline`: boolean <br /> `opts`: `ParseOpts` | ReactElement          | `parse` function but with `inlineCode`, `codeBlock`, `br` and `blockQuote` rules omitted                                           |
-| `reactParserFor`                   | <Required /> `rules`: Record<string, Rule>                                      | (...) => ReactElement | Creates a new parser function based on specific rules; the returned function has the same parameters of the other parser functions |
+| Name                               | Parameters                                                                                    | Return Type           | Description                                                                                                                        |
+| ---------------------------------- | --------------------------------------------------------------------------------------------- | --------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `parse`                            | <Required /> `text`: string <br /> `inline`: boolean <br /> `opts`: [`ParseOpts`](#ParseOpts) | ReactElement          | Converts a markdown string to React elements                                                                                       |
+| `parseAutoModerationSystemMessage` | <Required /> `text`: string <br /> `inline`: boolean <br /> `opts`: [`ParseOpts`](#ParseOpts) | ReactElement          | `parse` function but highlights text defined in `highlightText` parse option                                                       |
+| `parseEmbedTitle`                  | <Required /> `text`: string <br /> `inline`: boolean <br /> `opts`: [`ParseOpts`](#ParseOpts) | ReactElement          | `parse` function but with `codeBlock`, `br`, `mention`, `channel` and `roleMention` rules omitted                                  |
+| `parseForumPostGuidelines`         | <Required /> `text`: string <br /> `inline`: boolean <br /> `opts`: [`ParseOpts`](#ParseOpts) | ReactElement          | `parse` function but with `paragraph` and `newline` rules omitted                                                                  |
+| `parseForumPostMostRecentMessage`  | <Required /> `text`: string <br /> `inline`: boolean <br /> `opts`: [`ParseOpts`](#ParseOpts) | ReactElement          | `parse` function but with some emoji sizing changes and `blockQuote`, `codeBlock` and `br` rules omitted                           |
+| `parseGuildEventDescription`       | <Required /> `text`: string <br /> `inline`: boolean <br /> `opts`: [`ParseOpts`](#ParseOpts) | ReactElement          | `parse` function but with `codeBlock`, `blockQuote` and `br` rules omitted                                                         |
+| `parseGuildVerificationFormRule`   | <Required /> `text`: string <br /> `inline`: boolean <br /> `opts`: [`ParseOpts`](#ParseOpts) | ReactElement          | `parse` function but with `codeBlock`, `br` and `blockQuote` rules omitted                                                         |
+| `parseInlineReply`                 | <Required /> `text`: string <br /> `inline`: boolean <br /> `opts`: [`ParseOpts`](#ParseOpts) | ReactElement          | `parse` function but with `blockQuote`, `codeBlock` and `br` rules omitted                                                         |
+| `parseTopic`                       | <Required /> `text`: string <br /> `inline`: boolean <br /> `opts`: [`ParseOpts`](#ParseOpts) | ReactElement          | `parse` function but with `inlineCode`, `codeBlock`, `br` and `blockQuote` rules omitted                                           |
+| `reactParserFor`                   | <Required /> `rules`: Record<string, [`Rule`](#Rule)>                                         | (...) => ReactElement | Creates a new parser function based on specific rules; the returned function has the same parameters of the other parser functions |
 
-`ParseOpts` Props:
+#### Types
+
+##### `ParseOpts` {#ParseOpts}
 
 | Name                       | Type     | Description                                     |
 | -------------------------- | -------- | ----------------------------------------------- |
@@ -640,7 +656,7 @@ Functions:
 | `previewLinkTarget`        | boolean  | Whether to preview real URL on hover            |
 | `returnMentionIds`         | boolean  | Whether mention ids should be returned          |
 
-`Rule` Props:
+##### `Rule` {#Rule}
 
 | Name    | Type                                                      | Description                                          |
 | ------- | --------------------------------------------------------- | ---------------------------------------------------- |
@@ -669,11 +685,13 @@ Enums:
 
 Functions:
 
-| Name    | Parameters                                                                                                    | Return Type | Description                                                                  |
-| ------- | ------------------------------------------------------------------------------------------------------------- | ----------- | ---------------------------------------------------------------------------- |
-| `toast` | <Required /> `content`: string \| ReactElement \| null <br /> `kind`: `toast.Kind` <br /> `opts`: `ToastOpts` | void        | Makes a toast appear on the screen; `toast.Kind.SUCCESS` is the default type |
+| Name    | Parameters                                                                                                                  | Return Type | Description                                                                  |
+| ------- | --------------------------------------------------------------------------------------------------------------------------- | ----------- | ---------------------------------------------------------------------------- |
+| `toast` | <Required /> `content`: string \| ReactElement \| null <br /> `kind`: `toast.Kind` <br /> `opts`: [`ToastOpts`](#ToastOpts) | void        | Makes a toast appear on the screen; `toast.Kind.SUCCESS` is the default type |
 
-`ToastOpts` Props:
+#### Types
+
+##### `ToastOpts` {#ToastOpts}
 
 | Name        | Type             | Default              | Description                                            |
 | ----------- | ---------------- | -------------------- | ------------------------------------------------------ |
@@ -700,10 +718,10 @@ Functions:
 
 **Lodash** | [Documentation](https://lodash.com/docs)
 
-### `ReactDOM`
-
-**ReactDOM** | [Documentation](https://reactjs.org/docs/react-dom.html)
-
 ### `React`
 
-**React** | [Documentation](https://reactjs.org/docs/react-api.html)
+**React** | [Documentation](https://react.dev/)
+
+### `ReactDOM`
+
+**ReactDOM** | [Documentation](https://react.dev/reference/react-dom)
