@@ -220,7 +220,7 @@ export function start() {
 
 Works like [`getFunctionBySource`](#getFunctionBySource), but returns the key of the function
 instead of the function itself. Useful for getting the property name to use for
-[injecting](injecting).
+[injecting](../injecting).
 
 ```ts
 import { Injector, webpack } from "replugged";
