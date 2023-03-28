@@ -22,6 +22,7 @@
     "lint:fix": "pnpm run prettier:fix && pnpm run eslint:fix && pnpm run cspell:check && pnpm run typescript:check"
   },
   "dependencies": {
+    "@algolia/client-search": "^4.16.0",
     "@docusaurus/core": "^2.4.0",
     "@docusaurus/preset-classic": "^2.4.0",
     "@mdx-js/react": "^1.6.22",
@@ -44,6 +45,7 @@
     "eslint-plugin-markdown": "^3.0.0",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-react": "^7.32.1",
+    "pnpm": "^8.0.0",
     "prettier": "^2.8.3",
     "typescript": "^4.7.4"
   },
