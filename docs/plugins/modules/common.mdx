@@ -64,10 +64,10 @@ everything is documented** there.
 
 ## Stores
 
-:::info
+:::tip
 
-You can view all properties of these modules in the DevTools with the `all` function. For example,
-`channels.all()`.
+You can view all properties of these modules in Discord DevTools with the `all` function. For
+example, `channels.all()`.
 
 :::
 
@@ -341,7 +341,7 @@ Props:
 | `CSSVariables`   | Record<string, string>              | CSS variables                                                                            |
 | `Paths`          | Record<string, string>              | Paths                                                                                    |
 | `Permissions`    | Record<string, bigint>              | Permissions                                                                              |
-| `raw`            | Record<string, unknown>             | Raw module with all constants; check out its contents with DevTools                      |
+| `raw`            | Record<string, unknown>             | Raw module with all constants; check out its contents with Discord DevTools              |
 | `RPCCommands`    | Record<string, string>              | Rich presence commands                                                                   |
 | `RPCErrors`      | Record<string, string \| number>    | Rich presence errors                                                                     |
 | `RPCEvents`      | Record<string, string>              | Rich presence events                                                                     |
@@ -576,8 +576,6 @@ Functions:
 | `confirm`    | <Required /> `props`: [`AlertProps`](#AlertProps)                                                                                                      | Promise<boolean \| null> | Brings up an alert modal useful for asking the user for a quick confirmation |
 | `openModal`  | <Required /> `render`: (props: [`ModalProps`](#ModalProps)) => ReactNode <br /> `options`: [`ModalOptions`](#ModalOptions) <br /> `contextKey`: string | string                   | Opens a specific modal and returns its key                                   |
 
-:::info
-
 The `confirm` function has `title`, `cancelText`, `onConfirm`, `onCancel` and `onCloseCallback` with
 a default value. Whether the confirm button is pressed determines the return value of the promise.
 
@@ -592,8 +590,6 @@ modal.confirm({}).then((confirmed) => {
   else console.log("Cancelled!");
 });
 ```
-
-:::
 
 #### Types
 
