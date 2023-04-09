@@ -13,8 +13,8 @@ Plugins are developed in [TypeScript](https://www.typescriptlang.org/). You shou
 understanding of TypeScript (and JavaScript) before you start developing a plugin. While you can
 develop with just JavaScript, we recommend using TypeScript as it provides a lot of benefits.
 
-Discord is made using [React](https://reactjs.org/), so you will likely need a basic understanding
-of React for your plugin.
+Discord is made using [React](https://react.dev/), so you will likely need a basic understanding of
+React for your plugin.
 
 You will also need to have [Node.js](https://nodejs.org/), [pnpm](https://pnpm.io/), and
 [git](https://git-scm.com/) installed on your computer, as well as a code editor (we recommend
