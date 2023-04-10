@@ -1,5 +1,4 @@
 ---
-sidebar_position: 2
 title: Webpack Modules
 description: What are webpack modules and how can you find them?
 ---
@@ -10,18 +9,6 @@ Discord is made using [Webpack](https://webpack.js.org/), which is a module bund
 the code into modules and bundles them together. Each module is a JavaScript object that contains
 various exports, such as constants, methods, and React components.
 
-## Finding modules
-
-In order to use a module, you will need to find it first. There are a few ways to do this:
-
-### Common modules
-
-Replugged comes with a bunch of modules that are commonly used. You can access them with:
-
-```ts
-import { common } from "replugged";
-```
-
 :::caution
 
 Your editor may suggest importing a module directly from within `replugged/dist/whatever`, but this
@@ -29,19 +16,14 @@ will not work. You should always import from `replugged` itself and destructure 
 
 :::
 
-:::tip
+## Finding modules
 
-You can access common modules in Discord devtools with `replugged.common`.
+In order to use a module, you will need to find it first. There are a few ways to do this:
 
-:::
+### Common modules
 
-Common modules are documented at [here](https://docs.replugged.dev/modules/common.html).
-
-:::note
-
-Better documentation for common modules is coming soon.
-
-:::
+Replugged comes with a bunch of modules that are commonly used. Common modules are documented
+[here](common).
 
 ### Get module {#getModule}
 
@@ -123,7 +105,7 @@ export function start() {
 
 For modules that do not have human-readable properties (such as components), you can use
 `getBySource` to find a module by its source code. To use this, you will need to find the source
-code of your module in the Discord devtools. Once you find it, you will need to come up with a
+code of your module in the Discord DevTools. Once you find it, you will need to come up with a
 unique string (or regex) that is only present in that module. You can then use this string to find
 the module.
 
@@ -152,7 +134,7 @@ minified code.
 
 You should make sure that your query will only match one module. If it matches multiple modules, you
 might sometimes get the wrong module and your plugin could break. To test your query, you can call
-the function in Discord devtools with `{all: true}` and see if it returns multiple modules.
+the function in Discord DevTools with `{all: true}` and see if it returns multiple modules.
 
 ```js
 replugged.webpack.getBySource("HORIZONTAL_REVERSE", { all: true });
@@ -227,7 +209,7 @@ export function start() {
 
 Works like [`getFunctionBySource`](#getFunctionBySource), but returns the key of the function
 instead of the function itself. Useful for getting the property name to use for
-[injecting](injecting).
+[injecting](../injecting).
 
 ```ts
 import { Injector, webpack } from "replugged";

@@ -69,7 +69,7 @@ You can apply your new changes by reloading the theme in Replugged settings or b
 
 :::tip
 
-You can reload the theme from Discord devtools by running
+You can reload the theme from Discord DevTools by running
 `replugged.themes.reload('THEME_ID_HERE')`. `THEME_ID_HERE` should be replaced with your theme ID
 (the one you set in `manifest.json`).
 
