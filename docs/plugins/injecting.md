@@ -124,7 +124,7 @@ utilities are available on `injector.utils`.
 
 You can use the `addPopoverButton` util to add a button to the message popover. These are the
 buttons that are shown in the top right corner when you hover over a message, like react, edit,
-reply, etc.
+reply, etc. The button order cannot be controlled.
 
 ```ts
 import { Injector, webpack } from "replugged";
