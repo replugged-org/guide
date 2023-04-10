@@ -1,16 +1,21 @@
 ---
-sidebar_position: 5
+sidebar_position: 2
 title: Components
 description: Documented components for plugins
+toc_max_heading_level: 4
 ---
 
+export const Required = () => <span style={{ color: "red" }}>*</span>;
+
 export const CSSProperties = () => (
-  <a href="https://reactjs.org/docs/dom-elements.html#style">CSSProperties</a>
+  <a href="https://react.dev/reference/react-dom/components/common#applying-css-styles">
+    CSSProperties
+  </a>
 );
 
 :::caution
 
-All props are optional unless they say **(required)**.
+All props are optional unless they are marked with an asterisk ( <Required /> ).
 
 :::
 
@@ -27,7 +32,7 @@ All input components ending with `Item` have their original counterpart, and dif
 
 | Name       | Type              | Default | Description                                      |
 | ---------- | ----------------- | ------- | ------------------------------------------------ |
-| `children` | React node        |         | Wrapper component title                          |
+| `children` | ReactNode         |         | Wrapper component title                          |
 | `note`     | string            |         | Description of what the input component is about |
 | `style`    | <CSSProperties /> |         | Wrapper component style                          |
 
@@ -46,11 +51,11 @@ export function Settings(): React.ReactElement {
 
 Enums:
 
-| Enum              | Description                                                     |
-| ----------------- | --------------------------------------------------------------- |
-| `Checkbox.Aligns` | Checkbox alignments <br/>`TOP` \| `CENTER`                      |
-| `Checkbox.Shapes` | Checkbox shapes <br/>`BOX` \| `ROUND` \| `SMALL`                |
-| `Checkbox.Types`  | Checkbox types <br/>`DEFAULT` \| `INVERTED` \| `GHOST` \| `ROW` |
+| Enum              | Description                                                      |
+| ----------------- | ---------------------------------------------------------------- |
+| `Checkbox.Aligns` | Checkbox alignments <br />`TOP` \| `CENTER`                      |
+| `Checkbox.Shapes` | Checkbox shapes <br />`BOX` \| `ROUND` \| `SMALL`                |
+| `Checkbox.Types`  | Checkbox types <br />`DEFAULT` \| `INVERTED` \| `GHOST` \| `ROW` |
 
 Props:
 
@@ -103,37 +108,39 @@ export function Settings(): React.ReactElement {
 
 Enums:
 
-| Enum          | Description                                                       |
-| ------------- | ----------------------------------------------------------------- |
-| `Radio.Sizes` | Radio group sizes <br/>`NOT_SET` \| `NONE` \| `SMALL` \| `MEDIUM` |
+| Enum          | Description                                                        |
+| ------------- | ------------------------------------------------------------------ |
+| `Radio.Sizes` | Radio group sizes <br />`NOT_SET` \| `NONE` \| `SMALL` \| `MEDIUM` |
 
 Props:
 
-| Name                        | Type                                          | Default              | Description                                               |
-| --------------------------- | --------------------------------------------- | -------------------- | --------------------------------------------------------- |
-| `className`                 | string                                        |                      | Component class name                                      |
-| `disabled`                  | boolean                                       | `false`              | Whether the radio group is disabled                       |
-| `itemInfoClassName`         | string                                        |                      | Radio info element class name                             |
-| `itemTitleClassName`        | string                                        |                      | Radio title element class name                            |
-| `onChange`                  | (e: `RadioOptionType`) => void **(required)** |                      | Function ran on value change                              |
-| `options`                   | `RadioOptionType[]` **(required)**            |                      | Array of radio options; check out `RadioOptionType` props |
-| `radioItemClassName`        | string                                        |                      | Radio item element class name                             |
-| `radioPosition`             | string                                        | `left`               | Position of the radio                                     |
-| `size`                      | `Radio.Sizes`                                 | `Radio.Sizes.MEDIUM` | Define radio group size                                   |
-| `value`                     | string                                        |                      | Selected radio value                                      |
-| `withTransparentBackground` | boolean                                       | `false`              | Whether the radio group is transparent                    |
+| Name                        | Type                                                            | Default              | Description                            |
+| --------------------------- | --------------------------------------------------------------- | -------------------- | -------------------------------------- |
+| `className`                 | string                                                          |                      | Component class name                   |
+| `disabled`                  | boolean                                                         | `false`              | Whether the radio group is disabled    |
+| `itemInfoClassName`         | string                                                          |                      | Radio info element class name          |
+| `itemTitleClassName`        | string                                                          |                      | Radio title element class name         |
+| `onChange`                  | <Required /> (e: [`RadioOptionType`](#RadioOptionType)) => void |                      | Function ran on value change           |
+| `options`                   | <Required /> [`RadioOptionType`](#RadioOptionType)[]            |                      | Array of radio options                 |
+| `radioItemClassName`        | string                                                          |                      | Radio item element class name          |
+| `radioPosition`             | string                                                          | `left`               | Position of the radio                  |
+| `size`                      | `Radio.Sizes`                                                   | `Radio.Sizes.MEDIUM` | Define radio group size                |
+| `value`                     | string                                                          |                      | Selected radio value                   |
+| `withTransparentBackground` | boolean                                                         | `false`              | Whether the radio group is transparent |
 
-`RadioOptionType` Props:
+#### Types {Radio-types}
 
-| Name              | Type                  | Default | Description                                                             |
-| ----------------- | --------------------- | ------- | ----------------------------------------------------------------------- |
-| `color`           | string                |         | Color displayed on the side                                             |
-| `desc`            | string                |         | Option description                                                      |
-| `disabled`        | boolean               | `false` | Whether the option is disabled                                          |
-| `name`            | string **(required)** |         | Option name                                                             |
-| `tooltipPosition` | string                |         | Tooltip position displayed on the option; check out `Tooltip.Positions` |
-| `tooltipText`     | string                |         | Tooltip text displayed on the option                                    |
-| `value`           | string **(required)** |         | Option value                                                            |
+##### `RadioOptionType` {#RadioOptionType}
+
+| Name              | Type                | Default | Description                                                                         |
+| ----------------- | ------------------- | ------- | ----------------------------------------------------------------------------------- |
+| `color`           | string              |         | Color displayed on the side                                                         |
+| `desc`            | string              |         | Option description                                                                  |
+| `disabled`        | boolean             | `false` | Whether the option is disabled                                                      |
+| `name`            | <Required /> string |         | Option name                                                                         |
+| `tooltipPosition` | string              |         | Tooltip position displayed on the option; check out [`Tooltip.Positions`](#tooltip) |
+| `tooltipText`     | string              |         | Tooltip text displayed on the option                                                |
+| `value`           | <Required /> string |         | Option value                                                                        |
 
 ### Select and SelectItem
 
@@ -165,44 +172,46 @@ export function Settings(): React.ReactElement {
 
 Props:
 
-| Name                | Type                                | Default  | Description                                                                                                 |
-| ------------------- | ----------------------------------- | -------- | ----------------------------------------------------------------------------------------------------------- |
-| `autoFocus`         | boolean                             | `false`  | Whether the select is on focus                                                                              |
-| `className`         | string                              |          | Component class name                                                                                        |
-| `clear`             | () => void                          |          | Function ran when the selection is cleared; works together with `clearable`; alias of `onClear`             |
-| `clearable`         | boolean                             | `false`  | Whether the selection is clearable from its button; works together with `clear`                             |
-| `closeOnSelect`     | boolean                             | `true`   | Whether to close the popout once selected an option                                                         |
-| `disabled`          | boolean                             | `false`  | Whether the select is disabled; alias of `isDisabled`                                                       |
-| `hideIcon`          | boolean                             | `false`  | Whether the arrow icon is hidden                                                                            |
-| `isDisabled`        | boolean                             | `false`  | Whether the select is disabled; alias of `disabled`                                                         |
-| `isSelected`        | (e: string) => void **(required)**  |          | Function ran to check if the option passed as a parameter is selectable; not necessary if `value` is passed |
-| `look`              | number                              | `0`      | Define the select style                                                                                     |
-| `maxVisibleItems`   | number                              | `7`      | How many options are visible                                                                                |
-| `onChange`          | (e: string) => void **(required)**  |          | Function ran on selection change; alias of `onSelect` and `select`                                          |
-| `onClear`           | () => void                          |          | Function ran when the selection is cleared; works together with `clearable`; alias of `clear`               |
-| `onClose`           | () => void                          |          | Function ran when the popout got closed                                                                     |
-| `onOpen`            | () => void                          |          | Function ran when the popout got opened                                                                     |
-| `onSelect`          | (e: string) => void **(required)**  |          | Function ran on selection change; alias of `onChange` and `select`                                          |
-| `optionClassName`   | string                              |          | Option element class name                                                                                   |
-| `options`           | `SelectOptionType[]` **(required)** |          | Array of select options; check out `SelectOptionType` props                                                 |
-| `placeholder`       | string                              | `Select` | Select placeholder text                                                                                     |
-| `popoutClassName`   | string                              |          | Popout element class name                                                                                   |
-| `popoutPosition`    | string                              |          | Popout position displayed on the select; check out `Tooltip.Positions`                                      |
-| `popoutWidth`       | number                              |          | Popout width                                                                                                |
-| `renderOptionLabel` | (e: `SelectOptionType`) => void     |          | Function ran on option label element render, useful to labels                                               |
-| `renderOptionValue` | (e: `SelectOptionType[]`) => void   |          | Function ran on option value element render, useful to values                                               |
-| `select`            | (e: string) => void **(required)**  |          | Function ran on selection change; alias of `onChange` and `onSelect`                                        |
-| `serialize`         | (e: string) => void                 |          | Function ran to serialize the option                                                                        |
-| `value`             | string                              |          | Selected option value                                                                                       |
+| Name                | Type                                                   | Default  | Description                                                                                                 |
+| ------------------- | ------------------------------------------------------ | -------- | ----------------------------------------------------------------------------------------------------------- |
+| `autoFocus`         | boolean                                                | `false`  | Whether the select is on focus                                                                              |
+| `className`         | string                                                 |          | Component class name                                                                                        |
+| `clear`             | () => void                                             |          | Function ran when the selection is cleared; works together with `clearable`; alias of `onClear`             |
+| `clearable`         | boolean                                                | `false`  | Whether the selection is clearable from its button; works together with `clear`                             |
+| `closeOnSelect`     | boolean                                                | `true`   | Whether to close the popout once selected an option                                                         |
+| `disabled`          | boolean                                                | `false`  | Whether the select is disabled; alias of `isDisabled`                                                       |
+| `hideIcon`          | boolean                                                | `false`  | Whether the arrow icon is hidden                                                                            |
+| `isDisabled`        | boolean                                                | `false`  | Whether the select is disabled; alias of `disabled`                                                         |
+| `isSelected`        | <Required /> (e: string) => void                       |          | Function ran to check if the option passed as a parameter is selectable; not necessary if `value` is passed |
+| `look`              | number                                                 | `0`      | Define the select style                                                                                     |
+| `maxVisibleItems`   | number                                                 | `7`      | How many options are visible                                                                                |
+| `onChange`          | <Required /> (e: string) => void                       |          | Function ran on selection change; alias of `onSelect` and `select`                                          |
+| `onClear`           | () => void                                             |          | Function ran when the selection is cleared; works together with `clearable`; alias of `clear`               |
+| `onClose`           | () => void                                             |          | Function ran when the popout got closed                                                                     |
+| `onOpen`            | () => void                                             |          | Function ran when the popout got opened                                                                     |
+| `onSelect`          | <Required /> (e: string) => void                       |          | Function ran on selection change; alias of `onChange` and `select`                                          |
+| `optionClassName`   | string                                                 |          | Option element class name                                                                                   |
+| `options`           | <Required /> [`SelectOptionType`](#SelectOptionType)[] |          | Array of select options                                                                                     |
+| `placeholder`       | string                                                 | `Select` | Select placeholder text                                                                                     |
+| `popoutClassName`   | string                                                 |          | Popout element class name                                                                                   |
+| `popoutPosition`    | string                                                 |          | Popout position displayed on the select; check out [`Tooltip.Positions`](#tooltip)                          |
+| `popoutWidth`       | number                                                 |          | Popout width                                                                                                |
+| `renderOptionLabel` | (e: [`SelectOptionType`](#SelectOptionType)) => void   |          | Function ran on option label element render, useful to labels                                               |
+| `renderOptionValue` | (e: [`SelectOptionType`](#SelectOptionType)[]) => void |          | Function ran on option value element render, useful to values                                               |
+| `select`            | <Required /> (e: string) => void                       |          | Function ran on selection change; alias of `onChange` and `onSelect`                                        |
+| `serialize`         | (e: string) => void                                    |          | Function ran to serialize the option                                                                        |
+| `value`             | string                                                 |          | Selected option value                                                                                       |
 
-`SelectOptionType` Props:
+#### Types {Select-types}
 
-| Name       | Type                  | Default | Description                    |
-| ---------- | --------------------- | ------- | ------------------------------ |
-| `disabled` | boolean               | `false` | Whether the option is disabled |
-| `key`      | string                |         | Option key                     |
-| `label`    | string **(required)** |         | Option name                    |
-| `value`    | string **(required)** |         | Option value                   |
+##### `SelectOptionType`
+
+| Name       | Type                | Default | Description                    |
+| ---------- | ------------------- | ------- | ------------------------------ |
+| `disabled` | boolean             | `false` | Whether the option is disabled |
+| `key`      | string              |         | Option key                     |
+| `label`    | <Required /> string |         | Option name                    |
+| `value`    | <Required /> string |         | Option value                   |
 
 ### Slider and SliderItem
 
@@ -268,17 +277,17 @@ export function Settings(): React.ReactElement {
 
 Props:
 
-| Name          | Type                                | Default | Description                                                      |
-| ------------- | ----------------------------------- | ------- | ---------------------------------------------------------------- |
-| `checked`     | boolean **(required)**              |         | Switch state; use `value` with the Item component instead        |
-| `className`   | string                              |         | Component class name                                             |
-| `disabled`    | boolean                             | `false` | Whether the switch is disabled                                   |
-| `hideBorder`  | boolean                             | `false` | Whether a divider is not displayed at the end of the switch item |
-| `note`        | string                              |         | Description of what the switch item is about                     |
-| `onChange`    | (e: boolean) => void **(required)** |         | Function ran on state change                                     |
-| `style`       | <CSSProperties />                   |         | Component style                                                  |
-| `tooltipNote` | string                              |         | Tooltip text displayed on the switch item                        |
-| `value`       | boolean **(required)**              |         | Switch item value                                                |
+| Name          | Type                              | Default | Description                                                      |
+| ------------- | --------------------------------- | ------- | ---------------------------------------------------------------- |
+| `checked`     | <Required /> boolean              |         | Switch state; use `value` with the Item component instead        |
+| `className`   | string                            |         | Component class name                                             |
+| `disabled`    | boolean                           | `false` | Whether the switch is disabled                                   |
+| `hideBorder`  | boolean                           | `false` | Whether a divider is not displayed at the end of the switch item |
+| `note`        | string                            |         | Description of what the switch item is about                     |
+| `onChange`    | <Required /> (e: boolean) => void |         | Function ran on state change                                     |
+| `style`       | <CSSProperties />                 |         | Component style                                                  |
+| `tooltipNote` | string                            |         | Tooltip text displayed on the switch item                        |
+| `value`       | <Required /> boolean              |         | Switch item value                                                |
 
 ### TextArea
 
@@ -341,9 +350,9 @@ export function Settings(): React.ReactElement {
 
 Enums:
 
-| Enum              | Description                          |
-| ----------------- | ------------------------------------ |
-| `TextInput.Sizes` | Input sizes <br/>`DEFAULT` \| `MINI` |
+| Enum              | Description                           |
+| ----------------- | ------------------------------------- |
+| `TextInput.Sizes` | Input sizes <br />`DEFAULT` \| `MINI` |
 
 Props:
 
@@ -370,7 +379,7 @@ Props:
 
 ## Other components
 
-### Button and ButtonItem
+### Button and ButtonItem {#Button}
 
 Example:
 
@@ -385,20 +394,20 @@ const { ButtonItem } = components;
 
 Enums:
 
-| Enum                  | Description                                                                                                                                         |
-| --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Button.BorderColors` | Button border colors <br/>`BRAND` \| `RED` \| `GREEN` \| `YELLOW` \| `PRIMARY` \| `LINK` \| `WHITE` \| `BLACK` \| `TRANSPARENT` \| `BRAND_NEW`      |
-| `Button.Colors`       | Button colors <br/>`BRAND` \| `RED` \| `GREEN` \| `YELLOW` \| `PRIMARY` \| `LINK` \| `WHITE` \| `BLACK` \| `TRANSPARENT` \| `BRAND_NEW` \| `CUSTOM` |
-| `Button.Hovers`       | Button color hovers <br/>`DEFAULT` \| `BRAND` \| `RED` \| `GREEN` \| `YELLOW` \| `PRIMARY` \| `LINK` \| `WHITE` \| `BLACK` \| `TRANSPARENT`         |
-| `Button.Looks`        | Button looks <br/>`FILLED` \| `INVERTED` \| `OUTLINED` \| `LINK` \| `BLANK`                                                                         |
-| `Button.Sizes`        | Button sizes <br/>`NONE` \| `TINY` \| `SMALL` \| `MEDIUM` \| `LARGE` \| `XLARGE` \| `MIN` \| `MAX` \| `ICON`                                        |
+| Enum                  | Description                                                                                                                                          |
+| --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Button.BorderColors` | Button border colors <br />`BRAND` \| `RED` \| `GREEN` \| `YELLOW` \| `PRIMARY` \| `LINK` \| `WHITE` \| `BLACK` \| `TRANSPARENT` \| `BRAND_NEW`      |
+| `Button.Colors`       | Button colors <br />`BRAND` \| `RED` \| `GREEN` \| `YELLOW` \| `PRIMARY` \| `LINK` \| `WHITE` \| `BLACK` \| `TRANSPARENT` \| `BRAND_NEW` \| `CUSTOM` |
+| `Button.Hovers`       | Button color hovers <br />`DEFAULT` \| `BRAND` \| `RED` \| `GREEN` \| `YELLOW` \| `PRIMARY` \| `LINK` \| `WHITE` \| `BLACK` \| `TRANSPARENT`         |
+| `Button.Looks`        | Button looks <br />`FILLED` \| `INVERTED` \| `OUTLINED` \| `LINK` \| `BLANK`                                                                         |
+| `Button.Sizes`        | Button sizes <br />`NONE` \| `TINY` \| `SMALL` \| `MEDIUM` \| `LARGE` \| `XLARGE` \| `MIN` \| `MAX` \| `ICON`                                        |
 
 Props:
 
 | Name                      | Type                       | Default               | Description                                                                                  |
 | ------------------------- | -------------------------- | --------------------- | -------------------------------------------------------------------------------------------- |
 | `borderColor`             | `Button.BorderColors`      |                       | Button border color                                                                          |
-| `button`                  | string **(required)**      |                       | Button text for the item component                                                           |
+| `button`                  | <Required /> string        |                       | Button text for the item component                                                           |
 | `className`               | string                     |                       | Component class name                                                                         |
 | `color`                   | `Button.Colors`            | `Button.Colors.BRAND` | Button color                                                                                 |
 | `disabled`                | boolean                    | `false`               | Whether the button is disabled                                                               |
@@ -409,7 +418,7 @@ Props:
 | `innerClassName`          | string                     |                       | Text element class name                                                                      |
 | `look`                    | `Button.Looks`             | `Button.Looks.FILLED` | Button look                                                                                  |
 | `note`                    | string                     |                       | Description of what the button item is about                                                 |
-| `onClick`                 | () => void **(required)**  |                       | Function ran on button click                                                                 |
+| `onClick`                 | <Required /> () => void    |                       | Function ran on button click                                                                 |
 | `onDoubleClick`           | (e: MouseEvent) => void    |                       | Function ran on double button click                                                          |
 | `onKeyDown`               | (e: KeyboardEvent) => void |                       | Function ran on key press                                                                    |
 | `onMouseDown`             | (e: MouseEvent) => void    |                       | Function ran on mouse down                                                                   |
@@ -422,7 +431,7 @@ Props:
 | `submittingFinishedLabel` | string                     | `Loading finished`    | Announce finish loading message for screen-reader users; works together with `submitting`    |
 | `submittingStartedLabel`  | string                     | `Loading`             | Announce start loading message for screen-reader users; works together with `submitting`     |
 | `success`                 | boolean                    | `false`               | Whether the button color is green                                                            |
-| `tooltipPosition`         | string                     |                       | Tooltip position displayed on the button item; check out `Tooltip.Positions`                 |
+| `tooltipPosition`         | string                     |                       | Tooltip position displayed on the button item; check out [`Tooltip.Positions`](#tooltip)     |
 | `tooltipText`             | string                     |                       | Tooltip text displayed on the button item                                                    |
 | `type`                    | string                     | `button`              | Button element type                                                                          |
 | `wrapperClassName`        | string                     |                       | Wrapper element class name                                                                   |
@@ -442,13 +451,13 @@ const { Category } = components;
 
 Props:
 
-| Name       | Type                  | Default | Description                                        |
-| ---------- | --------------------- | ------- | -------------------------------------------------- |
-| `disabled` | boolean               | `false` | Whether the category and its children are disabled |
-| `note`     | string                |         | Description of what the category contains          |
-| `onChange` | () => void            |         | Function ran on open state change                  |
-| `open`     | boolean               | `false` | Whether the category is opened                     |
-| `title`    | string **(required)** |         | Category title                                     |
+| Name       | Type                | Default | Description                                        |
+| ---------- | ------------------- | ------- | -------------------------------------------------- |
+| `disabled` | boolean             | `false` | Whether the category and its children are disabled |
+| `note`     | string              |         | Description of what the category contains          |
+| `onChange` | () => void          |         | Function ran on open state change                  |
+| `open`     | boolean             | `false` | Whether the category is opened                     |
+| `title`    | <Required /> string |         | Category title                                     |
 
 :::caution
 
@@ -481,7 +490,11 @@ Props:
 
 ### ContextMenu
 
-<!-- TODO: add doc page reference for common modules (https://github.com/replugged-org/guide/issues/3) -->
+:::caution
+
+This component requires the use of the common module [`contextMenu`](common#contextmenu).
+
+:::
 
 :::info
 
@@ -522,7 +535,7 @@ Props:
 
 | Name       | Type                                         | Default | Description                               |
 | ---------- | -------------------------------------------- | ------- | ----------------------------------------- |
-| `fallback` | React node                                   |         | Fallback elements to show                 |
+| `fallback` | ReactNode                                    |         | Fallback elements to show                 |
 | `onError`  | (error: unknown, errorInfo: unknown) => void |         | Function ran when an error is triggered   |
 | `silent`   | boolean                                      | `false` | Whether to not print the error to console |
 
@@ -537,20 +550,20 @@ const { Flex } = components;
 <Flex direction={Flex.Direction.VERTICAL}>{/* Your components here */}</Flex>;
 ```
 
-Related Components:
+Subcomponents:
 
-| Component    | Description                           |
-| ------------ | ------------------------------------- |
-| `Flex.Child` | Flex child, useful together with Flex |
+| Component                  | Description                           |
+| -------------------------- | ------------------------------------- |
+| [`Flex.Child`](#FlexChild) | Flex child, useful together with Flex |
 
 Enums:
 
-| Enum             | Description                                                                     |
-| ---------------- | ------------------------------------------------------------------------------- |
-| `Flex.Align`     | Flexbox alignments <br/>`START` \| `END` \| `CENTER` \| `STRETCH` \| `BASELINE` |
-| `Flex.Direction` | Flexbox directions <br/>`VERTICAL` \| `HORIZONTAL` \| `HORIZONTAL_REVERSE`      |
-| `Flex.Justify`   | Flexbox justifies <br/>`START` \| `END` \| `CENTER` \| `BETWEEN` \| `AROUND`    |
-| `Flex.Wrap`      | Flexbox wraps <br/>`NO_WRAP` \| `WRAP` \| `WRAP_REVERSE`                        |
+| Enum             | Description                                                                      |
+| ---------------- | -------------------------------------------------------------------------------- |
+| `Flex.Align`     | Flexbox alignments <br />`START` \| `END` \| `CENTER` \| `STRETCH` \| `BASELINE` |
+| `Flex.Direction` | Flexbox directions <br />`VERTICAL` \| `HORIZONTAL` \| `HORIZONTAL_REVERSE`      |
+| `Flex.Justify`   | Flexbox justifies <br />`START` \| `END` \| `CENTER` \| `BETWEEN` \| `AROUND`    |
+| `Flex.Wrap`      | Flexbox wraps <br />`NO_WRAP` \| `WRAP` \| `WRAP_REVERSE`                        |
 
 Props:
 
@@ -565,7 +578,9 @@ Props:
 | `style`     | <CSSProperties /> |                             | Component style   |
 | `wrap`      | `Flex.Wrap`       | `Flex.Wrap.NO_WRAP`         | Flexbox wrap      |
 
-`Flex.Child` Props:
+#### Types {Flex-types}
+
+##### `Flex.Child` {#FlexChild}
 
 | Name     | Type              | Default | Description                  |
 | -------- | ----------------- | ------- | ---------------------------- |
@@ -588,25 +603,27 @@ const { FormNotice } = components;
 
 Enums:
 
-| Enum               | Description                                                                              |
-| ------------------ | ---------------------------------------------------------------------------------------- |
-| `FormNotice.Types` | Notice types <br/>`PRIMARY` \| `DANGER` \| `WARNING` \| `SUCCESS` \| `BRAND` \| `CUSTOM` |
+| Enum               | Description                                                                               |
+| ------------------ | ----------------------------------------------------------------------------------------- |
+| `FormNotice.Types` | Notice types <br />`PRIMARY` \| `DANGER` \| `WARNING` \| `SUCCESS` \| `BRAND` \| `CUSTOM` |
 
 Props:
 
-| Name            | Type               | Default                   | Description                                                                   |
-| --------------- | ------------------ | ------------------------- | ----------------------------------------------------------------------------- |
-| `align`         | `Flex.Align`       | `Flex.Align.START`        | Flexbox align                                                                 |
-| `body`          | React node         |                           | Notice description                                                            |
-| `button`        | React node         |                           | Button component                                                              |
-| `className`     | string             |                           | Component class name                                                          |
-| `iconClassName` | string             |                           | Icon element class name                                                       |
-| `imageData`     | `ImageData`        |                           | Object that includes the information needed to display an image in the notice |
-| `style`         | <CSSProperties />  |                           | Component style                                                               |
-| `title`         | React node         |                           | Notice title                                                                  |
-| `type`          | `FormNotice.Types` | `FormNotice.Types.DANGER` | Notice type                                                                   |
+| Name            | Type                      | Default                   | Description                                                                   |
+| --------------- | ------------------------- | ------------------------- | ----------------------------------------------------------------------------- |
+| `align`         | `Flex.Align`              | `Flex.Align.START`        | Flexbox align                                                                 |
+| `body`          | ReactNode                 |                           | Notice description                                                            |
+| `button`        | ReactNode                 |                           | Button component                                                              |
+| `className`     | string                    |                           | Component class name                                                          |
+| `iconClassName` | string                    |                           | Icon element class name                                                       |
+| `imageData`     | [`ImageData`](#ImageData) |                           | Object that includes the information needed to display an image in the notice |
+| `style`         | <CSSProperties />         |                           | Component style                                                               |
+| `title`         | ReactNode                 |                           | Notice title                                                                  |
+| `type`          | `FormNotice.Types`        | `FormNotice.Types.DANGER` | Notice type                                                                   |
 
-`ImageData` Props:
+#### Types {FormNotice-types}
+
+##### `ImageData` {#ImageData}
 
 | Name       | Type   | Default | Description                              |
 | ---------- | ------ | ------- | ---------------------------------------- |
@@ -644,7 +661,7 @@ Props:
 | `className`      | string            |          | Component class name                                       |
 | `disabled`       | boolean           | `false`  | Whether the form is disabled                               |
 | `divider`        | boolean           | `false`  | Whether a divider is displayed at the end of the form      |
-| `error`          | React node        |          | Error message displayed                                    |
+| `error`          | ReactNode         |          | Error message displayed                                    |
 | `note`           | string            |          | Description of what the form contains                      |
 | `noteClassName`  | string            |          | Note class name                                            |
 | `notePosition`   | string            | `before` | Whether the note is displayed before or after the children |
@@ -652,7 +669,7 @@ Props:
 | `required`       | boolean           | `false`  | Whether the form completion is required                    |
 | `style`          | <CSSProperties /> |          | Component style                                            |
 | `tag`            | string            | `h5`     | Define the form title tag                                  |
-| `title`          | React node        |          | Form title                                                 |
+| `title`          | ReactNode         |          | Form title                                                 |
 | `titleClassName` | string            |          | Title class name                                           |
 
 ### FormText
@@ -666,7 +683,7 @@ const { FormText } = components;
 <FormText.DEFAULT>This is an example</FormText.DEFAULT>;
 ```
 
-Related Components:
+Subcomponents:
 
 | Component                    | Description            |
 | ---------------------------- | ---------------------- |
@@ -702,9 +719,9 @@ const { Loader } = components;
 
 Enums:
 
-| Enum          | Description                                                                                                      |
-| ------------- | ---------------------------------------------------------------------------------------------------------------- |
-| `Loader.Type` | Loader types <br/>`WANDERING_CUBES` \| `CHASING_DOTS` \| `PULSING_ELLIPSIS` \| `SPINNING_CIRCLE` \| `LOW_MOTION` |
+| Enum          | Description                                                                                                       |
+| ------------- | ----------------------------------------------------------------------------------------------------------------- |
+| `Loader.Type` | Loader types <br />`WANDERING_CUBES` \| `CHASING_DOTS` \| `PULSING_ELLIPSIS` \| `SPINNING_CIRCLE` \| `LOW_MOTION` |
 
 Props:
 
@@ -717,6 +734,12 @@ Props:
 | `type`          | `Loader.Type`     | `Loader.Type.WANDERING_CUBES` | Define type of loader                            |
 
 ### Modal
+
+:::caution
+
+This component requires the use of the common module [`modal`](common#modal).
+
+:::
 
 Example:
 
@@ -734,28 +757,28 @@ modal.openModal((props) => (
 ));
 ```
 
-<!-- TODO: add doc page reference for common modules (https://github.com/replugged-org/guide/issues/3) -->
+Subcomponents:
 
-Related Components:
+| Component                                     | Description            |
+| --------------------------------------------- | ---------------------- |
+| [`Modal.ModalCloseButton`](#ModalCloseButton) | Close button component |
+| `Modal.ModalContent`                          | Contains the content   |
+| [`Modal.ModalFooter`](#ModalFooter)           | Contains the footer    |
+| [`Modal.ModalHeader`](#ModalHeader)           | Contains the header    |
+| [`Modal.ModalRoot`](#ModalRoot)               | Root component         |
 
-| Component                | Description            |
-| ------------------------ | ---------------------- |
-| `Modal.ModalCloseButton` | Close button component |
-| `Modal.ModalContent`     | Contains the content   |
-| `Modal.ModalFooter`      | Contains the footer    |
-| `Modal.ModalHeader`      | Contains the header    |
-| `Modal.ModalRoot`        | Root component         |
+#### Types {Modal-types}
 
-`Modal.ModalCloseButton` Props:
+##### `Modal.ModalCloseButton` {#ModalCloseButton}
 
-| Name                   | Type                    | Default | Description                                              |
-| ---------------------- | ----------------------- | ------- | -------------------------------------------------------- |
-| `className`            | string                  |         | Component class name                                     |
-| `hideOnFullscreen`     | boolean                 | `false` | Whether the button is hidden when modal is in fullscreen |
-| `onClick`              | (): void **(required)** |         | Function ran when clicking the close button              |
-| `withCircleBackground` | boolean                 | `false` | Whether the button is in a circle                        |
+| Name                   | Type                  | Default | Description                                              |
+| ---------------------- | --------------------- | ------- | -------------------------------------------------------- |
+| `className`            | string                |         | Component class name                                     |
+| `hideOnFullscreen`     | boolean               | `false` | Whether the button is hidden when modal is in fullscreen |
+| `onClick`              | <Required /> (): void |         | Function ran when clicking the close button              |
+| `withCircleBackground` | boolean               | `false` | Whether the button is in a circle                        |
 
-`Modal.ModalFooter` Props:
+##### `Modal.ModalFooter` {#ModalFooter}
 
 | Name        | Type             | Default                             | Description          |
 | ----------- | ---------------- | ----------------------------------- | -------------------- |
@@ -765,7 +788,7 @@ Related Components:
 | `justify`   | `Flex.Justify`   | `Flex.Justify.START`                | Flexbox justify      |
 | `wrap`      | `Flex.Wrap`      | `Flex.Wrap.NO_WRAP`                 | Flexbox wrap         |
 
-`Modal.ModalHeader` Props:
+##### `Modal.ModalHeader` {#ModalHeader}
 
 | Name        | Type             | Default                     | Description          |
 | ----------- | ---------------- | --------------------------- | -------------------- |
@@ -775,7 +798,7 @@ Related Components:
 | `justify`   | `Flex.Justify`   | `Flex.Justify.START`        | Flexbox justify      |
 | `wrap`      | `Flex.Wrap`      | `Flex.Wrap.NO_WRAP`         | Flexbox wrap         |
 
-`Modal.ModalRoot` Props:
+##### `Modal.ModalRoot` {#ModalRoot}
 
 | Name              | Type       | Default  | Description                                   |
 | ----------------- | ---------- | -------- | --------------------------------------------- |
@@ -798,9 +821,9 @@ const { Notice } = components;
 
 Enums:
 
-| Enum           | Description                                                    |
-| -------------- | -------------------------------------------------------------- |
-| `Notice.Types` | Notice types <br/>`WARNING` \| `INFO` \| `ERROR` \| `POSITIVE` |
+| Enum           | Description                                                     |
+| -------------- | --------------------------------------------------------------- |
+| `Notice.Types` | Notice types <br />`WARNING` \| `INFO` \| `ERROR` \| `POSITIVE` |
 
 Props:
 
@@ -822,7 +845,7 @@ const { Text } = components;
 <Text.Normal>This is an example</Text.Normal>;
 ```
 
-Related Components:
+Subcomponents:
 
 | Component      | Description                                |
 | -------------- | ------------------------------------------ |
@@ -870,11 +893,11 @@ const { Tooltip } = components;
 
 Enums:
 
-| Enum                | Description                                                                                               |
-| ------------------- | --------------------------------------------------------------------------------------------------------- |
-| `Tooltip.Aligns`    | Tooltip alignments <br/>`TOP` \| `CENTER` \| `BOTTOM` \| `LEFT` \| `RIGHT`                                |
-| `Tooltip.Colors`    | Tooltip colors <br/>`PRIMARY` \| `BLACK` \| `GREY` \| `BRAND` \| `GREEN` \| `YELLOW` \| `RED` \| `CUSTOM` |
-| `Tooltip.Positions` | Tooltip positions <br/>`TOP` \| `BOTTOM` \| `LEFT` \| `RIGHT` \| `CENTER` \| `WINDOW_CENTER`              |
+| Enum                | Description                                                                                                |
+| ------------------- | ---------------------------------------------------------------------------------------------------------- |
+| `Tooltip.Aligns`    | Tooltip alignments <br />`TOP` \| `CENTER` \| `BOTTOM` \| `LEFT` \| `RIGHT`                                |
+| `Tooltip.Colors`    | Tooltip colors <br />`PRIMARY` \| `BLACK` \| `GREY` \| `BRAND` \| `GREEN` \| `YELLOW` \| `RED` \| `CUSTOM` |
+| `Tooltip.Positions` | Tooltip positions <br />`TOP` \| `BOTTOM` \| `LEFT` \| `RIGHT` \| `CENTER` \| `WINDOW_CENTER`              |
 
 Props:
 
@@ -894,6 +917,6 @@ Props:
 | `shouldShow`                  | boolean                        | `true`                   | Whether the tooltip can show                                                      |
 | `spacing`                     | number                         | `8`                      | Distance from the children                                                        |
 | `style`                       | <CSSProperties />              |                          | Component style                                                                   |
-| `text`                        | string **(required)**          |                          | Tooltip text                                                                      |
+| `text`                        | <Required /> string            |                          | Tooltip text                                                                      |
 | `tooltipClassName`            | string                         |                          | Tooltip element class name                                                        |
 | `tooltipContentClassName`     | string                         |                          | Tooltip content element class name                                                |
