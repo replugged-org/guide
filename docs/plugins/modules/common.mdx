@@ -54,14 +54,6 @@ All props/parameters are optional unless they are marked with an asterisk ( <Req
 
 :::
 
-:::caution
-
-All API references, like <APIReferences.User />, lead to the
-[Official Discord API Documentation](https://discord.com/developers/docs/) website, that means **not
-everything is documented** there.
-
-:::
-
 ## Stores
 
 :::tip
@@ -121,7 +113,7 @@ Functions:
 | `getState`                 |                                | [`State`](#state)                       | Gets an object containing some information about guild selections   |
 | `isLoaded`                 |                                | boolean                                 | Gets a value indicating whether all initial guilds have been loaded |
 
-#### Types
+#### Types {#guilds-types}
 
 ##### `State`
 
@@ -170,7 +162,7 @@ Functions:
 | `truncateMessages`              | <Required /> `channelId`: string <br /> <Required /> `truncateBottom`: number <br /> <Required /> `truncateTop`: number                                                                                         | void                                                              | Truncates a message list                                                                           |
 | `updateEditMessage`             | <Required /> `channelId`: string <br /> <Required /> `textValue`: string <br /> <Required /> `richValue`: unknown                                                                                               | void                                                              | Updates an edit message                                                                            |
 
-#### Types
+#### Types {#messages-types}
 
 ##### `AllowedMentions` {#AllowedMentions}
 
@@ -283,7 +275,7 @@ Functions:
 | `isMember`                        | `guildId`: string <br /> `userId`: string                                                                            | boolean                                                       | Checks if a user is a member of a guild                            |
 | `memberOf`                        | `userId`: string                                                                                                     | string[]                                                      | Gets all mutual servers of a user                                  |
 
-#### Types
+#### Types {#users-types}
 
 ##### `PendingRoleUpdate` {#PendingRoleUpdate}
 
@@ -309,7 +301,7 @@ Functions:
 | `post`          | <Required /> `req`: string \| [`RequestOpts`](#RequestOpts) | [`Response`](#Response) | Fetch with POST method      |
 | `put`           | <Required /> `req`: string \| [`RequestOpts`](#RequestOpts) | [`Response`](#Response) | Fetch with PUT method       |
 
-#### Types
+#### Types {#api-types}
 
 ##### `RequestOpts` {#RequestOpts}
 
@@ -526,7 +518,7 @@ Functions:
 | `setUpdateRules`              | `rules`: Record<string, [`Rule`](#Rule)>                                 | void                      | Sets parser rules                         |
 | `updateMessagesForExperiment` | `locale`: string <br /> `callback`: (messages: `Messages`) => `Messages` | void                      | Changes all strings for a specific locale |
 
-#### Types
+#### Types {#i18n-types}
 
 ##### `Language` {#Language}
 
@@ -590,7 +582,7 @@ modal.confirm({}).then((confirmed) => {
 });
 ```
 
-#### Types
+#### Types {#modal-types}
 
 ##### `AlertProps` {#AlertProps}
 
@@ -649,7 +641,7 @@ Functions:
 | `parseTopic`                       | <Required /> `text`: string <br /> `inline`: boolean <br /> `opts`: [`ParseOpts`](#ParseOpts) | ReactElement          | `parse` function but with `inlineCode`, `codeBlock`, `br` and `blockQuote` rules omitted                                           |
 | `reactParserFor`                   | <Required /> `rules`: Record<string, [`Rule`](#Rule)>                                         | (...) => ReactElement | Creates a new parser function based on specific rules; the returned function has the same parameters of the other parser functions |
 
-#### Types
+#### Types {#parser-types}
 
 ##### `ParseOpts` {#ParseOpts}
 
@@ -702,7 +694,7 @@ Functions:
 | ------- | --------------------------------------------------------------------------------------------------------------------------- | ----------- | ---------------------------------------------------------------------------- |
 | `toast` | <Required /> `content`: string \| ReactElement \| null <br /> `kind`: `toast.Kind` <br /> `opts`: [`ToastOpts`](#ToastOpts) | void        | Makes a toast appear on the screen; `toast.Kind.SUCCESS` is the default type |
 
-#### Types
+#### Types {#toast-types}
 
 ##### `ToastOpts` {#ToastOpts}
 
