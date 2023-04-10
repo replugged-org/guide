@@ -113,3 +113,39 @@ export function stop() {
   injector.uninjectAll();
 }
 ```
+
+## Utilities
+
+Replugged includes some utilities to inject into some common things. These can be uninjected the
+same way as regular injections and will also be removed when `uninjectAll` is called. These
+utilities are available on `injector.utils`.
+
+### Message Popover
+
+You can use the `addPopoverButton` util to add a button to the message popover. These are the
+buttons that are shown in the top right corner when you hover over a message, like react, edit,
+reply, etc. The button order cannot be controlled.
+
+```ts
+import { Injector, webpack } from "replugged";
+const injector = new Injector();
+
+function start() {
+  injector.utils.addPopoverButton((msg: Message, channel: Channel) => {
+    return {
+      label: "Click the button!",
+      icon: myVeryCoolIcon(), // Cool icon
+      onClick: () => {
+        // do stuff here when someone left clicks the button
+      },
+      onContextMenu: () => {
+        // do other stuff here when someone right clicks the button
+      },
+    };
+  });
+}
+
+function stop() {
+  injector.uninjectAll();
+}
+```
