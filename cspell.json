@@ -20,6 +20,7 @@
     "Subcomponents",
     "typeof",
     "uninject",
+    "uninjected",
     "XLARGE"
   ],
   "ignoreWords": [],

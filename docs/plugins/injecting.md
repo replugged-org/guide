@@ -116,13 +116,15 @@ export function stop() {
 
 ## Utilities
 
-There may be some common injections that a plugin may need. You can also access this from the
-injector instance. To uninject each of these, the same methods as above can be used.
+Replugged includes some utilities to inject into some common things. These can be uninjected the
+same way as regular injections and will also be removed when `uninjectAll` is called. These
+utilities are available on `injector.utils`.
 
 ### Message Popover
 
-In order to add a button to the popover that appears when you hover over a message, you can use
-`injector.utils.addPopoverButton`.
+You can use the `addPopoverButton` util to add a button to the message popover. These are the
+buttons that are shown in the top right corner when you hover over a message, like react, edit,
+reply, etc.
 
 ```ts
 import { Injector, webpack } from "replugged";
