@@ -168,18 +168,18 @@ export function start() {
 
 ## Processing modules
 
-### Get export for props {#getExportForProps}
+### Get exports for props {#getExportsForProps}
 
 When using `filters.byProps`, the actual properties you need may be nested under a random key. To
-get the actual export, you can use `getExportForProps`.
+get the actual export, you can use `getExportsForProps`.
 
 ```ts
 import { webpack } from "replugged";
-const { filters, getExportForProps, waitForModule } = webpack;
+const { filters, getExportsForProps, waitForModule } = webpack;
 
 export async function start() {
   const typingModuleRaw = await waitForModule(filters.byProps("getChannelId", "addChangeListener"));
-  const typingModule = getExportForProps(typingModuleRaw, ["getChannelId", "addChangeListener"]);
+  const typingModule = getExportsForProps(typingModuleRaw, ["getChannelId", "addChangeListener"]);
 }
 ```
 
