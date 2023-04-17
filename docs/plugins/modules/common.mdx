@@ -272,6 +272,7 @@ Functions:
 | `getTrueMember`                   | `guildId`: string <br /> `userId`: string                                                                            | <APIReferences.GuildMember /> \| undefined                    | Gets the guild member by its id                                    |
 | `getUser`                         | `userId`: string                                                                                                     | <APIReferences.User /> \| undefined                           | Gets the user by its id                                            |
 | `getUsers`                        |                                                                                                                      | Record<string, <APIReferences.User />>                        | Gets all users                                                     |
+| `getUserStoreVersion`             |                                                                                                                      | number                                                        | Gets the user store version                                        |
 | `isMember`                        | `guildId`: string <br /> `userId`: string                                                                            | boolean                                                       | Checks if a user is a member of a guild                            |
 | `memberOf`                        | `userId`: string                                                                                                     | string[]                                                      | Gets all mutual servers of a user                                  |
 
@@ -541,7 +542,7 @@ Functions:
 
 ### `modal`
 
-Utility module to use together with the [`modal`](components#modal) component.
+Utility module to use together with the [`Modal`](components#modal) component.
 
 Enums:
 
