@@ -133,11 +133,11 @@ Functions:
 | Name                            | Parameters                                                                                                                                                                                                      | Return Type                                                       | Description                                                                                        |
 | ------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
 | `clearChannel`                  | <Required /> `channelId`: string                                                                                                                                                                                | void                                                              | Clears all messages in a channel. This will only apply locally and the messages will be re-fetched |
-| `crosspostMessage`              | <Required /> `channelId`: string <br /> <Required /> `messageId`: string                                                                                                                                        | Promise<[`Response`](#Response) \| void>                          | Makes a message public in an announcement channel                                                  |
+| `crosspostMessage`              | <Required /> `channelId`: string <br /> <Required /> `messageId`: string                                                                                                                                        | Promise<[`HTTPResponse`](#HTTPResponse) \| void>                  | Makes a message public in an announcement channel                                                  |
 | `deleteMessage`                 | <Required /> `channelId`: string <br /> <Required /> `messageId`: string <br /> `keepThreadArchived`: boolean                                                                                                   | Promise<void\>                                                    | Deletes a message from a channel                                                                   |
 | `dismissAutomatedMessage`       | <Required /> `message`: <APIReferences.Message />                                                                                                                                                               | void                                                              | Dismisses an ephemeral message                                                                     |
 | `editMessage`                   | <Required /> `channelId`: string <br /> <Required /> `messageId`: string <br /> <Required /> `message`: { content: string }                                                                                     | Promise<void\>                                                    | Edits a message                                                                                    |
-| `endEditMessage`                | <Required /> `channelId`: string <br /> <Required /> `response`: [`Response`](#Response)                                                                                                                        | void                                                              | Dispatches an edited message                                                                       |
+| `endEditMessage`                | <Required /> `channelId`: string <br /> <Required /> `response`: [`HTTPResponse`](#HTTPResponse)                                                                                                                | void                                                              | Dispatches an edited message                                                                       |
 | `fetchLocalMessages`            | <Required /> `channelId`: string <br /> <Required /> `before`: boolean <br /> <Required /> `after`: boolean <br /> <Required /> `limit`: number <br /> <Required /> `completeClass`: unknown                    | Promise<void\>                                                    | Fetches local messages                                                                             |
 | `fetchMessages`                 | <Required /> `options`: `FetchMessagesOptions`                                                                                                                                                                  | Promise<boolean\>                                                 | Fetches messages                                                                                   |
 | `focusMessage`                  | <Required /> `options`: { channelId: string, messageId: string }                                                                                                                                                | void                                                              | Fetches with a focused message                                                                     |
@@ -150,10 +150,10 @@ Functions:
 | `receiveMessage`                | <Required /> `channelId`: string <br /> <Required /> `message`: <APIReferences.Message /> <br /> `optimistic`: boolean <br /> `sendMessageOptions`: unknown                                                     | void                                                              | Reveals a message                                                                                  |
 | `sendBotMessage`                | <Required /> `channelId`: string <br /> <Required /> `content`: string <br /> `messageName`: string                                                                                                             | void                                                              | Clyde sends a custom message                                                                       |
 | `sendClydeError`                | <Required /> `channelId`: string <br /> `errorKey`: number                                                                                                                                                      | void                                                              | Clyde sends an error message                                                                       |
-| `sendGreetMessage`              | <Required /> `channelId`: string <br /> <Required /> `stickerId`: string <br /> `options`: [`MessageGreetOptions`](#MessageGreetOptions)                                                                        | Promise<[`Response`](#Response) \| void>                          | Sends a greet message                                                                              |
-| `sendInvite`                    | <Required /> `channelId`: string <br /> <Required /> `inviteCode`: string <br /> `analyticsTriggeredFrom`: string <br /> `suggestedInvite`: [`InviteSuggestion`](#InviteSuggestion)                             | Promise<[`Response`](#Response) \| void>                          | Sends an invite                                                                                    |
-| `sendMessage`                   | <Required /> `channelId`: string <br /> <Required /> `message`: [`OutgoingMessage`](#OutgoingMessage) <br /> `promise`: boolean <br /> `options`: [`OutgoingMessageOptions`](#OutgoingMessageOptions)           | Promise<[`Response`](#Response) \| void>                          | Sends a message                                                                                    |
-| `sendStickers`                  | <Required /> `channelId`: string <br /> <Required /> `stickersIds`: string[] <br /> `content`: string <br /> `options`: [`SendMessageOptionsForReply`](#SendMessageOptionsForReply) \| {} <br /> `tts`: boolean | Promise<[`Response`](#Response) \| void>                          | Sends a sticker                                                                                    |
+| `sendGreetMessage`              | <Required /> `channelId`: string <br /> <Required /> `stickerId`: string <br /> `options`: [`MessageGreetOptions`](#MessageGreetOptions)                                                                        | Promise<[`HTTPResponse`](#HTTPResponse) \| void>                  | Sends a greet message                                                                              |
+| `sendInvite`                    | <Required /> `channelId`: string <br /> <Required /> `inviteCode`: string <br /> `analyticsTriggeredFrom`: string <br /> `suggestedInvite`: [`InviteSuggestion`](#InviteSuggestion)                             | Promise<[`HTTPResponse`](#HTTPResponse) \| void>                  | Sends an invite                                                                                    |
+| `sendMessage`                   | <Required /> `channelId`: string <br /> <Required /> `message`: [`OutgoingMessage`](#OutgoingMessage) <br /> `promise`: boolean <br /> `options`: [`OutgoingMessageOptions`](#OutgoingMessageOptions)           | Promise<[`HTTPResponse`](#HTTPResponse) \| void>                  | Sends a message                                                                                    |
+| `sendStickers`                  | <Required /> `channelId`: string <br /> <Required /> `stickersIds`: string[] <br /> `content`: string <br /> `options`: [`SendMessageOptionsForReply`](#SendMessageOptionsForReply) \| {} <br /> `tts`: boolean | Promise<[`HTTPResponse`](#HTTPResponse) \| void>                  | Sends a sticker                                                                                    |
 | `startEditMessage`              | <Required /> `channelId`: string <br /> <Required /> `messageId`: string <br /> <Required /> `content`: string                                                                                                  | void                                                              | Starts editing a message                                                                           |
 | `suppressEmbeds`                | <Required /> `channelId`: string <br /> <Required /> `messageId`: string                                                                                                                                        | Promise<void\>                                                    | Deletes an embed from a message                                                                    |
 | `trackInvite`                   | <Required /> `options`: [`TrackInviteOptions`](#TrackInviteOptions)                                                                                                                                             | void                                                              | Tracks an invite for analytics                                                                     |
@@ -290,39 +290,77 @@ Functions:
 
 ### `api`
 
+<!-- [!]: `Backoff`, `V6OrEarlierAPIError` and `V8APIError` aren't documented -->
+
 This module is for making requests to the Discord API.
+
+Props:
+
+| Name                  | Type                  | Description                                                                 |
+| --------------------- | --------------------- | --------------------------------------------------------------------------- |
+| `V6OrEarlierAPIError` | `V6OrEarlierAPIError` | Class for creating API errors with v6 or earlier                            |
+| `V8APIError`          | `V8APIError`          | Class for creating API errors with v8. Supports captcha and multiple errors |
 
 Functions:
 
-| Name            | Parameters                                                  | Return Type             | Description                 |
-| --------------- | ----------------------------------------------------------- | ----------------------- | --------------------------- |
-| `delete`        | <Required /> `req`: string \| [`RequestOpts`](#RequestOpts) | [`Response`](#Response) | Fetch with DELETE method    |
-| `get`           | <Required /> `req`: string \| [`RequestOpts`](#RequestOpts) | [`Response`](#Response) | Fetch with GET method       |
-| `getAPIBaseURL` | `version`: boolean                                          | string                  | Gets Discord's base API URL |
-| `patch`         | <Required /> `req`: string \| [`RequestOpts`](#RequestOpts) | [`Response`](#Response) | Fetch with PATCH method     |
-| `post`          | <Required /> `req`: string \| [`RequestOpts`](#RequestOpts) | [`Response`](#Response) | Fetch with POST method      |
-| `put`           | <Required /> `req`: string \| [`RequestOpts`](#RequestOpts) | [`Response`](#Response) | Fetch with PUT method       |
+| Name            | Parameters                                                                                                        | Return Type                     | Description                 |
+| --------------- | ----------------------------------------------------------------------------------------------------------------- | ------------------------------- | --------------------------- |
+| `delete`        | <Required /> `req`: string \| [`HTTPRequest`](#HTTPRequest) <br /> `callback`: (response: `HTTPResponse`) => void | [`HTTPResponse`](#HTTPResponse) | Fetch with DELETE method    |
+| `get`           | <Required /> `req`: string \| [`HTTPRequest`](#HTTPRequest) <br /> `callback`: (response: `HTTPResponse`) => void | [`HTTPResponse`](#HTTPResponse) | Fetch with GET method       |
+| `getAPIBaseURL` | `version`: boolean                                                                                                | string                          | Gets Discord's base API URL |
+| `patch`         | <Required /> `req`: string \| [`HTTPRequest`](#HTTPRequest) <br /> `callback`: (response: `HTTPResponse`) => void | [`HTTPResponse`](#HTTPResponse) | Fetch with PATCH method     |
+| `post`          | <Required /> `req`: string \| [`HTTPRequest`](#HTTPRequest) <br /> `callback`: (response: `HTTPResponse`) => void | [`HTTPResponse`](#HTTPResponse) | Fetch with POST method      |
+| `put`           | <Required /> `req`: string \| [`HTTPRequest`](#HTTPRequest) <br /> `callback`: (response: `HTTPResponse`) => void | [`HTTPResponse`](#HTTPResponse) | Fetch with PUT method       |
 
 #### Types {#api-types}
 
-##### `RequestOpts` {#RequestOpts}
+##### `HTTPAttachment` {#HTTPAttachment}
 
-| Name      | Type                    | Default | Description                                   |
-| --------- | ----------------------- | ------- | --------------------------------------------- |
-| `body`    | Record<string, unknown> |         | Body for the request                          |
-| `headers` | Record<string, string>  |         | Headers for the request                       |
-| `query`   | Record<string, string>  |         | Request queries                               |
-| `url`     | <Required /> string     |         | Path to fetch from (without the base API URL) |
+| Name       | Type                     | Description               |
+| ---------- | ------------------------ | ------------------------- |
+| `file`     | string \| Blob \| Buffer | File path or binary data  |
+| `filename` | string                   | Custom file name          |
+| `name`     | string                   | Field name in the request |
 
-##### `Response` {#Response}
+##### `HTTPField` {#HTTPField}
 
-| Name      | Type                    | Description                          |
-| --------- | ----------------------- | ------------------------------------ |
-| `body`    | Record<string, unknown> | Body contents                        |
-| `headers` | Record<string, string>  | Headers associated with the response |
-| `ok`      | boolean                 | Whether the response was successful  |
-| `status`  | number                  | Status code of the response          |
-| `text`    | string                  | Response body in text                |
+| Name    | Type   | Description |
+| ------- | ------ | ----------- |
+| `name`  | string | Field name  |
+| `value` | string | Field value |
+
+##### `HTTPRequest` {#HTTPRequest}
+
+| Name                | Type                                                                                                                                                      | Default   | Description                                                                                                                                           |
+| ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `attachments`       | [`HTTPAttachment`](#HTTPAttachment)[]                                                                                                                     |           | Array containing data for an attachment                                                                                                               |
+| `backoff`           | `Backoff`                                                                                                                                                 | `Backoff` | Used to retry a failed request after a specific time                                                                                                  |
+| `binary`            | boolean                                                                                                                                                   | `false`   | Whether to handle binary response bodies                                                                                                              |
+| `body`              | string \| Record<string, unknown>                                                                                                                         |           | Body for the request                                                                                                                                  |
+| `context`           | Record<string, unknown>                                                                                                                                   |           | Object entries will be converted to JSON format and set to the X-Context-Properties header                                                            |
+| `fields`            | [`HTTPField`](#HTTPField)[]                                                                                                                               |           | Array containing field data                                                                                                                           |
+| `headers`           | Record<string, string>                                                                                                                                    |           | Headers for the request                                                                                                                               |
+| `interceptResponse` | (response: `Response`, retry: (headers: Record<string, string>, interceptResponse: `interceptResponse`) => void, reject: (reason: Error) => void) => void |           | Function ran to intercept the request response; check out [superagent](https://ladjs.github.io/superagent) Response format                            |
+| `oldFormErrors`     | boolean                                                                                                                                                   | `false`   | Whether to use the old error handling                                                                                                                 |
+| `onRequestCreated`  | (request: `Request`) => void                                                                                                                              |           | Function ran at the start of the request; check out [superagent](https://ladjs.github.io/superagent) Request format                                   |
+| `onRequestProgress` | (progress: `ProgressEvent`) => void                                                                                                                       |           | Function ran to track the progress of uploading or downloading files; check out [superagent](https://ladjs.github.io/superagent) ProgressEvent format |
+| `query`             | string \| Record<string, string>                                                                                                                          |           | Request queries                                                                                                                                       |
+| `reason`            | string                                                                                                                                                    |           | Reason of the request set to the X-Audit-Log-Reason header                                                                                            |
+| `retried`           | number                                                                                                                                                    |           | How many times the request failed and retried                                                                                                         |
+| `retries`           | number                                                                                                                                                    |           | How many times the request can retry if failed                                                                                                        |
+| `signal`            | AbortSignal                                                                                                                                               |           | AbortSignal object                                                                                                                                    |
+| `timeout`           | number                                                                                                                                                    |           | Sets a deadline in milliseconds for the request to complete and aborts if the request isn't completed in time                                         |
+| `url`               | <Required /> string                                                                                                                                       |           | Path to fetch from (without the base API URL)                                                                                                         |
+
+##### `HTTPResponse` {#HTTPResponse}
+
+| Name      | Type                              | Description                          |
+| --------- | --------------------------------- | ------------------------------------ |
+| `body`    | string \| Record<string, unknown> | Body contents                        |
+| `headers` | Record<string, string>            | Headers associated with the response |
+| `ok`      | boolean                           | Whether the response was successful  |
+| `status`  | number                            | Status code of the response          |
+| `text`    | string                            | HTTPResponse body in text            |
 
 ### `constants`
 
