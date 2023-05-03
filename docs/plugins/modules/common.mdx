@@ -69,30 +69,30 @@ All functions of `ChannelStore` and `SelectedChannelStore` are in this module.
 
 Functions:
 
-| Name                                     | Parameters                       | Return Type                               | Description                                                 |
-| ---------------------------------------- | -------------------------------- | ----------------------------------------- | ----------------------------------------------------------- |
-| `getAllThreadsForParent`                 | `channelId`: string              | <APIReferences.Channel />[]               | Gets all fetched threads by its channel (parent) id         |
-| `getBasicChannel`                        | <Required /> `channelId`: string | <APIReferences.Channel /> \| undefined    | Gets the basic channel by its id                            |
-| `getChannel`                             | <Required /> `channelId`: string | <APIReferences.Channel /> \| undefined    | Gets the channel by its id                                  |
-| `getChannelId`                           | `guildId`: string                | string \| undefined                       | Gets the current selected channel id                        |
-| `getCurrentlySelectedChannelId`          | `guildId`: string                | string \| undefined                       | Gets the current selected channel id                        |
-| `getDMFromUserId`                        | <Required /> `userId`: string    | string \| undefined                       | Gets the DM channel id by its user id                       |
-| `getDMUserIds`                           |                                  | string[]                                  | Gets all DM channel ids                                     |
-| `getGuildChannelsVersion`                | `guildId`: string                | number                                    | Gets the channel version by guild id                        |
-| `getInitialOverlayState`                 |                                  | Record<string, <APIReferences.Channel />> | Gets all guild and DM channels                              |
-| `getLastChannelFollowingDestination`     |                                  | { channelId: string, guildId: string }    | Gets information on the last channel follow                 |
-| `getLastSelectedChannelId`               | `guildId`: string                | string \| undefined                       | Gets the last selected channel id                           |
-| `getLastSelectedChannels`                | <Required /> `guildId`: string   | string \| undefined                       | Gets the last selected channel id by its guild id           |
-| `getMostRecentSelectedTextChannelId`     | `guildId`: string                | string \| undefined                       | Gets the last selected text channel id by its guild id      |
-| `getMutableBasicGuildChannelsForGuild`   | `guildId`: string                | Record<string, <APIReferences.Channel />> | Gets all basic channels by its guild id                     |
-| `getMutableGuildChannelsForGuild`        | `guildId`: string                | Record<string, <APIReferences.Channel />> | Gets all channels by its guild id                           |
-| `getMutablePrivateChannels`              |                                  | Record<string, <APIReferences.Channel />> | Gets all DM channels                                        |
-| `getPrivateChannelsVersion`              |                                  | number                                    | Gets the DM channel version                                 |
-| `getSortedPrivateChannels`               |                                  | <APIReferences.Channel />[]               | Gets all DM channels sorted by the last message             |
-| `getVoiceChannelId`                      |                                  | string \| undefined                       | Gets the current voice channel id                           |
-| `hasChannel`                             | <Required /> `channelId`: string | boolean                                   | Checks if the channel id is registered in the channel store |
-| `hasRestoredGuild`                       | <Required /> `guildId`: string   | boolean                                   | Checks if the guild's channels are restored                 |
-| `loadAllGuildAndPrivateChannelsFromDisk` |                                  | Record<string, <APIReferences.Channel />> | Gets all guild and DM channels                              |
+| Name                                     | Parameters                                                         | Return Type                               | Description                                                 |
+| ---------------------------------------- | ------------------------------------------------------------------ | ----------------------------------------- | ----------------------------------------------------------- |
+| `getAllThreadsForParent`                 | <Required /> `channelId`: string                                   | <APIReferences.Channel />[]               | Gets all fetched threads by its channel (parent) id         |
+| `getBasicChannel`                        | <Required /> `channelId`: string                                   | <APIReferences.Channel /> \| undefined    | Gets the basic channel by its id                            |
+| `getChannel`                             | <Required /> `channelId`: string                                   | <APIReferences.Channel /> \| undefined    | Gets the channel by its id                                  |
+| `getChannelId`                           | <Required /> `guildId`: string <br /> `fallbackToDefault`: boolean | string \| undefined                       | Gets the current selected channel id                        |
+| `getCurrentlySelectedChannelId`          | `guildId`: string                                                  | string \| undefined                       | Gets the current selected channel id                        |
+| `getDMFromUserId`                        | <Required /> `userId`: string                                      | string \| undefined                       | Gets the DM channel id by its user id                       |
+| `getDMUserIds`                           |                                                                    | string[]                                  | Gets all DM channel ids                                     |
+| `getGuildChannelsVersion`                | <Required /> `guildId`: string                                     | number                                    | Gets the channel version by guild id                        |
+| `getInitialOverlayState`                 |                                                                    | Record<string, <APIReferences.Channel />> | Gets all guild and DM channels                              |
+| `getLastChannelFollowingDestination`     |                                                                    | { channelId: string, guildId: string }    | Gets information on the last channel follow                 |
+| `getLastSelectedChannelId`               | `guildId`: string                                                  | string \| undefined                       | Gets the last selected channel id                           |
+| `getLastSelectedChannels`                | <Required /> `guildId`: string                                     | string \| undefined                       | Gets the last selected channel id by its guild id           |
+| `getMostRecentSelectedTextChannelId`     | `guildId`: string                                                  | string \| null                            | Gets the last selected text channel id by its guild id      |
+| `getMutableBasicGuildChannelsForGuild`   | <Required /> `guildId`: string                                     | Record<string, <APIReferences.Channel />> | Gets all basic channels by its guild id                     |
+| `getMutableGuildChannelsForGuild`        | <Required /> `guildId`: string                                     | Record<string, <APIReferences.Channel />> | Gets all channels by its guild id                           |
+| `getMutablePrivateChannels`              |                                                                    | Record<string, <APIReferences.Channel />> | Gets all DM channels                                        |
+| `getPrivateChannelsVersion`              |                                                                    | number                                    | Gets the DM channel version                                 |
+| `getSortedPrivateChannels`               |                                                                    | <APIReferences.Channel />[]               | Gets all DM channels sorted by the last message             |
+| `getVoiceChannelId`                      |                                                                    | string \| null                            | Gets the current voice channel id                           |
+| `hasChannel`                             | <Required /> `channelId`: string                                   | boolean                                   | Checks if the channel id is registered in the channel store |
+| `hasRestoredGuild`                       | <Required /> `guildId`: string                                     | boolean                                   | Checks if the guild's channels are restored                 |
+| `loadAllGuildAndPrivateChannelsFromDisk` |                                                                    | Record<string, <APIReferences.Channel />> | Gets all guild and DM channels                              |
 
 ### `guilds`
 
@@ -105,9 +105,9 @@ Functions:
 | `getCurrentGuild`          |                                | <APIReferences.Guild /> \| undefined    | Gets the currently selected guild object                            |
 | `getGuild`                 | <Required /> `guildId`: string | <APIReferences.Guild /> \| undefined    | Gets the guild by its id                                            |
 | `getGuildCount`            |                                | number                                  | Gets the number of how many guilds the current user is in           |
-| `getGuildId`               |                                | string \| undefined                     | Gets the id of the currently selected guild                         |
+| `getGuildId`               |                                | string \| null                          | Gets the id of the currently selected guild                         |
 | `getGuilds`                |                                | Record<string, <APIReferences.Guild />> | Gets all guilds                                                     |
-| `getLastSelectedGuildId`   |                                | string \| undefined                     | Gets the last selected guild id                                     |
+| `getLastSelectedGuildId`   |                                | string \| null                          | Gets the last selected guild id                                     |
 | `getLastSelectedTimestamp` | <Required /> `guildId`: string | number                                  | Gets the timestamp of when a specific guild was last selected       |
 | `getState`                 |                                | [`State`](#state)                       | Gets an object containing some information about guild selections   |
 | `isLoaded`                 |                                | boolean                                 | Gets a value indicating whether all initial guilds have been loaded |
@@ -250,32 +250,32 @@ All functions of `GuildMemberStore` and `UserStore` are in this module.
 
 Functions:
 
-| Name                              | Parameters                                                                                                           | Return Type                                                   | Description                                                        |
-| --------------------------------- | -------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------------ |
-| `filter`                          | <Required /> `predicate`: (user: <APIReferences.User />) => <APIReferences.User /> \| boolean <br /> `sort`: boolean | <APIReferences.User />[]                                      | Filters all users                                                  |
-| `findByTag`                       | `username`: string <br /> `discriminator`: string                                                                    | <APIReferences.User /> \| undefined                           | Gets the user by its username and discriminator                    |
-| `forEach`                         | <Required /> `callback`: (user: <APIReferences.User />) => unknown                                                   | void                                                          | Runs a function on each user                                       |
-| `getCommunicationDisabledUserMap` |                                                                                                                      | Record<string, string>                                        | Gets all guild member timeout (communication disabled) information |
-| `getCommunicationDisabledVersion` |                                                                                                                      | number                                                        | Gets the communication disabled version                            |
-| `getCurrentUser`                  |                                                                                                                      | <APIReferences.User />                                        | Gets the current user                                              |
-| `getMember`                       | `guildId`: string                                                                                                    | <APIReferences.GuildMember /> \| undefined                    | Gets the guild member by its id                                    |
-| `getMemberIds`                    | `guildId`: string                                                                                                    | string[]                                                      | Gets all guild member ids                                          |
-| `getMemberRoleWithPendingUpdates` | `guildId`: string <br /> `userId`: string                                                                            | string[]                                                      | Gets all pending role updates a guild member has                   |
-| `getMembers`                      | `guildId`: string                                                                                                    | <APIReferences.GuildMember />[]                               | Gets all fetched members in a guild                                |
-| `getMutableAllGuildsAndMembers`   |                                                                                                                      | Record<string, Record<string, <APIReferences.GuildMember />>> | Gets all guilds and its fetched members                            |
-| `getNick`                         | `guildId`: string <br /> `userId`: string                                                                            | string \| undefined                                           | Gets the nickname a guild member has                               |
-| `getNicknameGuildsMapping`        | `userId`: string                                                                                                     | Record<string, string[]>                                      | Gets all nicknames a user has and in which guilds                  |
-| `getNicknames`                    | `userId`: string                                                                                                     | string[]                                                      | Gets all nicknames a user has                                      |
-| `getPendingRoleUpdates`           | `guildId`: string                                                                                                    | [`PendingRoleUpdate`](#PendingRoleUpdate)                     | Gets pending role updates of a guild                               |
-| `getSelfMember`                   | `guildId`: string                                                                                                    | <APIReferences.GuildMember /> \| undefined                    | Gets the guild member of the current user                          |
-| `getTrueMember`                   | `guildId`: string <br /> `userId`: string                                                                            | <APIReferences.GuildMember /> \| undefined                    | Gets the guild member by its id                                    |
-| `getUser`                         | `userId`: string                                                                                                     | <APIReferences.User /> \| undefined                           | Gets the user by its id                                            |
-| `getUsers`                        |                                                                                                                      | Record<string, <APIReferences.User />>                        | Gets all users                                                     |
-| `getUserStoreVersion`             |                                                                                                                      | number                                                        | Gets the user store version                                        |
-| `isCurrentUserGuest`              | `guildId`: string                                                                                                    | boolean                                                       | Checks if the current user is a guest of a guild                   |
-| `isGuestOrLurker`                 | `guildId`: string <br /> `userId`: string                                                                            | boolean                                                       | Checks if a user is a guest of a guild                             |
-| `isMember`                        | `guildId`: string <br /> `userId`: string                                                                            | boolean                                                       | Checks if a user is a member of a guild                            |
-| `memberOf`                        | `userId`: string                                                                                                     | string[]                                                      | Gets all mutual servers of a user                                  |
+| Name                              | Parameters                                                                                                          | Return Type                                                   | Description                                                        |
+| --------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------------ |
+| `filter`                          | <Required /> `callback`: (user: <APIReferences.User />) => <APIReferences.User /> \| boolean <br /> `sort`: boolean | <APIReferences.User />[]                                      | Filters all users                                                  |
+| `findByTag`                       | <Required /> `username`: string <br /> <Required /> `discriminator`: string                                         | <APIReferences.User /> \| undefined                           | Gets the user by its username and discriminator                    |
+| `forEach`                         | <Required /> `callback`: (user: <APIReferences.User />) => void                                                     | void                                                          | Runs a function on each user                                       |
+| `getCommunicationDisabledUserMap` |                                                                                                                     | Record<string, string>                                        | Gets all guild member timeout (communication disabled) information |
+| `getCommunicationDisabledVersion` |                                                                                                                     | number                                                        | Gets the communication disabled version                            |
+| `getCurrentUser`                  |                                                                                                                     | <APIReferences.User />                                        | Gets the current user                                              |
+| `getMember`                       | <Required /> `guildId`: string <br /> <Required /> `userId`: string                                                 | <APIReferences.GuildMember /> \| null                         | Gets the guild member by its id                                    |
+| `getMemberIds`                    | `guildId`: string                                                                                                   | string[]                                                      | Gets all guild member ids                                          |
+| `getMemberRoleWithPendingUpdates` | <Required /> `guildId`: string <br /> <Required /> `userId`: string                                                 | string[]                                                      | Gets all pending role updates a guild member has                   |
+| `getMembers`                      | `guildId`: string                                                                                                   | <APIReferences.GuildMember />[]                               | Gets all fetched members in a guild                                |
+| `getMutableAllGuildsAndMembers`   |                                                                                                                     | Record<string, Record<string, <APIReferences.GuildMember />>> | Gets all guilds and its fetched members                            |
+| `getNick`                         | `guildId`: string <br /> `userId`: string                                                                           | string \| null                                                | Gets the nickname a guild member has                               |
+| `getNicknameGuildsMapping`        | <Required /> `userId`: string                                                                                       | Record<string, string[]>                                      | Gets all nicknames a user has and in which guilds                  |
+| `getNicknames`                    | <Required /> `userId`: string                                                                                       | string[]                                                      | Gets all nicknames a user has                                      |
+| `getPendingRoleUpdates`           | <Required /> `guildId`: string                                                                                      | [`PendingRoleUpdate`](#PendingRoleUpdate)                     | Gets pending role updates of a guild                               |
+| `getSelfMember`                   | <Required /> `guildId`: string                                                                                      | <APIReferences.GuildMember /> \| null                         | Gets the guild member of the current user                          |
+| `getTrueMember`                   | <Required /> `guildId`: string <br /> <Required /> `userId`: string                                                 | <APIReferences.GuildMember /> \| null                         | Gets the guild member by its id                                    |
+| `getUser`                         | <Required /> `userId`: string                                                                                       | <APIReferences.User /> \| undefined                           | Gets the user by its id                                            |
+| `getUsers`                        |                                                                                                                     | Record<string, <APIReferences.User />>                        | Gets all users                                                     |
+| `getUserStoreVersion`             |                                                                                                                     | number                                                        | Gets the user store version                                        |
+| `isCurrentUserGuest`              | `guildId`: string                                                                                                   | boolean                                                       | Checks if the current user is a guest of a guild                   |
+| `isGuestOrLurker`                 | `guildId`: string <br /> `userId`: string                                                                           | boolean                                                       | Checks if a user is a guest of a guild                             |
+| `isMember`                        | `guildId`: string <br /> `userId`: string                                                                           | boolean                                                       | Checks if a user is a member of a guild                            |
+| `memberOf`                        | <Required /> `userId`: string                                                                                       | string[]                                                      | Gets all mutual servers of a user                                  |
 
 #### Types {#users-types}
 
@@ -685,10 +685,10 @@ toast.toast("Toast text", toast.Kind.FAILURE, { duration: 5000 });
 
 Enums:
 
-| Enum             | Description                                                       |
-| ---------------- | ----------------------------------------------------------------- |
-| `toast.Kind`     | Toast types <br />`MESSAGE` \| `SUCCESS` \| `FAILURE` \| `CUSTOM` |
-| `toast.Position` | Toast positions <br />`TOP` \| `BOTTOM`                           |
+| Enum             | Description                                                                 |
+| ---------------- | --------------------------------------------------------------------------- |
+| `toast.Kind`     | Toast types <br />`MESSAGE` \| `SUCCESS` \| `FAILURE` \| `CUSTOM` \| `CLIP` |
+| `toast.Position` | Toast positions <br />`TOP` \| `BOTTOM`                                     |
 
 Functions:
 
