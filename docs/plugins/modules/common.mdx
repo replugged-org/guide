@@ -253,7 +253,7 @@ Functions:
 | Name                              | Parameters                                                                                                          | Return Type                                                   | Description                                                        |
 | --------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------------ |
 | `filter`                          | <Required /> `callback`: (user: <APIReferences.User />) => <APIReferences.User /> \| boolean <br /> `sort`: boolean | <APIReferences.User />[]                                      | Filters all users                                                  |
-| `findByTag`                       | <Required /> `username`: string <br /> <Required /> `discriminator`: string                                         | <APIReferences.User /> \| undefined                           | Gets the user by its username and discriminator                    |
+| `findByTag`                       | <Required /> `username`: string <br /> `discriminator`: string                                                      | <APIReferences.User /> \| undefined                           | Gets the user by its username and discriminator                    |
 | `forEach`                         | <Required /> `callback`: (user: <APIReferences.User />) => void                                                     | void                                                          | Runs a function on each user                                       |
 | `getCommunicationDisabledUserMap` |                                                                                                                     | Record<string, string>                                        | Gets all guild member timeout (communication disabled) information |
 | `getCommunicationDisabledVersion` |                                                                                                                     | number                                                        | Gets the communication disabled version                            |
@@ -336,7 +336,7 @@ Functions:
 | `attachments`       | [`HTTPAttachment`](#HTTPAttachment)[]                                                                                                                     |           | Array containing data for an attachment                                                                                                               |
 | `backoff`           | `Backoff`                                                                                                                                                 | `Backoff` | Used to retry a failed request after a specific time                                                                                                  |
 | `binary`            | boolean                                                                                                                                                   | `false`   | Whether to handle binary response bodies                                                                                                              |
-| `body`              | string \| Record<string, unknown>                                                                                                                         |           | Body for the request                                                                                                                                  |
+| `body`              | Record<string, unknown>                                                                                                                                   |           | Body for the request                                                                                                                                  |
 | `context`           | Record<string, unknown>                                                                                                                                   |           | Object entries will be converted to JSON format and set to the X-Context-Properties header                                                            |
 | `fields`            | [`HTTPField`](#HTTPField)[]                                                                                                                               |           | Array containing field data                                                                                                                           |
 | `headers`           | Record<string, string>                                                                                                                                    |           | Headers for the request                                                                                                                               |
@@ -382,7 +382,7 @@ Props:
 
 #### `ColorGenerator` {#ColorGenerator}
 
-<!-- [!]: `Color` and `UnsafeRawColor` aren't documented -->
+<!-- [!]: `Color`, `ShadowColor` and `UnsafeRawColor` aren't documented -->
 
 Example:
 
@@ -402,6 +402,9 @@ Props:
 | Name               | Type                             | Description                                                                                                                    |
 | ------------------ | -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
 | `colors`           | Record<string, `Color`>          | Contains all CSS variables with the corresponding function to generate a color based on a given saturation                     |
+| `radii`            | Record<string, number>           | Contains border-radius values                                                                                                  |
+| `shadows`          | Record<string, `ShadowColor`>    | Contains all CSS variables for shadows with the corresponding function to get specific information                             |
+| `spacing`          | Record<string, string>           | Contains spacing values                                                                                                        |
 | `themes`           | Record<string, string>           | Client themes                                                                                                                  |
 | `unsafe_rawColors` | Record<string, `UnsafeRawColor`> | Contains all CSS variables for specific colors with the corresponding function to generate a color based on a given saturation |
 
