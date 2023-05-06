@@ -52,9 +52,9 @@ interface Settings {
   bar?: number;
 }
 
-const defaultSettings: Partial<Settings> = {
+const defaultSettings = {
   foo: "hello",
-};
+} satisfies Partial<Settings>;
 
 const cfg = await settings.init<Settings, keyof typeof defaultSettings>(
   "YOUR_PLUGIN_ID",
