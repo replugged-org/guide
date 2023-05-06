@@ -37,6 +37,14 @@ develop and release your theme. It includes:
 4. Build the theme with `pnpm run build`. This will compile the theme and install it in Replugged.
 5. In Replugged settings, go to the Themes tab and click "Load missing themes" to load the theme.
 
+:::danger
+
+Do **not** clone your theme into the Replugged theme directory. Otherwise, the build script will 
+delete the folder with your source code as it attempts to put the compiled theme in that same location, 
+and you will lose any local changes.
+
+:::
+
 ## Customizing your theme
 
 The theme template has a `manifest.json` file which contains information about your theme. You

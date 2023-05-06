@@ -41,6 +41,14 @@ develop and release your plugin. It includes:
 4. Build the plugin with `pnpm run build`. This will compile the plugin and install it in Replugged.
 5. In Replugged settings, go to the Plugins tab and click "Load missing plugins" to load the plugin.
 
+:::danger
+
+Do **not** clone your plugin into the Replugged plugin directory. Otherwise, the build script will 
+delete the folder with your source code as it attempts to put the compiled plugin in that same location, 
+and you will lose any local changes.
+
+:::
+
 ## Customizing your plugin
 
 The plugin template has a `manifest.json` file which contains information about your plugin. You
