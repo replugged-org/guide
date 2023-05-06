@@ -8,6 +8,12 @@ description: Thanks to all the contributors who have helped make Replugged possi
 
 Thanks to all the contributors who have helped make Replugged possible!
 
+## All Replugged contributors
+
+https://replugged.dev/contributors
+
+## Guide contributors
+
 <!-- cSpell:disable -->
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
