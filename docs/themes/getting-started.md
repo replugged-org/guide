@@ -39,9 +39,9 @@ develop and release your theme. It includes:
 
 :::danger
 
-Do **not** clone your theme into the Replugged theme directory. Otherwise, the build script will 
-delete the folder with your source code as it attempts to put the compiled theme in that same location, 
-and you will lose any local changes.
+Do **not** clone your theme into the Replugged theme directory. Otherwise, the build script will
+delete the folder with your source code as it attempts to put the compiled theme in that same
+location, and you will lose any local changes.
 
 :::
 

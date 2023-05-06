@@ -43,9 +43,9 @@ develop and release your plugin. It includes:
 
 :::danger
 
-Do **not** clone your plugin into the Replugged plugin directory. Otherwise, the build script will 
-delete the folder with your source code as it attempts to put the compiled plugin in that same location, 
-and you will lose any local changes.
+Do **not** clone your plugin into the Replugged plugin directory. Otherwise, the build script will
+delete the folder with your source code as it attempts to put the compiled plugin in that same
+location, and you will lose any local changes.
 
 :::
 
