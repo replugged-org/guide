@@ -124,7 +124,7 @@ Functions:
 
 ### `messages`
 
-<!-- [!]: `CaptchaPayload`, `FetchMessagesOptions`, `MessageJumpOptions`, `MessagesData` and all functions starting with an underscore aren't documented -->
+<!-- [!]: `CaptchaPayload`, `ChannelMessages`, `FetchMessagesOptions`, `LocalFetchComplete`, `MessageJumpOptions` and all functions starting with an underscore aren't documented -->
 
 All functions for message actions are in this module.
 
@@ -137,19 +137,20 @@ Functions:
 | `deleteMessage`                 | <Required /> `channelId`: string <br /> <Required /> `messageId`: string <br /> `keepThreadArchived`: boolean                                                                                                   | Promise<void\>                                                    | Deletes a message from a channel                                                                   |
 | `dismissAutomatedMessage`       | <Required /> `message`: <APIReferences.Message />                                                                                                                                                               | void                                                              | Dismisses an ephemeral message                                                                     |
 | `editMessage`                   | <Required /> `channelId`: string <br /> <Required /> `messageId`: string <br /> <Required /> `message`: { content: string }                                                                                     | Promise<void\>                                                    | Edits a message                                                                                    |
-| `endEditMessage`                | <Required /> `channelId`: string <br /> <Required /> `response`: [`HTTPResponse`](#HTTPResponse)                                                                                                                | void                                                              | Dispatches an edited message                                                                       |
-| `fetchLocalMessages`            | <Required /> `channelId`: string <br /> <Required /> `before`: boolean <br /> <Required /> `after`: boolean <br /> <Required /> `limit`: number <br /> <Required /> `completeClass`: unknown                    | Promise<void\>                                                    | Fetches local messages                                                                             |
+| `endEditMessage`                | <Required /> `channelId`: string <br /> `response`: [`HTTPResponse`](#HTTPResponse)                                                                                                                             | void                                                              | Dispatches an edited message                                                                       |
+| `fetchLocalMessages`            | <Required /> `channelId`: string <br /> <Required /> `before`: boolean <br /> <Required /> `after`: boolean <br /> <Required /> `limit`: number <br /> <Required /> `localFetchComplete`: `LocalFetchComplete`  | Promise<void\>                                                    | Fetches local messages                                                                             |
 | `fetchMessages`                 | <Required /> `options`: `FetchMessagesOptions`                                                                                                                                                                  | Promise<boolean\>                                                 | Fetches messages                                                                                   |
-| `focusMessage`                  | <Required /> `options`: { channelId: string, messageId: string }                                                                                                                                                | void                                                              | Fetches with a focused message                                                                     |
+| `focusMessage`                  | <Required /> `options`: [`FocusMessageOptions`](#FocusMessageOptions)                                                                                                                                           | void                                                              | Fetches with a focused message                                                                     |
 | `getMessage`                    | <Required /> `channelId`: string <br /> <Required /> `messageId`: string                                                                                                                                        | <APIReferences.Message />                                         | Gets the message by its id                                                                         |
 | `getMessages`                   | <Required /> `channelId`: string                                                                                                                                                                                | `MessagesData`                                                    | Gets all messages in a channel, with a system to manage data                                       |
 | `getSendMessageOptionsForReply` | <Required /> `options`: [`SendMessageForReplyOptions`](#SendMessageForReplyOptions)                                                                                                                             | [`SendMessageOptionsForReply`](#SendMessageOptionsForReply) \| {} | Gets options for a reply                                                                           |
-| `jumpToMessage`                 | <Required /> `options`: `MessageJumpOptions`                                                                                                                                                                    | void                                                              | Jumps to a message                                                                                 |
-| `jumpToPresent`                 | <Required /> `channelId`: string <br /> `limit`: number                                                                                                                                                         | void                                                              | Jumps to the most recent message                                                                   |
+| `jumpToMessage`                 | <Required /> `options`: `MessageJumpOptions`                                                                                                                                                                    | Promise<boolean\>                                                 | Jumps to a message                                                                                 |
+| `jumpToPresent`                 | <Required /> `channelId`: string <br /> <Required /> `limit`: number                                                                                                                                            | void                                                              | Jumps to the most recent message                                                                   |
 | `patchMessageAttachments`       | <Required /> `channelId`: string <br /> <Required /> `messageId`: string <br /> <Required /> `attachments`: <APIReferences.MessageAttachment />[]                                                               | Promise<void\>                                                    | Changes the attachments of a message                                                               |
-| `receiveMessage`                | <Required /> `channelId`: string <br /> <Required /> `message`: <APIReferences.Message /> <br /> `optimistic`: boolean <br /> `sendMessageOptions`: unknown                                                     | void                                                              | Reveals a message                                                                                  |
+| `receiveMessage`                | <Required /> `channelId`: string <br /> <Required /> `message`: <APIReferences.Message /> <br /> `optimistic`: boolean <br /> `options`: [`OutgoingMessageOptions`](#OutgoingMessageOptions)                    | void                                                              | Reveals a message                                                                                  |
+| `sendActivityBookmark`          | <Required /> `channelId`: string <br /> <Required /> `activityDetails`: string <br /> `analyticsTriggeredFrom`: string <br /> `suggestedInvite`: [`InviteSuggestion`](#InviteSuggestion)                        | Promise<[`HTTPResponse`](#HTTPResponse) \| void>                  | Sends an activity bookmark                                                                         |
 | `sendBotMessage`                | <Required /> `channelId`: string <br /> <Required /> `content`: string <br /> `messageName`: string                                                                                                             | void                                                              | Clyde sends a custom message                                                                       |
-| `sendClydeError`                | <Required /> `channelId`: string <br /> `errorKey`: number                                                                                                                                                      | void                                                              | Clyde sends an error message                                                                       |
+| `sendClydeError`                | <Required /> `channelId`: string <br /> `code`: number                                                                                                                                                          | void                                                              | Clyde sends an error message                                                                       |
 | `sendGreetMessage`              | <Required /> `channelId`: string <br /> <Required /> `stickerId`: string <br /> `options`: [`MessageGreetOptions`](#MessageGreetOptions)                                                                        | Promise<[`HTTPResponse`](#HTTPResponse) \| void>                  | Sends a greet message                                                                              |
 | `sendInvite`                    | <Required /> `channelId`: string <br /> <Required /> `inviteCode`: string <br /> `analyticsTriggeredFrom`: string <br /> `suggestedInvite`: [`InviteSuggestion`](#InviteSuggestion)                             | Promise<[`HTTPResponse`](#HTTPResponse) \| void>                  | Sends an invite                                                                                    |
 | `sendMessage`                   | <Required /> `channelId`: string <br /> <Required /> `message`: [`OutgoingMessage`](#OutgoingMessage) <br /> `promise`: boolean <br /> `options`: [`OutgoingMessageOptions`](#OutgoingMessageOptions)           | Promise<[`HTTPResponse`](#HTTPResponse) \| void>                  | Sends a message                                                                                    |
@@ -158,7 +159,7 @@ Functions:
 | `suppressEmbeds`                | <Required /> `channelId`: string <br /> <Required /> `messageId`: string                                                                                                                                        | Promise<void\>                                                    | Deletes an embed from a message                                                                    |
 | `trackInvite`                   | <Required /> `options`: [`TrackInviteOptions`](#TrackInviteOptions)                                                                                                                                             | void                                                              | Tracks an invite for analytics                                                                     |
 | `trackJump`                     | <Required /> `channelId`: string <br /> <Required /> `messageId`: string <br /> <Required /> `context`: string <br /> `extraProperties`: Record<string, unknown>                                                | void                                                              | Tracks a jump for analytics                                                                        |
-| `truncateMessages`              | <Required /> `channelId`: string <br /> <Required /> `truncateBottom`: number <br /> <Required /> `truncateTop`: number                                                                                         | void                                                              | Truncates a message list                                                                           |
+| `truncateMessages`              | <Required /> `channelId`: string <br /> <Required /> `truncateBottom`: boolean <br /> <Required /> `truncateTop`: boolean                                                                                       | void                                                              | Truncates a message list                                                                           |
 | `updateEditMessage`             | <Required /> `channelId`: string <br /> <Required /> `textValue`: string <br /> <Required /> `richValue`: unknown                                                                                               | void                                                              | Updates an edit message                                                                            |
 
 #### Types {#messages-types}
@@ -169,6 +170,13 @@ Functions:
 | -------------- | -------- | ------------------------------------------------------------- |
 | `parse`        | string[] | Array of allowed mention types to parse from the content      |
 | `replied_user` | boolean  | Whether to mention the author of the message being replied to |
+
+##### `FocusMessageOptions` {#FocusMessageOptions}
+
+| Name        | Type   | Default | Description                                            |
+| ----------- | ------ | ------- | ------------------------------------------------------ |
+| `channelId` | string |         | Id of the channel where the focused message is present |
+| `messageId` | string |         | Id of the focused message                              |
 
 ##### `InviteSuggestion` {#InviteSuggestion}
 
@@ -201,7 +209,7 @@ Functions:
 | Name                     | Type                                   | Default | Description                                  |
 | ------------------------ | -------------------------------------- | ------- | -------------------------------------------- |
 | `content`                | <Required /> string                    |         | Content of the message                       |
-| `invalidEmojis`          | <Required /> <APIReferences.Emoji />[] |         | Array with invalid emoji                     |
+| `invalidEmojis`          | <APIReferences.Emoji />[]              |         | Array with invalid emoji                     |
 | `tts`                    | boolean                                | `false` | Whether the mention toggle should be visible |
 | `validNonShortcutEmojis` | <Required /> <APIReferences.Emoji />[] |         | Array with valid emojis                      |
 
@@ -436,7 +444,7 @@ const { fluxDispatcher: FluxDispatcher, flux: Flux } = common;
 // Here are stored all our users and their messages
 const userMessagesMap: Map<string, Map<string, Message>> = new Map();
 
-function onMessageCreate(message: Message): void {
+function handleMessageCreate(message: Message): void {
   /*
     This function will be called only when a message is received,
     so when the dispatcher received the MESSAGE_CREATE action type.
@@ -451,7 +459,7 @@ function onMessageCreate(message: Message): void {
   userMessagesMap.set(userId, userMessages);
 }
 
-function onMessagesClearRequest(userId: string): void {
+function handleMessagesClearRequest(userId: string): void {
   if (userMessagesMap.has(userId)) {
     userMessagesMap.delete(userId);
   }
@@ -460,17 +468,17 @@ function onMessagesClearRequest(userId: string): void {
 class UserMessagesStore extends Flux.Store {
   public clearUserMessages(userId: string): void {
     // Function to delete a user from userMessagesMap
-    onMessagesClearRequest(userId);
+    handleMessagesClearRequest(userId);
   }
 }
 
 export default new UserMessagesStore(FluxDispatcher, {
   MESSAGE_CREATE: (action) => {
-    return onMessageCreate(action.message);
+    return handleMessageCreate(action.message);
   },
   USER_MESSAGES_DELETE: (action) => {
     // This is a custom action type we created for this example. It will delete a specific map entry (userId).
-    return onMessagesClearRequest(action.userId);
+    return handleMessagesClearRequest(action.userId);
   },
 });
 ```
@@ -493,7 +501,7 @@ Or with the appropriate function:
 
 ```tsx
 // ...
-store.clearUserMessages("USER_ID");
+UserMessagesStore.clearUserMessages("USER_ID");
 ```
 
 :::tip
@@ -526,16 +534,18 @@ export default new UserMessagesStore(FluxDispatcher, {
 
 Functions:
 
-| Name             | Parameters                                                                                                     | Return Type | Description                                 |
-| ---------------- | -------------------------------------------------------------------------------------------------------------- | ----------- | ------------------------------------------- |
-| `addInterceptor` | <Required /> `callback`: (...rest: unknown[]) => unknown                                                       | void        | Adds an interceptor                         |
-| `createToken`    |                                                                                                                | string      | Creates a token                             |
-| `dispatch`       | <Required /> `event`: { type: string, [index: string]: unknown }                                               | void        | Broadcasts payloads to registered callbacks |
-| `flushWaitQueue` |                                                                                                                | void        | Flushes the waiting queue                   |
-| `isDispatching`  |                                                                                                                | boolean     | Checks if something is already dispatching  |
-| `subscribe`      | <Required /> `eventKey`: string <br /> <Required /> `callback`: (event?: { [index: string]: unknown }) => void | void        | Subscribes to a new event                   |
-| `unsubscribe`    | <Required /> `eventKey`: string <br /> <Required /> `callback`: (event?: { [index: string]: unknown }) => void | void        | Unsubscribes from an event                  |
-| `wait`           | <Required /> `callback`: (...rest: unknown[]) => unknown                                                       | void        | Adds a callback to the wait queue           |
+| Name              | Parameters                                                                                                                                                                                                                                                                  | Return Type | Description                                 |
+| ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- | ------------------------------------------- |
+| `addDependencies` | <Required /> `token`: string <br /> <Required /> `tokens`: string[]                                                                                                                                                                                                         | void        | Adds a dependency                           |
+| `addInterceptor`  | <Required /> `callback`: (...rest: unknown[]) => unknown                                                                                                                                                                                                                    | void        | Adds an interceptor                         |
+| `createToken`     |                                                                                                                                                                                                                                                                             | string      | Creates a token                             |
+| `dispatch`        | <Required /> `action`: { type: string, [index: string]: unknown }                                                                                                                                                                                                           | void        | Broadcasts payloads to registered callbacks |
+| `flushWaitQueue`  |                                                                                                                                                                                                                                                                             | void        | Flushes the waiting queue                   |
+| `isDispatching`   |                                                                                                                                                                                                                                                                             | boolean     | Checks if something is already dispatching  |
+| `subscribe`       | <Required /> `type`: string <br /> <Required /> `callback`: (action?: { [index: string]: unknown }) => void                                                                                                                                                                 | void        | Subscribes to a new action                  |
+| `unsubscribe`     | <Required /> `type`: string <br /> <Required /> `callback`: (action?: { [index: string]: unknown }) => void                                                                                                                                                                 | void        | Unsubscribes from an action                 |
+| `wait`            | <Required /> `callback`: (...rest: unknown[]) => unknown                                                                                                                                                                                                                    | void        | Adds a callback to the wait queue           |
+| `register`        | <Required /> `name`: string <br /> <Required /> `actionHandler`: Record<string, (action?: { [index: string]: unknown }) => void> <br /> <Required /> `storeDidChange`: { type: string, [index: string]: unknown } <br /> <Required /> `band`: number <br /> `token`: string | string      | Registers a callback                        |
 
 ### `i18n`
 
@@ -733,13 +743,13 @@ Enums:
 
 Functions:
 
-| Name    | Parameters                                                                                                                  | Return Type | Description                                                                  |
-| ------- | --------------------------------------------------------------------------------------------------------------------------- | ----------- | ---------------------------------------------------------------------------- |
-| `toast` | <Required /> `content`: string \| ReactElement \| null <br /> `kind`: `toast.Kind` <br /> `opts`: [`ToastOpts`](#ToastOpts) | void        | Makes a toast appear on the screen; `toast.Kind.SUCCESS` is the default type |
+| Name    | Parameters                                                                                                                        | Return Type | Description                                                                  |
+| ------- | --------------------------------------------------------------------------------------------------------------------------------- | ----------- | ---------------------------------------------------------------------------- |
+| `toast` | <Required /> `content`: string \| ReactElement \| null <br /> `kind`: `toast.Kind` <br /> `opts`: [`ToastOptions`](#ToastOptions) | void        | Makes a toast appear on the screen; `toast.Kind.SUCCESS` is the default type |
 
 #### Types {#toast-types}
 
-##### `ToastOpts` {#ToastOpts}
+##### `ToastOptions` {#ToastOptions}
 
 | Name        | Type             | Default              | Description                                            |
 | ----------- | ---------------- | -------------------- | ------------------------------------------------------ |
