@@ -5,11 +5,12 @@ description: Documented common modules for plugins
 toc_max_heading_level: 4
 ---
 
-export const Required = () => <span style={{ color: "red" }}>*</span>;
+import QuickLink from "@site/src/components/QuickLink";
+import Required from "@site/src/components/Required";
 
 export const DiscordAPIDocs = (props) => {
   const url = "https://discord.com/developers/docs/resources/" + props.link;
-  return <a href={url}>{props.name}</a>;
+  return <QuickLink name={props.name} url={url} />;
 };
 
 export const APIReferences = {
@@ -91,7 +92,6 @@ Functions:
 | `getSortedPrivateChannels`               |                                                                    | <APIReferences.Channel />[]               | Gets all DM channels sorted by the last message             |
 | `getVoiceChannelId`                      |                                                                    | string \| null                            | Gets the current voice channel id                           |
 | `hasChannel`                             | <Required /> `channelId`: string                                   | boolean                                   | Checks if the channel id is registered in the channel store |
-| `hasRestoredGuild`                       | <Required /> `guildId`: string                                     | boolean                                   | Checks if the guild's channels are restored                 |
 | `loadAllGuildAndPrivateChannelsFromDisk` |                                                                    | Record<string, <APIReferences.Channel />> | Gets all guild and DM channels                              |
 
 ### `guilds`
@@ -106,6 +106,7 @@ Functions:
 | `getGuild`                 | <Required /> `guildId`: string | <APIReferences.Guild /> \| undefined    | Gets the guild by its id                                            |
 | `getGuildCount`            |                                | number                                  | Gets the number of how many guilds the current user is in           |
 | `getGuildId`               |                                | string \| null                          | Gets the id of the currently selected guild                         |
+| `getGuildIds`              |                                | string[]                                | Gets all guild ids                                                  |
 | `getGuilds`                |                                | Record<string, <APIReferences.Guild />> | Gets all guilds                                                     |
 | `getLastSelectedGuildId`   |                                | string \| null                          | Gets the last selected guild id                                     |
 | `getLastSelectedTimestamp` | <Required /> `guildId`: string | number                                  | Gets the timestamp of when a specific guild was last selected       |
@@ -549,7 +550,7 @@ Functions:
 
 ### `i18n`
 
-<!-- [!]: `Message` and all props/functions starting with an underscore aren't documented -->
+<!-- [!]: `Message`, `ParserRules` and all props/functions starting with an underscore aren't documented -->
 
 Props:
 
@@ -568,7 +569,7 @@ Functions:
 | `getLocale`                   |                                                                          | string                    | Gets the selected locale                  |
 | `getLocaleInfo`               |                                                                          | [`Language`](#Language)   | Gets information on the selected locale   |
 | `setLocale`                   | `locale`: string                                                         | void                      | Changes locale                            |
-| `setUpdateRules`              | `rules`: Record<string, [`Rule`](#Rule)>                                 | void                      | Sets parser rules                         |
+| `setUpdateRules`              | `rules`: `ParserRules`                                                   | void                      | Sets parser rules                         |
 | `updateMessagesForExperiment` | `locale`: string <br /> `callback`: (messages: `Messages`) => `Messages` | void                      | Changes all strings for a specific locale |
 
 #### Types {#i18n-types}
@@ -671,32 +672,41 @@ modal.confirm({}).then((confirmed) => {
 
 ### `parser`
 
+<!-- [!]: `DefaultRules` and `ParserRules` aren't documented -->
+
 Utility module for parsing markdown.
 
 Props:
 
-| Name           | Type                            | Description                                         |
-| -------------- | ------------------------------- | --------------------------------------------------- |
-| `defaultRules` | Record<string, [`Rule`](#Rule)> | Includes a list of default rules used by the parser |
+| Name              | Type           | Description                                                          |
+| ----------------- | -------------- | -------------------------------------------------------------------- |
+| `defaultRules`    | `DefaultRules` | Includes a list of default rules used by the parser                  |
+| `guildEventRules` | `DefaultRules` | Includes a list of default rules for guild events used by the parser |
 
 Functions:
 
-| Name                               | Parameters                                                                                    | Return Type           | Description                                                                                                                        |
-| ---------------------------------- | --------------------------------------------------------------------------------------------- | --------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| `parse`                            | <Required /> `text`: string <br /> `inline`: boolean <br /> `opts`: [`ParseOpts`](#ParseOpts) | ReactElement          | Converts a markdown string to React elements                                                                                       |
-| `parseAutoModerationSystemMessage` | <Required /> `text`: string <br /> `inline`: boolean <br /> `opts`: [`ParseOpts`](#ParseOpts) | ReactElement          | `parse` function but highlights text defined in `highlightText` parse option                                                       |
-| `parseEmbedTitle`                  | <Required /> `text`: string <br /> `inline`: boolean <br /> `opts`: [`ParseOpts`](#ParseOpts) | ReactElement          | `parse` function but with `codeBlock`, `br`, `mention`, `channel` and `roleMention` rules omitted                                  |
-| `parseForumPostGuidelines`         | <Required /> `text`: string <br /> `inline`: boolean <br /> `opts`: [`ParseOpts`](#ParseOpts) | ReactElement          | `parse` function but with `paragraph` and `newline` rules omitted                                                                  |
-| `parseForumPostMostRecentMessage`  | <Required /> `text`: string <br /> `inline`: boolean <br /> `opts`: [`ParseOpts`](#ParseOpts) | ReactElement          | `parse` function but with some emoji sizing changes and `blockQuote`, `codeBlock` and `br` rules omitted                           |
-| `parseGuildEventDescription`       | <Required /> `text`: string <br /> `inline`: boolean <br /> `opts`: [`ParseOpts`](#ParseOpts) | ReactElement          | `parse` function but with `codeBlock`, `blockQuote` and `br` rules omitted                                                         |
-| `parseGuildVerificationFormRule`   | <Required /> `text`: string <br /> `inline`: boolean <br /> `opts`: [`ParseOpts`](#ParseOpts) | ReactElement          | `parse` function but with `codeBlock`, `br` and `blockQuote` rules omitted                                                         |
-| `parseInlineReply`                 | <Required /> `text`: string <br /> `inline`: boolean <br /> `opts`: [`ParseOpts`](#ParseOpts) | ReactElement          | `parse` function but with `blockQuote`, `codeBlock` and `br` rules omitted                                                         |
-| `parseTopic`                       | <Required /> `text`: string <br /> `inline`: boolean <br /> `opts`: [`ParseOpts`](#ParseOpts) | ReactElement          | `parse` function but with `inlineCode`, `codeBlock`, `br` and `blockQuote` rules omitted                                           |
-| `reactParserFor`                   | <Required /> `rules`: Record<string, [`Rule`](#Rule)>                                         | (...) => ReactElement | Creates a new parser function based on specific rules; the returned function has the same parameters of the other parser functions |
+| Name                                    | Parameters                                                                                                                                            | Return Type           | Description                                                                                                                            |
+| --------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| `astParserFor`                          | <Required /> `rules`: `ParserRules`                                                                                                                   | (...) => ReactElement | Creates a new AST parser function based on specific rules; the returned function has the same parameters of the other parser functions |
+| `parse`                                 | `text`: string <br /> `inline`: boolean <br /> `opts`: [`ParseOptions`](#ParseOptions) <br /> `postProcess`: (tree: unknown, inline: boolean) => void | ReactElement          | Converts a markdown string to React elements                                                                                           |
+| `parseAutoModerationSystemMessage`      | `text`: string <br /> `inline`: boolean <br /> `opts`: [`ParseOptions`](#ParseOptions) <br /> `postProcess`: (tree: unknown, inline: boolean) => void | ReactElement          | `parse` function but highlights text defined in `highlightText` parse option                                                           |
+| `parseAutoModerationSystemMessageToAST` | `text`: string <br /> `inline`: boolean <br /> `opts`: [`ParseOptions`](#ParseOptions) <br /> `postProcess`: (tree: unknown, inline: boolean) => void | ReactElement          | `parseToAST` function but highlights text defined in `highlightText` parse option                                                      |
+| `parseEmbedTitle`                       | `text`: string <br /> `inline`: boolean <br /> `opts`: [`ParseOptions`](#ParseOptions) <br /> `postProcess`: (tree: unknown, inline: boolean) => void | ReactElement          | `parse` function but with `codeBlock`, `br`, `mention`, `channel` and `roleMention` rules omitted                                      |
+| `parseEmbedTitleToAST`                  | `text`: string <br /> `inline`: boolean <br /> `opts`: [`ParseOptions`](#ParseOptions) <br /> `postProcess`: (tree: unknown, inline: boolean) => void | ReactElement          | `parseToAST` function but with `codeBlock`, `br`, `mention`, `channel` and `roleMention` rules omitted                                 |
+| `parseForumPostGuidelines`              | `text`: string <br /> `inline`: boolean <br /> `opts`: [`ParseOptions`](#ParseOptions) <br /> `postProcess`: (tree: unknown, inline: boolean) => void | ReactElement          | `parse` function but with `paragraph` and `newline` rules omitted                                                                      |
+| `parseForumPostMostRecentMessage`       | `text`: string <br /> `inline`: boolean <br /> `opts`: [`ParseOptions`](#ParseOptions) <br /> `postProcess`: (tree: unknown, inline: boolean) => void | ReactElement          | `parse` function but with some emoji sizing changes and `blockQuote`, `codeBlock` and `br` rules omitted                               |
+| `parseGuildEventDescription`            | `text`: string <br /> `inline`: boolean <br /> `opts`: [`ParseOptions`](#ParseOptions) <br /> `postProcess`: (tree: unknown, inline: boolean) => void | ReactElement          | `parse` function but with `codeBlock`, `blockQuote` and `br` rules omitted                                                             |
+| `parseGuildVerificationFormRule`        | `text`: string <br /> `inline`: boolean <br /> `opts`: [`ParseOptions`](#ParseOptions) <br /> `postProcess`: (tree: unknown, inline: boolean) => void | ReactElement          | `parse` function but with `codeBlock`, `br` and `blockQuote` rules omitted                                                             |
+| `parseInlineReply`                      | `text`: string <br /> `inline`: boolean <br /> `opts`: [`ParseOptions`](#ParseOptions) <br /> `postProcess`: (tree: unknown, inline: boolean) => void | ReactElement          | `parse` function but with `blockQuote`, `codeBlock` and `br` rules omitted                                                             |
+| `parseInlineReplyToAST`                 | `text`: string <br /> `inline`: boolean <br /> `opts`: [`ParseOptions`](#ParseOptions) <br /> `postProcess`: (tree: unknown, inline: boolean) => void | ReactElement          | `parseToAST` function but with `blockQuote`, `codeBlock` and `br` rules omitted                                                        |
+| `parseToAST`                            | `text`: string <br /> `inline`: boolean <br /> `opts`: [`ParseOptions`](#ParseOptions) <br /> `postProcess`: (tree: unknown, inline: boolean) => void | ReactElement          | Converts a markdown string to AST                                                                                                      |
+| `parseTopic`                            | `text`: string <br /> `inline`: boolean <br /> `opts`: [`ParseOptions`](#ParseOptions) <br /> `postProcess`: (tree: unknown, inline: boolean) => void | ReactElement          | `parse` function but with `inlineCode`, `codeBlock`, `br` and `blockQuote` rules omitted                                               |
+| `parseTopicToAST`                       | `text`: string <br /> `inline`: boolean <br /> `opts`: [`ParseOptions`](#ParseOptions) <br /> `postProcess`: (tree: unknown, inline: boolean) => void | ReactElement          | `parseToAST` function but with `inlineCode`, `codeBlock`, `br` and `blockQuote` rules omitted                                          |
+| `reactParserFor`                        | <Required /> `rules`: `ParserRules`                                                                                                                   | (...) => ReactElement | Creates a new parser function based on specific rules; the returned function has the same parameters of the other parser functions     |
 
 #### Types {#parser-types}
 
-##### `ParseOpts` {#ParseOpts}
+##### `ParseOptions` {#ParseOptions}
 
 | Name                       | Type     | Description                                     |
 | -------------------------- | -------- | ----------------------------------------------- |
