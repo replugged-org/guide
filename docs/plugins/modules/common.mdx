@@ -543,10 +543,10 @@ Functions:
 | `dispatch`        | <Required /> `action`: { type: string, [index: string]: unknown }                                                                                                                                                                                                           | void        | Broadcasts payloads to registered callbacks |
 | `flushWaitQueue`  |                                                                                                                                                                                                                                                                             | void        | Flushes the waiting queue                   |
 | `isDispatching`   |                                                                                                                                                                                                                                                                             | boolean     | Checks if something is already dispatching  |
+| `register`        | <Required /> `name`: string <br /> <Required /> `actionHandler`: Record<string, (action?: { [index: string]: unknown }) => void> <br /> <Required /> `storeDidChange`: { type: string, [index: string]: unknown } <br /> <Required /> `band`: number <br /> `token`: string | string      | Registers a callback                        |
 | `subscribe`       | <Required /> `type`: string <br /> <Required /> `callback`: (action?: { [index: string]: unknown }) => void                                                                                                                                                                 | void        | Subscribes to a new action                  |
 | `unsubscribe`     | <Required /> `type`: string <br /> <Required /> `callback`: (action?: { [index: string]: unknown }) => void                                                                                                                                                                 | void        | Unsubscribes from an action                 |
 | `wait`            | <Required /> `callback`: (...rest: unknown[]) => unknown                                                                                                                                                                                                                    | void        | Adds a callback to the wait queue           |
-| `register`        | <Required /> `name`: string <br /> <Required /> `actionHandler`: Record<string, (action?: { [index: string]: unknown }) => void> <br /> <Required /> `storeDidChange`: { type: string, [index: string]: unknown } <br /> <Required /> `band`: number <br /> `token`: string | string      | Registers a callback                        |
 
 ### `i18n`
 
@@ -723,15 +723,6 @@ Functions:
 | `noStyleAndInteraction`    | boolean  | Whether interactions and style are not applied  |
 | `previewLinkTarget`        | boolean  | Whether to preview real URL on hover            |
 | `returnMentionIds`         | boolean  | Whether mention ids should be returned          |
-
-##### `Rule` {#Rule}
-
-| Name    | Type                                                      | Description                                          |
-| ------- | --------------------------------------------------------- | ---------------------------------------------------- |
-| `match` | (source: string, state: State) => RegExpExecArray \| null | Function is ran to verify string match               |
-| `order` | number                                                    | Rule order                                           |
-| `parse` | (match: RegExpExecArray) => T                             | Function is ran to parse the string                  |
-| `react` | (props: T, ...rest: unknown[]) => ReactElement            | Function ran to return a React element after parsing |
 
 ### `toast`
 
