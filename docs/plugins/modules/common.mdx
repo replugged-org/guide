@@ -5,12 +5,11 @@ description: Documented common modules for plugins
 toc_max_heading_level: 4
 ---
 
-import QuickLink from "@site/src/components/QuickLink";
 import Required from "@site/src/components/Required";
 
 export const DiscordAPIDocs = (props) => {
   const url = "https://discord.com/developers/docs/resources/" + props.link;
-  return <QuickLink name={props.name} url={url} />;
+  return <a href={url}>{props.name}</a>;
 };
 
 export const APIReferences = {
