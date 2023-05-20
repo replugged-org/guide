@@ -121,22 +121,22 @@ your manifest file which is used by Replugged to check for updates.
 
 ### Replugged Discord
 
-If you would like to share your plugin in our [discord server](https://discord.gg/replugged), please
-ping a staff member in
-[#plugin-dev](https://discord.com/channels/1000926524452647132/1000955966520557689) with a link to
-your plugin. Once approved, you can post your plugin in the
-[#plugin-links](https://discord.com/channels/1000926524452647132/1053466391874900078) channel.
+In order to share your plugin in our [discord server](https://discord.gg/replugged), your plugin
+will first have to be approved, and then added to our store. For more information on this process
+and how to request approval, please see [this page](/docs/store).
 
 ### Installing from a link
 
-You can create a link to install your plugin:
-<https://replugged.dev/install?identifier=replugged-org/plugin-template&source=github>. Query
-params:
+You can create a link to install your plugin which will automatically open Replugged and prompt the
+user to confirm the installation. For example:
+<https://replugged.dev/install?identifier=replugged-org/plugin-template&source=github>.
 
 - `identifier` - same as `updater.id` in the manifest
-- `source` - same as `updater.source` in the manifest (currently, only `github` is supported)
-- `id` - (optional) same as `id` in the manifest. This is only needed if your release contains
-  multiple plugins. Otherwise, Replugged will automatically detect the plugin ID.
+- `source` - same as `updater.source` in the manifest. Currently, `github` and `store` are
+  supported. If your plugin is from the store, this can be omitted.
+- `id` - Same as `id` in the manifest. This is only needed if your update source is GitHub **and**
+  your release contains multiple plugins. Otherwise, Replugged will automatically detect the plugin
+  ID.
 
 #### Button for GitHub readme
 
