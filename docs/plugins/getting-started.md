@@ -77,17 +77,12 @@ your plugin to fix this.
 The plugin template has a `watch` script which will watch for changes to your plugin and
 automatically rebuild it. You can run it with `pnpm run watch`.
 
-You can apply your new changes by reloading the plugin in Replugged settings or by reloading
-Discord. Some plugins will require you to reload Discord to apply changes, for example if you are
-using plaintext patches (we will go over that later).
+After it's initially installed, the watch/build scripts will automatically reload your plugin in
+Discord when you make changes. If you don't want it to do this, you can use the `--no-reload` flag
+with your command to disable it.
 
-:::tip
-
-You can reload the plugin from Discord DevTools by running
-`replugged.plugins.reload('PLUGIN_ID_HERE')`. `PLUGIN_ID_HERE` should be replaced with your plugin
-ID (the one you set in `manifest.json`).
-
-:::
+Some plugins will require you to fully reload Discord (<kbd>Ctrl</kbd> + <kbd>R</kbd>) to apply
+changes, for example if you are using plaintext patches (we will go over that later).
 
 ## Building, updating, and releasing
 
