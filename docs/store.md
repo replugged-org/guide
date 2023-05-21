@@ -64,6 +64,9 @@ still responsible for ensuring your addon works as intended.
 ### New Developers
 
 If you are a new developer, send a message in
-[#plugin-links](https://discord.com/channels/1000926524452647132/1000955966520557689) or
-[#theme-links](https://discord.com/channels/1000926524452647132/1000955967627874424) with a link to
-your source code and ping one of our staff to review it.
+[#plugin-dev](https://discord.com/channels/1000926524452647132/1000955966520557689) or
+[#theme-dev](https://discord.com/channels/1000926524452647132/1000955967627874424) with a link to
+your source code and ping one of our staff to review it. After your addon is approved, you will be
+given permissions to post to the appropriate links channel and will be given access to
+[#addon-reviews](https://discord.com/channels/1000926524452647132/1106817903967338496) for
+requesting updates and new addons.
