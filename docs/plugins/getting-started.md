@@ -121,7 +121,7 @@ your manifest file which is used by Replugged to check for updates.
 
 ### Replugged Discord
 
-In order to share your plugin in our [discord server](https://discord.gg/replugged), your plugin
+In order to share your plugin in our [Discord server](https://discord.gg/replugged), your plugin
 will first have to be approved, and then added to our store. For more information on this process
 and how to request approval, please see [this page](/docs/store).
 
