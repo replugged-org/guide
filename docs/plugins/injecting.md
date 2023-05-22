@@ -130,7 +130,7 @@ reply, etc. The button order cannot be controlled.
 import { Injector, webpack } from "replugged";
 const injector = new Injector();
 
-function start() {
+export function start() {
   injector.utils.addPopoverButton((msg: Message, channel: Channel) => {
     return {
       label: "Click the button!",
@@ -145,7 +145,7 @@ function start() {
   });
 }
 
-function stop() {
+export function stop() {
   injector.uninjectAll();
 }
 ```
@@ -165,16 +165,16 @@ const { ContextMenuTypes } = types;
 
 const injector = new Injector();
 
-function start(): void {
+export function start(): void {
   injector.utils.addMenuItem(
     ContextMenuTypes.UserContext, // Right-clicking a user
-    (data, menu) => {
+    (data) => {
       return <MenuItem id="my-item" label="An Item!" action={() => console.log(data)} />;
     },
   );
 }
 
-function stop(): void {
+export function stop(): void {
   injector.uninjectAll();
 }
 ```

@@ -397,7 +397,7 @@ Example:
 In the following example we will generate a color based on the original value of the
 `BACKGROUND_PRIMARY` variable but with the saturation multiplied by `2`.
 
-```tsx
+```ts
 import { common } from "replugged";
 const { constants } = common;
 const { ColorGenerator, Themes } = constants;
@@ -436,7 +436,7 @@ Example:
 
 In the following example we will create a new store for mapping messages to users.
 
-```tsx
+```ts
 import { Message } from "discord-types/general";
 import { common } from "replugged";
 const { fluxDispatcher: FluxDispatcher, flux: Flux } = common;
@@ -486,7 +486,7 @@ export default new UserMessagesStore(FluxDispatcher, {
 In this example, the action of deleting an entry from the map can be called with the
 [`fluxDispatcher`](#fluxDispatcher). We recommend creating separate files that export actions:
 
-```tsx
+```ts
 export default {
   clearMessages(userId: string) {
     FluxDispatcher.dispatch({
@@ -499,8 +499,7 @@ export default {
 
 Or with the appropriate function:
 
-```tsx
-// ...
+```ts
 UserMessagesStore.clearUserMessages("USER_ID");
 ```
 
@@ -508,7 +507,7 @@ UserMessagesStore.clearUserMessages("USER_ID");
 
 You can expose a store by setting its display name and the `__getLocalVars` function.
 
-```tsx
+```ts
 class UserMessagesStore extends Flux.Store {
   public displayName: "UserMessagesStore";
 
@@ -625,7 +624,7 @@ a default value. Whether the confirm button is pressed determines the return val
 
 Example:
 
-```tsx
+```ts
 import { common } from "replugged";
 const { modal } = common;
 
@@ -727,7 +726,7 @@ Functions:
 
 Example:
 
-```tsx
+```ts
 import { common } from "replugged";
 const { toast } = common;
 

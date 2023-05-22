@@ -126,7 +126,7 @@ export function Settings(): React.ReactElement {
 
 ### useSetting hook
 
-Replugged includes a react hook that makes it easy to interact with the settings manager.
+Replugged includes a React hook that makes it easy to interact with the settings manager.
 
 ```tsx
 import { settings, util } from "replugged";
