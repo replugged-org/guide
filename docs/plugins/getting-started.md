@@ -110,7 +110,7 @@ patches without them.
 ```js
 {
   find: "SOMETHING",
-  replacements: [{...}]
+  replacements: [{}]
 }
 ```
 
