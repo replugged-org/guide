@@ -89,14 +89,15 @@ ID (the one you set in `manifest.json`).
 
 :::
 
-## Development Companion Plugin
+## Development Companion Extension
 
-Replugged v4.3.0 contains support for Vencord's dev companion plugin. It is a plugin for VSCode that
-allows you to test your module finds and plaintext patches without having to rebuild your plugin and
-reload your client.
+Replugged v4.3.0 contains support for
+[Vencord's dev companion extension](https://marketplace.visualstudio.com/items?itemName=Vendicated.vencord-companion).
+It is an extension for VSCode that allows you to test your module finds and plaintext patches
+without having to rebuild your plugin and reload your client.
 
-You can find the plugin in VSCode's extension store when looking for "Vencord", and after installing
-it, it's as simple as pressing the "reconnect" plugin in the Replugged settings.
+You can find the extension in VSCode's extension store when looking for "Vencord", and after
+installing it, it's as simple as pressing the "reconnect" plugin in the Replugged settings.
 
 Your module finds and plaintext patches should now have small texts like "Test Find" and "Test
 Patch" above them. Clicking them will show a notification within VSCode with diagnostics about the
@@ -104,7 +105,7 @@ result.
 
 :::note
 
-For plaintext patches to work, your patch MUST have a `find`!!! The extension was not made to parse
+For plaintext patches to work, your patch MUST have a `find`! The extension was not made to parse
 patches without them.
 
 ```js
