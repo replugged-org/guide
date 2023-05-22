@@ -180,4 +180,4 @@ function stop(): void {
 ```
 
 More examples can be found
-[here](https://github.com/asportnoy/context-menu-demo/blob/main/src/index.tsx)
+[here](https://github.com/asportnoy/context-menu-demo/blob/main/src/index.tsx).
