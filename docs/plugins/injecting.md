@@ -149,3 +149,35 @@ function stop() {
   injector.uninjectAll();
 }
 ```
+
+### Context Menus
+
+You can use the `addMenuItem` util to add an item into a context menu. Context menus appear when 
+right-clicking almost anything, and left-clicking special objects such as guild headers. Items can
+be inserted into any part of a menu, but default to a special group for plugins.
+
+```tsx
+import { Injector, components, types } from "replugged";
+const { ContextMenu: { MenuItem } } = components;
+const { ContextMenuTypes } = types;
+
+const injector = new Injector();
+
+function start() {
+  injector.utils.addMenuItem(ContextMenuTypes.UserContext,  // Right-clicking a user
+    (data, menu) => {
+      return <MenuItem
+        id="my-item"
+        label="An Item!"
+        action={() => console.log(data)}
+      />
+    }
+  )
+}
+
+function stop() {
+  injector.uninjectAll();
+}
+```
+
+More examples can be found [here](https://github.com/asportnoy/context-menu-demo/blob/main/src/index.tsx)
