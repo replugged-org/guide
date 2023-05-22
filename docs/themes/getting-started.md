@@ -73,15 +73,9 @@ theme to fix this.
 The theme template has a `watch` script which will watch for changes to your theme and automatically
 rebuild it. You can run it with `pnpm run watch`.
 
-You can apply your new changes by reloading the theme in Replugged settings or by reloading Discord.
-
-:::tip
-
-You can reload the theme from Discord DevTools by running
-`replugged.themes.reload('THEME_ID_HERE')`. `THEME_ID_HERE` should be replaced with your theme ID
-(the one you set in `manifest.json`).
-
-:::
+After it's initially installed, the watch/build scripts will automatically reload your theme in
+Discord when you make changes. If you don't want it to do this, you can use the `--no-reload` flag
+with your command to disable it.
 
 ## Building, updating, and releasing
 
