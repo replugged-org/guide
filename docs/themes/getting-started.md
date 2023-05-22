@@ -109,21 +109,22 @@ your manifest file which is used by Replugged to check for updates.
 
 ### Replugged Discord
 
-If you would like to share your theme in our [discord server](https://discord.gg/replugged), please
-ping a staff member in
-[#theme-dev](https://discord.com/channels/1000926524452647132/1000955967627874424) with a link to
-your theme. Once approved, you can post your theme in the
-[#theme-links](https://discord.com/channels/1000926524452647132/1053467493743738961) channel.
+In order to share your theme in our [Discord server](https://discord.gg/replugged), your theme will
+first have to be approved, and then added to our store. For more information on this process and how
+to request approval, please see [this page](/docs/store).
 
 ### Installing from a link
 
-You can create a link to install your theme:
-<https://replugged.dev/install?identifier=replugged-org/theme-template&source=github>. Query params:
+You can create a link to install your theme which will automatically open Replugged and prompt the
+user to confirm the installation. For example:
+<https://replugged.dev/install?identifier=replugged-org/theme-template&source=github>.
 
 - `identifier` - same as `updater.id` in the manifest
-- `source` - same as `updater.source` in the manifest (currently, only `github` is supported)
-- `id` - (optional) same as `id` in the manifest. This is only needed if your release contains
-  multiple themes. Otherwise, Replugged will automatically detect the theme ID.
+- `source` - same as `updater.source` in the manifest. Currently, `github` and `store` are
+  supported. If your theme is from the store, this can be omitted.
+- `id` - Same as `id` in the manifest. This is only needed if your update source is GitHub **and**
+  your release contains multiple themes. Otherwise, Replugged will automatically detect the theme
+  ID.
 
 #### Button for GitHub readme
 
@@ -135,6 +136,6 @@ You can use your own markdown if you want, but we recommend using the following 
 
 :::note
 
-Make sure to update the link with your plugin's information.
+Make sure to update the link with your theme's information.
 
 :::
