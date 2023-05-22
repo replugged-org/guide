@@ -158,24 +158,29 @@ be inserted into any part of a menu, but default to a special group for plugins.
 
 ```tsx
 import { Injector, components, types } from "replugged";
-const { ContextMenu: { MenuItem } } = components;
+const {
+  ContextMenu: { MenuItem },
+} = components;
 const { ContextMenuTypes } = types;
 
 const injector = new Injector();
 
-function start() {
-  injector.utils.addMenuItem(ContextMenuTypes.UserContext,  // Right-clicking a user
+function start(): void {
+  injector.utils.addMenuItem(
+    ContextMenuTypes.UserContext, // Right-clicking a user
     (data, menu) => {
-      return <MenuItem
-        id="my-item"
-        label="An Item!"
-        action={() => console.log(data)}
-      />
+      return (
+        <MenuItem
+          id="my-item"
+          label="An Item!"
+          action={() => console.log(data)}
+        />
+      );
     }
-  )
+  );
 }
 
-function stop() {
+function stop(): void {
   injector.uninjectAll();
 }
 ```
