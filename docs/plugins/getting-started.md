@@ -109,10 +109,12 @@ For plaintext patches to work, your patch MUST have a `find`! The extension was 
 patches without them.
 
 ```js
-{
-  find: "SOMETHING",
-  replacements: [{}]
-}
+export default [
+  {
+    find: "SOMETHING",
+    replacements: [{}],
+  },
+];
 ```
 
 :::
