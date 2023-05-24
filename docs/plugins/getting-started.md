@@ -96,12 +96,9 @@ Replugged v4.3.0 contains support for
 It is an extension for VSCode that allows you to test your module finds and plaintext patches
 without having to rebuild your plugin and reload your client.
 
-You can find the extension in VSCode's extension store when looking for "Vencord", and after
-installing it, it's as simple as pressing the "reconnect" plugin in the Replugged settings.
-
-Your module finds and plaintext patches should now have small texts like "Test Find" and "Test
-Patch" above them. Clicking them will show a notification within VSCode with diagnostics about the
-result.
+After installing, your module finds and plaintext patches should now have small texts like "Test
+Find" and "Test Patch" above them. Clicking them will show a notification within VSCode with
+diagnostics about the result.
 
 :::note
 
