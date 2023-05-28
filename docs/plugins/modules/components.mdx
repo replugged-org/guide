@@ -305,7 +305,7 @@ Props:
 | `focusProps`  | Record<string, unknown>               |         | Props for the FocusRing component                                |
 | `hideBorder`  | boolean                               | `false` | Whether a divider is not displayed at the end of the switch item |
 | `id`          | string                                |         | Input element id                                                 |
-| `innerRef`    | Ref<HTMLInputElement\>                |         | Input ref                                                        |
+| `innerRef`    | Ref<unknown\>                         |         | Inner ref                                                        |
 | `note`        | string                                |         | Description of what the switch item is about                     |
 | `onChange`    | <Required /> (value: boolean) => void |         | Function ran on state change                                     |
 | `style`       | <CSSProperties />                     |         | Component style                                                  |
@@ -382,13 +382,13 @@ Enums:
 | ----------------- | ------------------------------------- |
 | `TextInput.Sizes` | Input sizes <br />`DEFAULT` \| `MINI` |
 
+Props:
+
 :::info
 
 The props of this component extend the attributes of the `input` element.
 
 :::
-
-Props:
 
 | Name             | Type                    | Default                   | Description                                      |
 | ---------------- | ----------------------- | ------------------------- | ------------------------------------------------ |
@@ -433,13 +433,13 @@ Enums:
 | `Button.Looks`        | Button styles <br />`FILLED` \| `INVERTED` \| `OUTLINED` \| `LINK` \| `BLANK`                                                                        |
 | `Button.Sizes`        | Button sizes <br />`NONE` \| `TINY` \| `SMALL` \| `MEDIUM` \| `LARGE` \| `XLARGE` \| `MIN` \| `MAX` \| `ICON`                                        |
 
+Props:
+
 :::info
 
 The props of this component extend the attributes of the `button` element.
 
 :::
-
-Props:
 
 | Name                      | Type                    | Default               | Description                                                                                  |
 | ------------------------- | ----------------------- | --------------------- | -------------------------------------------------------------------------------------------- |
@@ -468,14 +468,14 @@ Props:
 
 ##### `Button.Link` {#ButtonLink}
 
+Props:
+
 :::info
 
 The props of this component extend the props of
 [React Router DOM's Link](https://reactrouter.com/en/main/components/link) component.
 
 :::
-
-Props:
 
 | Name             | Type                  | Default               | Description                            |
 | ---------------- | --------------------- | --------------------- | -------------------------------------- |
@@ -529,6 +529,8 @@ const { Clickable } = components;
 <Clickable onClick={() => console.log("Clicked!")}>{/* Your components here */}</Clickable>;
 ```
 
+Props:
+
 <!-- [!]: This should extend the attributes of the element set in `tag` prop but not added yet in main repo -->
 
 :::info
@@ -536,8 +538,6 @@ const { Clickable } = components;
 The props of this component extend the attributes of the `div` element.
 
 :::
-
-Props:
 
 | Name             | Type    | Default | Description                                   |
 | ---------------- | ------- | ------- | --------------------------------------------- |
@@ -621,13 +621,13 @@ Enums:
 | `Flex.Justify`   | Flexbox justifies <br />`START` \| `END` \| `CENTER` \| `BETWEEN` \| `AROUND`    |
 | `Flex.Wrap`      | Flexbox wraps <br />`NO_WRAP` \| `WRAP` \| `WRAP_REVERSE`                        |
 
+Props:
+
 :::info
 
 The props of this component extend the attributes of the `div` element.
 
 :::
-
-Props:
 
 | Name        | Type             | Default                     | Description       |
 | ----------- | ---------------- | --------------------------- | ----------------- |
@@ -643,13 +643,13 @@ Props:
 
 ##### `Flex.Child` {#FlexChild}
 
+Props:
+
 :::info
 
 The props of this component extend the attributes of the `div` element.
 
 :::
-
-Props:
 
 | Name     | Type    | Default | Description                  |
 | -------- | ------- | ------- | ---------------------------- |
@@ -680,13 +680,13 @@ const { FormItem } = components;
 </FormItem>;
 ```
 
+Props:
+
 :::info
 
 The props of this component extend the attributes of the `div` element.
 
 :::
-
-Props:
 
 | Name             | Type              | Default  | Description                                                |
 | ---------------- | ----------------- | -------- | ---------------------------------------------------------- |
@@ -795,14 +795,14 @@ Enums:
 | ------------- | ----------------------------------------------------------------------------------------------------------------- |
 | `Loader.Type` | Loader types <br />`WANDERING_CUBES` \| `CHASING_DOTS` \| `PULSING_ELLIPSIS` \| `SPINNING_CIRCLE` \| `LOW_MOTION` |
 
+Props:
+
 :::info
 
 The props of this component extend the attributes of the `span` element, or `div` if
 `Loader.Type.SPINNING_CIRCLE` type is used.
 
 :::
-
-Props:
 
 | Name            | Type              | Default                       | Description                                      |
 | --------------- | ----------------- | ----------------------------- | ------------------------------------------------ |
@@ -841,7 +841,7 @@ Subcomponents:
 | Component                                     | Description            |
 | --------------------------------------------- | ---------------------- |
 | [`Modal.ModalCloseButton`](#ModalCloseButton) | Close button component |
-| `Modal.ModalContent`                          | Contains the content   |
+| [`Modal.ModalContent`](#ModalContent)         | Contains the content   |
 | [`Modal.ModalFooter`](#ModalFooter)           | Contains the footer    |
 | [`Modal.ModalHeader`](#ModalHeader)           | Contains the header    |
 | [`Modal.ModalRoot`](#ModalRoot)               | Root component         |
@@ -852,12 +852,27 @@ Subcomponents:
 
 Props:
 
-| Name                   | Type                  | Default | Description                                              |
-| ---------------------- | --------------------- | ------- | -------------------------------------------------------- |
-| `className`            | string                |         | Component class name                                     |
-| `hideOnFullscreen`     | boolean               | `false` | Whether the button is hidden when modal is in fullscreen |
-| `onClick`              | <Required /> (): void |         | Function ran when clicking the close button              |
-| `withCircleBackground` | boolean               | `false` | Whether the button is in a circle                        |
+| Name                   | Type                    | Default | Description                                              |
+| ---------------------- | ----------------------- | ------- | -------------------------------------------------------- |
+| `className`            | string                  |         | Component class name                                     |
+| `focusProps`           | Record<string, unknown> |         | Props for the FocusRing component                        |
+| `hideOnFullscreen`     | boolean                 | `false` | Whether the button is hidden when modal is in fullscreen |
+| `onClick`              | <Required /> (): void   |         | Function ran when clicking the close button              |
+| `withCircleBackground` | boolean                 | `false` | Whether the button is in a circle                        |
+
+##### `Modal.ModalContent` {#ModalContent}
+
+Props:
+
+:::info
+
+The props of this component extend the attributes of the `div` element.
+
+:::
+
+| Name          | Type          | Default | Description  |
+| ------------- | ------------- | ------- | ------------ |
+| `scrollerRef` | Ref<unknown\> |         | Scroller ref |
 
 ##### `Modal.ModalFooter` {#ModalFooter}
 
@@ -875,25 +890,34 @@ Props:
 
 Props:
 
-| Name        | Type             | Default                     | Description          |
-| ----------- | ---------------- | --------------------------- | -------------------- |
-| `align`     | `Flex.Align`     | `Flex.Align.CENTER`         | Flexbox align        |
-| `className` | string           |                             | Component class name |
-| `direction` | `Flex.Direction` | `Flex.Direction.HORIZONTAL` | Flexbox direction    |
-| `justify`   | `Flex.Justify`   | `Flex.Justify.START`        | Flexbox justify      |
-| `wrap`      | `Flex.Wrap`      | `Flex.Wrap.NO_WRAP`         | Flexbox wrap         |
+| Name        | Type             | Default                     | Description                                                         |
+| ----------- | ---------------- | --------------------------- | ------------------------------------------------------------------- |
+| `align`     | `Flex.Align`     | `Flex.Align.CENTER`         | Flexbox align                                                       |
+| `className` | string           |                             | Component class name                                                |
+| `direction` | `Flex.Direction` | `Flex.Direction.HORIZONTAL` | Flexbox direction                                                   |
+| `justify`   | `Flex.Justify`   | `Flex.Justify.START`        | Flexbox justify                                                     |
+| `separator` | boolean          | `false`                     | Whether a divider is shown between the header and the modal content |
+| `wrap`      | `Flex.Wrap`      | `Flex.Wrap.NO_WRAP`         | Flexbox wrap                                                        |
 
 ##### `Modal.ModalRoot` {#ModalRoot}
 
 Props:
 
-| Name              | Type       | Default  | Description                                   |
-| ----------------- | ---------- | -------- | --------------------------------------------- |
-| `className`       | string     |          | Component class name                          |
-| `onAnimationEnd`  | (): string |          | Function ran when the modal stopped animating |
-| `role`            | string     | `dialog` | Modal element role                            |
-| `size`            | string     | `small`  | Modal size                                    |
-| `transitionState` | string     |          | Modal state                                   |
+:::info
+
+The props of this component extend the attributes of the `div` element.
+
+:::
+
+| Name                 | Type       | Default  | Description                                                 |
+| -------------------- | ---------- | -------- | ----------------------------------------------------------- |
+| `className`          | string     |          | Component class name                                        |
+| `fullscreenOnMobile` | boolean    | `true`   | Whether the modal is in fullscreen if app is in mobile view |
+| `hideShadow`         | boolean    | `false`  | Whether the shadow is hidden                                |
+| `onAnimationEnd`     | (): string |          | Function ran when the modal stopped animating               |
+| `role`               | string     | `dialog` | Modal element role                                          |
+| `size`               | string     | `small`  | Modal size                                                  |
+| `transitionState`    | string     |          | Modal state                                                 |
 
 ### Notice
 
@@ -945,20 +969,26 @@ Subcomponents:
 
 Props:
 
-| Name                   | Type              | Default | Description                                                             |
-| ---------------------- | ----------------- | ------- | ----------------------------------------------------------------------- |
-| `allowMarkdownHeading` | boolean           | `false` | Whether markdown headings are displayed; works together with `markdown` |
-| `allowMarkdownLinks`   | boolean           | `false` | Whether markdown links are displayed; works together with `markdown`    |
-| `allowMarkdownList`    | boolean           | `false` | Whether markdown lists are displayed; works together with `markdown`    |
-| `className`            | string            |         | Component class name                                                    |
-| `color`                | string            |         | Text color (variable name)                                              |
-| `lineClamp`            | number            |         | How many lines to clamp                                                 |
-| `markdown`             | boolean           | `false` | Whether the text is markdown compatible                                 |
-| `selectable`           | boolean           | `false` | Whether the text is selectable                                          |
-| `style`                | <CSSProperties /> |         | Component style                                                         |
-| `tabularNumbers`       | boolean           | `false` | Whether the text font supports tabular numbers                          |
-| `tag`                  | string            | `div`   | Define the text element tag                                             |
-| `variant`              | string            |         | Text variant (variant name)                                             |
+<!-- [!]: This should extend the attributes of the element set in `tag` prop but not added yet in main repo -->
+
+:::info
+
+The props of this component extend the attributes of the `div` element.
+
+:::
+
+| Name                   | Type    | Default | Description                                                             |
+| ---------------------- | ------- | ------- | ----------------------------------------------------------------------- |
+| `allowMarkdownHeading` | boolean | `false` | Whether markdown headings are displayed; works together with `markdown` |
+| `allowMarkdownLinks`   | boolean | `false` | Whether markdown links are displayed; works together with `markdown`    |
+| `allowMarkdownList`    | boolean | `false` | Whether markdown lists are displayed; works together with `markdown`    |
+| `color`                | string  |         | Text color (variable name)                                              |
+| `lineClamp`            | number  |         | How many lines to clamp                                                 |
+| `markdown`             | boolean | `false` | Whether the text is markdown compatible                                 |
+| `selectable`           | boolean | `false` | Whether the text is selectable                                          |
+| `tabularNumbers`       | boolean | `false` | Whether the text font supports tabular numbers                          |
+| `tag`                  | string  | `div`   | Define the text element tag                                             |
+| `variant`              | string  |         | Text variant (variant name)                                             |
 
 :::tip
 
