@@ -5,29 +5,8 @@ description: Documented common modules for plugins
 toc_max_heading_level: 4
 ---
 
+import APIReferences from "@site/src/components/APIReferences";
 import Required from "@site/src/components/Required";
-
-export const DiscordAPIDocs = (props) => {
-  const url = "https://discord.com/developers/docs/resources/" + props.link;
-  return <a href={url}>{props.name}</a>;
-};
-
-export const APIReferences = {
-  Channel: () => <DiscordAPIDocs name="Channel" link="channel#channel-object-channel-structure" />,
-  Emoji: () => <DiscordAPIDocs name="Emoji" link="emoji#emoji-object-emoji-structure" />,
-  Guild: () => <DiscordAPIDocs name="Guild" link="guild#guild-object-guild-structure" />,
-  GuildMember: () => (
-    <DiscordAPIDocs name="GuildMember" link="guild#guild-member-object-guild-member-structure" />
-  ),
-  Message: () => <DiscordAPIDocs name="Message" link="channel#message-object-message-structure" />,
-  MessageAttachment: () => (
-    <DiscordAPIDocs
-      name="MessageAttachment"
-      link="channel#attachment-object-attachment-structure"
-    />
-  ),
-  User: () => <DiscordAPIDocs name="User" link="user#user-object-user-structure" />,
-};
 
 Replugged comes with a bunch of modules that are commonly used. You can access them with:
 

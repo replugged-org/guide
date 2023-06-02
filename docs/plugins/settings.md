@@ -129,7 +129,8 @@ export function Settings(): React.ReactElement {
 Replugged includes a React hook that makes it easy to interact with the settings manager.
 
 ```tsx
-import { settings, util } from "replugged";
+import { components, settings, util } from "replugged";
+const { TextInput } = components;
 
 const cfg = await settings.init("YOUR_PLUGIN_ID");
 
@@ -151,7 +152,8 @@ One way around this is to get `value`/`onChange` from the hook outside of the co
 that in your custom props.
 
 ```tsx
-import { settings, util } from "replugged";
+import { components, settings, util } from "replugged";
+const { TextInput } = components;
 
 const cfg = await settings.init("YOUR_PLUGIN_ID");
 

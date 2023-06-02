@@ -4,6 +4,9 @@ title: Injecting into Modules
 description: Learn how to inject into webpack modules and change their behavior
 ---
 
+import APIReferences from "@site/src/components/APIReferences";
+import Required from "@site/src/components/Required";
+
 # Injecting into Modules
 
 Injection is one of the most important parts of a plugin. It allows you to change the behavior of a
@@ -128,6 +131,7 @@ reply, etc. The button order cannot be controlled.
 
 ```ts
 import { Injector, webpack } from "replugged";
+
 const injector = new Injector();
 
 export function start() {
@@ -149,6 +153,32 @@ export function stop() {
   injector.uninjectAll();
 }
 ```
+
+Props:
+
+:::info
+
+The props of this component extend the attributes of the `div` element.
+
+:::
+
+| Name           | Type                                                                                                                              | Default                  | Description                                                                            |
+| -------------- | --------------------------------------------------------------------------------------------------------------------------------- | ------------------------ | -------------------------------------------------------------------------------------- |
+| `ariaLabel`    | string                                                                                                                            |                          | Button aria-label                                                                      |
+| `channel`      | <APIReferences.Channel />                                                                                                         |                          | Channel of the message with the button popover; automatically added with the injection |
+| `dangerous`    | boolean                                                                                                                           | `false`                  | Whether the icon color is red                                                          |
+| `disabled`     | boolean                                                                                                                           | `false`                  | Whether the button is disabled                                                         |
+| `icon`         | <Required /> ReactNode                                                                                                            |                          | Icon component                                                                         |
+| `iconProps`    | Record<string, unknown>                                                                                                           |                          | Props for the icon component                                                           |
+| `key`          | string                                                                                                                            |                          | Button popover key; automatically added with the injection                             |
+| `label`        | <Required /> string                                                                                                               |                          | Tooltip text                                                                           |
+| `message`      | <APIReferences.Message />                                                                                                         |                          | Message with the button popover; automatically added with the injection                |
+| `onClick`      | <Required /> (channel: <APIReferences.Channel />, message: <APIReferences.Message />, event: MouseEvent<HTMLDivElement\>) => void |                          | Function ran on button click                                                           |
+| `selected`     | boolean                                                                                                                           | `false`                  | Whether the button is selected                                                         |
+| `separator`    | boolean                                                                                                                           | `false`                  | Whether the button shows a divider among others                                        |
+| `sparkle`      | boolean                                                                                                                           | `false`                  | Whether the button shows a sparkle effect                                              |
+| `tooltipColor` | [`Tooltip.Colors`](modules/components#tooltip)                                                                                    | `Tooltip.Colors.PRIMARY` | Tooltip color                                                                          |
+| `tooltipText`  | string                                                                                                                            |                          | Tooltip text; alternative of `label`                                                   |
 
 ### Context Menus
 
