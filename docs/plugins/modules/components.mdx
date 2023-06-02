@@ -134,17 +134,17 @@ Props:
 
 ##### `RadioOptionType` {#RadioOptionType}
 
-| Name                 | Type                | Default | Description                                                                         |
-| -------------------- | ------------------- | ------- | ----------------------------------------------------------------------------------- |
-| `collapsibleContent` | ReactNode           |         | Option collapsible elements                                                         |
-| `color`              | string              |         | Color displayed on the side                                                         |
-| `desc`               | string              |         | Option description                                                                  |
-| `disabled`           | boolean             | `false` | Whether the option is disabled                                                      |
-| `icon`               | ReactNode           |         | Option icon                                                                         |
-| `name`               | <Required /> string |         | Option name                                                                         |
-| `tooltipPosition`    | string              |         | Tooltip position displayed on the option; check out [`Tooltip.Positions`](#tooltip) |
-| `tooltipText`        | string              |         | Tooltip text displayed on the option                                                |
-| `value`              | <Required /> string |         | Option value                                                                        |
+| Name                 | Type                            | Default | Description                              |
+| -------------------- | ------------------------------- | ------- | ---------------------------------------- |
+| `collapsibleContent` | ReactNode                       |         | Option collapsible elements              |
+| `color`              | string                          |         | Color displayed on the side              |
+| `desc`               | string                          |         | Option description                       |
+| `disabled`           | boolean                         | `false` | Whether the option is disabled           |
+| `icon`               | ReactNode                       |         | Option icon                              |
+| `name`               | <Required /> string             |         | Option name                              |
+| `tooltipPosition`    | [`Tooltip.Positions`](#tooltip) |         | Tooltip position displayed on the option |
+| `tooltipText`        | string                          |         | Tooltip text displayed on the option     |
+| `value`              | <Required /> string             |         | Option value                             |
 
 ### Select and SelectItem
 
@@ -204,7 +204,7 @@ Props:
 | `options`           | <Required /> [`SelectOptionType`](#SelectOptionType)[]        |                       | Array of select options                                                                                     |
 | `placeholder`       | string                                                        | `Select`              | Select placeholder text                                                                                     |
 | `popoutClassName`   | string                                                        |                       | Popout element class name                                                                                   |
-| `popoutPosition`    | string                                                        |                       | Popout position displayed on the select; check out [`Tooltip.Positions`](#tooltip)                          |
+| `popoutPosition`    | [`Tooltip.Positions`](#tooltip)                               |                       | Popout position displayed on the select                                                                     |
 | `popoutWidth`       | number                                                        |                       | Popout width                                                                                                |
 | `renderOptionLabel` | (option: [`SelectOptionType`](#SelectOptionType)) => string   |                       | Function ran on option label element render, useful to customize labels                                     |
 | `renderOptionValue` | (option: [`SelectOptionType`](#SelectOptionType)[]) => string |                       | Function ran on option value element render, useful to customize values                                     |
@@ -441,28 +441,28 @@ The props of this component extend the attributes of the `button` element.
 
 Props:
 
-| Name                      | Type                    | Default               | Description                                                                                  |
-| ------------------------- | ----------------------- | --------------------- | -------------------------------------------------------------------------------------------- |
-| `borderColor`             | `Button.BorderColors`   |                       | Button border color                                                                          |
-| `button`                  | string                  |                       | Button text for the item component                                                           |
-| `buttonRef`               | Ref<HTMLButtonElement\> |                       | Button ref                                                                                   |
-| `color`                   | `Button.Colors`         | `Button.Colors.BRAND` | Button color                                                                                 |
-| `focusProps`              | Record<string, unknown> |                       | Props for the FocusRing component                                                            |
-| `fullWidth`               | boolean                 | `false`               | Whether the button width is at maximum                                                       |
-| `grow`                    | boolean                 | `true`                | Whether the button size can grow                                                             |
-| `hideBorder`              | boolean                 | `false`               | Whether a divider is not displayed at the end of the button item                             |
-| `hover`                   | `Button.Hovers`         |                       | Button hover color                                                                           |
-| `innerClassName`          | string                  |                       | Text element class name                                                                      |
-| `look`                    | `Button.Looks`          | `Button.Looks.FILLED` | Button style                                                                                 |
-| `note`                    | string                  |                       | Description of what the button item is about                                                 |
-| `size`                    | `Button.Sizes`          | `Button.Sizes.MEDIUM` | Button size                                                                                  |
-| `submitting`              | boolean                 | `false`               | Whether to display a loader inside the button; works together with `disabled` set to `false` |
-| `submittingFinishedLabel` | string                  | `Loading finished`    | Announce finish loading message for screen-reader users; works together with `submitting`    |
-| `submittingStartedLabel`  | string                  | `Loading`             | Announce start loading message for screen-reader users; works together with `submitting`     |
-| `success`                 | boolean                 | `false`               | Whether the button color is green                                                            |
-| `tooltipPosition`         | string                  |                       | Tooltip position displayed on the button item; check out [`Tooltip.Positions`](#tooltip)     |
-| `tooltipText`             | string                  |                       | Tooltip text displayed on the button item                                                    |
-| `wrapperClassName`        | string                  |                       | Wrapper element class name                                                                   |
+| Name                      | Type                            | Default               | Description                                                                                  |
+| ------------------------- | ------------------------------- | --------------------- | -------------------------------------------------------------------------------------------- |
+| `borderColor`             | `Button.BorderColors`           |                       | Button border color                                                                          |
+| `button`                  | string                          |                       | Button text for the item component                                                           |
+| `buttonRef`               | Ref<HTMLButtonElement\>         |                       | Button ref                                                                                   |
+| `color`                   | `Button.Colors`                 | `Button.Colors.BRAND` | Button color                                                                                 |
+| `focusProps`              | Record<string, unknown>         |                       | Props for the FocusRing component                                                            |
+| `fullWidth`               | boolean                         | `false`               | Whether the button width is at maximum                                                       |
+| `grow`                    | boolean                         | `true`                | Whether the button size can grow                                                             |
+| `hideBorder`              | boolean                         | `false`               | Whether a divider is not displayed at the end of the button item                             |
+| `hover`                   | `Button.Hovers`                 |                       | Button hover color                                                                           |
+| `innerClassName`          | string                          |                       | Text element class name                                                                      |
+| `look`                    | `Button.Looks`                  | `Button.Looks.FILLED` | Button style                                                                                 |
+| `note`                    | string                          |                       | Description of what the button item is about                                                 |
+| `size`                    | `Button.Sizes`                  | `Button.Sizes.MEDIUM` | Button size                                                                                  |
+| `submitting`              | boolean                         | `false`               | Whether to display a loader inside the button; works together with `disabled` set to `false` |
+| `submittingFinishedLabel` | string                          | `Loading finished`    | Announce finish loading message for screen-reader users; works together with `submitting`    |
+| `submittingStartedLabel`  | string                          | `Loading`             | Announce start loading message for screen-reader users; works together with `submitting`     |
+| `success`                 | boolean                         | `false`               | Whether the button color is green                                                            |
+| `tooltipPosition`         | [`Tooltip.Positions`](#tooltip) |                       | Tooltip position displayed on the button item                                                |
+| `tooltipText`             | string                          |                       | Tooltip text displayed on the button item                                                    |
+| `wrapperClassName`        | string                          |                       | Wrapper element class name                                                                   |
 
 #### Types {#Button-types}
 
@@ -552,11 +552,217 @@ This component requires the use of the common module [`contextMenu`](common#cont
 
 :::
 
+Example:
+
+```tsx
+import { common, components } from "replugged";
+const { contextMenu } = common;
+const { Button, ContextMenu: Menu } = components;
+
+const ExampleContext = (): React.ReactElement => (
+  <Menu.ContextMenu navId="example-context" onClose={contextMenu.close}>
+    <Menu.MenuGroup>{/* Your Menu components here */}</Menu.MenuGroup>
+    <Menu.MenuItem id="example-item" label="Menu Item" action={() => console.log("Pressed!")} />
+    <Menu.MenuItem id="example-submenu" label="Menu Item">
+      {/* Add Menu components here to create a submenu */}
+    </Menu.MenuItem>
+    <Menu.MenuSeparator />
+  </Menu.ContextMenu>
+);
+
+<Button onContextMenu={(event) => contextMenu.open(event, () => <ExampleContext />)}>
+  Right-click me
+</Button>;
+```
+
+Subcomponents:
+
+| Component                                           | Description                                                             |
+| --------------------------------------------------- | ----------------------------------------------------------------------- |
+| [`ContextMenu.ContextMenu`](#Menu)                  | Menu root component                                                     |
+| [`ContextMenu.MenuCheckboxItem`](#MenuCheckboxItem) | Checkbox item                                                           |
+| [`ContextMenu.MenuControlItem`](#MenuControlItem)   | Component used to create custom items                                   |
+| [`ContextMenu.MenuGroup`](#MenuGroup)               | Group other components                                                  |
+| [`ContextMenu.MenuItem`](#MenuItem)                 | Normal item or it can also contain other components to create a submenu |
+| [`ContextMenu.MenuRadioItem`](#MenuRadioItem)       | Radio item                                                              |
+| `ContextMenu.MenuSeparator`                         | Item divider                                                            |
+
+Enums:
+
+| Enum                     | Description                                                                                                |
+| ------------------------ | ---------------------------------------------------------------------------------------------------------- |
+| `ContextMenu.ItemColors` | Context menu colors <br />`DEFAULT` \| `BRAND` \| `DANGER` \| `PREMIUM` \| `PREMIUM_GRADIENT` \| `SUCCESS` |
+
+#### Types {#ContextMenu-types}
+
+##### `ContextMenu.ContextMenu` {#Menu}
+
+Props:
+
+| Name           | Type                    | Default    | Description                                                                                        |
+| -------------- | ----------------------- | ---------- | -------------------------------------------------------------------------------------------------- |
+| `className`    | string                  |            | Component class name                                                                               |
+| `hideScroller` | boolean                 |            | Whether the scroller is hidden                                                                     |
+| `navId`        | <Required /> string     |            | Context menu id                                                                                    |
+| `onClose`      | <Required /> () => void |            | Function ran when the context menu got closed; check out [`contextMenu.close`](common#contextmenu) |
+| `onSelect`     | () => void              |            | Function ran when clicking an item                                                                 |
+| `style`        | <CSSProperties />       |            | Component style                                                                                    |
+| `variant`      | string                  | `flexible` | Whether the context menu width is flexible or fixed                                                |
+
+##### `ContextMenu.MenuCheckboxItem` {#MenuCheckboxItem}
+
+Props:
+
+| Name               | Type                               | Default                          | Description                         |
+| ------------------ | ---------------------------------- | -------------------------------- | ----------------------------------- |
+| `action`           | MouseEventHandler<HTMLDivElement\> |                                  | Function ran when clicking the item |
+| `checked`          | boolean                            | `false`                          | Checkbox state                      |
+| `className`        | string                             |                                  | Component class name                |
+| `color`            | `ContextMenu.ItemColors`           | `ContextMenu.ItemColors.DEFAULT` | Item color                          |
+| `disabled`         | boolean                            | `false`                          | Whether the checkbox is disabled    |
+| `focusedClassName` | string                             |                                  | Focused element class name          |
+| `id`               | <Required /> string                |                                  | Item id                             |
+| `label`            | string                             |                                  | Item label                          |
+| `subtext`          | string                             |                                  | Additional text under the label     |
+
+##### `ContextMenu.MenuControlItem` {#MenuControlItem}
+
+Props:
+
 :::info
 
-ContextMenu is still a work in progress.
+This component has more possible props:
+
+- If a children is added, this item will use the
+  [`MenuCompositeControlItem`](#MenuCompositeControlItem) props.
 
 :::
+
+| Name               | Type                                                                                                                                                                             | Default                          | Description                   |
+| ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------- | ----------------------------- |
+| `color`            | `ContextMenu.ItemColors`                                                                                                                                                         | `ContextMenu.ItemColors.DEFAULT` | Item color                    |
+| `control`          | <Required /> (data: { onClose: () => void; disabled: boolean; isFocused: boolean }, ref?: Ref<{ activate: () => boolean; blur: () => void; focus: () => void }>) => ReactElement |                                  | Control item render function  |
+| `disabled`         | boolean                                                                                                                                                                          | `false`                          | Whether the item is disabled  |
+| `id`               | <Required /> string                                                                                                                                                              |                                  | Item id                       |
+| `label`            | string                                                                                                                                                                           |                                  | Item label                    |
+| `showDefaultFocus` | boolean                                                                                                                                                                          | `false`                          | Whether the item is focusable |
+
+##### `ContextMenu.MenuGroup` {#MenuGroup}
+
+Props:
+
+| Name        | Type                     | Default                          | Description          |
+| ----------- | ------------------------ | -------------------------------- | -------------------- |
+| `className` | string                   |                                  | Component class name |
+| `color`     | `ContextMenu.ItemColors` | `ContextMenu.ItemColors.DEFAULT` | Item color           |
+| `label`     | string                   |                                  | Item label           |
+
+##### `ContextMenu.MenuItem` {#MenuItem}
+
+Props:
+
+:::info
+
+This component has more possible props:
+
+- With a `render` function added, this item will use the [`MenuCustomItem`](#MenuCustomItem) props.
+- If a children is added, this item will use the [`MenuSubmenuItem`](#MenuSubmenuItem) props.
+- If `childRowHeight` prop with children is added, this item will use the
+  [`MenuSubmenuListItem`](#MenuSubmenuListItem) props.
+
+:::
+
+| Name                                 | Type                               | Default                          | Description                                                                                  |
+| ------------------------------------ | ---------------------------------- | -------------------------------- | -------------------------------------------------------------------------------------------- |
+| `action`                             | MouseEventHandler<HTMLDivElement\> |                                  | Function ran when clicking the item                                                          |
+| `className`                          | string                             |                                  | Component class name                                                                         |
+| `color`                              | `ContextMenu.ItemColors`           | `ContextMenu.ItemColors.DEFAULT` | Item color                                                                                   |
+| `disabled`                           | boolean                            | `false`                          | Whether the item is disabled                                                                 |
+| `dontCloseOnActionIfHoldingShiftKey` | boolean                            | `false`                          | Whether not to close the context menu while holding down the shift key and clicking the item |
+| `focusedClassName`                   | string                             |                                  | Focused element class name                                                                   |
+| `hint`                               | ReactNode                          |                                  | Item hint                                                                                    |
+| `icon`                               | ReactNode                          |                                  | Item icon                                                                                    |
+| `iconProps`                          | Record<string, unknown>            |                                  | Props for the icon component                                                                 |
+| `id`                                 | <Required /> string                |                                  | Item id                                                                                      |
+| `imageUrl`                           | string                             |                                  | Source URL of the image                                                                      |
+| `label`                              | string                             |                                  | Item label                                                                                   |
+| `onFocus`                            | () => void                         |                                  | Function ran when the item gets focused                                                      |
+| `showIconFirst`                      | boolean                            | `false`                          | Whether the icon is shown before the label                                                   |
+| `sparkle`                            | boolean                            | `false`                          | Whether the submenu icon shows a sparkle effect                                              |
+| `subMenuIconClassName`               | string                             |                                  | Submenu icon element class name                                                              |
+| `subtext`                            | ReactNode                          |                                  | Additional text under the label                                                              |
+
+##### `ContextMenu.MenuRadioItem` {#MenuRadioItem}
+
+Props:
+
+| Name       | Type                               | Default                          | Description                         |
+| ---------- | ---------------------------------- | -------------------------------- | ----------------------------------- |
+| `action`   | MouseEventHandler<HTMLDivElement\> |                                  | Function ran when clicking the item |
+| `checked`  | boolean                            | `false`                          | Radio state                         |
+| `color`    | `ContextMenu.ItemColors`           | `ContextMenu.ItemColors.DEFAULT` | Item color                          |
+| `disabled` | boolean                            | `false`                          | Whether the radio is disabled       |
+| `id`       | <Required /> string                |                                  | Item id                             |
+| `label`    | string                             |                                  | Item label                          |
+| `subtext`  | string                             |                                  | Additional text under the label     |
+
+##### `MenuCompositeControlItem` {#MenuCompositeControlItem}
+
+Props:
+
+| Name               | Type                     | Default                          | Description                   |
+| ------------------ | ------------------------ | -------------------------------- | ----------------------------- |
+| `color`            | `ContextMenu.ItemColors` | `ContextMenu.ItemColors.DEFAULT` | Item color                    |
+| `disabled`         | boolean                  | `false`                          | Whether the item is disabled  |
+| `id`               | <Required /> string      |                                  | Item id                       |
+| `interactive`      | boolean                  | `false`                          | Whether the item is navigable |
+| `showDefaultFocus` | boolean                  | `false`                          | Whether the item is focusable |
+
+##### `MenuCustomItem` {#MenuCustomItem}
+
+Props:
+
+<!-- cspell:ignore dont -->
+
+| Name                                 | Type                                                                                                         | Default                          | Description                                                                                  |
+| ------------------------------------ | ------------------------------------------------------------------------------------------------------------ | -------------------------------- | -------------------------------------------------------------------------------------------- |
+| `action`                             | MouseEventHandler<HTMLDivElement\>                                                                           |                                  | Function ran when clicking the item                                                          |
+| `color`                              | `ContextMenu.ItemColors`                                                                                     | `ContextMenu.ItemColors.DEFAULT` | Item color                                                                                   |
+| `disabled`                           | boolean                                                                                                      | `false`                          | Whether the item is disabled                                                                 |
+| `dontCloseOnActionIfHoldingShiftKey` | boolean                                                                                                      | `false`                          | Whether not to close the context menu while holding down the shift key and clicking the item |
+| `id`                                 | <Required /> string                                                                                          |                                  | Item id                                                                                      |
+| `keepItemStyles`                     | boolean                                                                                                      | `false`                          | Whether use the normal menu item classes                                                     |
+| `render`                             | <Required /> (data: { color: `ContextMenu.ItemColors`; disabled: boolean; isFocused: boolean }) => ReactNode |                                  | Custom item render function                                                                  |
+
+##### `MenuSubmenuItem` {#MenuSubmenuItem}
+
+Props:
+
+:::info
+
+The props of this component extend the props of the [`ContextMenu.MenuItem`](#MenuItem) component.
+
+:::
+
+| Name               | Type   | Default | Description                |
+| ------------------ | ------ | ------- | -------------------------- |
+| `subMenuClassName` | string |         | Submenu element class name |
+
+##### `MenuSubmenuListItem` {#MenuSubmenuListItem}
+
+Props:
+
+:::info
+
+The props of this component extend the props of the [`ContextMenu.MenuItem`](#MenuItem) component.
+
+:::
+
+| Name               | Type                | Default | Description             |
+| ------------------ | ------------------- | ------- | ----------------------- |
+| `onChildrenScroll` | () => void          |         | Each child's height     |
+| `childRowHeight`   | <Required /> number |         | Each child's height     |
+| `listClassName`    | string              |         | List element class name |
 
 ### Divider
 
@@ -844,7 +1050,7 @@ Subcomponents:
 | `Modal.ModalContent`                          | Contains the content   |
 | [`Modal.ModalFooter`](#ModalFooter)           | Contains the footer    |
 | [`Modal.ModalHeader`](#ModalHeader)           | Contains the header    |
-| [`Modal.ModalRoot`](#ModalRoot)               | Root component         |
+| [`Modal.ModalRoot`](#ModalRoot)               | Modal root component   |
 
 #### Types {#Modal-types}
 
