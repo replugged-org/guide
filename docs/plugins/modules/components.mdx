@@ -140,7 +140,7 @@ Props:
 | `color`              | string                          |         | Color displayed on the side              |
 | `desc`               | string                          |         | Option description                       |
 | `disabled`           | boolean                         | `false` | Whether the option is disabled           |
-| `icon`               | ReactNode                       |         | Option icon                              |
+| `icon`               | ComponentType<unknown\>         |         | Option icon                              |
 | `name`               | <Required /> string             |         | Option name                              |
 | `tooltipPosition`    | [`Tooltip.Positions`](#tooltip) |         | Tooltip position displayed on the option |
 | `tooltipText`        | string                          |         | Tooltip text displayed on the option     |
@@ -681,7 +681,7 @@ This component has more possible props:
 | `dontCloseOnActionIfHoldingShiftKey` | boolean                            | `false`                          | Whether not to close the context menu while holding down the shift key and clicking the item |
 | `focusedClassName`                   | string                             |                                  | Focused element class name                                                                   |
 | `hint`                               | ReactNode                          |                                  | Item hint                                                                                    |
-| `icon`                               | ReactNode                          |                                  | Item icon                                                                                    |
+| `icon`                               | ComponentType<unknown\>            |                                  | Item icon                                                                                    |
 | `iconProps`                          | Record<string, unknown>            |                                  | Props for the icon component                                                                 |
 | `id`                                 | <Required /> string                |                                  | Item id                                                                                      |
 | `imageUrl`                           | string                             |                                  | Source URL of the image                                                                      |
