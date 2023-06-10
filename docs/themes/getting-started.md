@@ -47,6 +47,13 @@ location, and you will lose any local changes.
 
 ## Customizing your theme
 
+:::tip
+
+See the [manifest documentation](/docs/manifest) for more information about the manifest file and
+some additional keys you can use.
+
+:::
+
 The theme template has a `manifest.json` file which contains information about your theme. You
 should edit this file to include the theme information as well as your information.
 
@@ -54,6 +61,12 @@ The theme ID should be in
 [reverse domain name notation](https://en.wikipedia.org/wiki/Reverse_domain_name_notation). For
 example, if your website is `example.com` and your theme is called `my-theme`, the theme ID should
 be `com.example.MyTheme`. If you don't have a website, you can make one up.
+
+:::danger
+
+The theme ID **cannot** be changed once your theme is released. Choose wisely!
+
+:::
 
 The version and updater info is used by Replugged to check for updates. The `updater.id` key should
 be changed to the username and repository of your theme. For example, the theme template is hosted

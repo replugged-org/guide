@@ -51,6 +51,13 @@ location, and you will lose any local changes.
 
 ## Customizing your plugin
 
+:::tip
+
+See the [manifest documentation](/docs/manifest) for more information about the manifest file and
+some additional keys you can use.
+
+:::
+
 The plugin template has a `manifest.json` file which contains information about your plugin. You
 should edit this file to include the plugin information as well as your information.
 
@@ -58,6 +65,12 @@ The plugin ID should be in
 [reverse domain name notation](https://en.wikipedia.org/wiki/Reverse_domain_name_notation). For
 example, if your website is `example.com` and your plugin is called `my-plugin`, the plugin ID
 should be `com.example.MyPlugin`. If you don't have a website, you can make one up.
+
+:::danger
+
+The plugin ID **cannot** be changed once your plugin is released. Choose wisely!
+
+:::
 
 The version and updater info is used by Replugged to check for updates. The `updater.id` key should
 be changed to the username and repository of your plugin. For example, the plugin template is hosted
