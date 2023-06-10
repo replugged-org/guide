@@ -1,0 +1,81 @@
+---
+sidebar_position: 5
+title: Manifest
+description: Schema documentation for Replugged's manifest.json
+---
+
+import Required from "@site/src/components/Required";
+
+# Manifest
+
+The `manifest.json` file includes metadata about your addon, as well as pointing to the entry point
+of your addon's code.
+
+:::caution
+
+All properties are optional unless they are marked with an asterisk ( <Required /> ).
+
+:::
+
+## Common
+
+These keys are used by all addon types. There are additional keys for [plugins](#plugins) and
+[themes](#themes) which are documented below.
+
+| Key                           | Type                                    | Description                                                                                                                                                                                           |
+| ----------------------------- | --------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| id&nbsp;<Required />          | string                                  | The unique identifier of your addon. This should be in [reverse domain name notation](https://en.wikipedia.org/wiki/Reverse_domain_name_notation) and cannot be changed once your addon is published. |
+| name&nbsp;<Required />        | string                                  | The name of your addon.                                                                                                                                                                               |
+| description&nbsp;<Required /> | string                                  | A short description of your addon. Will be displayed in the store, as well as the addon settings page.                                                                                                |
+| author&nbsp;<Required />      | [Author&nbsp;\|&nbsp;Author[]](#author) | The author(s) of your addon. Array cannot be empty.                                                                                                                                                   |
+| version&nbsp;<Required />     | string                                  | The version of your addon. We recommend the format `x.y.z`, though that is not required. This will be shown with a `v` prefix.                                                                        |
+| updater                       | [Updater](#updater)                     | Where Replugged will check for updates to your addon                                                                                                                                                  |
+| license&nbsp;<Required />     | string                                  | The license of your addon. We recommend using [SPDX](https://spdx.org/licenses/) identifiers, eg `MIT` or `GPL-3.0`.                                                                                  |
+| image                         | string&nbsp;\|&nbsp;string[]            | A URL or array of URLs to preview images of your addon to be displayed in the store. Must be hosted on Discord's CDN (cdn.discordapp.com or media.discordapp.net) or [Imgur](https://imgur.com/).     |
+| source                        | string                                  | A URL to the source code of your addon. This will be displayed in the store and in the addon settings card.                                                                                           |
+
+## Plugins
+
+All keys in the [common section](#common), as well as the following:
+
+| Key                    | Type               | Description                                                                                                                                                                                                                                          |
+| ---------------------- | ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| type&nbsp;<Required /> | 'replugged-plugin' | Must be `replugged-plugin`.                                                                                                                                                                                                                          |
+| renderer               | string             | This is the path to the main entrypoint of your plugin (JavaScript). The [plugin template](https://github.com/replugged-org/plugin-template) will allow you to also use TypeScript and will handle compiling and updating the file location for you. |
+| plaintextPatches       | string             | The path to the plaintext patches file (JavaScript). Documentation for this will be coming soon.                                                                                                                                                     |
+| reloadRequired         | boolean            | Whether Replugged should prompt the user to reload once your plugin on installation. Defaults to `false` unless you specified a `plaintextPatches` file.                                                                                             |
+
+## Themes
+
+All keys in the [common section](#common), as well as the following:
+
+| Key                    | Type             | Description                                                                                                                                                                                                                  |
+| ---------------------- | ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| type&nbsp;<Required /> | 'replugged-theme | Must be `replugged-theme`.                                                                                                                                                                                                   |
+| main                   | string           | The path to the main entrypoint of your theme (CSS). The [theme template](https://github.com/replugged-org/theme-template) will allow you to also use SCSS and will handle compiling and updating the file location for you. |
+
+## Types
+
+### Author
+
+| Key                    | Type   | Description                        |
+| ---------------------- | ------ | ---------------------------------- |
+| name&nbsp;<Required /> | string | The display name of the author.    |
+| discordID              | string | The Discord ID of the author.      |
+| github                 | string | The GitHub username of the author. |
+
+### Updater
+
+| Key                    | Type                        | Description                                                 |
+| ---------------------- | --------------------------- | ----------------------------------------------------------- |
+| type&nbsp;<Required /> | [UpdaterType](#updatertype) | The type of updater to use. See below for more info.        |
+| id                     | string                      | The ID of the addon in the source. See below for more info. |
+
+#### UpdaterType
+
+Must be one of the following:
+
+- `store` - The addon is hosted on the Replugged store. The `id` field should be the same as the
+  addon's ID.
+- `github` - The addon is hosted on GitHub. The `id` field should be the repository's
+  `username/repo`.
