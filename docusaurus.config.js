@@ -99,12 +99,12 @@ const config = {
                 to: "/docs/category/themes",
               },
               {
-                label: "API Docs",
+                label: "Replugged API Docs",
                 href: "https://docs.replugged.dev/modules.html",
               },
               {
                 label: "Contribute",
-                href: "https://github.com/replugged-org/guide",
+                href: "/docs/category/contributing",
               },
             ],
           },
@@ -120,6 +120,10 @@ const config = {
           {
             title: "More",
             items: [
+              {
+                label: "Website",
+                href: "https://replugged.dev",
+              },
               {
                 label: "GitHub",
                 href: "https://github.com/replugged-org/replugged",
