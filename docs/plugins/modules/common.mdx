@@ -353,22 +353,17 @@ Props:
 
 | Name             | Type                                | Description                                                                              |
 | ---------------- | ----------------------------------- | ---------------------------------------------------------------------------------------- |
-| `ChannelTypes`   | Record<string, string \| number>    | Channel types                                                                            |
 | `ColorGenerator` | [`ColorGenerator`](#ColorGenerator) | Utility module containing functions useful for generating colors from a given saturation |
 | `CSSVariables`   | Record<string, string>              | CSS variables                                                                            |
-| `Endpoints`      | Record<string, unknown>             | Endpoints                                                                                |
-| `GuildFeatures`  | Record<string, string>              | Guild features                                                                           |
-| `Paths`          | Record<string, string>              | Web routes                                                                               |
+| `Paths`          | Record<string, string>              | Paths                                                                                    |
 | `Permissions`    | Record<string, bigint>              | Permissions                                                                              |
 | `raw`            | Record<string, unknown>             | Raw module with all constants; check out its contents with Discord DevTools              |
-| `Routes`         | Record<string, unknown>             | Routes                                                                                   |
-| `RPCCommands`    | Record<string, string>              | RPC commands                                                                             |
-| `RPCErrors`      | Record<string, string \| number>    | RPC close codes                                                                          |
-| `RPCEvents`      | Record<string, string>              | RPC events                                                                               |
-| `Scopes`         | Record<string, string>              | OAuth 2.0 scopes                                                                         |
+| `RPCCommands`    | Record<string, string>              | Rich presence commands                                                                   |
+| `RPCErrors`      | Record<string, string \| number>    | Rich presence errors                                                                     |
+| `RPCEvents`      | Record<string, string>              | Rich presence events                                                                     |
+| `Scopes`         | Record<string, string>              | Scopes                                                                                   |
 | `Status`         | Record<string, string>              | User statuses                                                                            |
 | `Themes`         | Record<string, string>              | Client themes; alias of `constants.ColorGenerator.themes`                                |
-| `UserFlags`      | Record<string, number>              | User flags                                                                               |
 
 #### `ColorGenerator` {#ColorGenerator}
 
@@ -785,10 +780,6 @@ Functions:
 ### `lodash`
 
 **Lodash** | [Documentation](https://lodash.com/docs)
-
-### `moment`
-
-**moment.js** | [Documentation](https://momentjs.com/docs/)
 
 ### `React`
 
