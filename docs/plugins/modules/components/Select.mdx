@@ -1,0 +1,76 @@
+import Required from "@site/src/components/Required";
+
+### Example
+
+```tsx
+import { components } from "replugged";
+const { SelectItem } = components;
+
+export function Settings(): React.ReactElement {
+  return (
+    <SelectItem
+      {...util.useSetting(cfg, "foo", "bar")}
+      options={[
+        {
+          label: "Option 1",
+          value: "option1",
+        },
+        {
+          label: "Option 2",
+          value: "option2",
+        },
+      ]}>
+      Select title
+    </SelectItem>
+  );
+}
+```
+
+### Enums
+
+| Enum           | Description                              |
+| -------------- | ---------------------------------------- |
+| `Select.Looks` | Select styles <br />`FILLED` \| `CUSTOM` |
+
+### Props
+
+| Name                | Type                                                          | Default               | Description                                                                                                 |
+| ------------------- | ------------------------------------------------------------- | --------------------- | ----------------------------------------------------------------------------------------------------------- |
+| `autoFocus`         | boolean                                                       | `false`               | Whether the select is on focus                                                                              |
+| `className`         | string                                                        |                       | Component class name                                                                                        |
+| `clear`             | () => void                                                    |                       | Function ran when the selection is cleared; works together with `clearable`; alias of `onClear`             |
+| `clearable`         | boolean                                                       | `false`               | Whether the selection is clearable from its button; works together with `clear`                             |
+| `closeOnSelect`     | boolean                                                       | `true`                | Whether to close the popout once selected an option                                                         |
+| `disabled`          | boolean                                                       | `false`               | Whether the select is disabled; alias of `isDisabled`                                                       |
+| `hideIcon`          | boolean                                                       | `false`               | Whether the arrow icon is hidden                                                                            |
+| `isDisabled`        | boolean                                                       | `false`               | Whether the select is disabled; alias of `disabled`                                                         |
+| `isSelected`        | <Required /> (value: string) => void                          |                       | Function ran to check if the option passed as a parameter is selectable; not necessary if `value` is passed |
+| `look`              | `Select.Looks`                                                | `Select.Looks.FILLED` | Define the select style                                                                                     |
+| `maxVisibleItems`   | number                                                        | `7`                   | How many options are visible                                                                                |
+| `onChange`          | <Required /> (value: string) => void                          |                       | Function ran on selection change; alias of `onSelect` and `select`                                          |
+| `onClear`           | () => void                                                    |                       | Function ran when the selection is cleared; works together with `clearable`; alias of `clear`               |
+| `onClose`           | () => void                                                    |                       | Function ran when the popout got closed                                                                     |
+| `onOpen`            | () => void                                                    |                       | Function ran when the popout got opened                                                                     |
+| `onSelect`          | <Required /> (value: string) => void                          |                       | Function ran on selection change; alias of `onChange` and `select`                                          |
+| `optionClassName`   | string                                                        |                       | Option element class name                                                                                   |
+| `options`           | <Required /> [`SelectOptionType`](#SelectOptionType)[]        |                       | Array of select options                                                                                     |
+| `placeholder`       | string                                                        | `Select`              | Select placeholder text                                                                                     |
+| `popoutClassName`   | string                                                        |                       | Popout element class name                                                                                   |
+| `popoutPosition`    | [`Tooltip.Positions`](Tooltip#enums)                          |                       | Popout position displayed on the select                                                                     |
+| `popoutWidth`       | number                                                        |                       | Popout width                                                                                                |
+| `renderOptionLabel` | (option: [`SelectOptionType`](#SelectOptionType)) => string   |                       | Function ran on option label element render, useful to customize labels                                     |
+| `renderOptionValue` | (option: [`SelectOptionType`](#SelectOptionType)[]) => string |                       | Function ran on option value element render, useful to customize values                                     |
+| `select`            | <Required /> (value: string) => void                          |                       | Function ran on selection change; alias of `onChange` and `onSelect`                                        |
+| `serialize`         | (value: string) => void                                       |                       | Function ran to serialize the option                                                                        |
+| `value`             | string                                                        |                       | Selected option value                                                                                       |
+
+### Types {#Select-types}
+
+#### `SelectOptionType`
+
+| Name       | Type                | Default | Description                    |
+| ---------- | ------------------- | ------- | ------------------------------ |
+| `disabled` | boolean             | `false` | Whether the option is disabled |
+| `key`      | string              |         | Option key                     |
+| `label`    | <Required /> string |         | Option name                    |
+| `value`    | <Required /> string |         | Option value                   |

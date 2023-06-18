@@ -103,43 +103,43 @@ Functions:
 
 ### `messages`
 
-<!-- [!]: `CaptchaPayload`, `ChannelMessages`, `FetchMessagesOptions`, `LocalFetchComplete`, `MessageJumpOptions` and all functions starting with an underscore aren't documented -->
+<!-- [!]: `ChannelMessages`, `FetchMessagesOptions`, `LocalFetchComplete`, `MessageJumpOptions` and all functions starting with an underscore aren't documented -->
 
 All functions for message actions are in this module.
 
 Functions:
 
-| Name                            | Parameters                                                                                                                                                                                                      | Return Type                                                       | Description                                                                                        |
-| ------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `clearChannel`                  | <Required /> `channelId`: string                                                                                                                                                                                | void                                                              | Clears all messages in a channel. This will only apply locally and the messages will be re-fetched |
-| `crosspostMessage`              | <Required /> `channelId`: string <br /> <Required /> `messageId`: string                                                                                                                                        | Promise<[`HTTPResponse`](#HTTPResponse) \| void>                  | Makes a message public in an announcement channel                                                  |
-| `deleteMessage`                 | <Required /> `channelId`: string <br /> <Required /> `messageId`: string <br /> `keepThreadArchived`: boolean                                                                                                   | Promise<void\>                                                    | Deletes a message from a channel                                                                   |
-| `dismissAutomatedMessage`       | <Required /> `message`: <APIReferences.Message />                                                                                                                                                               | void                                                              | Dismisses an ephemeral message                                                                     |
-| `editMessage`                   | <Required /> `channelId`: string <br /> <Required /> `messageId`: string <br /> <Required /> `message`: { content: string }                                                                                     | Promise<void\>                                                    | Edits a message                                                                                    |
-| `endEditMessage`                | <Required /> `channelId`: string <br /> `response`: [`HTTPResponse`](#HTTPResponse)                                                                                                                             | void                                                              | Dispatches an edited message                                                                       |
-| `fetchLocalMessages`            | <Required /> `channelId`: string <br /> <Required /> `before`: boolean <br /> <Required /> `after`: boolean <br /> <Required /> `limit`: number <br /> <Required /> `localFetchComplete`: `LocalFetchComplete`  | Promise<void\>                                                    | Fetches local messages                                                                             |
-| `fetchMessages`                 | <Required /> `options`: `FetchMessagesOptions`                                                                                                                                                                  | Promise<boolean\>                                                 | Fetches messages                                                                                   |
-| `focusMessage`                  | <Required /> `options`: [`FocusMessageOptions`](#FocusMessageOptions)                                                                                                                                           | void                                                              | Fetches with a focused message                                                                     |
-| `getMessage`                    | <Required /> `channelId`: string <br /> <Required /> `messageId`: string                                                                                                                                        | <APIReferences.Message />                                         | Gets the message by its id                                                                         |
-| `getMessages`                   | <Required /> `channelId`: string                                                                                                                                                                                | `MessagesData`                                                    | Gets all messages in a channel, with a system to manage data                                       |
-| `getSendMessageOptionsForReply` | <Required /> `options`: [`SendMessageForReplyOptions`](#SendMessageForReplyOptions)                                                                                                                             | [`SendMessageOptionsForReply`](#SendMessageOptionsForReply) \| {} | Gets options for a reply                                                                           |
-| `jumpToMessage`                 | <Required /> `options`: `MessageJumpOptions`                                                                                                                                                                    | Promise<boolean\>                                                 | Jumps to a message                                                                                 |
-| `jumpToPresent`                 | <Required /> `channelId`: string <br /> <Required /> `limit`: number                                                                                                                                            | void                                                              | Jumps to the most recent message                                                                   |
-| `patchMessageAttachments`       | <Required /> `channelId`: string <br /> <Required /> `messageId`: string <br /> <Required /> `attachments`: <APIReferences.MessageAttachment />[]                                                               | Promise<void\>                                                    | Changes the attachments of a message                                                               |
-| `receiveMessage`                | <Required /> `channelId`: string <br /> <Required /> `message`: <APIReferences.Message /> <br /> `optimistic`: boolean <br /> `options`: [`OutgoingMessageOptions`](#OutgoingMessageOptions)                    | void                                                              | Reveals a message                                                                                  |
-| `sendActivityBookmark`          | <Required /> `channelId`: string <br /> <Required /> `activityDetails`: string <br /> `analyticsTriggeredFrom`: string <br /> `suggestedInvite`: [`InviteSuggestion`](#InviteSuggestion)                        | Promise<[`HTTPResponse`](#HTTPResponse) \| void>                  | Sends an activity bookmark                                                                         |
-| `sendBotMessage`                | <Required /> `channelId`: string <br /> <Required /> `content`: string <br /> `messageName`: string                                                                                                             | void                                                              | Clyde sends a custom message                                                                       |
-| `sendClydeError`                | <Required /> `channelId`: string <br /> `code`: number                                                                                                                                                          | void                                                              | Clyde sends an error message                                                                       |
-| `sendGreetMessage`              | <Required /> `channelId`: string <br /> <Required /> `stickerId`: string <br /> `options`: [`MessageGreetOptions`](#MessageGreetOptions)                                                                        | Promise<[`HTTPResponse`](#HTTPResponse) \| void>                  | Sends a greet message                                                                              |
-| `sendInvite`                    | <Required /> `channelId`: string <br /> <Required /> `inviteCode`: string <br /> `analyticsTriggeredFrom`: string <br /> `suggestedInvite`: [`InviteSuggestion`](#InviteSuggestion)                             | Promise<[`HTTPResponse`](#HTTPResponse) \| void>                  | Sends an invite                                                                                    |
-| `sendMessage`                   | <Required /> `channelId`: string <br /> <Required /> `message`: [`OutgoingMessage`](#OutgoingMessage) <br /> `promise`: boolean <br /> `options`: [`OutgoingMessageOptions`](#OutgoingMessageOptions)           | Promise<[`HTTPResponse`](#HTTPResponse) \| void>                  | Sends a message                                                                                    |
-| `sendStickers`                  | <Required /> `channelId`: string <br /> <Required /> `stickersIds`: string[] <br /> `content`: string <br /> `options`: [`SendMessageOptionsForReply`](#SendMessageOptionsForReply) \| {} <br /> `tts`: boolean | Promise<[`HTTPResponse`](#HTTPResponse) \| void>                  | Sends a sticker                                                                                    |
-| `startEditMessage`              | <Required /> `channelId`: string <br /> <Required /> `messageId`: string <br /> <Required /> `content`: string                                                                                                  | void                                                              | Starts editing a message                                                                           |
-| `suppressEmbeds`                | <Required /> `channelId`: string <br /> <Required /> `messageId`: string                                                                                                                                        | Promise<void\>                                                    | Deletes an embed from a message                                                                    |
-| `trackInvite`                   | <Required /> `options`: [`TrackInviteOptions`](#TrackInviteOptions)                                                                                                                                             | void                                                              | Tracks an invite for analytics                                                                     |
-| `trackJump`                     | <Required /> `channelId`: string <br /> <Required /> `messageId`: string <br /> <Required /> `context`: string <br /> `extraProperties`: Record<string, unknown>                                                | void                                                              | Tracks a jump for analytics                                                                        |
-| `truncateMessages`              | <Required /> `channelId`: string <br /> <Required /> `truncateBottom`: boolean <br /> <Required /> `truncateTop`: boolean                                                                                       | void                                                              | Truncates a message list                                                                           |
-| `updateEditMessage`             | <Required /> `channelId`: string <br /> <Required /> `textValue`: string <br /> <Required /> `richValue`: unknown                                                                                               | void                                                              | Updates an edit message                                                                            |
+| Name                            | Parameters                                                                                                                                                                                                      | Return Type                                                       | Description                                                                                         |
+| ------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| `clearChannel`                  | <Required /> `channelId`: string                                                                                                                                                                                | void                                                              | Clears all messages in a channel. This will only apply locally and the messages will be re-fetched. |
+| `crosspostMessage`              | <Required /> `channelId`: string <br /> <Required /> `messageId`: string                                                                                                                                        | Promise<[`HTTPResponse`](#HTTPResponse) \| void>                  | Makes a message public in an announcement channel                                                   |
+| `deleteMessage`                 | <Required /> `channelId`: string <br /> <Required /> `messageId`: string <br /> `keepThreadArchived`: boolean                                                                                                   | Promise<void\>                                                    | Deletes a message from a channel                                                                    |
+| `dismissAutomatedMessage`       | <Required /> `message`: <APIReferences.Message />                                                                                                                                                               | void                                                              | Dismisses an ephemeral message                                                                      |
+| `editMessage`                   | <Required /> `channelId`: string <br /> <Required /> `messageId`: string <br /> <Required /> `message`: { content: string }                                                                                     | Promise<void\>                                                    | Edits a message                                                                                     |
+| `endEditMessage`                | <Required /> `channelId`: string <br /> `response`: [`HTTPResponse`](#HTTPResponse)                                                                                                                             | void                                                              | Dispatches an edited message                                                                        |
+| `fetchLocalMessages`            | <Required /> `channelId`: string <br /> <Required /> `before`: boolean <br /> <Required /> `after`: boolean <br /> <Required /> `limit`: number <br /> <Required /> `localFetchComplete`: `LocalFetchComplete`  | Promise<void\>                                                    | Fetches local messages                                                                              |
+| `fetchMessages`                 | <Required /> `options`: `FetchMessagesOptions`                                                                                                                                                                  | Promise<boolean\>                                                 | Fetches messages                                                                                    |
+| `focusMessage`                  | <Required /> `options`: [`FocusMessageOptions`](#FocusMessageOptions)                                                                                                                                           | void                                                              | Fetches with a focused message                                                                      |
+| `getMessage`                    | <Required /> `channelId`: string <br /> <Required /> `messageId`: string                                                                                                                                        | <APIReferences.Message />                                         | Gets the message by its id                                                                          |
+| `getMessages`                   | <Required /> `channelId`: string                                                                                                                                                                                | `MessagesData`                                                    | Gets all messages in a channel, with a system to manage data                                        |
+| `getSendMessageOptionsForReply` | <Required /> `options`: [`SendMessageForReplyOptions`](#SendMessageForReplyOptions)                                                                                                                             | [`SendMessageOptionsForReply`](#SendMessageOptionsForReply) \| {} | Gets options for a reply                                                                            |
+| `jumpToMessage`                 | <Required /> `options`: `MessageJumpOptions`                                                                                                                                                                    | Promise<boolean\>                                                 | Jumps to a message                                                                                  |
+| `jumpToPresent`                 | <Required /> `channelId`: string <br /> <Required /> `limit`: number                                                                                                                                            | void                                                              | Jumps to the most recent message                                                                    |
+| `patchMessageAttachments`       | <Required /> `channelId`: string <br /> <Required /> `messageId`: string <br /> <Required /> `attachments`: <APIReferences.MessageAttachment />[]                                                               | Promise<void\>                                                    | Changes the attachments of a message                                                                |
+| `receiveMessage`                | <Required /> `channelId`: string <br /> <Required /> `message`: <APIReferences.Message /> <br /> `optimistic`: boolean <br /> `options`: [`OutgoingMessageOptions`](#OutgoingMessageOptions)                    | void                                                              | Reveals a message                                                                                   |
+| `sendActivityBookmark`          | <Required /> `channelId`: string <br /> <Required /> `activityDetails`: string <br /> `analyticsTriggeredFrom`: string <br /> `suggestedInvite`: [`InviteSuggestion`](#InviteSuggestion)                        | Promise<[`HTTPResponse`](#HTTPResponse) \| void>                  | Sends an activity bookmark                                                                          |
+| `sendBotMessage`                | <Required /> `channelId`: string <br /> <Required /> `content`: string <br /> `messageName`: string                                                                                                             | void                                                              | Clyde sends a custom message                                                                        |
+| `sendClydeError`                | <Required /> `channelId`: string <br /> `code`: number                                                                                                                                                          | void                                                              | Clyde sends an error message                                                                        |
+| `sendGreetMessage`              | <Required /> `channelId`: string <br /> <Required /> `stickerId`: string <br /> `options`: [`MessageGreetOptions`](#MessageGreetOptions)                                                                        | Promise<[`HTTPResponse`](#HTTPResponse) \| void>                  | Sends a greet message                                                                               |
+| `sendInvite`                    | <Required /> `channelId`: string <br /> <Required /> `inviteCode`: string <br /> `analyticsTriggeredFrom`: string <br /> `suggestedInvite`: [`InviteSuggestion`](#InviteSuggestion)                             | Promise<[`HTTPResponse`](#HTTPResponse) \| void>                  | Sends an invite                                                                                     |
+| `sendMessage`                   | <Required /> `channelId`: string <br /> <Required /> `message`: [`OutgoingMessage`](#OutgoingMessage) <br /> `promise`: boolean <br /> `options`: [`OutgoingMessageOptions`](#OutgoingMessageOptions)           | Promise<[`HTTPResponse`](#HTTPResponse) \| void>                  | Sends a message                                                                                     |
+| `sendStickers`                  | <Required /> `channelId`: string <br /> <Required /> `stickersIds`: string[] <br /> `content`: string <br /> `options`: [`SendMessageOptionsForReply`](#SendMessageOptionsForReply) \| {} <br /> `tts`: boolean | Promise<[`HTTPResponse`](#HTTPResponse) \| void>                  | Sends a sticker                                                                                     |
+| `startEditMessage`              | <Required /> `channelId`: string <br /> <Required /> `messageId`: string <br /> <Required /> `content`: string                                                                                                  | void                                                              | Starts editing a message                                                                            |
+| `suppressEmbeds`                | <Required /> `channelId`: string <br /> <Required /> `messageId`: string                                                                                                                                        | Promise<void\>                                                    | Deletes an embed from a message                                                                     |
+| `trackInvite`                   | <Required /> `options`: [`TrackInviteOptions`](#TrackInviteOptions)                                                                                                                                             | void                                                              | Tracks an invite for analytics                                                                      |
+| `trackJump`                     | <Required /> `channelId`: string <br /> <Required /> `messageId`: string <br /> <Required /> `context`: string <br /> `extraProperties`: Record<string, unknown>                                                | void                                                              | Tracks a jump for analytics                                                                         |
+| `truncateMessages`              | <Required /> `channelId`: string <br /> <Required /> `truncateBottom`: boolean <br /> <Required /> `truncateTop`: boolean                                                                                       | void                                                              | Truncates a message list                                                                            |
+| `updateEditMessage`             | <Required /> `channelId`: string <br /> <Required /> `textValue`: string <br /> <Required /> `richValue`: unknown                                                                                               | void                                                              | Updates an edit message                                                                             |
 
 #### Types {#messages-types}
 
@@ -172,7 +172,6 @@ Functions:
 | Name               | Type                                    | Default | Description                            |
 | ------------------ | --------------------------------------- | ------- | -------------------------------------- |
 | `allowedMentions`  | [`AllowedMentions`](#AllowedMentions)   |         | Allowed mentions for the greet message |
-| `captchaPayload`   | `CaptchaPayload`                        |         | Captcha data                           |
 | `messageReference` | [`MessageReference`](#MessageReference) |         | Contains information for a reply       |
 
 ##### `MessageReference` {#MessageReference}
@@ -198,7 +197,6 @@ Functions:
 | ------------------ | --------------------------------------- | ------- | ------------------------------------------------------- |
 | `activityAction`   | number                                  |         | Activity action type                                    |
 | `allowedMentions`  | [`AllowedMentions`](#AllowedMentions)   |         | Allowed mentions for the message                        |
-| `captchaPayload`   | `CaptchaPayload`                        |         | Captcha data                                            |
 | `location`         | string                                  |         | Location of the invite                                  |
 | `messageReference` | [`MessageReference`](#MessageReference) |         | Contains information for a reply                        |
 | `stickerIds`       | string[]                                |         | Array with sticker ids                                  |
@@ -283,10 +281,10 @@ This module is for making requests to the Discord API.
 
 Props:
 
-| Name                  | Type                  | Description                                                                 |
-| --------------------- | --------------------- | --------------------------------------------------------------------------- |
-| `V6OrEarlierAPIError` | `V6OrEarlierAPIError` | Class for creating API errors with v6 or earlier                            |
-| `V8APIError`          | `V8APIError`          | Class for creating API errors with v8. Supports captcha and multiple errors |
+| Name                  | Type                  | Description                                                                  |
+| --------------------- | --------------------- | ---------------------------------------------------------------------------- |
+| `V6OrEarlierAPIError` | `V6OrEarlierAPIError` | Class for creating API errors with v6 or earlier                             |
+| `V8APIError`          | `V8APIError`          | Class for creating API errors with v8. Supports captcha and multiple errors. |
 
 Functions:
 
@@ -355,17 +353,22 @@ Props:
 
 | Name             | Type                                | Description                                                                              |
 | ---------------- | ----------------------------------- | ---------------------------------------------------------------------------------------- |
+| `ChannelTypes`   | Record<string, string \| number>    | Channel types                                                                            |
 | `ColorGenerator` | [`ColorGenerator`](#ColorGenerator) | Utility module containing functions useful for generating colors from a given saturation |
 | `CSSVariables`   | Record<string, string>              | CSS variables                                                                            |
-| `Paths`          | Record<string, string>              | Paths                                                                                    |
+| `Endpoints`      | Record<string, unknown>             | Endpoints                                                                                |
+| `GuildFeatures`  | Record<string, string>              | Guild features                                                                           |
+| `Paths`          | Record<string, string>              | Web routes                                                                               |
 | `Permissions`    | Record<string, bigint>              | Permissions                                                                              |
 | `raw`            | Record<string, unknown>             | Raw module with all constants; check out its contents with Discord DevTools              |
-| `RPCCommands`    | Record<string, string>              | Rich presence commands                                                                   |
-| `RPCErrors`      | Record<string, string \| number>    | Rich presence errors                                                                     |
-| `RPCEvents`      | Record<string, string>              | Rich presence events                                                                     |
-| `Scopes`         | Record<string, string>              | Scopes                                                                                   |
+| `Routes`         | Record<string, unknown>             | Routes                                                                                   |
+| `RPCCommands`    | Record<string, string>              | RPC commands                                                                             |
+| `RPCErrors`      | Record<string, string \| number>    | RPC close codes                                                                          |
+| `RPCEvents`      | Record<string, string>              | RPC events                                                                               |
+| `Scopes`         | Record<string, string>              | OAuth 2.0 scopes                                                                         |
 | `Status`         | Record<string, string>              | User statuses                                                                            |
 | `Themes`         | Record<string, string>              | Client themes; alias of `constants.ColorGenerator.themes`                                |
+| `UserFlags`      | Record<string, number>              | User flags                                                                               |
 
 #### `ColorGenerator` {#ColorGenerator}
 
@@ -399,7 +402,7 @@ Props:
 
 <!-- [!]: `ImpressionProperties` isn't documented -->
 
-Utility module to use together with the [`ContextMenu`](components#contextmenu) component.
+Utility module to use together with the [`ContextMenu`](components/ContextMenu) component.
 
 Functions:
 
@@ -413,26 +416,26 @@ Functions:
 
 ##### `ContextMenuProps` {#ContextMenuProps}
 
-| Name             | Type                                          | Default | Description                         |
-| ---------------- | --------------------------------------------- | ------- | ----------------------------------- |
-| `className`      | string                                        |         | Component class name                |
-| `config`         | [`ContextMenusOptions`](#ContextMenusOptions) |         | Options used for that context menu  |
-| `context`        | string                                        | `APP`   | App context                         |
-| `onHeightUpdate` | () => void                                    |         | Function ran to update the position |
-| `position`       | [`Tooltip.Positions`](components#tooltip)     |         | Context menu position               |
-| `target`         | HTMLElement                                   |         | Context menu children element       |
-| `theme`          | string                                        |         | Current theme                       |
+| Name             | Type                                            | Default | Description                         |
+| ---------------- | ----------------------------------------------- | ------- | ----------------------------------- |
+| `className`      | string                                          |         | Component class name                |
+| `config`         | [`ContextMenusOptions`](#ContextMenusOptions)   |         | Options used for that context menu  |
+| `context`        | string                                          | `APP`   | App context                         |
+| `onHeightUpdate` | () => void                                      |         | Function ran to update the position |
+| `position`       | [`Tooltip.Positions`](components/Tooltip#enums) |         | Context menu position               |
+| `target`         | HTMLElement                                     |         | Context menu children element       |
+| `theme`          | string                                          |         | Current theme                       |
 
 ##### `ContextMenusOptions` {#ContextMenusOptions}
 
-| Name                   | Type                                      | Default | Description                                                            |
-| ---------------------- | ----------------------------------------- | ------- | ---------------------------------------------------------------------- |
-| `align`                | [`Tooltip.Aligns`](components#tooltip)    |         | Context menu alignment to the children; works together with `position` |
-| `enableSpellCheck`     | boolean                                   | `false` | Whether to enable spell checking                                       |
-| `impressionName`       | string                                    |         | Impression name for analytics                                          |
-| `impressionProperties` | `ImpressionProperties`                    |         | Impression properties for analytics                                    |
-| `onClose`              | () => void                                |         | Function ran when the context menu got closed                          |
-| `position`             | [`Tooltip.Positions`](components#tooltip) |         | Context menu position; works together with `align`                     |
+| Name                   | Type                                            | Default | Description                                                            |
+| ---------------------- | ----------------------------------------------- | ------- | ---------------------------------------------------------------------- |
+| `align`                | [`Tooltip.Aligns`](components/Tooltip#enums)    |         | Context menu alignment to the children; works together with `position` |
+| `enableSpellCheck`     | boolean                                         | `false` | Whether to enable spell checking                                       |
+| `impressionName`       | string                                          |         | Impression name for analytics                                          |
+| `impressionProperties` | `ImpressionProperties`                          |         | Impression properties for analytics                                    |
+| `onClose`              | () => void                                      |         | Function ran when the context menu got closed                          |
+| `position`             | [`Tooltip.Positions`](components/Tooltip#enums) |         | Context menu position; works together with `align`                     |
 
 ### `flux`
 
@@ -601,13 +604,13 @@ Functions:
 
 ### `modal`
 
-Utility module to use together with the [`Modal`](components#modal) component.
+Utility module to use together with the [`Modal`](components/Modal) component.
 
 Enums:
 
 :::info
 
-The following enums are a shortcut to the [`Flex`](components#flex) component enums.
+The following enums are a shortcut to the [`Flex`](components/Flex) component enums.
 
 :::
 
@@ -646,20 +649,20 @@ modal.confirm({}).then((confirmed) => {
 
 ##### `AlertProps` {#AlertProps}
 
-| Name                   | Type                                 | Default               | Description                                    |
-| ---------------------- | ------------------------------------ | --------------------- | ---------------------------------------------- |
-| `body`                 | string \| ReactElement               |                       | Modal content                                  |
-| `cancelText`           | string                               |                       | Text for the cancel button                     |
-| `className`            | string                               |                       | Component class name                           |
-| `confirmColor`         | [`Button.Colors`](components#Button) | `Button.Colors.BRAND` | Primary button color                           |
-| `confirmText`          | string                               | `Okay`                | Text for the cancel button                     |
-| `onCancel`             | () => void                           |                       | Function ran on modal cancel                   |
-| `onCloseCallback`      | () => void                           |                       | Function ran on modal close                    |
-| `onConfirm`            | () => void                           |                       | Function ran when the primary button is used   |
-| `onConfirmSecondary`   | () => void                           |                       | Function ran when the secondary button is used |
-| `secondaryConfirmText` | string                               |                       | Text for the secondary button                  |
-| `title`                | string                               |                       | Modal title                                    |
-| `titleClassName`       | string                               |                       | Title element class name                       |
+| Name                   | Type                                       | Default               | Description                                    |
+| ---------------------- | ------------------------------------------ | --------------------- | ---------------------------------------------- |
+| `body`                 | string \| ReactElement                     |                       | Modal content                                  |
+| `cancelText`           | string                                     |                       | Text for the cancel button                     |
+| `className`            | string                                     |                       | Component class name                           |
+| `confirmColor`         | [`Button.Colors`](components/Button#enums) | `Button.Colors.BRAND` | Primary button color                           |
+| `confirmText`          | string                                     | `Okay`                | Text for the cancel button                     |
+| `onCancel`             | () => void                                 |                       | Function ran on modal cancel                   |
+| `onCloseCallback`      | () => void                                 |                       | Function ran on modal close                    |
+| `onConfirm`            | () => void                                 |                       | Function ran when the primary button is used   |
+| `onConfirmSecondary`   | () => void                                 |                       | Function ran when the secondary button is used |
+| `secondaryConfirmText` | string                                     |                       | Text for the secondary button                  |
+| `title`                | string                                     |                       | Modal title                                    |
+| `titleClassName`       | string                                     |                       | Title element class name                       |
 
 ##### `ModalOptions` {#ModalOptions}
 
@@ -782,6 +785,10 @@ Functions:
 ### `lodash`
 
 **Lodash** | [Documentation](https://lodash.com/docs)
+
+### `moment`
+
+**moment.js** | [Documentation](https://momentjs.com/docs/)
 
 ### `React`
 

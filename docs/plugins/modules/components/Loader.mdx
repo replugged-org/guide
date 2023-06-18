@@ -1,0 +1,33 @@
+import CSSProperties from "@site/src/components/CSSProperties";
+
+### Example
+
+```tsx
+import { components } from "replugged";
+const { Loader } = components;
+
+<Loader type={Loader.Type.WANDERING_CUBES} />;
+```
+
+### Enums
+
+| Enum          | Description                                                                                                       |
+| ------------- | ----------------------------------------------------------------------------------------------------------------- |
+| `Loader.Type` | Loader types <br />`WANDERING_CUBES` \| `CHASING_DOTS` \| `PULSING_ELLIPSIS` \| `SPINNING_CIRCLE` \| `LOW_MOTION` |
+
+### Props
+
+:::info
+
+The props of this component extend the attributes of the `span` element, or `div` if
+`Loader.Type.SPINNING_CIRCLE` type is used.
+
+:::
+
+| Name            | Type              | Default                       | Description                                      |
+| --------------- | ----------------- | ----------------------------- | ------------------------------------------------ |
+| `animated`      | boolean           | `true`                        | Whether the loader is animated                   |
+| `className`     | string            |                               | Component class name                             |
+| `itemClassName` | string            |                               | Class name of all the elements inside the loader |
+| `style`         | <CSSProperties /> |                               | Component style                                  |
+| `type`          | `Loader.Type`     | `Loader.Type.WANDERING_CUBES` | Define type of loader                            |

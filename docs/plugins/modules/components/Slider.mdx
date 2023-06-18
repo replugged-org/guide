@@ -1,0 +1,58 @@
+import CSSProperties from "@site/src/components/CSSProperties";
+
+### Example
+
+```tsx
+import { components } from "replugged";
+const { SliderItem } = components;
+
+export function Settings(): React.ReactElement {
+  return (
+    <SliderItem
+      {...util.useSetting(cfg, "foo", 0)}
+      minValue={0}
+      maxValue={100}
+      markers={[0, 25, 50, 75, 100]}>
+      Slider title
+    </SliderItem>
+  );
+}
+```
+
+### Enums
+
+| Enum                     | Description                                      |
+| ------------------------ | ------------------------------------------------ |
+| `Slider.MarkerPositions` | Slider marker positions <br />`ABOVE` \| `BELOW` |
+
+### Props
+
+| Name               | Type                             | Default                        | Description                                                          |
+| ------------------ | -------------------------------- | ------------------------------ | -------------------------------------------------------------------- |
+| `asValueChanges`   | (value: number) => void          |                                | Function ran on grabber move                                         |
+| `barClassName`     | string                           |                                | Bar element class name                                               |
+| `barStyles`        | <CSSProperties />                |                                | Bar element style                                                    |
+| `className`        | string                           |                                | Component class name                                                 |
+| `defaultValue`     | number                           |                                | Default value, marked in green                                       |
+| `disabled`         | boolean                          | `false`                        | Whether the slider is disabled                                       |
+| `equidistant`      | boolean                          | `false`                        | Whether the markers are equidistant from each other                  |
+| `fillStyles`       | <CSSProperties />                |                                | Bar fill element style                                               |
+| `getAriaValueText` | (value: number) => void          |                                | Function ran on grabber move                                         |
+| `grabberClassName` | string                           |                                | Grabber element class name                                           |
+| `grabberStyles`    | <CSSProperties />                |                                | Grabber element style                                                |
+| `hideBubble`       | boolean                          | `false`                        | Whether the tooltip is hidden when `stickToMarkers` is `false`       |
+| `initialValue`     | number                           | `10`                           | Initial value the slider grabber is at; alias of `value`             |
+| `keyboardStep`     | number                           | `1`                            | By how much the slider grabber has to move if the keyboard is used   |
+| `markerPosition`   | `Slider.MarkerPositions`         | `Slider.MarkerPositions.ABOVE` | Marker position                                                      |
+| `markers`          | number[]                         |                                | Array of slider markers                                              |
+| `maxValue`         | number                           | `100`                          | Slider maximum value                                                 |
+| `mini`             | boolean                          | `false`                        | Whether the slider grabber is a small dot                            |
+| `minValue`         | number                           | `0`                            | Slider minimum value                                                 |
+| `onChange`         | (value: number) => void          |                                | Function ran on value change                                         |
+| `onMarkerRender`   | (value: number) => string        |                                | Function ran on marker render, useful to customize markers           |
+| `onValueChange`    | (value: number) => void          |                                | Function ran on value change; alias of `onChange`                    |
+| `onValueRender`    | (value: number) => string        |                                | Function ran on value render, useful to customize values             |
+| `orientation`      | string                           |                                | Slider orientation                                                   |
+| `renderMarker`     | (marker: number) => ReactElement |                                | Function ran on marker render, useful to use a custom marker element |
+| `stickToMarkers`   | boolean                          | `false`                        | Whether the slider grabber can stick to markers                      |
+| `value`            | number                           |                                | Slider value                                                         |

@@ -1,0 +1,25 @@
+import Required from "@site/src/components/Required";
+
+### Example
+
+```tsx
+import { components } from "replugged";
+const { Notice } = components;
+
+<Notice messageType={Notice.Types.POSITIVE}>Notice text</Notice>;
+```
+
+### Enums
+
+| Enum           | Description                                                     |
+| -------------- | --------------------------------------------------------------- |
+| `Notice.Types` | Notice types <br />`WARNING` \| `INFO` \| `ERROR` \| `POSITIVE` |
+
+### Props
+
+| Name          | Type                        | Default          | Description                 |
+| ------------- | --------------------------- | ---------------- | --------------------------- |
+| `className`   | string                      |                  | Component class name        |
+| `messageType` | <Required /> `Notice.Types` |                  | Define type of notice       |
+| `textColor`   | string                      | `text-normal`    | Text color (variable name)  |
+| `textVariant` | string                      | `text-sm/medium` | Text variant (variant name) |

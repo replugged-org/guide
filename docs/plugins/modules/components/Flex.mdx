@@ -1,0 +1,60 @@
+### Example
+
+```tsx
+import { components } from "replugged";
+const { Flex } = components;
+
+<Flex direction={Flex.Direction.VERTICAL}>{/* Your components here */}</Flex>;
+```
+
+### Subcomponents
+
+| Component                  | Description                           |
+| -------------------------- | ------------------------------------- |
+| [`Flex.Child`](#FlexChild) | Flex child, useful together with Flex |
+
+### Enums
+
+| Enum             | Description                                                                      |
+| ---------------- | -------------------------------------------------------------------------------- |
+| `Flex.Align`     | Flexbox alignments <br />`START` \| `END` \| `CENTER` \| `STRETCH` \| `BASELINE` |
+| `Flex.Direction` | Flexbox directions <br />`VERTICAL` \| `HORIZONTAL` \| `HORIZONTAL_REVERSE`      |
+| `Flex.Justify`   | Flexbox justifies <br />`START` \| `END` \| `CENTER` \| `BETWEEN` \| `AROUND`    |
+| `Flex.Wrap`      | Flexbox wraps <br />`NO_WRAP` \| `WRAP` \| `WRAP_REVERSE`                        |
+
+### Props
+
+:::info
+
+The props of this component extend the attributes of the `div` element.
+
+:::
+
+| Name        | Type             | Default                     | Description       |
+| ----------- | ---------------- | --------------------------- | ----------------- |
+| `align`     | `Flex.Align`     | `Flex.Align.STRETCH`        | Flexbox align     |
+| `basis`     | string           | `auto`                      | Flexbox basis     |
+| `direction` | `Flex.Direction` | `Flex.Direction.HORIZONTAL` | Flexbox direction |
+| `grow`      | number           | `1`                         | Flexbox grow      |
+| `justify`   | `Flex.Justify`   | `Flex.Justify.START`        | Flexbox justify   |
+| `shrink`    | number           | `1`                         | Flexbox shrink    |
+| `wrap`      | `Flex.Wrap`      | `Flex.Wrap.NO_WRAP`         | Flexbox wrap      |
+
+### Types {#Flex-types}
+
+#### `Flex.Child` {#FlexChild}
+
+Props:
+
+:::info
+
+The props of this component extend the attributes of the `div` element.
+
+:::
+
+| Name     | Type    | Default | Description                  |
+| -------- | ------- | ------- | ---------------------------- |
+| `basis`  | string  | `auto`  | Flexbox basis                |
+| `grow`   | number  | `1`     | Flexbox grow                 |
+| `shrink` | number  | `1`     | Flexbox shrink               |
+| `wrap`   | boolean | `false` | Whether to wrap its children |

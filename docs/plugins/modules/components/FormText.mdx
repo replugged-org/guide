@@ -1,0 +1,33 @@
+import CSSProperties from "@site/src/components/CSSProperties";
+
+### Example
+
+```tsx
+import { components } from "replugged";
+const { FormText } = components;
+
+<FormText.DEFAULT>This is an example</FormText.DEFAULT>;
+```
+
+### Subcomponents
+
+| Component                    | Description            |
+| ---------------------------- | ---------------------- |
+| `FormText.DEFAULT`           | Type `default`         |
+| `FormText.INPUT_PLACEHOLDER` | Type `placeholder`     |
+| `FormText.DESCRIPTION`       | Type `description`     |
+| `FormText.LABEL_BOLD`        | Type `labelBold`       |
+| `FormText.LABEL_SELECTED`    | Type `labelSelected`   |
+| `FormText.LABEL_DESCRIPTOR`  | Type `labelDescriptor` |
+| `FormText.ERROR`             | Type `error`           |
+| `FormText.SUCCESS`           | Type `success`         |
+
+### Props
+
+| Name         | Type              | Default   | Description                    |
+| ------------ | ----------------- | --------- | ------------------------------ |
+| `className`  | string            |           | Component class name           |
+| `disabled`   | boolean           | `false`   | Whether the text is disabled   |
+| `selectable` | boolean           | `false`   | Whether the text is selectable |
+| `style`      | <CSSProperties /> |           | Component style                |
+| `type`       | string            | `default` | Define type of text            |

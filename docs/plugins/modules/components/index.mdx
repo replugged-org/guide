@@ -1,0 +1,58 @@
+---
+sidebar_position: 2
+title: Components
+description: Documented components for plugins
+toc_max_heading_level: 4
+---
+
+import CSSProperties from "@site/src/components/CSSProperties";
+import Required from "@site/src/components/Required";
+
+:::caution
+
+All props are optional unless they are marked with an asterisk ( <Required /> ).
+
+:::
+
+## Input components
+
+- [`Button`](Button) (or `ButtonItem`)
+- [`Checkbox`](Checkbox) (or `CheckboxItem`)
+- [`Radio`](Radio) (or `RadioItem`)
+- [`Select`](Select) (or `SelectItem`)
+- [`Slider`](Slider) (or `SliderItem`)
+- [`Switch`](Switch) (or `SwitchItem`)
+- [`TextArea`](TextArea)
+- [`TextInput`](TextInput)
+
+All input components ending with `Item` have their original counterpart, and differ in some props:
+
+| Name       | Type              | Default | Description                                      |
+| ---------- | ----------------- | ------- | ------------------------------------------------ |
+| `children` | ReactNode         |         | Wrapper component title                          |
+| `note`     | string            |         | Description of what the input component is about |
+| `style`    | <CSSProperties /> |         | Wrapper component style                          |
+
+:::caution
+
+Enums listed cannot be accessed on the `Item` components. For example, `Checkbox.Aligns` is **not**
+available on `CheckboxItem.Aligns`.
+
+:::
+
+## Other components
+
+- [`Category`](Category)
+- [`Clickable`](Clickable)
+- [`ContextMenu`](ContextMenu)
+- [`Divider`](Divider)
+- [`ErrorBoundary`](ErrorBoundary)
+- [`Flex`](Flex)
+- [`FormItem`](FormItem)
+- [`FormNotice`](FormNotice)
+- [`FormText`](FormText)
+- [`Loader`](Loader)
+- [`Modal`](Modal)
+- [`Notice`](Notice)
+- [`Text`](Text)
+- [`Tooltip`](Tooltip)

@@ -1,0 +1,42 @@
+import CSSProperties from "@site/src/components/CSSProperties";
+import Required from "@site/src/components/Required";
+
+### Example
+
+```tsx
+import { components } from "replugged";
+const { FormNotice } = components;
+
+<FormNotice title="Foo" body="This is a description" type={FormNotice.Types.PRIMARY} />;
+```
+
+### Enums
+
+| Enum               | Description                                                                               |
+| ------------------ | ----------------------------------------------------------------------------------------- |
+| `FormNotice.Types` | Notice types <br />`PRIMARY` \| `DANGER` \| `WARNING` \| `SUCCESS` \| `BRAND` \| `CUSTOM` |
+
+### Props
+
+| Name            | Type                      | Default                   | Description                                                                   |
+| --------------- | ------------------------- | ------------------------- | ----------------------------------------------------------------------------- |
+| `align`         | `Flex.Align`              | `Flex.Align.START`        | Flexbox align                                                                 |
+| `body`          | <Required /> ReactNode    |                           | Notice description                                                            |
+| `button`        | ReactNode                 |                           | Button component                                                              |
+| `className`     | string                    |                           | Component class name                                                          |
+| `iconClassName` | string                    |                           | Icon element class name                                                       |
+| `imageData`     | [`ImageData`](#ImageData) |                           | Object that includes the information needed to display an image in the notice |
+| `style`         | <CSSProperties />         |                           | Component style                                                               |
+| `title`         | ReactNode                 |                           | Notice title                                                                  |
+| `type`          | `FormNotice.Types`        | `FormNotice.Types.DANGER` | Notice type                                                                   |
+
+### Types {#FormNotice-types}
+
+#### `ImageData` {#ImageData}
+
+| Name       | Type                | Default | Description                              |
+| ---------- | ------------------- | ------- | ---------------------------------------- |
+| `height`   | <Required /> number |         | Image height                             |
+| `position` | string              | `left`  | Position of the image; `left` or `right` |
+| `src`      | <Required /> string |         | Image source path                        |
+| `width`    | <Required /> number |         | Image width                              |

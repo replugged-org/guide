@@ -1,0 +1,30 @@
+import CSSProperties from "@site/src/components/CSSProperties";
+import Required from "@site/src/components/Required";
+
+### Example
+
+```tsx
+import { components } from "replugged";
+const { SwitchItem } = components;
+
+export function Settings(): React.ReactElement {
+  return <SwitchItem {...util.useSetting(cfg, "foo", true)}>Switch title</SwitchItem>;
+}
+```
+
+### Props
+
+| Name          | Type                                  | Default | Description                                                      |
+| ------------- | ------------------------------------- | ------- | ---------------------------------------------------------------- |
+| `checked`     | <Required /> boolean                  |         | Switch state; use `value` with the Item component instead        |
+| `className`   | string                                |         | Component class name                                             |
+| `disabled`    | boolean                               | `false` | Whether the switch is disabled                                   |
+| `focusProps`  | Record<string, unknown>               |         | Props for the FocusRing component                                |
+| `hideBorder`  | boolean                               | `false` | Whether a divider is not displayed at the end of the switch item |
+| `id`          | string                                |         | Input element id                                                 |
+| `innerRef`    | Ref<unknown\>                         |         | Inner ref                                                        |
+| `note`        | string                                |         | Description of what the switch item is about                     |
+| `onChange`    | <Required /> (value: boolean) => void |         | Function ran on state change                                     |
+| `style`       | <CSSProperties />                     |         | Component style                                                  |
+| `tooltipNote` | string                                |         | Tooltip text displayed on the switch item                        |
+| `value`       | <Required /> boolean                  |         | Switch item value                                                |
