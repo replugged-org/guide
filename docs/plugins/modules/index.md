@@ -143,6 +143,26 @@ replugged.webpack.getBySource("HORIZONTAL_REVERSE", { all: true });
 In this case, there are 4 different modules that match the query. We can improve the query by
 appending a `:`, which only exists in the module we're looking for.
 
+### Get by store name {#getByStoreName}
+
+This function finds flux stores matching a specific name.
+
+```ts
+import { webpack } from "replugged";
+const { getByStoreName } = webpack;
+
+export function start() {
+  const store = getByStoreName("ChannelStore");
+}
+```
+
+:::tip
+
+To get a list of stores, run `replugged.common.flux.Store.getAll()` in Discord DevTools. The names
+can be found with the `.getName()` function on each store.
+
+:::
+
 ### Get by ID
 
 Webpack modules have an `id` property that is used to separate them. This is a number, usually
