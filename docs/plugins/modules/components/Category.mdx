@@ -1,0 +1,36 @@
+---
+description: Clickable container used for organizing and grouping components
+---
+
+import Required from "@site/src/components/Required";
+import RequiredNotice from "@site/src/components/RequiredNotice.mdx";
+
+<RequiredNotice />
+
+### Example
+
+```tsx
+import { components } from "replugged";
+const { Category } = components;
+
+<Category title="Foo" note="This is a description">
+  {/* Your setting components here */}
+</Category>;
+```
+
+### Props
+
+| Name       | Type                | Default | Description                                        |
+| ---------- | ------------------- | ------- | -------------------------------------------------- |
+| `disabled` | boolean             | `false` | Whether the category and its children are disabled |
+| `note`     | string              |         | Description of what the category contains          |
+| `onChange` | () => void          |         | Function ran on open state change                  |
+| `open`     | boolean             | `false` | Whether the category is opened                     |
+| `title`    | <Required /> string |         | Category title                                     |
+
+:::caution
+
+It's opened state, by default, is automatically handled by the component. `open` and `onChange` both
+must be specified to override.
+
+:::

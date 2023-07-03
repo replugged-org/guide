@@ -1,0 +1,48 @@
+---
+description: Multi-line textual input
+---
+
+### Example
+
+```tsx
+import { components } from "replugged";
+const { FormItem, TextArea } = components;
+
+export function Settings(): React.ReactElement {
+  return (
+    <FormItem title="Foo">
+      <TextArea {...util.useSetting(cfg, "foo", "bar")} />
+    </FormItem>
+  );
+}
+```
+
+### Props
+
+| Name                          | Type                                    | Default | Description                                                                     |
+| ----------------------------- | --------------------------------------- | ------- | ------------------------------------------------------------------------------- |
+| `allowOverflow`               | boolean                                 | `false` | Whether the input can exceed the maximum length                                 |
+| `autoFocus`                   | boolean                                 | `false` | Whether the input is on focus                                                   |
+| `autosize`                    | boolean                                 | `false` | Whether the input can automatically set its size                                |
+| `className`                   | string                                  |         | Component class name                                                            |
+| `disabled`                    | boolean                                 | `false` | Whether the input is disabled                                                   |
+| `error`                       | string                                  |         | Error message displayed if length exceeds limits                                |
+| `flex`                        | boolean                                 | `false` | Whether the input is flexible                                                   |
+| `id`                          | string                                  |         | Input element id                                                                |
+| `inputRef`                    | Ref<HTMLInputElement\>                  |         | Input ref                                                                       |
+| `maxLength`                   | number                                  |         | Value maximum length                                                            |
+| `minLength`                   | number                                  |         | Value minimum length                                                            |
+| `name`                        | string                                  |         | Input element name                                                              |
+| `onBlur`                      | FocusEventHandler<HTMLInputElement\>    |         | Function ran on focus loose                                                     |
+| `onChange`                    | (value: string) => void                 |         | Function ran on value change                                                    |
+| `onFocus`                     | FocusEventHandler<HTMLInputElement\>    |         | Function ran on focus                                                           |
+| `onInvalid`                   | FormEventHandler<HTMLInputElement\>     |         | Function ran on invalid submission                                              |
+| `onKeyDown`                   | KeyboardEventHandler<HTMLInputElement\> |         | Function ran on key press                                                       |
+| `placeholder`                 | string                                  |         | Input placeholder text                                                          |
+| `required`                    | boolean                                 | `false` | Whether the input completion is required                                        |
+| `resizeable`                  | boolean                                 | `false` | Whether the input can be resized                                                |
+| `rows`                        | number                                  | `3`     | Define the number of rows the input has                                         |
+| `showCharacterCount`          | boolean                                 | `false` | Whether the character count is shown                                            |
+| `showRemainingCharacterCount` | boolean                                 | `false` | Whether the remaining character count is shown; works together with `maxLength` |
+| `spellCheck`                  | boolean                                 | `false` | Whether the input has spell check                                               |
+| `value`                       | string                                  |         | Input value                                                                     |

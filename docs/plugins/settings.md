@@ -178,6 +178,6 @@ manager yourself.
 
 ### Input components
 
-Replugged includes a few [input components](modules/components#input-components) that can be used in
-your settings page. You can also create your own components or find components in the
+Replugged includes a few [input components](modules/components) that can be used in your settings
+page. You can also create your own components or find components in the
 [webpack modules](modules#finding-modules).

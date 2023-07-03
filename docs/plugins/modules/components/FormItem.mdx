@@ -1,0 +1,47 @@
+---
+description: Wrapper component used to add a title and/or description to its children
+---
+
+import CSSProperties from "@site/src/components/CSSProperties";
+
+FormItem is a wrapper component that can be used to add a title and/or description to a component.
+
+:::caution
+
+Any components whose name ends in `Item` already has a `FormItem` (or equivalent) wrapper. You
+should not use this on those components.
+
+:::
+
+### Example
+
+```tsx
+import { components } from "replugged";
+const { FormItem } = components;
+
+<FormItem title="Foo" note="This is a description">
+  {/* Your setting components here */}
+</FormItem>;
+```
+
+### Props
+
+:::info
+
+The props of this component extend the attributes of the `div` element.
+
+:::
+
+| Name             | Type              | Default  | Description                                                |
+| ---------------- | ----------------- | -------- | ---------------------------------------------------------- |
+| `disabled`       | boolean           | `false`  | Whether the form is disabled                               |
+| `divider`        | boolean           | `false`  | Whether a divider is displayed at the end of the form      |
+| `error`          | ReactNode         |          | Error message displayed                                    |
+| `note`           | string            |          | Description of what the form contains                      |
+| `noteClassName`  | string            |          | Note class name                                            |
+| `notePosition`   | string            | `before` | Whether the note is displayed before or after the children |
+| `noteStyle`      | <CSSProperties /> |          | Note style                                                 |
+| `required`       | boolean           | `false`  | Whether the form completion is required                    |
+| `tag`            | string            | `h5`     | Define the form title tag                                  |
+| `title`          | ReactNode         |          | Form title                                                 |
+| `titleClassName` | string            |          | Title class name                                           |

@@ -1,0 +1,27 @@
+---
+description: Make any element clickable
+---
+
+### Example
+
+```tsx
+import { components } from "replugged";
+const { Clickable } = components;
+
+<Clickable onClick={() => console.log("Clicked!")}>{/* Your components here */}</Clickable>;
+```
+
+### Props
+
+<!-- [!]: This should extend the attributes of the element set in `tag` prop but not added yet in main repo -->
+
+:::info
+
+The props of this component extend the attributes of the `div` element.
+
+:::
+
+| Name             | Type    | Default | Description                                   |
+| ---------------- | ------- | ------- | --------------------------------------------- |
+| `ignoreKeyPress` | boolean | `false` | Whether to ignore a key press on the keyboard |
+| `tag`            | string  | `div`   | Define the element type                       |

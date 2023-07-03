@@ -1,0 +1,27 @@
+---
+sidebar_position: 2
+title: Components
+description: Documented components for plugins
+---
+
+import CSSProperties from "@site/src/components/CSSProperties";
+import DocCardList from "@theme/DocCardList";
+
+All input components ending with `Item` have their original counterpart, and differ in some props:
+
+| Name       | Type              | Default | Description                                      |
+| ---------- | ----------------- | ------- | ------------------------------------------------ |
+| `children` | ReactNode         |         | Wrapper component title                          |
+| `note`     | string            |         | Description of what the input component is about |
+| `style`    | <CSSProperties /> |         | Wrapper component style                          |
+
+:::caution
+
+Enums listed cannot be accessed on the `Item` components. For example, `Checkbox.Aligns` is **not**
+available on `CheckboxItem.Aligns`.
+
+:::
+
+---
+
+<DocCardList />

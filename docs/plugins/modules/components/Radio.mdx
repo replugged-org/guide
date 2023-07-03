@@ -1,0 +1,77 @@
+---
+title: Radio (Input)
+description: Basic customizable radio group
+---
+
+import Required from "@site/src/components/Required";
+import RequiredNotice from "@site/src/components/RequiredNotice.mdx";
+
+<RequiredNotice />
+
+<!-- RadioGroup -->
+
+### Example
+
+```tsx
+import { components } from "replugged";
+const { RadioItem } = components;
+
+export function Settings(): React.ReactElement {
+  return (
+    <RadioItem
+      {...util.useSetting(cfg, "foo", "bar")}
+      options={[
+        {
+          name: "Option 1",
+          value: "option1",
+        },
+        {
+          name: "Option 2",
+          value: "option2",
+        },
+      ]}>
+      Radio title
+    </RadioItem>
+  );
+}
+```
+
+### Enums
+
+| Enum          | Description                                                        |
+| ------------- | ------------------------------------------------------------------ |
+| `Radio.Sizes` | Radio group sizes <br />`NOT_SET` \| `NONE` \| `SMALL` \| `MEDIUM` |
+
+### Props
+
+| Name                        | Type                                                                 | Default              | Description                            |
+| --------------------------- | -------------------------------------------------------------------- | -------------------- | -------------------------------------- |
+| `className`                 | string                                                               |                      | Component class name                   |
+| `collapsibleClassName`      | string                                                               |                      | Radio collapsible element class name   |
+| `disabled`                  | boolean                                                              | `false`              | Whether the radio group is disabled    |
+| `itemInfoClassName`         | string                                                               |                      | Radio info element class name          |
+| `itemTitleClassName`        | string                                                               |                      | Radio title element class name         |
+| `onChange`                  | <Required /> (option: [`RadioOptionType`](#RadioOptionType)) => void |                      | Function ran on value change           |
+| `options`                   | <Required /> [`RadioOptionType`](#RadioOptionType)[]                 |                      | Array of radio options                 |
+| `orientation`               | string                                                               |                      | Radio orientation                      |
+| `radioItemClassName`        | string                                                               |                      | Radio item element class name          |
+| `radioPosition`             | string                                                               | `left`               | Position of the radio                  |
+| `size`                      | `Radio.Sizes`                                                        | `Radio.Sizes.MEDIUM` | Define radio group size                |
+| `value`                     | string                                                               |                      | Selected radio value                   |
+| `withTransparentBackground` | boolean                                                              | `false`              | Whether the radio group is transparent |
+
+### Types {#Radio-types}
+
+#### `RadioOptionType` {#RadioOptionType}
+
+| Name                 | Type                                 | Default | Description                              |
+| -------------------- | ------------------------------------ | ------- | ---------------------------------------- |
+| `collapsibleContent` | ReactNode                            |         | Option collapsible elements              |
+| `color`              | string                               |         | Color displayed on the side              |
+| `desc`               | string                               |         | Option description                       |
+| `disabled`           | boolean                              | `false` | Whether the option is disabled           |
+| `icon`               | ComponentType<unknown\>              |         | Option icon                              |
+| `name`               | <Required /> string                  |         | Option name                              |
+| `tooltipPosition`    | [`Tooltip.Positions`](Tooltip#enums) |         | Tooltip position displayed on the option |
+| `tooltipText`        | string                               |         | Tooltip text displayed on the option     |
+| `value`              | <Required /> string                  |         | Option value                             |

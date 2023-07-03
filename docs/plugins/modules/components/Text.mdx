@@ -1,0 +1,53 @@
+---
+description: Display text
+---
+
+### Example
+
+```tsx
+import { components } from "replugged";
+const { Text } = components;
+
+<Text.Normal>This is an example</Text.Normal>;
+```
+
+### Subcomponents
+
+| Component      | Description                                |
+| -------------- | ------------------------------------------ |
+| `Text.Eyebrow` | Variant `eyebrow`                          |
+| `Text.H1`      | Variant `heading-xl/bold` and tag `h1`     |
+| `Text.H2`      | Variant `heading-lg/semibold` and tag `h2` |
+| `Text.H3`      | Variant `heading-md/bold` and tag `h3`     |
+| `Text.H4`      | Variant `heading-sm/bold` and tag `h4`     |
+| `Text.Normal`  | Variant `text-sm/normal` and tag `span`    |
+
+### Props
+
+<!-- [!]: This should extend the attributes of the element set in `tag` prop but not added yet in main repo -->
+
+:::info
+
+The props of this component extend the attributes of the `div` element.
+
+:::
+
+| Name                   | Type    | Default | Description                                                             |
+| ---------------------- | ------- | ------- | ----------------------------------------------------------------------- |
+| `allowMarkdownHeading` | boolean | `false` | Whether markdown headings are displayed; works together with `markdown` |
+| `allowMarkdownLinks`   | boolean | `false` | Whether markdown links are displayed; works together with `markdown`    |
+| `allowMarkdownList`    | boolean | `false` | Whether markdown lists are displayed; works together with `markdown`    |
+| `color`                | string  |         | Text color (variable name)                                              |
+| `lineClamp`            | number  |         | How many lines to clamp                                                 |
+| `markdown`             | boolean | `false` | Whether the text is markdown compatible                                 |
+| `selectable`           | boolean | `false` | Whether the text is selectable                                          |
+| `tabularNumbers`       | boolean | `false` | Whether the text font supports tabular numbers                          |
+| `tag`                  | string  | `div`   | Define the text element tag                                             |
+| `variant`              | string  |         | Text variant (variant name)                                             |
+
+:::tip
+
+You can see all the different text variants with Discord's Text Components page, available with the
+developer settings enabled.
+
+:::

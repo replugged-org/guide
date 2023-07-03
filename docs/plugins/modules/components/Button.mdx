@@ -1,0 +1,86 @@
+---
+title: Button (Input)
+description: Basic customizable button
+---
+
+### Example
+
+```tsx
+import { components } from "replugged";
+const { ButtonItem } = components;
+
+<ButtonItem button="Button text" onClick={() => console.log("Pressed!")}>
+  Title
+</ButtonItem>;
+```
+
+### Subcomponents
+
+| Component                    | Description                                               |
+| ---------------------------- | --------------------------------------------------------- |
+| [`Button.Link`](#ButtonLink) | Button link with [React Router](https://reactrouter.com/) |
+
+### Enums
+
+| Enum                  | Description                                                                                                                                          |
+| --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Button.BorderColors` | Button border colors <br />`BRAND` \| `RED` \| `GREEN` \| `YELLOW` \| `PRIMARY` \| `LINK` \| `WHITE` \| `BLACK` \| `TRANSPARENT` \| `BRAND_NEW`      |
+| `Button.Colors`       | Button colors <br />`BRAND` \| `RED` \| `GREEN` \| `YELLOW` \| `PRIMARY` \| `LINK` \| `WHITE` \| `BLACK` \| `TRANSPARENT` \| `BRAND_NEW` \| `CUSTOM` |
+| `Button.Hovers`       | Button color hovers <br />`DEFAULT` \| `BRAND` \| `RED` \| `GREEN` \| `YELLOW` \| `PRIMARY` \| `LINK` \| `WHITE` \| `BLACK` \| `TRANSPARENT`         |
+| `Button.Looks`        | Button styles <br />`FILLED` \| `INVERTED` \| `OUTLINED` \| `LINK` \| `BLANK`                                                                        |
+| `Button.Sizes`        | Button sizes <br />`NONE` \| `TINY` \| `SMALL` \| `MEDIUM` \| `LARGE` \| `XLARGE` \| `MIN` \| `MAX` \| `ICON`                                        |
+
+### Props
+
+:::info
+
+The props of this component extend the attributes of the `button` element.
+
+:::
+
+| Name                      | Type                                 | Default               | Description                                                                                  |
+| ------------------------- | ------------------------------------ | --------------------- | -------------------------------------------------------------------------------------------- |
+| `borderColor`             | `Button.BorderColors`                |                       | Button border color                                                                          |
+| `button`                  | string                               |                       | Button text for the item component                                                           |
+| `buttonRef`               | Ref<HTMLButtonElement\>              |                       | Button ref                                                                                   |
+| `color`                   | `Button.Colors`                      | `Button.Colors.BRAND` | Button color                                                                                 |
+| `focusProps`              | Record<string, unknown>              |                       | Props for the FocusRing component                                                            |
+| `fullWidth`               | boolean                              | `false`               | Whether the button width is at maximum                                                       |
+| `grow`                    | boolean                              | `true`                | Whether the button size can grow                                                             |
+| `hideBorder`              | boolean                              | `false`               | Whether a divider is not displayed at the end of the button item                             |
+| `hover`                   | `Button.Hovers`                      |                       | Button hover color                                                                           |
+| `innerClassName`          | string                               |                       | Text element class name                                                                      |
+| `look`                    | `Button.Looks`                       | `Button.Looks.FILLED` | Button style                                                                                 |
+| `note`                    | string                               |                       | Description of what the button item is about                                                 |
+| `size`                    | `Button.Sizes`                       | `Button.Sizes.MEDIUM` | Button size                                                                                  |
+| `submitting`              | boolean                              | `false`               | Whether to display a loader inside the button; works together with `disabled` set to `false` |
+| `submittingFinishedLabel` | string                               | `Loading finished`    | Announce finish loading message for screen-reader users; works together with `submitting`    |
+| `submittingStartedLabel`  | string                               | `Loading`             | Announce start loading message for screen-reader users; works together with `submitting`     |
+| `success`                 | boolean                              | `false`               | Whether the button color is green                                                            |
+| `tooltipPosition`         | [`Tooltip.Positions`](Tooltip#enums) |                       | Tooltip position displayed on the button item                                                |
+| `tooltipText`             | string                               |                       | Tooltip text displayed on the button item                                                    |
+| `wrapperClassName`        | string                               |                       | Wrapper element class name                                                                   |
+
+### Types {#Button-types}
+
+#### `Button.Link` {#ButtonLink}
+
+Props:
+
+:::info
+
+The props of this component extend the props of
+[React Router DOM's Link](https://reactrouter.com/en/main/components/link) component.
+
+:::
+
+| Name             | Type                  | Default               | Description                            |
+| ---------------- | --------------------- | --------------------- | -------------------------------------- |
+| `borderColor`    | `Button.BorderColors` |                       | Button border color                    |
+| `color`          | `Button.Colors`       | `Button.Colors.BRAND` | Button color                           |
+| `fullWidth`      | boolean               | `false`               | Whether the button width is at maximum |
+| `grow`           | boolean               | `true`                | Whether the button size can grow       |
+| `hover`          | `Button.Hovers`       |                       | Button hover color                     |
+| `innerClassName` | string                |                       | Text element class name                |
+| `look`           | `Button.Looks`        | `Button.Looks.FILLED` | Button style                           |
+| `size`           | `Button.Sizes`        | `Button.Sizes.MEDIUM` | Button size                            |

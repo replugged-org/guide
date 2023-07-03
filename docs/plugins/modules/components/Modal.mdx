@@ -1,0 +1,113 @@
+---
+description: All the components useful for creating modals
+---
+
+import Required from "@site/src/components/Required";
+import RequiredNotice from "@site/src/components/RequiredNotice.mdx";
+
+<RequiredNotice />
+
+:::caution
+
+This component requires the use of the common module [`modal`](../common#modal).
+
+:::
+
+### Example
+
+```tsx
+import { common, components } from "replugged";
+const { modal } = common;
+const { Modal } = components;
+
+modal.openModal((props) => (
+  <Modal.ModalRoot {...props}>
+    <Modal.ModalHeader>{/* Your components for the header here */}</Modal.ModalHeader>
+    <Modal.ModalContent>{/* Your components here */}</Modal.ModalContent>
+    <Modal.ModalFooter>{/* Your components for the footer here */}</Modal.ModalFooter>
+  </Modal.ModalRoot>
+));
+```
+
+### Subcomponents
+
+| Component                                     | Description            |
+| --------------------------------------------- | ---------------------- |
+| [`Modal.ModalCloseButton`](#ModalCloseButton) | Close button component |
+| [`Modal.ModalContent`](#ModalContent)         | Contains the content   |
+| [`Modal.ModalFooter`](#ModalFooter)           | Contains the footer    |
+| [`Modal.ModalHeader`](#ModalHeader)           | Contains the header    |
+| [`Modal.ModalRoot`](#ModalRoot)               | Modal root component   |
+
+### Types {#Modal-types}
+
+#### `Modal.ModalCloseButton` {#ModalCloseButton}
+
+Props:
+
+| Name                   | Type                    | Default | Description                                              |
+| ---------------------- | ----------------------- | ------- | -------------------------------------------------------- |
+| `className`            | string                  |         | Component class name                                     |
+| `focusProps`           | Record<string, unknown> |         | Props for the FocusRing component                        |
+| `hideOnFullscreen`     | boolean                 | `false` | Whether the button is hidden when modal is in fullscreen |
+| `onClick`              | <Required /> (): void   |         | Function ran when clicking the close button              |
+| `withCircleBackground` | boolean                 | `false` | Whether the button is in a circle                        |
+
+#### `Modal.ModalContent` {#ModalContent}
+
+Props:
+
+:::info
+
+The props of this component extend the attributes of the `div` element.
+
+:::
+
+| Name          | Type          | Default | Description  |
+| ------------- | ------------- | ------- | ------------ |
+| `scrollerRef` | Ref<unknown\> |         | Scroller ref |
+
+#### `Modal.ModalFooter` {#ModalFooter}
+
+Props:
+
+| Name        | Type             | Default                             | Description          |
+| ----------- | ---------------- | ----------------------------------- | -------------------- |
+| `align`     | `Flex.Align`     | `Flex.Align.STRETCH`                | Flexbox align        |
+| `className` | string           |                                     | Component class name |
+| `direction` | `Flex.Direction` | `Flex.Direction.HORIZONTAL_REVERSE` | Flexbox direction    |
+| `justify`   | `Flex.Justify`   | `Flex.Justify.START`                | Flexbox justify      |
+| `wrap`      | `Flex.Wrap`      | `Flex.Wrap.NO_WRAP`                 | Flexbox wrap         |
+
+#### `Modal.ModalHeader` {#ModalHeader}
+
+Props:
+
+| Name        | Type             | Default                     | Description                                                         |
+| ----------- | ---------------- | --------------------------- | ------------------------------------------------------------------- |
+| `align`     | `Flex.Align`     | `Flex.Align.CENTER`         | Flexbox align                                                       |
+| `className` | string           |                             | Component class name                                                |
+| `direction` | `Flex.Direction` | `Flex.Direction.HORIZONTAL` | Flexbox direction                                                   |
+| `justify`   | `Flex.Justify`   | `Flex.Justify.START`        | Flexbox justify                                                     |
+| `separator` | boolean          | `false`                     | Whether a divider is shown between the header and the modal content |
+| `wrap`      | `Flex.Wrap`      | `Flex.Wrap.NO_WRAP`         | Flexbox wrap                                                        |
+
+#### `Modal.ModalRoot` {#ModalRoot}
+
+Props:
+
+:::info
+
+The props of this component extend the attributes of the `div` element.
+
+:::
+
+| Name                 | Type       | Default  | Description                                                 |
+| -------------------- | ---------- | -------- | ----------------------------------------------------------- |
+| `className`          | string     |          | Component class name                                        |
+| `fullscreenOnMobile` | boolean    | `true`   | Whether the modal is in fullscreen if app is in mobile view |
+| `hideShadow`         | boolean    | `false`  | Whether the shadow is hidden                                |
+| `onAnimationEnd`     | (): string |          | Function ran when the modal stopped animating               |
+| `role`               | string     | `dialog` | Modal element role                                          |
+| `size`               | string     | `small`  | Modal size                                                  |
+| `transitionState`    | string     |          | Modal state                                                 |
