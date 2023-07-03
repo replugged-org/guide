@@ -244,6 +244,7 @@ Functions:
 | `getMemberIds`                    | `guildId`: string                                                                                                   | string[]                                                      | Gets all guild member ids                                          |
 | `getMemberRoleWithPendingUpdates` | <Required /> `guildId`: string <br /> <Required /> `userId`: string                                                 | string[]                                                      | Gets all pending role updates a guild member has                   |
 | `getMembers`                      | `guildId`: string                                                                                                   | <APIReferences.GuildMember />[]                               | Gets all fetched members in a guild                                |
+| `getMemberVersion`                |                                                                                                                     | number                                                        | Gets the guild member store version                                |
 | `getMutableAllGuildsAndMembers`   |                                                                                                                     | Record<string, Record<string, <APIReferences.GuildMember />>> | Gets all guilds and its fetched members                            |
 | `getNick`                         | `guildId`: string <br /> `userId`: string                                                                           | string \| null                                                | Gets the nickname a guild member has                               |
 | `getNicknameGuildsMapping`        | <Required /> `userId`: string                                                                                       | Record<string, string[]>                                      | Gets all nicknames a user has and in which guilds                  |
@@ -679,10 +680,11 @@ Utility module for parsing markdown.
 
 Props:
 
-| Name              | Type           | Description                                                          |
-| ----------------- | -------------- | -------------------------------------------------------------------- |
-| `defaultRules`    | `DefaultRules` | Includes a list of default rules used by the parser                  |
-| `guildEventRules` | `DefaultRules` | Includes a list of default rules for guild events used by the parser |
+| Name                               | Type           | Description                                                                         |
+| ---------------------------------- | -------------- | ----------------------------------------------------------------------------------- |
+| `defaultRules`                     | `DefaultRules` | Includes a list of default rules used by the parser                                 |
+| `guildEventRules`                  | `DefaultRules` | Includes a list of default rules for guild events used by the parser                |
+| `notifCenterV2MessagePreviewRules` | `DefaultRules` | Includes a list of default rules for the new notification center used by the parser |
 
 Functions:
 
