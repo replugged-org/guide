@@ -126,15 +126,25 @@ export default [
 
 ## Building, updating, and releasing
 
-1. Update the version number in `manifest.json`. The version number doesn't need to follow any
-   specific format, but does need to be changed in order for Replugged to detect an update.
+### Release Tool
 
-:::note
+The plugin template includes a `release` script which will take care of updating the version number,
+committing the changes, tagging the release, and pushing the tag to GitHub. You can run it with
+`pnpm run release`. It will prompt you for all the things it needs and will confirm with you before
+it pushes anything to GitHub.
 
-If this is your first release, you can leave it as `1.0.0`.
+### Manual Instructions
+
+:::tip
+
+Using the release tool above is recommended and easier and will work for most plugins. However, if
+you need to or would prefer to do it manually, you can follow the instructions below.
 
 :::
 
+1. Update the version number in `manifest.json`. The version number doesn't need to follow any
+   specific format, but does need to be changed in order for Replugged to detect an update.If this
+   is your first release, you can leave it as `1.0.0`.
 2. Commit your changes and push them to GitHub.
 3. Create a new tag with `git tag v1.0.0` (replace `1.0.0` with your version number).
 
