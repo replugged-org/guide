@@ -1,0 +1,59 @@
+---
+description: Utility module for parsing markdown
+---
+
+import Required from "@site/src/components/Required";
+import RequiredNotice from "@site/src/components/RequiredNotice.mdx";
+
+<RequiredNotice />
+
+<!-- [!]: `DefaultRules` and `ParserRules` aren't documented -->
+
+### Props
+
+| Name                               | Type           | Description                                                                         |
+| ---------------------------------- | -------------- | ----------------------------------------------------------------------------------- |
+| `defaultRules`                     | `DefaultRules` | Includes a list of default rules used by the parser                                 |
+| `guildEventRules`                  | `DefaultRules` | Includes a list of default rules for guild events used by the parser                |
+| `notifCenterV2MessagePreviewRules` | `DefaultRules` | Includes a list of default rules for the new notification center used by the parser |
+
+### Functions
+
+| Name                                    | Parameters                                                                                                                                            | Return Type           | Description                                                                                                                            |
+| --------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| `astParserFor`                          | <Required /> `rules`: `ParserRules`                                                                                                                   | (...) => ReactElement | Creates a new AST parser function based on specific rules; the returned function has the same parameters of the other parser functions |
+| `parse`                                 | `text`: string <br /> `inline`: boolean <br /> `opts`: [`ParseOptions`](#ParseOptions) <br /> `postProcess`: (tree: unknown, inline: boolean) => void | ReactElement          | Converts a markdown string to React elements                                                                                           |
+| `parseAutoModerationSystemMessage`      | `text`: string <br /> `inline`: boolean <br /> `opts`: [`ParseOptions`](#ParseOptions) <br /> `postProcess`: (tree: unknown, inline: boolean) => void | ReactElement          | `parse` function but highlights text defined in `highlightText` parse option                                                           |
+| `parseAutoModerationSystemMessageToAST` | `text`: string <br /> `inline`: boolean <br /> `opts`: [`ParseOptions`](#ParseOptions) <br /> `postProcess`: (tree: unknown, inline: boolean) => void | ReactElement          | `parseToAST` function but highlights text defined in `highlightText` parse option                                                      |
+| `parseEmbedTitle`                       | `text`: string <br /> `inline`: boolean <br /> `opts`: [`ParseOptions`](#ParseOptions) <br /> `postProcess`: (tree: unknown, inline: boolean) => void | ReactElement          | `parse` function but with `codeBlock`, `br`, `mention`, `channel` and `roleMention` rules omitted                                      |
+| `parseEmbedTitleToAST`                  | `text`: string <br /> `inline`: boolean <br /> `opts`: [`ParseOptions`](#ParseOptions) <br /> `postProcess`: (tree: unknown, inline: boolean) => void | ReactElement          | `parseToAST` function but with `codeBlock`, `br`, `mention`, `channel` and `roleMention` rules omitted                                 |
+| `parseForumPostGuidelines`              | `text`: string <br /> `inline`: boolean <br /> `opts`: [`ParseOptions`](#ParseOptions) <br /> `postProcess`: (tree: unknown, inline: boolean) => void | ReactElement          | `parse` function but with `paragraph` and `newline` rules omitted                                                                      |
+| `parseForumPostMostRecentMessage`       | `text`: string <br /> `inline`: boolean <br /> `opts`: [`ParseOptions`](#ParseOptions) <br /> `postProcess`: (tree: unknown, inline: boolean) => void | ReactElement          | `parse` function but with some emoji sizing changes and `blockQuote`, `codeBlock` and `br` rules omitted                               |
+| `parseGuildEventDescription`            | `text`: string <br /> `inline`: boolean <br /> `opts`: [`ParseOptions`](#ParseOptions) <br /> `postProcess`: (tree: unknown, inline: boolean) => void | ReactElement          | `parse` function but with `codeBlock`, `blockQuote` and `br` rules omitted                                                             |
+| `parseGuildVerificationFormRule`        | `text`: string <br /> `inline`: boolean <br /> `opts`: [`ParseOptions`](#ParseOptions) <br /> `postProcess`: (tree: unknown, inline: boolean) => void | ReactElement          | `parse` function but with `codeBlock`, `br` and `blockQuote` rules omitted                                                             |
+| `parseInlineReply`                      | `text`: string <br /> `inline`: boolean <br /> `opts`: [`ParseOptions`](#ParseOptions) <br /> `postProcess`: (tree: unknown, inline: boolean) => void | ReactElement          | `parse` function but with `blockQuote`, `codeBlock` and `br` rules omitted                                                             |
+| `parseInlineReplyToAST`                 | `text`: string <br /> `inline`: boolean <br /> `opts`: [`ParseOptions`](#ParseOptions) <br /> `postProcess`: (tree: unknown, inline: boolean) => void | ReactElement          | `parseToAST` function but with `blockQuote`, `codeBlock` and `br` rules omitted                                                        |
+| `parseToAST`                            | `text`: string <br /> `inline`: boolean <br /> `opts`: [`ParseOptions`](#ParseOptions) <br /> `postProcess`: (tree: unknown, inline: boolean) => void | ReactElement          | Converts a markdown string to AST                                                                                                      |
+| `parseTopic`                            | `text`: string <br /> `inline`: boolean <br /> `opts`: [`ParseOptions`](#ParseOptions) <br /> `postProcess`: (tree: unknown, inline: boolean) => void | ReactElement          | `parse` function but with `inlineCode`, `codeBlock`, `br` and `blockQuote` rules omitted                                               |
+| `parseTopicToAST`                       | `text`: string <br /> `inline`: boolean <br /> `opts`: [`ParseOptions`](#ParseOptions) <br /> `postProcess`: (tree: unknown, inline: boolean) => void | ReactElement          | `parseToAST` function but with `inlineCode`, `codeBlock`, `br` and `blockQuote` rules omitted                                          |
+| `reactParserFor`                        | <Required /> `rules`: `ParserRules`                                                                                                                   | (...) => ReactElement | Creates a new parser function based on specific rules; the returned function has the same parameters of the other parser functions     |
+
+### Types {#parser-types}
+
+#### `ParseOptions` {#ParseOptions}
+
+| Name                       | Type     | Description                                     |
+| -------------------------- | -------- | ----------------------------------------------- |
+| `allowHeading`             | boolean  | Whether headings are allowed                    |
+| `allowLinks`               | boolean  | Whether links are allowed                       |
+| `allowList`                | boolean  | Whether lists are allowed                       |
+| `channelId`                | string   | Channel id of where the string is located       |
+| `disableAnimatedEmoji`     | boolean  | Whether animated emojis are disabled            |
+| `disableAutoBlockNewlines` | boolean  | Whether new lines are not added at the end      |
+| `formatInline`             | boolean  | Whether headings and lists should all be inline |
+| `highlightWord`            | string   | Word to highlight                               |
+| `isInteracting`            | boolean  | Whether the string is interacted with           |
+| `mentionChannels`          | string[] | Ids of the mentioned channels                   |
+| `noStyleAndInteraction`    | boolean  | Whether interactions and style are not applied  |
+| `previewLinkTarget`        | boolean  | Whether to preview real URL on hover            |
+| `returnMentionIds`         | boolean  | Whether mention ids should be returned          |

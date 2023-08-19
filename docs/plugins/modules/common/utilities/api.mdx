@@ -1,0 +1,78 @@
+---
+description: Module useful for making requests to the Discord API
+---
+
+import Required from "@site/src/components/Required";
+import RequiredNotice from "@site/src/components/RequiredNotice.mdx";
+
+<RequiredNotice />
+
+<!-- [!]: `Backoff`, `V6OrEarlierAPIError` and `V8APIError` aren't documented -->
+
+### Props
+
+| Name                  | Type                  | Description                                                                  |
+| --------------------- | --------------------- | ---------------------------------------------------------------------------- |
+| `V6OrEarlierAPIError` | `V6OrEarlierAPIError` | Class for creating API errors with v6 or earlier                             |
+| `V8APIError`          | `V8APIError`          | Class for creating API errors with v8. Supports captcha and multiple errors. |
+
+### Functions
+
+| Name            | Parameters                                                                                                        | Return Type                     | Description                 |
+| --------------- | ----------------------------------------------------------------------------------------------------------------- | ------------------------------- | --------------------------- |
+| `delete`        | <Required /> `req`: string \| [`HTTPRequest`](#HTTPRequest) <br /> `callback`: (response: `HTTPResponse`) => void | [`HTTPResponse`](#HTTPResponse) | Fetch with DELETE method    |
+| `get`           | <Required /> `req`: string \| [`HTTPRequest`](#HTTPRequest) <br /> `callback`: (response: `HTTPResponse`) => void | [`HTTPResponse`](#HTTPResponse) | Fetch with GET method       |
+| `getAPIBaseURL` | `version`: boolean                                                                                                | string                          | Gets Discord's base API URL |
+| `patch`         | <Required /> `req`: string \| [`HTTPRequest`](#HTTPRequest) <br /> `callback`: (response: `HTTPResponse`) => void | [`HTTPResponse`](#HTTPResponse) | Fetch with PATCH method     |
+| `post`          | <Required /> `req`: string \| [`HTTPRequest`](#HTTPRequest) <br /> `callback`: (response: `HTTPResponse`) => void | [`HTTPResponse`](#HTTPResponse) | Fetch with POST method      |
+| `put`           | <Required /> `req`: string \| [`HTTPRequest`](#HTTPRequest) <br /> `callback`: (response: `HTTPResponse`) => void | [`HTTPResponse`](#HTTPResponse) | Fetch with PUT method       |
+
+### Types {#api-types}
+
+#### `HTTPAttachment` {#HTTPAttachment}
+
+| Name       | Type                     | Description               |
+| ---------- | ------------------------ | ------------------------- |
+| `file`     | string \| Blob \| Buffer | File path or binary data  |
+| `filename` | string                   | Custom file name          |
+| `name`     | string                   | Field name in the request |
+
+#### `HTTPField` {#HTTPField}
+
+| Name    | Type   | Description |
+| ------- | ------ | ----------- |
+| `name`  | string | Field name  |
+| `value` | string | Field value |
+
+#### `HTTPRequest` {#HTTPRequest}
+
+| Name                | Type                                                                                                                                                      | Default   | Description                                                                                                                                           |
+| ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `attachments`       | [`HTTPAttachment`](#HTTPAttachment)[]                                                                                                                     |           | Array containing data for an attachment                                                                                                               |
+| `backoff`           | `Backoff`                                                                                                                                                 | `Backoff` | Used to retry a failed request after a specific time                                                                                                  |
+| `binary`            | boolean                                                                                                                                                   | `false`   | Whether to handle binary response bodies                                                                                                              |
+| `body`              | Record<string, unknown>                                                                                                                                   |           | Body for the request                                                                                                                                  |
+| `context`           | Record<string, unknown>                                                                                                                                   |           | Object entries will be converted to JSON format and set to the X-Context-Properties header                                                            |
+| `fields`            | [`HTTPField`](#HTTPField)[]                                                                                                                               |           | Array containing field data                                                                                                                           |
+| `headers`           | Record<string, string>                                                                                                                                    |           | Headers for the request                                                                                                                               |
+| `interceptResponse` | (response: `Response`, retry: (headers: Record<string, string>, interceptResponse: `interceptResponse`) => void, reject: (reason: Error) => void) => void |           | Function ran to intercept the request response; check out [superagent](https://ladjs.github.io/superagent) Response format                            |
+| `oldFormErrors`     | boolean                                                                                                                                                   | `false`   | Whether to use the old error handling                                                                                                                 |
+| `onRequestCreated`  | (request: `Request`) => void                                                                                                                              |           | Function ran at the start of the request; check out [superagent](https://ladjs.github.io/superagent) Request format                                   |
+| `onRequestProgress` | (progress: `ProgressEvent`) => void                                                                                                                       |           | Function ran to track the progress of uploading or downloading files; check out [superagent](https://ladjs.github.io/superagent) ProgressEvent format |
+| `query`             | string \| Record<string, string>                                                                                                                          |           | Request queries                                                                                                                                       |
+| `reason`            | string                                                                                                                                                    |           | Reason of the request set to the X-Audit-Log-Reason header                                                                                            |
+| `retried`           | number                                                                                                                                                    |           | How many times the request failed and retried                                                                                                         |
+| `retries`           | number                                                                                                                                                    |           | How many times the request can retry if failed                                                                                                        |
+| `signal`            | AbortSignal                                                                                                                                               |           | AbortSignal object                                                                                                                                    |
+| `timeout`           | number                                                                                                                                                    |           | Sets a deadline in milliseconds for the request to complete and aborts if the request isn't completed in time                                         |
+| `url`               | <Required /> string                                                                                                                                       |           | Path to fetch from (without the base API URL)                                                                                                         |
+
+#### `HTTPResponse` {#HTTPResponse}
+
+| Name      | Type                              | Description                          |
+| --------- | --------------------------------- | ------------------------------------ |
+| `body`    | string \| Record<string, unknown> | Body contents                        |
+| `headers` | Record<string, string>            | Headers associated with the response |
+| `ok`      | boolean                           | Whether the response was successful  |
+| `status`  | number                            | Status code of the response          |
+| `text`    | string                            | HTTPResponse body in text            |
