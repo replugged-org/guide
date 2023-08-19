@@ -1,0 +1,34 @@
+---
+description: All functions of GuildStore and SelectedGuildStore
+---
+
+import APIReferences from "@site/src/components/APIReferences";
+import Required from "@site/src/components/Required";
+import RequiredNotice from "@site/src/components/RequiredNotice.mdx";
+
+<RequiredNotice />
+
+### Functions
+
+| Name                       | Parameters                     | Return Type                             | Description                                                         |
+| -------------------------- | ------------------------------ | --------------------------------------- | ------------------------------------------------------------------- |
+| `getCurrentGuild`          |                                | <APIReferences.Guild /> \| undefined    | Gets the currently selected guild object                            |
+| `getGuild`                 | <Required /> `guildId`: string | <APIReferences.Guild /> \| undefined    | Gets the guild by its id                                            |
+| `getGuildCount`            |                                | number                                  | Gets the number of how many guilds the current user is in           |
+| `getGuildId`               |                                | string \| null                          | Gets the id of the currently selected guild                         |
+| `getGuildIds`              |                                | string[]                                | Gets all guild ids                                                  |
+| `getGuilds`                |                                | Record<string, <APIReferences.Guild />> | Gets all guilds                                                     |
+| `getLastSelectedGuildId`   |                                | string \| null                          | Gets the last selected guild id                                     |
+| `getLastSelectedTimestamp` | <Required /> `guildId`: string | number                                  | Gets the timestamp of when a specific guild was last selected       |
+| `getState`                 |                                | [`State`](#state)                       | Gets an object containing some information about guild selections   |
+| `isLoaded`                 |                                | boolean                                 | Gets a value indicating whether all initial guilds have been loaded |
+
+### Types {#guilds-types}
+
+#### `State`
+
+| Name                           | Type                   | Description                                               |
+| ------------------------------ | ---------------------- | --------------------------------------------------------- |
+| `lastSelectedGuildId`          | string                 | Last selected guild id                                    |
+| `selectedGuildId`              | string                 | Current selected guild id                                 |
+| `selectedGuildTimestampMillis` | Record<string, number> | Object containing timestamps of when guilds were selected |

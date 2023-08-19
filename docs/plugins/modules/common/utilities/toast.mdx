@@ -1,0 +1,40 @@
+---
+description: Useful to create and show toasts
+---
+
+import Required from "@site/src/components/Required";
+import RequiredNotice from "@site/src/components/RequiredNotice.mdx";
+
+<RequiredNotice />
+
+### Example
+
+```ts
+import { common } from "replugged";
+const { toast } = common;
+
+toast.toast("Toast text", toast.Kind.FAILURE, { duration: 5000 });
+```
+
+### Enums
+
+| Enum             | Description                                                                 |
+| ---------------- | --------------------------------------------------------------------------- |
+| `toast.Kind`     | Toast types <br />`MESSAGE` \| `SUCCESS` \| `FAILURE` \| `CUSTOM` \| `CLIP` |
+| `toast.Position` | Toast positions <br />`TOP` \| `BOTTOM`                                     |
+
+### Functions
+
+| Name    | Parameters                                                                                                                        | Return Type | Description                                                                  |
+| ------- | --------------------------------------------------------------------------------------------------------------------------------- | ----------- | ---------------------------------------------------------------------------- |
+| `toast` | <Required /> `content`: string \| ReactElement \| null <br /> `kind`: `toast.Kind` <br /> `opts`: [`ToastOptions`](#ToastOptions) | void        | Makes a toast appear on the screen; `toast.Kind.SUCCESS` is the default type |
+
+### Types {#toast-types}
+
+#### `ToastOptions` {#ToastOptions}
+
+| Name        | Type             | Default              | Description                                            |
+| ----------- | ---------------- | -------------------- | ------------------------------------------------------ |
+| `component` | ReactElement     |                      | Custom toast component                                 |
+| `duration`  | number           | `3000`               | How long the toast stays on the screen in milliseconds |
+| `position`  | `toast.Position` | `toast.Position.TOP` | Toast position                                         |

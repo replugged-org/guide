@@ -12,7 +12,8 @@ import RequiredNotice from "@site/src/components/RequiredNotice.mdx";
 
 :::caution
 
-This component requires the use of the common module [`contextMenu`](../common#contextmenu).
+This component requires the use of the common module
+[`contextMenu`](../common/utilities/contextMenu).
 
 :::
 
@@ -63,15 +64,15 @@ const ExampleContext = (): React.ReactElement => (
 
 Props:
 
-| Name           | Type                    | Default    | Description                                                                                           |
-| -------------- | ----------------------- | ---------- | ----------------------------------------------------------------------------------------------------- |
-| `className`    | string                  |            | Component class name                                                                                  |
-| `hideScroller` | boolean                 |            | Whether the scroller is hidden                                                                        |
-| `navId`        | <Required /> string     |            | Context menu id                                                                                       |
-| `onClose`      | <Required /> () => void |            | Function ran when the context menu got closed; check out [`contextMenu.close`](../common#contextmenu) |
-| `onSelect`     | () => void              |            | Function ran when clicking an item                                                                    |
-| `style`        | <CSSProperties />       |            | Component style                                                                                       |
-| `variant`      | string                  | `flexible` | Whether the context menu width is flexible or fixed                                                   |
+| Name           | Type                    | Default    | Description                                                                                                               |
+| -------------- | ----------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------- |
+| `className`    | string                  |            | Component class name                                                                                                      |
+| `hideScroller` | boolean                 |            | Whether the scroller is hidden                                                                                            |
+| `navId`        | <Required /> string     |            | Context menu id                                                                                                           |
+| `onClose`      | <Required /> () => void |            | Function ran when the context menu got closed; check out [`contextMenu.close`](../common/utilities/contextMenu#functions) |
+| `onSelect`     | () => void              |            | Function ran when clicking an item                                                                                        |
+| `style`        | <CSSProperties />       |            | Component style                                                                                                           |
+| `variant`      | string                  | `flexible` | Whether the context menu width is flexible or fixed                                                                       |
 
 #### `ContextMenu.MenuCheckboxItem` {#MenuCheckboxItem}
 

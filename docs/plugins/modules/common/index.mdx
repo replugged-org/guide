@@ -1,0 +1,28 @@
+---
+sidebar_position: 1
+title: Common Modules
+description: Documented common modules for plugins
+---
+
+import DocCardList from "@theme/DocCardList";
+
+Replugged comes with a bunch of modules that are commonly used. You can access them with:
+
+```ts
+import { common } from "replugged";
+```
+
+:::caution
+
+Your editor may suggest importing a module directly from within `replugged/dist/whatever`, but this
+will not work. You should always import from `replugged` itself and destructure the module you want.
+
+:::
+
+:::tip
+
+You can access common modules in Discord DevTools with `replugged.common`.
+
+:::
+
+<DocCardList />
