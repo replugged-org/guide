@@ -46,12 +46,12 @@ The following enums are a shortcut to the [`Flex`](../../components/Flex) compon
 
 ### Functions
 
-| Name         | Parameters                                                                                                                                             | Return Type              | Description                                                                  |
-| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------ | ---------------------------------------------------------------------------- |
-| `alert`      | <Required /> `props`: [`AlertProps`](#AlertProps)                                                                                                      | void                     | Brings up a modal useful for a quick response                                |
-| `closeModal` | <Required /> `modalKey`: string <br /> `contextKey`: string                                                                                            | void                     | Closes a specific modal by its key                                           |
-| `confirm`    | <Required /> `props`: [`AlertProps`](#AlertProps)                                                                                                      | Promise<boolean \| null> | Brings up an alert modal useful for asking the user for a quick confirmation |
-| `openModal`  | <Required /> `render`: (props: [`ModalProps`](#ModalProps)) => ReactNode <br /> `options`: [`ModalOptions`](#ModalOptions) <br /> `contextKey`: string | string                   | Opens a specific modal and returns its key                                   |
+| Name         | Parameters                                                                                                                                             | Return Type                        | Description                                                                  |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------- | ---------------------------------------------------------------------------- |
+| `alert`      | <Required /> `props`: [`AlertProps`](#AlertProps)                                                                                                      | void                               | Brings up a modal useful for a quick response                                |
+| `closeModal` | <Required /> `modalKey`: string <br /> `contextKey`: string                                                                                            | void                               | Closes a specific modal by its key                                           |
+| `confirm`    | <Required /> `props`: [`AlertProps`](#AlertProps)                                                                                                      | Promise<boolean&nbsp;\|&nbsp;null> | Brings up an alert modal useful for asking the user for a quick confirmation |
+| `openModal`  | <Required /> `render`: (props: [`ModalProps`](#ModalProps)) => ReactNode <br /> `options`: [`ModalOptions`](#ModalOptions) <br /> `contextKey`: string | string                             | Opens a specific modal and returns its key                                   |
 
 ### Types {#modal-types}
 

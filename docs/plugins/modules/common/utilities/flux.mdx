@@ -1,0 +1,212 @@
+---
+description: Discord's implementation of Flux
+---
+
+import Required from "@site/src/components/Required";
+import RequiredNotice from "@site/src/components/RequiredNotice.mdx";
+import TabItem from "@theme/TabItem";
+import Tabs from "@theme/Tabs";
+
+<RequiredNotice />
+
+Flux is an architecture for managing data flow. Stores are objects that can hold state and logic.
+They are responsible for updating and retrieving data by triggering actions. The dispatcher is
+responsible for receiving these actions and directing them to the appropriate stores.
+
+### Example
+
+In the following example we will create a new store for mapping messages to users.
+
+```ts
+import { common } from "replugged";
+const { fluxDispatcher: Dispatcher, flux: Flux } = common;
+
+// Here are stored all our users and their messages
+const userMessagesMap = new Map<string, Map<string, Message>>();
+
+function handleMessageCreate(message: Message): void {
+  /*
+    This function will be called only when a message is received,
+    so when the dispatcher received the MESSAGE_CREATE action type.
+  */
+  if (message.state === "SENDING") return;
+
+  const userId = message.author.id;
+  const userMessages = userMessagesMap.get(userId) ?? new Map();
+
+  userMessages.set(message.id, message);
+
+  userMessagesMap.set(userId, userMessages);
+}
+
+function handleMessagesClearRequest(userId: string): void {
+  if (userMessagesMap.has(userId)) {
+    userMessagesMap.delete(userId);
+  }
+}
+
+class UserMessagesStore extends Flux.Store {
+  public getUserMessages(userId: string): Map<string, Message> {
+    // Function to get a user's messages from userMessagesMap
+    return userMessagesMap.get(userId) ?? new Map();
+  }
+
+  public clearUserMessages(userId: string): void {
+    // Function to delete a user from userMessagesMap
+    handleMessagesClearRequest(userId);
+  }
+}
+
+export default new UserMessagesStore(Dispatcher, {
+  MESSAGE_CREATE: (action) => {
+    return handleMessageCreate(action.message);
+  },
+  USER_MESSAGES_DELETE: (action) => {
+    // This is a custom action type we created for this example. It will delete a specific map entry (userId).
+    return handleMessagesClearRequest(action.userId);
+  },
+});
+```
+
+In this example, the action of deleting an entry from the map can be called with the
+[`Dispatcher`](./fluxDispatcher). We recommend creating separate files that export actions:
+
+```ts
+import { common } from "replugged";
+const { fluxDispatcher: Dispatcher } = common;
+
+export default {
+  clearMessages(userId: string) {
+    Dispatcher.dispatch({
+      type: "USER_MESSAGES_DELETE",
+      userId,
+    });
+  },
+};
+```
+
+Or with the appropriate function:
+
+```ts
+UserMessagesStore.clearUserMessages("USER_ID");
+```
+
+:::tip
+
+You can expose a store by setting its display name and the `__getLocalVars` function.
+
+<!-- eslint-disable @typescript-eslint/naming-convention -->
+
+```ts
+class UserMessagesStore extends Flux.Store {
+  public displayName: "UserMessagesStore";
+
+  // ...
+
+  // highlight-start
+  public __getLocalVars(): Record<string, unknown> {
+    return { userMessagesMap };
+  }
+  // highlight-end
+}
+
+export default new UserMessagesStore(Dispatcher, {
+  // ...
+});
+```
+
+:::
+
+Now we can use this store in our React components. We can use hooks or a separate component
+connected to the store.
+
+<Tabs>
+  <TabItem value="hooks" label="Hooks" default>
+
+```tsx
+import { common } from "replugged";
+const { flux: Flux } = common;
+
+function UserMessages({ userId }: { userId: string }): React.ReactElement {
+  // highlight-start
+  const userMessages = Flux.useStateFromStores(
+    [UserMessagesStore],
+    () => {
+      return UserMessagesStore.getUserMessages(userId);
+    },
+    [userId],
+  );
+  // highlight-end
+
+  return (
+    <div>
+      {userMessages.map((message) => (
+        <Message message={message} />
+      ))}
+    </div>
+  );
+}
+
+export default UserMessages;
+```
+
+  </TabItem>
+  <TabItem value="connect" label="Connect">
+
+```tsx
+import { common } from "replugged";
+const { flux: Flux } = common;
+
+function UserMessages({
+  userMessages,
+}: {
+  userMessages: Map<string, Message>;
+}): React.ReactElement {
+  return (
+    <div>
+      {userMessages.map((message) => (
+        <Message message={message} />
+      ))}
+    </div>
+  );
+}
+
+// highlight-start
+const UserMessagesConnected = Flux.connectStores([UserMessagesStore], (props) => {
+  const userMessages = UserMessagesStore.getUserMessages(props.userId);
+
+  return {
+    userMessages,
+  };
+})(UserMessages);
+// highlight-end
+
+export default UserMessagesConnected;
+```
+
+  </TabItem>
+</Tabs>
+
+### Props
+
+| Name                  | Type                                    | Description                                                                                           |
+| --------------------- | --------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| `DeviceSettingsStore` | `PersistedStore`                        | Class for creating a DeviceSettingsStore                                                              |
+| `Emitter`             | `Emitter`                               | Class instance of the Emitter, that handles event listeners required for stores                       |
+| `initialized`         | Promise<boolean&nbsp;\|&nbsp;undefined> | Whether a Flux store is initialized                                                                   |
+| `OfflineCacheStore`   | `PersistedStore`                        | Class for creating a OfflineCacheStore                                                                |
+| `PersistedStore`      | `PersistedStore`                        | Class for creating a PersistedStore; useful for keeping store data saved in local storage             |
+| `SnapshotStore`       | `SnapshotStore`                         | Class for creating a SnapshotStore; useful for managing snapshots of store data, for caching purposes |
+| `Store`               | `Store`                                 | Class for creating a Flux store                                                                       |
+
+### Functions
+
+| Name                       | Parameters                                                                                                                                       | Return Type                                                                        | Description                                                                                         |
+| -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| `connectStores`            | <Required /> `stores`: `Store`[] <br /> <Required /> `callback`: (props: OuterProps) => InnerProps <br /> `options`: { forwardRef: boolean }     | (component: ComponentType<InnerProps & OuterProps>) => ComponentClass<OuterProps\> | Connects a React component to Flux stores                                                           |
+| `destroy`                  |                                                                                                                                                  | void                                                                               | Destroys all Flux store instances                                                                   |
+| `initialize`               |                                                                                                                                                  | void                                                                               | Initializes a Flux store                                                                            |
+| `statesWillNeverBeEqual`   | <Required /> `a`: T <br /> <Required /> `b`: T                                                                                                   | boolean                                                                            | Used as a comparator for the `useStateFromStores` hook to indicate that states will never be equal  |
+| `useStateFromStores`       | <Required /> `stores`: `Store`[] <br /> <Required /> `callback`: () => T <br /> `deps`: DependencyList <br /> `compare`: (a: T, b: T) => boolean | T                                                                                  | Custom hook to keep a React component's state synchronized with the data retrieved from Flux stores |
+| `useStateFromStoresArray`  | <Required /> `stores`: `Store`[] <br /> <Required /> `callback`: () => T <br /> `deps`: DependencyList                                           | T                                                                                  | `useStateFromStores` hook but with a comparator made for arrays                                     |
+| `useStateFromStoresObject` | <Required /> `stores`: `Store`[] <br /> <Required /> `callback`: () => T <br /> `deps`: DependencyList                                           | T                                                                                  | `useStateFromStores` hook but with a comparator made for objects                                    |
