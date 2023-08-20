@@ -26,6 +26,8 @@ The `⚛️ Components` panel will become a very useful companion when looking f
 source. It will be enough to select the component, after activating the option of selecting an
 element in the top left corner, and click on the `< >` icon in the panel next to the tree.
 
+![Demo](../../src/assets/RDT-demo.gif)
+
 ## Development Companion Extension
 
 Replugged v4.3.0 contains support for
