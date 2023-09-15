@@ -219,6 +219,13 @@ You can use the `registerSlashCommand` util to register a custom slash command u
 command section. In the following example we are registering a slash command which sends a normal
 message or an <APIReferences.Embed />, based on the value of the option.
 
+:::info
+
+The slash commands API is supported by TypeScript. An error will occur if you try to get the value
+of a nonexistent option in the registered slash command.
+
+:::
+
 ```tsx
 import { Injector, types } from "replugged";
 const { ApplicationCommandOptionType } = types;
@@ -246,7 +253,9 @@ export function start(): void {
 
       if (sendEmbed) {
         return {
-          // Whether to send an ephemeral message
+          // Whether the message should be sent in the channel;
+          // By setting it to false, the message will be hidden
+          // from anyone except the executor of the slash command
           send: false,
           result: "This is a message",
         };
