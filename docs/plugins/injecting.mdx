@@ -238,10 +238,13 @@ export function start(): void {
       },
     ],
     executor: (interaction) => {
+      // You can access the guild and channel of where the command
+      // was executed with interaction.guild and interaction.channel
+
       // Get the value of the option
       const sendEmbed = interaction.getValue("my-option");
 
-      if (myOption) {
+      if (sendEmbed) {
         return {
           // Whether to send an ephemeral message
           send: false,
