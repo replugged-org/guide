@@ -106,6 +106,7 @@ The injector class has an `uninjectAll` method which will remove all injections 
 
 ```ts
 import { Injector } from "replugged";
+
 const injector = new Injector();
 
 export function start() {
@@ -130,7 +131,7 @@ buttons that are shown in the top right corner when you hover over a message, li
 reply, etc. The button order cannot be controlled.
 
 ```ts
-import { Injector, webpack } from "replugged";
+import { Injector } from "replugged";
 
 const injector = new Injector();
 
@@ -211,3 +212,58 @@ export function stop(): void {
 
 More examples can be found
 [here](https://github.com/asportnoy/context-menu-demo/blob/main/src/index.tsx).
+
+### Slash Commands
+
+You can use the `registerSlashCommand` util to register a custom slash command under the Replugged
+command section. In the following example we are registering a slash command which sends a normal
+message or an <APIReferences.Embed />, based on the value of the option.
+
+```tsx
+import { Injector, types } from "replugged";
+const { ApplicationCommandOptionType } = types;
+
+const injector = new Injector();
+
+export function start(): void {
+  injector.utils.registerSlashCommand({
+    name: "my-command",
+    description: "Helpful command description",
+    options: [
+      {
+        name: "my-option",
+        description: "Very cool option description",
+        type: ApplicationCommandOptionType.Boolean,
+        required: true,
+      },
+    ],
+    executor: (interaction) => {
+      // Get the value of the option
+      const sendEmbed = interaction.getValue("my-option");
+
+      if (myOption) {
+        return {
+          // Whether to send an ephemeral message
+          send: false,
+          result: "This is a message",
+        };
+      } else {
+        return {
+          send: false,
+          embeds: [
+            {
+              color: 0x5865f2,
+              title: "Embed title",
+              description: "Embed description",
+            },
+          ],
+        };
+      }
+    },
+  });
+}
+
+export function stop(): void {
+  injector.uninjectAll();
+}
+```

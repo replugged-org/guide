@@ -7,6 +7,7 @@ const DiscordAPIDocs = (props): JSX.Element => {
 
 export default {
   Channel: () => <DiscordAPIDocs name="Channel" link="channel#channel-object-channel-structure" />,
+  Embed: () => <DiscordAPIDocs name="Embed" link="channel#embed-object-embed-structure" />,
   Emoji: () => <DiscordAPIDocs name="Emoji" link="emoji#emoji-object-emoji-structure" />,
   Guild: () => <DiscordAPIDocs name="Guild" link="guild#guild-object-guild-structure" />,
   GuildMember: () => (
