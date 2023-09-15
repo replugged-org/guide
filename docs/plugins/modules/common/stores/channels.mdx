@@ -10,26 +10,35 @@ import RequiredNotice from "@site/src/components/RequiredNotice.mdx";
 
 ### Functions
 
-| Name                                     | Parameters                                                         | Return Type                                    | Description                                                 |
-| ---------------------------------------- | ------------------------------------------------------------------ | ---------------------------------------------- | ----------------------------------------------------------- |
-| `getAllThreadsForParent`                 | <Required /> `channelId`: string                                   | <APIReferences.Channel />[]                    | Gets all fetched threads by its channel (parent) id         |
-| `getBasicChannel`                        | <Required /> `channelId`: string                                   | <APIReferences.Channel /> \| undefined         | Gets the basic channel by its id                            |
-| `getChannel`                             | <Required /> `channelId`: string                                   | <APIReferences.Channel /> \| undefined         | Gets the channel by its id                                  |
-| `getChannelId`                           | <Required /> `guildId`: string <br /> `fallbackToDefault`: boolean | string \| undefined                            | Gets the current selected channel id                        |
-| `getCurrentlySelectedChannelId`          | `guildId`: string                                                  | string \| undefined                            | Gets the current selected channel id                        |
-| `getDMFromUserId`                        | <Required /> `userId`: string                                      | string \| undefined                            | Gets the DM channel id by its user id                       |
-| `getDMUserIds`                           |                                                                    | string[]                                       | Gets all DM channel ids                                     |
-| `getGuildChannelsVersion`                | <Required /> `guildId`: string                                     | number                                         | Gets the channel version by guild id                        |
-| `getInitialOverlayState`                 |                                                                    | Record<string,&nbsp;<APIReferences.Channel />> | Gets all guild and DM channels                              |
-| `getLastChannelFollowingDestination`     |                                                                    | { channelId: string, guildId: string }         | Gets information on the last channel follow                 |
-| `getLastSelectedChannelId`               | `guildId`: string                                                  | string \| undefined                            | Gets the last selected channel id                           |
-| `getLastSelectedChannels`                | <Required /> `guildId`: string                                     | string \| undefined                            | Gets the last selected channel id by its guild id           |
-| `getMostRecentSelectedTextChannelId`     | `guildId`: string                                                  | string \| null                                 | Gets the last selected text channel id by its guild id      |
-| `getMutableBasicGuildChannelsForGuild`   | <Required /> `guildId`: string                                     | Record<string,&nbsp;<APIReferences.Channel />> | Gets all basic channels by its guild id                     |
-| `getMutableGuildChannelsForGuild`        | <Required /> `guildId`: string                                     | Record<string,&nbsp;<APIReferences.Channel />> | Gets all channels by its guild id                           |
-| `getMutablePrivateChannels`              |                                                                    | Record<string,&nbsp;<APIReferences.Channel />> | Gets all DM channels                                        |
-| `getPrivateChannelsVersion`              |                                                                    | number                                         | Gets the DM channel version                                 |
-| `getSortedPrivateChannels`               |                                                                    | <APIReferences.Channel />[]                    | Gets all DM channels sorted by the last message             |
-| `getVoiceChannelId`                      |                                                                    | string \| null                                 | Gets the current voice channel id                           |
-| `hasChannel`                             | <Required /> `channelId`: string                                   | boolean                                        | Checks if the channel id is registered in the channel store |
-| `loadAllGuildAndPrivateChannelsFromDisk` |                                                                    | Record<string,&nbsp;<APIReferences.Channel />> | Gets all guild and DM channels                              |
+| Name                                     | Parameters                                            | Return Type                                                           | Description                                                 |
+| ---------------------------------------- | ----------------------------------------------------- | --------------------------------------------------------------------- | ----------------------------------------------------------- |
+| `getAllThreadsForParent`                 | <Required /> `channelId`: string                      | <APIReferences.Channel />[]                                           | Gets all fetched threads by its channel (parent) id         |
+| `getBasicChannel`                        | <Required /> `channelId`: string                      | <APIReferences.Channel /> \| undefined                                | Gets the basic channel by its id                            |
+| `getChannel`                             | <Required /> `channelId`: string                      | <APIReferences.Channel /> \| undefined                                | Gets the channel by its id                                  |
+| `getChannelId`                           | `guildId`: string <br /> `fallbackToDefault`: boolean | string \| undefined                                                   | Gets the current selected channel id                        |
+| `getCurrentlySelectedChannelId`          | `guildId`: string                                     | string \| undefined                                                   | Gets the current selected channel id                        |
+| `getDMFromUserId`                        | <Required /> `userId`: string                         | string \| undefined                                                   | Gets the DM channel id by its user id                       |
+| `getDMUserIds`                           |                                                       | string[]                                                              | Gets all DM channel ids                                     |
+| `getGuildChannelsVersion`                | <Required /> `guildId`: string                        | number                                                                | Gets the channel version by guild id                        |
+| `getInitialOverlayState`                 |                                                       | Record<string,&nbsp;<APIReferences.Channel />>                        | Gets all guild and DM channels                              |
+| `getLastChannelFollowingDestination`     |                                                       | [`LastChannelFollowingDestination`](#LastChannelFollowingDestination) | Gets information on the last channel follow                 |
+| `getLastSelectedChannelId`               | `guildId`: string                                     | string \| undefined                                                   | Gets the last selected channel id                           |
+| `getLastSelectedChannels`                | <Required /> `guildId`: string                        | string \| undefined                                                   | Gets the last selected channel id by its guild id           |
+| `getMostRecentSelectedTextChannelId`     | `guildId`: string                                     | string \| null                                                        | Gets the last selected text channel id by its guild id      |
+| `getMutableBasicGuildChannelsForGuild`   | <Required /> `guildId`: string                        | Record<string,&nbsp;<APIReferences.Channel />>                        | Gets all basic channels by its guild id                     |
+| `getMutableGuildChannelsForGuild`        | <Required /> `guildId`: string                        | Record<string,&nbsp;<APIReferences.Channel />>                        | Gets all channels by its guild id                           |
+| `getMutablePrivateChannels`              |                                                       | Record<string,&nbsp;<APIReferences.Channel />>                        | Gets all DM channels                                        |
+| `getPrivateChannelsVersion`              |                                                       | number                                                                | Gets the DM channel version                                 |
+| `getSortedPrivateChannels`               |                                                       | <APIReferences.Channel />[]                                           | Gets all DM channels sorted by the last message             |
+| `getVoiceChannelId`                      |                                                       | string \| null                                                        | Gets the current voice channel id                           |
+| `hasChannel`                             | <Required /> `channelId`: string                      | boolean                                                               | Checks if the channel id is registered in the channel store |
+| `loadAllGuildAndPrivateChannelsFromDisk` |                                                       | Record<string,&nbsp;<APIReferences.Channel />>                        | Gets all guild and DM channels                              |
+
+### Types {#channels-types}
+
+#### `LastChannelFollowingDestination` {#LastChannelFollowingDestination}
+
+| Name        | Type   | Description                             |
+| ----------- | ------ | --------------------------------------- |
+| `channelId` | string | Channel id of the last followed channel |
+| `guildId`   | string | Guild id of the last followed channel   |
