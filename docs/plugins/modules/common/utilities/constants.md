@@ -11,6 +11,7 @@ description: All constants used in the client
 | `CSSVariables`   | Record<string,&nbsp;string>                     | CSS variables                                                                            |
 | `Endpoints`      | Record<string,&nbsp;unknown>                    | Endpoints                                                                                |
 | `GuildFeatures`  | Record<string,&nbsp;string>                     | Guild features                                                                           |
+| `MessageFlags`   | Record<string,&nbsp;string>                     | Message flags                                                                            |
 | `Paths`          | Record<string,&nbsp;string>                     | Web routes                                                                               |
 | `Permissions`    | Record<string,&nbsp;bigint>                     | Permissions                                                                              |
 | `raw`            | Record<string,&nbsp;unknown>                    | Raw module with all constants; check out its contents with Discord DevTools              |

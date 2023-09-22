@@ -8,13 +8,16 @@ import RequiredNotice from "@site/src/components/RequiredNotice.mdx";
 
 <RequiredNotice />
 
-<!-- [!]: `ChannelMessages`, `FetchMessagesOptions`, `LocalFetchComplete`, `MessageJumpOptions` and all functions starting with an underscore aren't documented -->
+<!-- [!]: `ChannelMessages`, `FetchMessagesOptions`, `LocalFetchComplete`, `MessageJumpOptions`, `UserServer` and all functions starting with an underscore aren't documented -->
 
 ### Functions
 
 | Name                            | Parameters                                                                                                                                                                                                      | Return Type                                                                | Description                                                                                         |
 | ------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
 | `clearChannel`                  | <Required /> `channelId`: string                                                                                                                                                                                | void                                                                       | Clears all messages in a channel. This will only apply locally and the messages will be re-fetched. |
+| `createBotMessage`              | <Required /> `options`: [`CreateBotMessageOptions`](#CreateBotMessageOptions)                                                                                                                                   | <APIReferences.Message />                                                  | Creates a bot message without sending it                                                            |
+| `createMessage`                 | <Required /> `options`: [`CreateMessageOptions`](#CreateMessageOptions)                                                                                                                                         | <APIReferences.Message />                                                  | Creates a message without sending it                                                                |
+| `createNonce`                   |                                                                                                                                                                                                                 | string                                                                     | Generate a new snowflake id                                                                         |
 | `crosspostMessage`              | <Required /> `channelId`: string <br /> <Required /> `messageId`: string                                                                                                                                        | Promise<[`HTTPResponse`](../utilities/api#HTTPResponse)&nbsp;\|&nbsp;void> | Makes a message public in an announcement channel                                                   |
 | `deleteMessage`                 | <Required /> `channelId`: string <br /> <Required /> `messageId`: string <br /> `keepThreadArchived`: boolean                                                                                                   | Promise<void\>                                                             | Deletes a message from a channel                                                                    |
 | `dismissAutomatedMessage`       | <Required /> `message`: <APIReferences.Message />                                                                                                                                                               | void                                                                       | Dismisses an ephemeral message                                                                      |
@@ -44,6 +47,7 @@ import RequiredNotice from "@site/src/components/RequiredNotice.mdx";
 | `trackJump`                     | <Required /> `channelId`: string <br /> <Required /> `messageId`: string <br /> <Required /> `context`: string <br /> `extraProperties`: Record<string,&nbsp;unknown>                                           | void                                                                       | Tracks a jump for analytics                                                                         |
 | `truncateMessages`              | <Required /> `channelId`: string <br /> <Required /> `truncateBottom`: boolean <br /> <Required /> `truncateTop`: boolean                                                                                       | void                                                                       | Truncates a message list                                                                            |
 | `updateEditMessage`             | <Required /> `channelId`: string <br /> <Required /> `textValue`: string <br /> <Required /> `richValue`: unknown                                                                                               | void                                                                       | Updates an edit message                                                                             |
+| `userRecordToServer`            | <Required /> `user`: <APIReferences.User />                                                                                                                                                                     | `UserServer`                                                               | Converts an user record into a simplified version for the server                                    |
 
 ### Types {#messages-types}
 
@@ -53,6 +57,29 @@ import RequiredNotice from "@site/src/components/RequiredNotice.mdx";
 | -------------- | -------- | ------------------------------------------------------------- |
 | `parse`        | string[] | Array of allowed mention types to parse from the content      |
 | `replied_user` | boolean  | Whether to mention the author of the message being replied to |
+
+#### `CreateBotMessageOptions` {#CreateBotMessageOptions}
+
+| Name          | Type                      | Default | Description                                    |
+| ------------- | ------------------------- | ------- | ---------------------------------------------- |
+| `channelId`   | <Required /> string       |         | Id of the channel where the message belongs to |
+| `content`     | <Required /> string       |         | Content of the message                         |
+| `embeds`      | <APIReferences.Embed />[] |         | Array of embedded content                      |
+| `loggingName` | string                    |         | Message name for analytics                     |
+
+#### `CreateMessageOptions` {#CreateMessageOptions}
+
+| Name               | Type                                    | Default | Description                                    |
+| ------------------ | --------------------------------------- | ------- | ---------------------------------------------- |
+| `allowedMentions`  | [`AllowedMentions`](#AllowedMentions)   |         | Allowed mentions for the message               |
+| `author`           | <Required /> <APIReferences.User />     |         | Author of the message                          |
+| `channelId`        | <Required /> string                     |         | Id of the channel where the message belongs to |
+| `content`          | <Required /> string                     |         | Content of the message                         |
+| `flags`            | number                                  |         | Message flags                                  |
+| `messageReference` | [`MessageReference`](#MessageReference) |         | Contains information for a reply               |
+| `nonce`            | string                                  |         | Id of the message                              |
+| `tts`              | boolean                                 | `false` | Whether the message is a TTS message           |
+| `type`             | number                                  | `0`     | Type of message                                |
 
 #### `FocusMessageOptions` {#FocusMessageOptions}
 
