@@ -97,33 +97,6 @@ with your command to disable it.
 Some plugins will require you to fully reload Discord (<kbd>Ctrl</kbd> + <kbd>R</kbd>) to apply
 changes, for example if you are using plaintext patches (we will go over that later).
 
-## Development Companion Extension
-
-Replugged v4.3.0 contains support for
-[Vencord's dev companion extension](https://marketplace.visualstudio.com/items?itemName=Vendicated.vencord-companion).
-It is an extension for VSCode that allows you to test your module finds and plaintext patches
-without having to rebuild your plugin and reload your client.
-
-After installing, your module finds and plaintext patches should now have small texts like "Test
-Find" and "Test Patch" above them. Clicking them will show a notification within VSCode with
-diagnostics about the result.
-
-:::note
-
-For plaintext patches to work, your patch MUST have a `find`! The extension was not made to parse
-patches without them.
-
-```js
-export default [
-  {
-    find: "SOMETHING",
-    replacements: [{}],
-  },
-];
-```
-
-:::
-
 ## Building, updating, and releasing
 
 ### Release Tool
