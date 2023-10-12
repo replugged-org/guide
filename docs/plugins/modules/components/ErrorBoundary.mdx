@@ -16,5 +16,5 @@ const { ErrorBoundary } = components;
 | Name       | Type                                         | Default | Description                               |
 | ---------- | -------------------------------------------- | ------- | ----------------------------------------- |
 | `fallback` | ReactNode                                    |         | Fallback elements to show                 |
-| `onError`  | (error: unknown, errorInfo: unknown) => void |         | Function ran when an error is triggered   |
+| `onError`  | (error: Error, errorInfo: ErrorInfo) => void |         | Function ran when an error is triggered   |
 | `silent`   | boolean                                      | `false` | Whether to not print the error to console |
