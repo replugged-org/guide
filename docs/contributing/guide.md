@@ -83,7 +83,7 @@ errors later.
 ## Questions?
 
 If you have any questions, feel free to ask in our [Discord server](https://discord.gg/replugged) in
-the `#replugged-core` channel.
+the `#replugged-dev` channel.
 
 ## Thank you!
 
