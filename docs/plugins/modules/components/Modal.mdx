@@ -63,9 +63,10 @@ The props of this component extend the attributes of the `div` element.
 
 :::
 
-| Name          | Type          | Default | Description  |
-| ------------- | ------------- | ------- | ------------ |
-| `scrollerRef` | Ref<unknown\> |         | Scroller ref |
+| Name            | Type                       | Default | Description    |
+| --------------- | -------------------------- | ------- | -------------- |
+| `scrollbarType` | "auto" \| "none" \| "thin" | `thin`  | Scrollbar type |
+| `scrollerRef`   | Ref<unknown\>              |         | Scroller ref   |
 
 #### `Modal.ModalFooter` {#ModalFooter}
 
@@ -102,12 +103,13 @@ The props of this component extend the attributes of the `div` element.
 
 :::
 
-| Name                 | Type       | Default  | Description                                                 |
-| -------------------- | ---------- | -------- | ----------------------------------------------------------- |
-| `className`          | string     |          | Component class name                                        |
-| `fullscreenOnMobile` | boolean    | `true`   | Whether the modal is in fullscreen if app is in mobile view |
-| `hideShadow`         | boolean    | `false`  | Whether the shadow is hidden                                |
-| `onAnimationEnd`     | (): string |          | Function ran when the modal stopped animating               |
-| `role`               | string     | `dialog` | Modal element role                                          |
-| `size`               | string     | `small`  | Modal size                                                  |
-| `transitionState`    | string     |          | Modal state                                                 |
+| Name                 | Type          | Default  | Description                                                 |
+| -------------------- | ------------- | -------- | ----------------------------------------------------------- |
+| `className`          | string        |          | Component class name                                        |
+| `fullscreenOnMobile` | boolean       | `true`   | Whether the modal is in fullscreen if app is in mobile view |
+| `hideShadow`         | boolean       | `false`  | Whether the shadow is hidden                                |
+| `onAnimationEnd`     | (): string    |          | Function ran when the modal stopped animating               |
+| `returnRef`          | Ref<unknown\> |          | Returned ref                                                |
+| `role`               | string        | `dialog` | Modal element role                                          |
+| `size`               | string        | `small`  | Modal size                                                  |
+| `transitionState`    | string        |          | Modal state                                                 |
