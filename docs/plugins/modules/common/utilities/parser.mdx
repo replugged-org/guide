@@ -7,7 +7,7 @@ import RequiredNotice from "@site/src/components/RequiredNotice.mdx";
 
 <RequiredNotice />
 
-<!-- [!]: `DefaultRules` and `ParserRules` aren't documented -->
+{/* [!]: `DefaultRules` and `ParserRules` aren't documented */}
 
 ### Props
 
@@ -38,9 +38,9 @@ import RequiredNotice from "@site/src/components/RequiredNotice.mdx";
 | `parseTopicToAST`                       | `text`: string <br /> `inline`: boolean <br /> `opts`: [`ParseOptions`](#ParseOptions) <br /> `postProcess`: (tree: unknown, inline: boolean) => void | ReactElement          | `parseToAST` function but with `inlineCode`, `codeBlock`, `br` and `blockQuote` rules omitted                                          |
 | `reactParserFor`                        | <Required /> `rules`: `ParserRules`                                                                                                                   | (...) => ReactElement | Creates a new parser function based on specific rules; the returned function has the same parameters of the other parser functions     |
 
-### Types {#parser-types}
+### Types \{#parser-types}
 
-#### `ParseOptions` {#ParseOptions}
+#### `ParseOptions` \{#ParseOptions}
 
 | Name                       | Type     | Description                                     |
 | -------------------------- | -------- | ----------------------------------------------- |

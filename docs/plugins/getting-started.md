@@ -77,7 +77,7 @@ be changed to the username and repository of your plugin. For example, the plugi
 at https://github.com/replugged-org/plugin-template, so the `updater.id` is
 `replugged-org/plugin-template`.
 
-:::caution
+:::warning
 
 Make sure you update the `updater.id` key to your plugin's repository. If you don't, Replugged will
 try to update your plugin to the plugin template. Your users will have to uninstall and reinstall
@@ -147,7 +147,7 @@ and how to request approval, please see [this page](/docs/store).
 
 You can create a link to install your plugin which will automatically open Replugged and prompt the
 user to confirm the installation. For example:
-<https://replugged.dev/install?identifier=replugged-org/plugin-template&source=github>.
+https://replugged.dev/install?identifier=replugged-org/plugin-template&source=github.
 
 - `identifier` - same as `updater.id` in the manifest
 - `source` - same as `updater.source` in the manifest. Currently, `github` and `store` are

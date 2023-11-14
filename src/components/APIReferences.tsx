@@ -1,5 +1,3 @@
-import React from "react";
-
 const DiscordAPIDocs = (props): JSX.Element => {
   const url = `https://discord.com/developers/docs/resources/${props.link}`;
   return <a href={url}>{props.name}</a>;

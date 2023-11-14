@@ -7,7 +7,7 @@ import RequiredNotice from "@site/src/components/RequiredNotice.mdx";
 
 <RequiredNotice />
 
-:::caution
+:::warning
 
 This component requires the use of the common module [`modal`](../common/utilities/modal).
 
@@ -39,21 +39,21 @@ modal.openModal((props) => (
 | [`Modal.ModalHeader`](#ModalHeader)           | Contains the header    |
 | [`Modal.ModalRoot`](#ModalRoot)               | Modal root component   |
 
-### Types {#Modal-types}
+### Types \{#Modal-types}
 
-#### `Modal.ModalCloseButton` {#ModalCloseButton}
+#### `Modal.ModalCloseButton` \{#ModalCloseButton}
 
 Props:
 
-| Name                   | Type                         | Default | Description                                              |
-| ---------------------- | ---------------------------- | ------- | -------------------------------------------------------- |
-| `className`            | string                       |         | Component class name                                     |
-| `focusProps`           | Record<string,&nbsp;unknown> |         | Props for the FocusRing component                        |
-| `hideOnFullscreen`     | boolean                      | `false` | Whether the button is hidden when modal is in fullscreen |
-| `onClick`              | <Required /> (): void        |         | Function ran when clicking the close button              |
-| `withCircleBackground` | boolean                      | `false` | Whether the button is in a circle                        |
+| Name                   | Type                          | Default | Description                                              |
+| ---------------------- | ----------------------------- | ------- | -------------------------------------------------------- |
+| `className`            | string                        |         | Component class name                                     |
+| `focusProps`           | Record\<string,&nbsp;unknown> |         | Props for the FocusRing component                        |
+| `hideOnFullscreen`     | boolean                       | `false` | Whether the button is hidden when modal is in fullscreen |
+| `onClick`              | <Required /> (): void         |         | Function ran when clicking the close button              |
+| `withCircleBackground` | boolean                       | `false` | Whether the button is in a circle                        |
 
-#### `Modal.ModalContent` {#ModalContent}
+#### `Modal.ModalContent` \{#ModalContent}
 
 Props:
 
@@ -66,9 +66,9 @@ The props of this component extend the attributes of the `div` element.
 | Name            | Type                       | Default | Description    |
 | --------------- | -------------------------- | ------- | -------------- |
 | `scrollbarType` | "auto" \| "none" \| "thin" | `thin`  | Scrollbar type |
-| `scrollerRef`   | Ref<unknown\>              |         | Scroller ref   |
+| `scrollerRef`   | Ref\<unknown>              |         | Scroller ref   |
 
-#### `Modal.ModalFooter` {#ModalFooter}
+#### `Modal.ModalFooter` \{#ModalFooter}
 
 Props:
 
@@ -80,7 +80,7 @@ Props:
 | `justify`   | `Flex.Justify`   | `Flex.Justify.START`                | Flexbox justify      |
 | `wrap`      | `Flex.Wrap`      | `Flex.Wrap.NO_WRAP`                 | Flexbox wrap         |
 
-#### `Modal.ModalHeader` {#ModalHeader}
+#### `Modal.ModalHeader` \{#ModalHeader}
 
 Props:
 
@@ -93,7 +93,7 @@ Props:
 | `separator` | boolean          | `false`                     | Whether a divider is shown between the header and the modal content |
 | `wrap`      | `Flex.Wrap`      | `Flex.Wrap.NO_WRAP`         | Flexbox wrap                                                        |
 
-#### `Modal.ModalRoot` {#ModalRoot}
+#### `Modal.ModalRoot` \{#ModalRoot}
 
 Props:
 
@@ -109,7 +109,7 @@ The props of this component extend the attributes of the `div` element.
 | `fullscreenOnMobile` | boolean       | `true`   | Whether the modal is in fullscreen if app is in mobile view |
 | `hideShadow`         | boolean       | `false`  | Whether the shadow is hidden                                |
 | `onAnimationEnd`     | (): string    |          | Function ran when the modal stopped animating               |
-| `returnRef`          | Ref<unknown\> |          | Returned ref                                                |
+| `returnRef`          | Ref\<unknown> |          | Returned ref                                                |
 | `role`               | string        | `dialog` | Modal element role                                          |
 | `size`               | string        | `small`  | Modal size                                                  |
 | `transitionState`    | string        |          | Modal state                                                 |

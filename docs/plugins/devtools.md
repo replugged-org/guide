@@ -44,7 +44,7 @@ diagnostics about the result.
 For plaintext patches to work, your patch MUST have a `find`! The extension was not made to parse
 patches without them.
 
-```js
+```ts
 export default [
   {
     find: "SOMETHING",
