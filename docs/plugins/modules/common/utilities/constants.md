@@ -45,11 +45,12 @@ ColorGenerator.colors.BACKGROUND_PRIMARY.resolve({ theme: Themes.DARK, saturatio
 
 Props:
 
-| Name               | Type                                   | Description                                                                                                                    |
-| ------------------ | -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
-| `colors`           | Record\<string,&nbsp;`Color`>          | Contains all CSS variables with the corresponding function to generate a color based on a given saturation                     |
-| `radii`            | Record\<string,&nbsp;number>           | Contains border-radius values                                                                                                  |
-| `shadows`          | Record\<string,&nbsp;`ShadowColor`>    | Contains all CSS variables for shadows with the corresponding function to get specific information                             |
-| `spacing`          | Record\<string,&nbsp;string>           | Contains spacing values                                                                                                        |
-| `themes`           | Record\<string,&nbsp;string>           | Client themes                                                                                                                  |
-| `unsafe_rawColors` | Record\<string,&nbsp;`UnsafeRawColor`> | Contains all CSS variables for specific colors with the corresponding function to generate a color based on a given saturation |
+| Name               | Type                                               | Description                                                                                                                    |
+| ------------------ | -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| `colors`           | Record\<string,&nbsp;`Color`>                      | Contains all CSS variables with the corresponding function to generate a color based on a given saturation                     |
+| `modules`          | Record\<string,&nbsp;Record\<string,&nbsp;number>> | Contains modules used in the CSS, such as size variables                                                                       |
+| `radii`            | Record\<string,&nbsp;number>                       | Contains border-radius values                                                                                                  |
+| `shadows`          | Record\<string,&nbsp;`ShadowColor`>                | Contains all CSS variables for shadows with the corresponding function to get specific information                             |
+| `spacing`          | Record\<string,&nbsp;string>                       | Contains spacing values                                                                                                        |
+| `themes`           | Record\<string,&nbsp;string>                       | Client themes                                                                                                                  |
+| `unsafe_rawColors` | Record\<string,&nbsp;`UnsafeRawColor`>             | Contains all CSS variables for specific colors with the corresponding function to generate a color based on a given saturation |
