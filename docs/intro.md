@@ -21,6 +21,6 @@ Want to contribute to Replugged? Take a look at our
 
 ## Need Help?
 
-Join our [Discord server](https://discord.gg/HnYFUhv4x4)! Questions about addon development should go
-in [#plugin-dev](https://discord.com/channels/1000926524452647132/1000955966520557689) or
+Join our [Discord server](https://discord.gg/HnYFUhv4x4)! Questions about addon development should
+go in [#plugin-dev](https://discord.com/channels/1000926524452647132/1000955966520557689) or
 [#theme-dev](https://discord.com/channels/1000926524452647132/1000955967627874424).
