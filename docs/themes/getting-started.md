@@ -132,7 +132,7 @@ your manifest file which is used by Replugged to check for updates.
 
 ### Replugged Discord
 
-In order to share your theme in our [Discord server](https://discord.gg/replugged), your theme will
+In order to share your theme in our [Discord server](https://discord.gg/HnYFUhv4x4), your theme will
 first have to be approved, and then added to our store. For more information on this process and how
 to request approval, please see [this page](/docs/store).
 

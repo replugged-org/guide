@@ -82,7 +82,7 @@ errors later.
 
 ## Questions?
 
-If you have any questions, feel free to ask in our [Discord server](https://discord.gg/replugged) in
+If you have any questions, feel free to ask in our [Discord server](https://discord.gg/HnYFUhv4x4) in
 the `#replugged-dev` channel.
 
 ## Thank you!
