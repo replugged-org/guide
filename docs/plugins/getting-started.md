@@ -94,8 +94,9 @@ After it's initially installed, the watch/build scripts will automatically reloa
 Discord when you make changes. If you don't want it to do this, you can use the `--no-reload` flag
 with your command to disable it.
 
-Some plugins will require you to fully reload Discord (<kbd>Ctrl</kbd> + <kbd>R</kbd>) to apply
-changes, for example if you are using plaintext patches (we will go over that later).
+Some plugins will require you to fully reload Discord (<kbd>Ctrl</kbd> + <kbd>R</kbd> or
+<kbd>Cmd</kbd> + <kbd>R</kbd>) to apply changes, for example if you are using plaintext patches (we
+will go over that later).
 
 ## Building, updating, and releasing
 
