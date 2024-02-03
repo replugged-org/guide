@@ -14,19 +14,19 @@ It is highly recommended to use this module together with the
 
 :::
 
-<!-- [!]: `ImpressionProperties` isn't documented -->
+{/* [!]: `ImpressionProperties` isn't documented */}
 
 ### Functions
 
-| Name       | Parameters                                                                                                                                                                                                                                                                   | Return Type | Description                      |
-| ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- | -------------------------------- |
-| `close`    |                                                                                                                                                                                                                                                                              | void        | Closes the current context menu  |
-| `open`     | <Required /> `event`: MouseEvent <br /> `render`: (props: [`ContextMenuProps`](#ContextMenuProps)) => ReactNode <br /> `options`: [`ContextMenusOptions`](#ContextMenusOptions) <br /> `renderLazy`: Promise<(props: [`ContextMenuProps`](#ContextMenuProps)) => ReactNode)> | void        | Opens a context menu             |
-| `openLazy` | <Required /> `event`: MouseEvent <br /> `renderLazy`: Promise<(props: [`ContextMenuProps`](#ContextMenuProps)) => ReactNode)> <br /> `options`: [`ContextMenusOptions`](#ContextMenusOptions)                                                                                | void        | Opens a lazy loaded context menu |
+| Name       | Parameters                                                                                                                                                                                                                                                                    | Return Type | Description                      |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- | -------------------------------- |
+| `close`    |                                                                                                                                                                                                                                                                               | void        | Closes the current context menu  |
+| `open`     | <Required /> `event`: MouseEvent <br /> `render`: (props: [`ContextMenuProps`](#ContextMenuProps)) => ReactNode <br /> `options`: [`ContextMenusOptions`](#ContextMenusOptions) <br /> `renderLazy`: Promise\<(props: [`ContextMenuProps`](#ContextMenuProps)) => ReactNode)> | void        | Opens a context menu             |
+| `openLazy` | <Required /> `event`: MouseEvent <br /> `renderLazy`: Promise\<(props: [`ContextMenuProps`](#ContextMenuProps)) => ReactNode)> <br /> `options`: [`ContextMenusOptions`](#ContextMenusOptions)                                                                                | void        | Opens a lazy loaded context menu |
 
-### Types {#contextMenu-types}
+### Types \{#contextMenu-types}
 
-#### `ContextMenuProps` {#ContextMenuProps}
+#### `ContextMenuProps` \{#ContextMenuProps}
 
 | Name             | Type                                                  | Default | Description                         |
 | ---------------- | ----------------------------------------------------- | ------- | ----------------------------------- |
@@ -38,7 +38,7 @@ It is highly recommended to use this module together with the
 | `target`         | HTMLElement                                           |         | Context menu children element       |
 | `theme`          | string                                                |         | Current theme                       |
 
-#### `ContextMenusOptions` {#ContextMenusOptions}
+#### `ContextMenusOptions` \{#ContextMenusOptions}
 
 | Name                   | Type                                                  | Default | Description                                                            |
 | ---------------------- | ----------------------------------------------------- | ------- | ---------------------------------------------------------------------- |
