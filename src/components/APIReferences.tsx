@@ -1,22 +1,32 @@
 const DiscordAPIDocs = (props): JSX.Element => {
-  const url = `https://discord.com/developers/docs/resources/${props.link}`;
+  const url = `https://discord.com/developers/docs/${props.link}`;
   return <a href={url}>{props.name}</a>;
 };
 
 export default {
-  Channel: () => <DiscordAPIDocs name="Channel" link="channel#channel-object-channel-structure" />,
-  Embed: () => <DiscordAPIDocs name="Embed" link="channel#embed-object-embed-structure" />,
-  Emoji: () => <DiscordAPIDocs name="Emoji" link="emoji#emoji-object-emoji-structure" />,
-  Guild: () => <DiscordAPIDocs name="Guild" link="guild#guild-object-guild-structure" />,
-  GuildMember: () => (
-    <DiscordAPIDocs name="GuildMember" link="guild#guild-member-object-guild-member-structure" />
+  Channel: () => (
+    <DiscordAPIDocs name="Channel" link="resources/channel#channel-object-channel-structure" />
   ),
-  Message: () => <DiscordAPIDocs name="Message" link="channel#message-object-message-structure" />,
+  Embed: () => (
+    <DiscordAPIDocs name="Embed" link="resources/channel#embed-object-embed-structure" />
+  ),
+  Emoji: () => <DiscordAPIDocs name="Emoji" link="resources/emoji#emoji-object-emoji-structure" />,
+  Guild: () => <DiscordAPIDocs name="Guild" link="resources/guild#guild-object-guild-structure" />,
+  GuildMember: () => (
+    <DiscordAPIDocs
+      name="GuildMember"
+      link="resources/guild#guild-member-object-guild-member-structure"
+    />
+  ),
+  Message: () => (
+    <DiscordAPIDocs name="Message" link="resources/channel#message-object-message-structure" />
+  ),
   MessageAttachment: () => (
     <DiscordAPIDocs
       name="MessageAttachment"
-      link="channel#attachment-object-attachment-structure"
+      link="resources/channel#attachment-object-attachment-structure"
     />
   ),
-  User: () => <DiscordAPIDocs name="User" link="user#user-object-user-structure" />,
+  Role: () => <DiscordAPIDocs name="Role" link="topics/permissions#role-object-role-structure" />,
+  User: () => <DiscordAPIDocs name="User" link="resources/user#user-object-user-structure" />,
 };

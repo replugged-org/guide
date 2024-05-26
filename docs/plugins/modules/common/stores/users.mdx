@@ -8,6 +8,8 @@ import RequiredNotice from "@site/src/components/RequiredNotice.mdx";
 
 <RequiredNotice />
 
+{/* [!]: `Cache` and `Snapshot` aren't documented */}
+
 ### Functions
 
 | Name                              | Parameters                                                                                                          | Return Type                                                               | Description                                                        |
@@ -33,10 +35,12 @@ import RequiredNotice from "@site/src/components/RequiredNotice.mdx";
 | `getUser`                         | <Required /> `userId`: string                                                                                       | <APIReferences.User /> \| undefined                                       | Gets the user by its id                                            |
 | `getUsers`                        |                                                                                                                     | Record\<string,&nbsp;<APIReferences.User />>                              | Gets all users                                                     |
 | `getUserStoreVersion`             |                                                                                                                     | number                                                                    | Gets the user store version                                        |
+| `handleLoadCache`                 | <Required /> `cache`: `Cache`                                                                                       | void                                                                      | Loads user and channel data into memory from a cache               |
 | `isCurrentUserGuest`              | `guildId`: string                                                                                                   | boolean                                                                   | Checks if the current user is a guest of a guild                   |
 | `isGuestOrLurker`                 | `guildId`: string <br /> `userId`: string                                                                           | boolean                                                                   | Checks if a user is a guest of a guild                             |
 | `isMember`                        | `guildId`: string <br /> `userId`: string                                                                           | boolean                                                                   | Checks if a user is a member of a guild                            |
 | `memberOf`                        | <Required /> `userId`: string                                                                                       | string[]                                                                  | Gets all mutual servers of a user                                  |
+| `takeSnapshot`                    |                                                                                                                     | `Snapshot`                                                                | Takes a snapshot of the store                                      |
 
 ### Types \{#users-types}
 

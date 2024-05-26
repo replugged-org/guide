@@ -22,13 +22,11 @@ const { ButtonItem } = components;
 
 ### Enums
 
-| Enum                  | Description                                                                                                                                          |
-| --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Button.BorderColors` | Button border colors <br />`BRAND` \| `RED` \| `GREEN` \| `YELLOW` \| `PRIMARY` \| `LINK` \| `WHITE` \| `BLACK` \| `TRANSPARENT` \| `BRAND_NEW`      |
-| `Button.Colors`       | Button colors <br />`BRAND` \| `RED` \| `GREEN` \| `YELLOW` \| `PRIMARY` \| `LINK` \| `WHITE` \| `BLACK` \| `TRANSPARENT` \| `BRAND_NEW` \| `CUSTOM` |
-| `Button.Hovers`       | Button color hovers <br />`DEFAULT` \| `BRAND` \| `RED` \| `GREEN` \| `YELLOW` \| `PRIMARY` \| `LINK` \| `WHITE` \| `BLACK` \| `TRANSPARENT`         |
-| `Button.Looks`        | Button styles <br />`FILLED` \| `INVERTED` \| `OUTLINED` \| `LINK` \| `BLANK`                                                                        |
-| `Button.Sizes`        | Button sizes <br />`NONE` \| `TINY` \| `SMALL` \| `MEDIUM` \| `LARGE` \| `XLARGE` \| `MIN` \| `MAX` \| `ICON`                                        |
+| Enum            | Description                                                                                                                        |
+| --------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `Button.Colors` | Button colors <br />`BRAND` \| `BRAND_INVERTED` \| `RED` \| `GREEN` \| `PRIMARY` \| `LINK` \| `WHITE` \| `TRANSPARENT` \| `CUSTOM` |
+| `Button.Looks`  | Button styles <br />`FILLED` \| `OUTLINED` \| `LINK` \| `BLANK`                                                                    |
+| `Button.Sizes`  | Button sizes <br />`NONE` \| `TINY` \| `SMALL` \| `MEDIUM` \| `LARGE` \| `MIN` \| `MAX` \| `ICON`                                  |
 
 ### Props
 
@@ -40,7 +38,6 @@ The props of this component extend the attributes of the `button` element.
 
 | Name                      | Type                                 | Default               | Description                                                                                  |
 | ------------------------- | ------------------------------------ | --------------------- | -------------------------------------------------------------------------------------------- |
-| `borderColor`             | `Button.BorderColors`                |                       | Button border color                                                                          |
 | `button`                  | string                               |                       | Button text for the item component                                                           |
 | `buttonRef`               | Ref\<HTMLButtonElement>              |                       | Button ref                                                                                   |
 | `color`                   | `Button.Colors`                      | `Button.Colors.BRAND` | Button color                                                                                 |
@@ -48,7 +45,6 @@ The props of this component extend the attributes of the `button` element.
 | `fullWidth`               | boolean                              | `false`               | Whether the button width is at maximum                                                       |
 | `grow`                    | boolean                              | `true`                | Whether the button size can grow                                                             |
 | `hideBorder`              | boolean                              | `false`               | Whether a divider is not displayed at the end of the button item                             |
-| `hover`                   | `Button.Hovers`                      |                       | Button hover color                                                                           |
 | `innerClassName`          | string                               |                       | Text element class name                                                                      |
 | `look`                    | `Button.Looks`                       | `Button.Looks.FILLED` | Button style                                                                                 |
 | `note`                    | string                               |                       | Description of what the button item is about                                                 |
@@ -74,13 +70,11 @@ The props of this component extend the props of
 
 :::
 
-| Name             | Type                  | Default               | Description                            |
-| ---------------- | --------------------- | --------------------- | -------------------------------------- |
-| `borderColor`    | `Button.BorderColors` |                       | Button border color                    |
-| `color`          | `Button.Colors`       | `Button.Colors.BRAND` | Button color                           |
-| `fullWidth`      | boolean               | `false`               | Whether the button width is at maximum |
-| `grow`           | boolean               | `true`                | Whether the button size can grow       |
-| `hover`          | `Button.Hovers`       |                       | Button hover color                     |
-| `innerClassName` | string                |                       | Text element class name                |
-| `look`           | `Button.Looks`        | `Button.Looks.FILLED` | Button style                           |
-| `size`           | `Button.Sizes`        | `Button.Sizes.MEDIUM` | Button size                            |
+| Name             | Type            | Default               | Description                            |
+| ---------------- | --------------- | --------------------- | -------------------------------------- |
+| `color`          | `Button.Colors` | `Button.Colors.BRAND` | Button color                           |
+| `fullWidth`      | boolean         | `false`               | Whether the button width is at maximum |
+| `grow`           | boolean         | `true`                | Whether the button size can grow       |
+| `innerClassName` | string          |                       | Text element class name                |
+| `look`           | `Button.Looks`  | `Button.Looks.FILLED` | Button style                           |
+| `size`           | `Button.Sizes`  | `Button.Sizes.MEDIUM` | Button size                            |
