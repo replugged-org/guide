@@ -2,7 +2,7 @@
   "name": "replugged-guide",
   "version": "0.0.0",
   "private": true,
-  "packageManager": "pnpm@9.1.2",
+  "packageManager": "pnpm@10.4.1",
   "scripts": {
     "docusaurus": "docusaurus",
     "start": "docusaurus start",
@@ -23,32 +23,31 @@
     "lint:fix": "pnpm run prettier:fix && pnpm run eslint:fix && pnpm run cspell:check && pnpm run typescript:check"
   },
   "dependencies": {
-    "@algolia/client-search": "^4.23.3",
-    "@docusaurus/core": "^3.3.2",
-    "@docusaurus/preset-classic": "^3.3.2",
-    "@mdx-js/react": "^3.0.1",
+    "@docusaurus/core": "^3.7.0",
+    "@docusaurus/preset-classic": "^3.7.0",
+    "@mdx-js/react": "^3.1.0",
     "clsx": "^2.1.1",
-    "prism-react-renderer": "^2.3.1",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "prism-react-renderer": "^2.4.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
   },
   "devDependencies": {
-    "@docusaurus/module-type-aliases": "^3.3.2",
-    "@docusaurus/theme-classic": "^3.3.2",
-    "@docusaurus/tsconfig": "^3.3.2",
-    "@docusaurus/types": "^3.3.2",
-    "@types/node": "^18.19.33",
-    "@types/react": "^18.3.3",
-    "@typescript-eslint/eslint-plugin": "^7.10.0",
-    "@typescript-eslint/parser": "^7.10.0",
-    "cspell": "^8.8.3",
-    "eslint": "^8.56.0",
+    "@docusaurus/module-type-aliases": "^3.7.0",
+    "@docusaurus/theme-classic": "^3.7.0",
+    "@docusaurus/tsconfig": "^3.7.0",
+    "@docusaurus/types": "^3.7.0",
+    "@types/node": "^20.17.19",
+    "@types/react": "^19.0.10",
+    "@typescript-eslint/eslint-plugin": "^7.18.0",
+    "@typescript-eslint/parser": "^7.18.0",
+    "cspell": "^8.17.5",
+    "eslint": "^8.57.1",
     "eslint-config-dmitmel": "github:dmitmel/eslint-config-dmitmel",
     "eslint-plugin-markdown": "^3.0.1",
     "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-react": "^7.34.1",
-    "prettier": "^3.2.5",
-    "typescript": "^5.4.5"
+    "eslint-plugin-react": "^7.37.4",
+    "prettier": "^3.5.2",
+    "typescript": "~5.4.5"
   },
   "browserslist": {
     "production": [
@@ -63,7 +62,7 @@
     ]
   },
   "engines": {
-    "node": ">=18.0",
-    "pnpm": ">=9.0.0"
+    "node": ">=20.0",
+    "pnpm": ">=10.0.0"
   }
 }

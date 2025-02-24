@@ -27,9 +27,8 @@ function HomepageHeader(): React.ReactElement {
   );
 }
 
-export default function Home(): JSX.Element {
+export default function Home(): React.ReactElement {
   const { siteConfig } = useDocusaurusContext();
-
   return (
     <Layout title="Home" description={siteConfig.tagline}>
       <HomepageHeader />

@@ -1,1 +1,1 @@
-export default (): JSX.Element => <span style={{ color: "red" }}>*</span>;
+export default (): React.ReactElement => <span style={{ color: "red" }}>*</span>;

@@ -1,4 +1,4 @@
-const DiscordAPIDocs = (props): JSX.Element => {
+const DiscordAPIDocs = (props): React.ReactElement => {
   const url = `https://discord.com/developers/docs/${props.link}`;
   return <a href={url}>{props.name}</a>;
 };
