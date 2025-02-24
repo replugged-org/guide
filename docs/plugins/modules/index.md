@@ -9,7 +9,7 @@ Discord is made using [Webpack](https://webpack.js.org/), which is a module bund
 the code into modules and bundles them together. Each module is a JavaScript object that contains
 various exports, such as constants, methods, and React components.
 
-:::caution
+:::warning
 
 Your editor may suggest importing a module directly from within `replugged/dist/whatever`, but this
 will not work. You should always import from `replugged` itself and destructure the module you want.
@@ -25,7 +25,7 @@ In order to use a module, you will need to find it first. There are a few ways t
 Replugged comes with a bunch of modules that are commonly used. Common modules are documented
 [here](common).
 
-### Get module {#getModule}
+### Get module \{#getModule}
 
 You can write a function that will be used to find the module. This functions similar to the
 [Array.find](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find)
@@ -42,7 +42,7 @@ export function start() {
 
 Replugged also comes with a `filters` object with a few common filters. These are described below.
 
-### Wait for module {#waitForModule}
+### Wait for module \{#waitForModule}
 
 When Discord is starting, a module may not be available yet. For example, Replugged provides a
 `waitForModule` function that will wait for a module to be available before continuing. This works
@@ -64,14 +64,14 @@ For props filters, use [`waitForProps`](#waitForProps) instead.
 
 :::
 
-:::caution
+:::warning
 
 By default, `waitForModule` will wait indefinitely. You can set a timeout using the
 [`timeout` option](#timeout).
 
 :::
 
-### Get by props {#getByProps}
+### Get by props \{#getByProps}
 
 Most util/method modules can be found by using `getByProps`. This function takes an array of strings
 and finds a module that has all of the properties in the array.
@@ -87,7 +87,7 @@ export function start() {
 }
 ```
 
-#### Wait for props {#waitForProps}
+#### Wait for props \{#waitForProps}
 
 Works like [`getByProps`](#getByProps), but waits for the module to be available like with
 [`waitForModule`](#waitForModule).
@@ -101,7 +101,7 @@ export function start() {
 }
 ```
 
-### Get by source {#getBySource}
+### Get by source \{#getBySource}
 
 For modules that do not have human-readable properties (such as components), you can use
 `getBySource` to find a module by its source code. To use this, you will need to find the source
@@ -120,7 +120,7 @@ export function start() {
 }
 ```
 
-:::caution
+:::warning
 
 Randomized variable names within the source code (usually 1-2 characters, alphanumeric) can change
 between Discord updates and should not be considered stable. This means that your plugin may break
@@ -136,14 +136,14 @@ You should make sure that your query will only match one module. If it matches m
 might sometimes get the wrong module and your plugin could break. To test your query, you can call
 the function in Discord DevTools with `{all: true}` and see if it returns multiple modules.
 
-```js
+```ts
 replugged.webpack.getBySource("HORIZONTAL_REVERSE", { all: true });
 ```
 
 In this case, there are 4 different modules that match the query. We can improve the query by
 appending a `:`, which only exists in the module we're looking for.
 
-### Get by store name {#getByStoreName}
+### Get by store name \{#getByStoreName}
 
 This function finds flux stores matching a specific name.
 
@@ -188,7 +188,7 @@ export function start() {
 
 ## Processing modules
 
-### Get exports for props {#getExportsForProps}
+### Get exports for props \{#getExportsForProps}
 
 When using `filters.byProps`, the actual properties you need may be nested under a random key. To
 get the actual export, you can use `getExportsForProps`.
@@ -210,7 +210,7 @@ This function is not needed when using [`getByProps`](#getByProps) or
 
 :::
 
-### Get function by source {#getFunctionBySource}
+### Get function by source \{#getFunctionBySource}
 
 This function will find a function in an object that matches the given source code (string or
 regex).
@@ -225,7 +225,7 @@ export function start() {
 }
 ```
 
-### Get function key by source {#getFunctionKeyBySource}
+### Get function key by source \{#getFunctionKeyBySource}
 
 Works like [`getFunctionBySource`](#getFunctionBySource), but returns the key of the function
 instead of the function itself. Useful for getting the property name to use for

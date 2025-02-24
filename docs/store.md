@@ -40,9 +40,9 @@ Before requesting your addon be reviewed, your addon must be migrated to the sto
 - Release a new version with the above change
 
 - In your installer links, remove the `source` parameter and set `identifier` to the addon ID. For
-  example: <https://replugged.dev/install?identifier=dev.replugged.PluginTemplate>
+  example: https://replugged.dev/install?identifier=dev.replugged.PluginTemplate
 
-  :::caution
+  :::warning
 
   Do not update the install links until your addon has been approved. The links will not work until
   we approve your addon.

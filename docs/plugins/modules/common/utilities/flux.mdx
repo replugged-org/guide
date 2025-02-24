@@ -95,8 +95,6 @@ UserMessagesStore.clearUserMessages("USER_ID");
 
 You can expose a store by setting its display name and the `__getLocalVars` function.
 
-<!-- eslint-disable @typescript-eslint/naming-convention -->
-
 ```ts
 class UserMessagesStore extends Flux.Store {
   public displayName: "UserMessagesStore";
@@ -189,24 +187,24 @@ export default UserMessagesConnected;
 
 ### Props
 
-| Name                  | Type                                    | Description                                                                                           |
-| --------------------- | --------------------------------------- | ----------------------------------------------------------------------------------------------------- |
-| `DeviceSettingsStore` | `PersistedStore`                        | Class for creating a DeviceSettingsStore                                                              |
-| `Emitter`             | `Emitter`                               | Class instance of the Emitter, that handles event listeners required for stores                       |
-| `initialized`         | Promise<boolean&nbsp;\|&nbsp;undefined> | Whether a Flux store is initialized                                                                   |
-| `OfflineCacheStore`   | `PersistedStore`                        | Class for creating a OfflineCacheStore                                                                |
-| `PersistedStore`      | `PersistedStore`                        | Class for creating a PersistedStore; useful for keeping store data saved in local storage             |
-| `SnapshotStore`       | `SnapshotStore`                         | Class for creating a SnapshotStore; useful for managing snapshots of store data, for caching purposes |
-| `Store`               | `Store`                                 | Class for creating a Flux store                                                                       |
+| Name                  | Type                                     | Description                                                                                           |
+| --------------------- | ---------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| `DeviceSettingsStore` | `PersistedStore`                         | Class for creating a DeviceSettingsStore                                                              |
+| `Emitter`             | `Emitter`                                | Class instance of the Emitter, that handles event listeners required for stores                       |
+| `initialized`         | Promise\<boolean&nbsp;\|&nbsp;undefined> | Whether a Flux store is initialized                                                                   |
+| `OfflineCacheStore`   | `PersistedStore`                         | Class for creating a OfflineCacheStore                                                                |
+| `PersistedStore`      | `PersistedStore`                         | Class for creating a PersistedStore; useful for keeping store data saved in local storage             |
+| `SnapshotStore`       | `SnapshotStore`                          | Class for creating a SnapshotStore; useful for managing snapshots of store data, for caching purposes |
+| `Store`               | `Store`                                  | Class for creating a Flux store                                                                       |
 
 ### Functions
 
-| Name                       | Parameters                                                                                                                                       | Return Type                                                                        | Description                                                                                         |
-| -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
-| `connectStores`            | <Required /> `stores`: `Store`[] <br /> <Required /> `callback`: (props: OuterProps) => InnerProps <br /> `options`: { forwardRef: boolean }     | (component: ComponentType<InnerProps & OuterProps>) => ComponentClass<OuterProps\> | Connects a React component to Flux stores                                                           |
-| `destroy`                  |                                                                                                                                                  | void                                                                               | Destroys all Flux store instances                                                                   |
-| `initialize`               |                                                                                                                                                  | void                                                                               | Initializes a Flux store                                                                            |
-| `statesWillNeverBeEqual`   | <Required /> `a`: T <br /> <Required /> `b`: T                                                                                                   | boolean                                                                            | Used as a comparator for the `useStateFromStores` hook to indicate that states will never be equal  |
-| `useStateFromStores`       | <Required /> `stores`: `Store`[] <br /> <Required /> `callback`: () => T <br /> `deps`: DependencyList <br /> `compare`: (a: T, b: T) => boolean | T                                                                                  | Custom hook to keep a React component's state synchronized with the data retrieved from Flux stores |
-| `useStateFromStoresArray`  | <Required /> `stores`: `Store`[] <br /> <Required /> `callback`: () => T <br /> `deps`: DependencyList                                           | T                                                                                  | `useStateFromStores` hook but with a comparator made for arrays                                     |
-| `useStateFromStoresObject` | <Required /> `stores`: `Store`[] <br /> <Required /> `callback`: () => T <br /> `deps`: DependencyList                                           | T                                                                                  | `useStateFromStores` hook but with a comparator made for objects                                    |
+| Name                       | Parameters                                                                                                                                       | Return Type                                                                         | Description                                                                                         |
+| -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| `connectStores`            | <Required /> `stores`: `Store`[] <br /> <Required /> `callback`: (props: OuterProps) => InnerProps <br /> `options`: \{ forwardRef: boolean }    | (component: ComponentType\<InnerProps & OuterProps>) => ComponentClass\<OuterProps> | Connects a React component to Flux stores                                                           |
+| `destroy`                  |                                                                                                                                                  | void                                                                                | Destroys all Flux store instances                                                                   |
+| `initialize`               |                                                                                                                                                  | void                                                                                | Initializes a Flux store                                                                            |
+| `statesWillNeverBeEqual`   | <Required /> `a`: T <br /> <Required /> `b`: T                                                                                                   | boolean                                                                             | Used as a comparator for the `useStateFromStores` hook to indicate that states will never be equal  |
+| `useStateFromStores`       | <Required /> `stores`: `Store`[] <br /> <Required /> `callback`: () => T <br /> `deps`: DependencyList <br /> `compare`: (a: T, b: T) => boolean | T                                                                                   | Custom hook to keep a React component's state synchronized with the data retrieved from Flux stores |
+| `useStateFromStoresArray`  | <Required /> `stores`: `Store`[] <br /> <Required /> `callback`: () => T <br /> `deps`: DependencyList                                           | T                                                                                   | `useStateFromStores` hook but with a comparator made for arrays                                     |
+| `useStateFromStoresObject` | <Required /> `stores`: `Store`[] <br /> <Required /> `callback`: () => T <br /> `deps`: DependencyList                                           | T                                                                                   | `useStateFromStores` hook but with a comparator made for objects                                    |

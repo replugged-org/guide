@@ -72,8 +72,8 @@ to check for spelling errors. If you use VSCode, this is also set up in the reco
 along with Prettier and ESLint and should show you spelling errors as you type. These will also be
 checked when you run `pnpm run lint:fix`. If there is a word that cSpell says is an error but is
 not, you can add it to [cspell.json](https://github.com/replugged-org/guide/tree/main/cspell.json).
-In VSCode, you can do this from the Quick Actions menu (Ctrl+.) or in the right-click menu (under
-"Spelling").
+In VSCode, you can do this from the Quick Actions menu (<kbd>Ctrl</kbd> + <kbd>.</kbd> or
+<kbd>Cmd</kbd> + <kbd>.</kbd>) or in the right-click menu (under "Spelling").
 
 When creating a PR, these should be checked automatically by GitHub Actions and will fail if there
 are formatting errors. If you are a first-time contributor, these might not run until we get to it,

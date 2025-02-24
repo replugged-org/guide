@@ -73,7 +73,7 @@ be changed to the username and repository of your theme. For example, the theme 
 at https://github.com/replugged-org/theme-template, so the `updater.id` is
 `replugged-org/theme-template`.
 
-:::caution
+:::warning
 
 Make sure you update the `updater.id` key to your theme's repository. If you don't, Replugged will
 try to update your theme to the theme template. Your users will have to uninstall and reinstall your
@@ -140,7 +140,7 @@ to request approval, please see [this page](/docs/store).
 
 You can create a link to install your theme which will automatically open Replugged and prompt the
 user to confirm the installation. For example:
-<https://replugged.dev/install?identifier=replugged-org/theme-template&source=github>.
+https://replugged.dev/install?identifier=replugged-org/theme-template&source=github.
 
 - `identifier` - same as `updater.id` in the manifest
 - `source` - same as `updater.source` in the manifest. Currently, `github` and `store` are

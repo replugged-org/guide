@@ -1,6 +1,4 @@
-import React from "react";
-
-export default (): JSX.Element => (
+export default (): React.ReactElement => (
   <a href="https://react.dev/reference/react-dom/components/common#applying-css-styles">
     CSSProperties
   </a>

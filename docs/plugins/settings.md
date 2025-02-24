@@ -66,7 +66,7 @@ const cfg = await settings.init<Settings, keyof typeof defaultSettings>(
 
 The settings manager functions similar to a JavaScript `Map`, but has some extra functionality.
 
-### Get a value {#get}
+### Get a value \{#get}
 
 ```ts
 const foo = cfg.get("foo");
@@ -83,19 +83,19 @@ that the value cannot be undefined.
 const bar = cfg.get("bar", 5);
 ```
 
-### Set a value {#set}
+### Set a value \{#set}
 
 ```ts
 cfg.set("foo", "world");
 ```
 
-### Delete a value {#delete}
+### Delete a value \{#delete}
 
 ```ts
 cfg.delete("foo");
 ```
 
-### Check if a value exists {#has}
+### Check if a value exists \{#has}
 
 ```ts
 if (cfg.has("foo")) {
@@ -105,7 +105,7 @@ if (cfg.has("foo")) {
 
 Note that default values are ignored when checking if a value exists.
 
-### Get all values {#all}
+### Get all values \{#all}
 
 ```ts
 const values = cfg.all();
@@ -143,7 +143,7 @@ export function Settings(): React.ReactElement {
 The hook will automatically handle setting the value of the input component and updating the
 settings manager when the value changes.
 
-:::caution
+:::warning
 
 If you use this hook, you cannot use the `value` or `onChange` properties on a component since they
 will override the properties set by the hook.

@@ -65,8 +65,8 @@ Please make sure you have the following installed and are using the correct vers
 
 When you make changes, you can run `pnpm run build` to build the changes, or use `pnpm run watch` to
 automatically rebuild when you edit a file. If you edited a file in the `renderer` folder, you can
-reload Discord with <kbd>Ctrl</kbd> + <kbd>R</kbd> to apply your changes. However, editing files in
-`main` requires you to fully quit and restart Discord.
+reload Discord with <kbd>Ctrl</kbd> + <kbd>R</kbd> or <kbd>Cmd</kbd> + <kbd>R</kbd> to apply your
+changes. However, editing files in `main` requires you to fully quit and restart Discord.
 
 ### Formatting
 
@@ -80,8 +80,8 @@ to check for spelling errors. If you use VSCode, this is also set up in the reco
 along with Prettier and ESLint and should show you spelling errors as you type. These will also be
 checked when you run `pnpm run lint:fix`. If there is a word that cSpell says is an error but is
 not, you can add it to [cspell.json](https://github.com/replugged-org/guide/tree/main/cspell.json).
-In VSCode, you can do this from the Quick Actions menu (Ctrl+.) or in the right-click menu (under
-"Spelling").
+In VSCode, you can do this from the Quick Actions menu (<kbd>Ctrl</kbd> + <kbd>.</kbd> or
+<kbd>Cmd</kbd> + <kbd>.</kbd>) or in the right-click menu (under "Spelling").
 
 When creating a PR, these should be checked automatically by GitHub Actions and will fail if there
 are formatting errors. If you are a first-time contributor, these might not run until we get to it,

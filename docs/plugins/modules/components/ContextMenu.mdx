@@ -8,9 +8,9 @@ import RequiredNotice from "@site/src/components/RequiredNotice.mdx";
 
 <RequiredNotice />
 
-<!-- Menu -->
+{/* Menu */}
 
-:::caution
+:::warning
 
 This component requires the use of the common module
 [`contextMenu`](../common/utilities/contextMenu).
@@ -58,9 +58,9 @@ const ExampleContext = (): React.ReactElement => (
 | ------------------------ | ---------------------------------------------------------------------------------------------------------- |
 | `ContextMenu.ItemColors` | Context menu colors <br />`DEFAULT` \| `BRAND` \| `DANGER` \| `PREMIUM` \| `PREMIUM_GRADIENT` \| `SUCCESS` |
 
-### Types {#ContextMenu-types}
+### Types \{#ContextMenu-types}
 
-#### `ContextMenu.ContextMenu` {#Menu}
+#### `ContextMenu.ContextMenu` \{#Menu}
 
 Props:
 
@@ -74,13 +74,13 @@ Props:
 | `style`        | <CSSProperties />       |            | Component style                                                                                                           |
 | `variant`      | string                  | `flexible` | Whether the context menu width is flexible or fixed                                                                       |
 
-#### `ContextMenu.MenuCheckboxItem` {#MenuCheckboxItem}
+#### `ContextMenu.MenuCheckboxItem` \{#MenuCheckboxItem}
 
 Props:
 
 | Name               | Type                               | Default                          | Description                         |
 | ------------------ | ---------------------------------- | -------------------------------- | ----------------------------------- |
-| `action`           | MouseEventHandler<HTMLDivElement\> |                                  | Function ran when clicking the item |
+| `action`           | MouseEventHandler\<HTMLDivElement> |                                  | Function ran when clicking the item |
 | `checked`          | boolean                            | `false`                          | Checkbox state                      |
 | `className`        | string                             |                                  | Component class name                |
 | `color`            | `ContextMenu.ItemColors`           | `ContextMenu.ItemColors.DEFAULT` | Item color                          |
@@ -90,7 +90,7 @@ Props:
 | `label`            | string                             |                                  | Item label                          |
 | `subtext`          | string                             |                                  | Additional text under the label     |
 
-#### `ContextMenu.MenuControlItem` {#MenuControlItem}
+#### `ContextMenu.MenuControlItem` \{#MenuControlItem}
 
 Props:
 
@@ -103,16 +103,16 @@ This component has more possible props:
 
 :::
 
-| Name               | Type                                                                                                                                                                             | Default                          | Description                   |
-| ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------- | ----------------------------- |
-| `color`            | `ContextMenu.ItemColors`                                                                                                                                                         | `ContextMenu.ItemColors.DEFAULT` | Item color                    |
-| `control`          | <Required /> (data: { onClose: () => void; disabled: boolean; isFocused: boolean }, ref?: Ref<{ activate: () => boolean; blur: () => void; focus: () => void }>) => ReactElement |                                  | Control item render function  |
-| `disabled`         | boolean                                                                                                                                                                          | `false`                          | Whether the item is disabled  |
-| `id`               | <Required /> string                                                                                                                                                              |                                  | Item id                       |
-| `label`            | string                                                                                                                                                                           |                                  | Item label                    |
-| `showDefaultFocus` | boolean                                                                                                                                                                          | `false`                          | Whether the item is focusable |
+| Name               | Type                                                                                                                                                                                | Default                          | Description                   |
+| ------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------- | ----------------------------- |
+| `color`            | `ContextMenu.ItemColors`                                                                                                                                                            | `ContextMenu.ItemColors.DEFAULT` | Item color                    |
+| `control`          | <Required /> (data: \{ onClose: () => void; disabled: boolean; isFocused: boolean }, ref?: Ref\<\{ activate: () => boolean; blur: () => void; focus: () => void }>) => ReactElement |                                  | Control item render function  |
+| `disabled`         | boolean                                                                                                                                                                             | `false`                          | Whether the item is disabled  |
+| `id`               | <Required /> string                                                                                                                                                                 |                                  | Item id                       |
+| `label`            | string                                                                                                                                                                              |                                  | Item label                    |
+| `showDefaultFocus` | boolean                                                                                                                                                                             | `false`                          | Whether the item is focusable |
 
-#### `ContextMenu.MenuGroup` {#MenuGroup}
+#### `ContextMenu.MenuGroup` \{#MenuGroup}
 
 Props:
 
@@ -122,7 +122,7 @@ Props:
 | `color`     | `ContextMenu.ItemColors` | `ContextMenu.ItemColors.DEFAULT` | Item color           |
 | `label`     | string                   |                                  | Item label           |
 
-#### `ContextMenu.MenuItem` {#MenuItem}
+#### `ContextMenu.MenuItem` \{#MenuItem}
 
 Props:
 
@@ -139,15 +139,15 @@ This component has more possible props:
 
 | Name                                 | Type                               | Default                          | Description                                                                                  |
 | ------------------------------------ | ---------------------------------- | -------------------------------- | -------------------------------------------------------------------------------------------- |
-| `action`                             | MouseEventHandler<HTMLDivElement\> |                                  | Function ran when clicking the item                                                          |
+| `action`                             | MouseEventHandler\<HTMLDivElement> |                                  | Function ran when clicking the item                                                          |
 | `className`                          | string                             |                                  | Component class name                                                                         |
 | `color`                              | `ContextMenu.ItemColors`           | `ContextMenu.ItemColors.DEFAULT` | Item color                                                                                   |
 | `disabled`                           | boolean                            | `false`                          | Whether the item is disabled                                                                 |
 | `dontCloseOnActionIfHoldingShiftKey` | boolean                            | `false`                          | Whether not to close the context menu while holding down the shift key and clicking the item |
 | `focusedClassName`                   | string                             |                                  | Focused element class name                                                                   |
 | `hint`                               | ReactNode                          |                                  | Item hint                                                                                    |
-| `icon`                               | ComponentType<unknown\>            |                                  | Item icon                                                                                    |
-| `iconProps`                          | Record<string,&nbsp;unknown>       |                                  | Props for the icon component                                                                 |
+| `icon`                               | ComponentType\<unknown>            |                                  | Item icon                                                                                    |
+| `iconProps`                          | Record\<string,&nbsp;unknown>      |                                  | Props for the icon component                                                                 |
 | `id`                                 | <Required /> string                |                                  | Item id                                                                                      |
 | `imageUrl`                           | string                             |                                  | Source URL of the image                                                                      |
 | `label`                              | string                             |                                  | Item label                                                                                   |
@@ -157,13 +157,13 @@ This component has more possible props:
 | `subMenuIconClassName`               | string                             |                                  | Submenu icon element class name                                                              |
 | `subtext`                            | ReactNode                          |                                  | Additional text under the label                                                              |
 
-#### `ContextMenu.MenuRadioItem` {#MenuRadioItem}
+#### `ContextMenu.MenuRadioItem` \{#MenuRadioItem}
 
 Props:
 
 | Name       | Type                               | Default                          | Description                         |
 | ---------- | ---------------------------------- | -------------------------------- | ----------------------------------- |
-| `action`   | MouseEventHandler<HTMLDivElement\> |                                  | Function ran when clicking the item |
+| `action`   | MouseEventHandler\<HTMLDivElement> |                                  | Function ran when clicking the item |
 | `checked`  | boolean                            | `false`                          | Radio state                         |
 | `color`    | `ContextMenu.ItemColors`           | `ContextMenu.ItemColors.DEFAULT` | Item color                          |
 | `disabled` | boolean                            | `false`                          | Whether the radio is disabled       |
@@ -171,7 +171,7 @@ Props:
 | `label`    | string                             |                                  | Item label                          |
 | `subtext`  | string                             |                                  | Additional text under the label     |
 
-#### `MenuCompositeControlItem` {#MenuCompositeControlItem}
+#### `MenuCompositeControlItem` \{#MenuCompositeControlItem}
 
 Props:
 
@@ -183,24 +183,24 @@ Props:
 | `interactive`      | boolean                  | `false`                          | Whether the item is navigable |
 | `showDefaultFocus` | boolean                  | `false`                          | Whether the item is focusable |
 
-#### `MenuCustomItem` {#MenuCustomItem}
+#### `MenuCustomItem` \{#MenuCustomItem}
 
 Props:
 
-<!-- cspell:ignore dont -->
+{/* cspell:ignore dont */}
 
-| Name                                 | Type                                                                                                         | Default                          | Description                                                                                  |
-| ------------------------------------ | ------------------------------------------------------------------------------------------------------------ | -------------------------------- | -------------------------------------------------------------------------------------------- |
-| `action`                             | MouseEventHandler<HTMLDivElement\>                                                                           |                                  | Function ran when clicking the item                                                          |
-| `color`                              | `ContextMenu.ItemColors`                                                                                     | `ContextMenu.ItemColors.DEFAULT` | Item color                                                                                   |
-| `disabled`                           | boolean                                                                                                      | `false`                          | Whether the item is disabled                                                                 |
-| `dontCloseOnActionIfHoldingShiftKey` | boolean                                                                                                      | `false`                          | Whether not to close the context menu while holding down the shift key and clicking the item |
-| `id`                                 | <Required /> string                                                                                          |                                  | Item id                                                                                      |
-| `keepItemStyles`                     | boolean                                                                                                      | `false`                          | Whether use the normal menu item classes                                                     |
-| `navigable`                          | boolean                                                                                                      | `true`                           | Whether the item is navigable                                                                |
-| `render`                             | <Required /> (data: { color: `ContextMenu.ItemColors`; disabled: boolean; isFocused: boolean }) => ReactNode |                                  | Custom item render function                                                                  |
+| Name                                 | Type                                                                                                          | Default                          | Description                                                                                  |
+| ------------------------------------ | ------------------------------------------------------------------------------------------------------------- | -------------------------------- | -------------------------------------------------------------------------------------------- |
+| `action`                             | MouseEventHandler\<HTMLDivElement>                                                                            |                                  | Function ran when clicking the item                                                          |
+| `color`                              | `ContextMenu.ItemColors`                                                                                      | `ContextMenu.ItemColors.DEFAULT` | Item color                                                                                   |
+| `disabled`                           | boolean                                                                                                       | `false`                          | Whether the item is disabled                                                                 |
+| `dontCloseOnActionIfHoldingShiftKey` | boolean                                                                                                       | `false`                          | Whether not to close the context menu while holding down the shift key and clicking the item |
+| `id`                                 | <Required /> string                                                                                           |                                  | Item id                                                                                      |
+| `keepItemStyles`                     | boolean                                                                                                       | `false`                          | Whether use the normal menu item classes                                                     |
+| `navigable`                          | boolean                                                                                                       | `true`                           | Whether the item is navigable                                                                |
+| `render`                             | <Required /> (data: \{ color: `ContextMenu.ItemColors`; disabled: boolean; isFocused: boolean }) => ReactNode |                                  | Custom item render function                                                                  |
 
-#### `MenuSubmenuItem` {#MenuSubmenuItem}
+#### `MenuSubmenuItem` \{#MenuSubmenuItem}
 
 Props:
 
@@ -214,7 +214,7 @@ The props of this component extend the props of the [`ContextMenu.MenuItem`](#Me
 | ------------------ | ------ | ------- | -------------------------- |
 | `subMenuClassName` | string |         | Submenu element class name |
 
-#### `MenuSubmenuListItem` {#MenuSubmenuListItem}
+#### `MenuSubmenuListItem` \{#MenuSubmenuListItem}
 
 Props:
 

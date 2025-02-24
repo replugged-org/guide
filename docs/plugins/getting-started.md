@@ -77,7 +77,7 @@ be changed to the username and repository of your plugin. For example, the plugi
 at https://github.com/replugged-org/plugin-template, so the `updater.id` is
 `replugged-org/plugin-template`.
 
-:::caution
+:::warning
 
 Make sure you update the `updater.id` key to your plugin's repository. If you don't, Replugged will
 try to update your plugin to the plugin template. Your users will have to uninstall and reinstall
@@ -94,8 +94,9 @@ After it's initially installed, the watch/build scripts will automatically reloa
 Discord when you make changes. If you don't want it to do this, you can use the `--no-reload` flag
 with your command to disable it.
 
-Some plugins will require you to fully reload Discord (<kbd>Ctrl</kbd> + <kbd>R</kbd>) to apply
-changes, for example if you are using plaintext patches (we will go over that later).
+Some plugins will require you to fully reload Discord (<kbd>Ctrl</kbd> + <kbd>R</kbd> or
+<kbd>Cmd</kbd> + <kbd>R</kbd>) to apply changes, for example if you are using plaintext patches (we
+will go over that later).
 
 ## Building, updating, and releasing
 
@@ -147,7 +148,7 @@ and how to request approval, please see [this page](/docs/store).
 
 You can create a link to install your plugin which will automatically open Replugged and prompt the
 user to confirm the installation. For example:
-<https://replugged.dev/install?identifier=replugged-org/plugin-template&source=github>.
+https://replugged.dev/install?identifier=replugged-org/plugin-template&source=github.
 
 - `identifier` - same as `updater.id` in the manifest
 - `source` - same as `updater.source` in the manifest. Currently, `github` and `store` are
